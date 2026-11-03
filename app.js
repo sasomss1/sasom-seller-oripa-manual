@@ -251,7 +251,7 @@ function visOf(s){
  if(s.cmp)return `<div class="vcmp" id="cmpBox">${cmpHTML()}</div>`;
  if(s.v)return `<div class="vis">${s.v()}</div>`;
  return s.b?`<div class="vtext">${s.b()}</div>`:''}
-function stepBody(s){if(s.finish||s.quiz)return '';const lead=L2(s.l);return `${lead?`<p class="sl">${lead}</p>`:''}${s.tap?`<p class="tip"><i></i>${T('แตะกรอบที่กระพริบบนจอ','Tap the glowing box')}</p>`:''}${hasVis(s)&&s.b?`<div class="sx">${s.b()}</div>`:''}`}
+function stepBody(s){if(s.finish||s.quiz)return '';const lead=L2(s.l);return `${lead?`<p class="sl">${lead}</p>`:''}${hasVis(s)&&s.b?`<div class="sx">${s.b()}</div>`:''}`}
 function buildPlayer(){slides=slidesOf(cur);$('#pKicker').textContent=`${T('บทที่','LESSON')} ${LESSONS.indexOf(cur)+1}`;$('#pTitle').textContent=L2(cur.t);
  $('#pLeft').innerHTML=`<div class="steps">${slides.map((s,i)=>`<div class="step ${s.finish||s.quiz?'solo':''}" data-step="${i}"><span class="sn">${s.finish?'✓':s.quiz?'?':String(i+1).padStart(2,'0')}</span><div class="st"><b>${titleOf(s)}</b><div class="sb">${stepBody(s)}</div></div></div>`).join('')}</div>`;
  $('#pDots').innerHTML=slides.map(()=>'<i></i>').join('');hydrateFigs($('#pLeft'));show(idx,true)}
@@ -260,7 +260,7 @@ function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));const s=sli
  document.querySelectorAll('.step').forEach(el=>{const k=+el.dataset.step;el.classList.toggle('on',k===idx);el.classList.toggle('past',k<idx)});
  const on=document.querySelector('.step.on');if(on&&window.innerWidth>=900){const P=$('#pLeft');const top=on.offsetTop-P.clientHeight/3;P.scrollTo({top,behavior:instant?'auto':'smooth'})}
  $('#pStage').scrollTop=0;
- document.querySelectorAll('#pDots i').forEach((d,k)=>d.classList.toggle('on',k===idx));const hn=$('#pHint');if(hn){hn.textContent=T('แตะขวา = ถัดไป · แตะซ้าย = ย้อน','Tap right = next · left = back');hn.style.opacity=idx===0?1:0}
+ document.querySelectorAll('#pDots i').forEach((d,k)=>d.classList.toggle('on',k===idx));
  $('#pBar').style.width=((idx+1)/slides.length*100)+'%';$('#pCount').textContent=`${idx+1}/${slides.length}`;
  $('#pPrev').textContent=T('ย้อนกลับ','Back');$('#pPrev').disabled=idx===0;const last=idx===slides.length-1;$('#pNext').textContent=last?T('เสร็จ','Done'):T('ถัดไป','Next');
  if(last&&cur){done[cur.id]=true;store.set('done',done)}}
