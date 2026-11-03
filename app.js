@@ -291,9 +291,9 @@ document.addEventListener('click',e=>{
 function closeLb(){$('#lb').classList.remove('open')}
 
 /* lang + theme */
-function applyLang(){document.documentElement.lang=lang;document.querySelectorAll('#langSeg button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));store.set('lang',lang);
+function applyLang(){document.documentElement.lang=lang;document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));store.set('lang',lang);
  if(cur){const k=idx;buildPlayer();show(k,true)}home()}
-document.querySelectorAll('#langSeg button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;applyLang()});
+document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;applyLang()});
 const ICO={auto:'◐',light:'☀',dark:'☾'};
 function applyTheme(){if(theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',theme);$('#themeIco').textContent=ICO[theme];$('#themeBtn').title=theme;store.set('theme',theme)}
 $('#themeBtn').onclick=()=>{theme={auto:'light',light:'dark',dark:'auto'}[theme];applyTheme()};

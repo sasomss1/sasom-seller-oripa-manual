@@ -391,3 +391,6 @@ main{max-width:1180px}
 
 @media (max-width:640px){.dots{display:none}}
 @media (max-width:899px){.step.solo{display:none!important}}
+.p-tools{display:flex;align-items:center;gap:10px;margin-left:auto;flex:none}
+.p-tools .seg button{padding:5px 10px;font-size:12px}
+.p-title{min-width:0;flex:1}
