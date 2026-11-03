@@ -54,7 +54,14 @@ const LESSONS=[
  {h:['Seller Live · ทำงานยังไง','Seller Live · how it works'],l:['ไลฟ์เองบน App SASOM โชว์โลโก้ร้านได้','You host on the SASOM App with your logo'],
   b:()=>flow([['SELLER',T('แจ้งรายละเอียดบอร์ดกับ KAM','Share board details with KAM'),'','brief'],['KAM',T('ยืนยันรายละเอียดบอร์ด','Confirm the board'),'','check'],['SELLER',T('ตั้งบอร์ด + ตั้งเวลาไลฟ์','Set up board + schedule'),T('ไลฟ์ได้ตามสะดวก จัด slot เอง','Any time, your own slots'),'board'],['SASOM',T('SASOM แพ็คซอง · Seller ติดเลข','SASOM packs · you number'),T('เพื่อความโปร่งใส','For transparency'),'envnum'],['SELLER',T('ไลฟ์ที่ช่องตัวเอง','Go live on your account'),T('สูงสุด 3 บอร์ดพร้อมกัน','Up to 3 boards at once'),'live'],['SELLER',T('ส่งรางวัลเข้า SASOM','Send prizes to SASOM'),T('ภายใน 1-2 วันหลังไลฟ์','Within 1-2 days'),'prize'],['SASOM',T('ปิดบอร์ด สรุปยอด โอนเงิน','Close, summarize, pay out'),T('ภายใน 3-5 วันทำการ','Within 3-5 business days'),'payout']])},
  {h:['เหมือนกันทั้ง 2 แบบ','Same for both'],l:['',''],
-  v:()=>`<div class="same">${[['flag',T('ปิดบอร์ด','Closing'),T('กติกาเดียวกัน','Same rules')],['board','50–200',T('สปอต/บอร์ด','spots/board')],['coins',T('ก้อนเดียว','Lump sum'),T('หลังปิดบอร์ด','after close')],['percent',T('ค่าธรรมเนียม','Fees'),T('เฉพาะออเดอร์สำเร็จ','successful only')],['code','CODE',T('ส่วนลดให้ลูกค้า','for buyers')],['clock','4 '+T('ชม.','hrs'),T('ต่อรอบไลฟ์','per live')]].map(x=>`<div>${ico(x[0],'big')}<b>${x[1]}</b><small>${x[2]}</small></div>`).join('')}</div>`},
+  v:()=>`<div class="same">${[
+['flag',T('กติกาปิดบอร์ด\nเหมือนกัน','Same closing\nrules'),T('ปิดได้เมื่อ\nHit No.1 ออก','Close once\nHit No.1 is out'),T('ขายเกิน 20% แต่ Hit No.1 ยังไม่ออก ต้องไลฟ์ต่อ','Over 20% sold, no Hit No.1: keep going')],
+['board',T('50–200 สปอต','50–200 spots'),T('ต่อ 1 บอร์ด','per board'),T('เลือกได้ 50 / 100 / 150 / 200','Pick 50 / 100 / 150 / 200')],
+['coins',T('โอนเงิน\nก้อนเดียว','Paid in\none transfer'),T('หลังปิดบอร์ด\n3-5 วันทำการ','3-5 business days\nafter close'),T('ไม่ได้โอนทีละออเดอร์ รวมยอดทั้งบอร์ดแล้วโอนครั้งเดียว','Not per order: the whole board is paid at once')],
+['percent',T('หักค่าธรรมเนียม','Fee deducted'),T('เฉพาะออเดอร์\nที่สำเร็จ','Successful\norders only'),T('ออเดอร์ยกเลิก ไม่เสียค่าธรรมเนียม','No fee on cancelled orders')],
+['code',T('โค้ดส่วนลด','Discount codes'),T('SASOM ให้ลูกค้า','SASOM gives buyers'),T('ช่วยให้ลูกค้าจุ่มเร็วขึ้น','Helps buyers pull sooner')],
+['clock',T('ไลฟ์ได้ 4 ชม.','Live up to 4 hrs'),T('ต่อ 1 รอบไลฟ์','per live'),T('ครบ 4 ชม. สร้างไลฟ์ใหม่แล้วไลฟ์ต่อ','At 4 hrs, start a new live')]
+].map(x=>`<div data-tip="${x[3]}">${ico(x[0],'big')}<b>${x[1]}</b><small>${x[2]}</small></div>`).join('')}</div>`},
  {quiz:{q:['ใน Send Board ใครเป็นคนไลฟ์?','In Send Board, who hosts the live?'],o:[['SASOM','SASOM'],['Seller','You (seller)']],a:0}}
 ]},
 {id:'board',stage:1,ico:'🎯',t:['เงื่อนไขบอร์ด','Board rules'],d:['สปอต · Hit · การปิดบอร์ด','Spots · Hits · closing'],slides:[
