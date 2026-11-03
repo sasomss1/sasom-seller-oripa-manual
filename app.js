@@ -343,8 +343,8 @@ function applyLang(){document.documentElement.lang=lang;document.querySelectorAl
  if(cur){const k=idx;buildPlayer();show(k,true)}home()}
 document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;applyLang()});
 const TICO={auto:'<svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor"/></svg>',light:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/></svg>',dark:'<svg viewBox="0 0 24 24" width="18" height="18"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="currentColor"/></svg>'};
-function applyTheme(){if(theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',theme);$('#themeIco').innerHTML=TICO[theme];$('#themeBtn').title=theme;store.set('theme',theme)}
-$('#themeBtn').onclick=()=>{theme={auto:'light',light:'dark',dark:'auto'}[theme];applyTheme()};
+function applyTheme(){if(theme==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',theme);document.querySelectorAll('.theme-btn').forEach(b=>{b.innerHTML=TICO[theme];b.title=theme});store.set('theme',theme)}
+document.querySelectorAll('.theme-btn').forEach(b=>b.onclick=()=>{theme={auto:'light',light:'dark',dark:'auto'}[theme];applyTheme()});
 
 /* routing */
 function route(){const id=(location.hash||'').replace(/^#\/?/,'');if(id&&LESSONS.find(l=>l.id===id)){if(!cur||cur.id!==id)openLesson(id)}else if(cur)closeLesson()}
