@@ -35,8 +35,8 @@ const LESSONS=[
  {quiz:{q:['ใน Send Board ใครเป็นคนไลฟ์?','In Send Board, who hosts the live?'],o:[['SASOM','SASOM'],['Seller','You (seller)']],a:0}}
 ]},
 {id:'board',stage:1,ico:'🎯',t:['เงื่อนไขบอร์ด','Board rules'],d:['สปอต · Hit · การปิดบอร์ด','Spots · Hits · closing'],slides:[
- {h:['บอร์ดมีได้ 4 ขนาด','4 board sizes'],l:['แนะนำ Hit 10-20% ของสปอตทั้งหมด','Recommended: Hits 10-20% of spots'],
-  v:()=>`<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%">${[50,100,150,200].map(n=>`<div style="background:#2a2a2e;border-radius:14px;padding:10px 16px;text-align:center"><div style="font:600 26px Inter;color:var(--lime)">${n}</div><small style="color:#aaa">${T('สปอต','spots')}</small></div>`).join('')}</div>${grid(24,[1,2,5,7,8,11,13,16,19,22],[3,14,21])}`,
+ {h:['เลือก Spot ได้ 4 แบบ','Pick from 4 spot counts'],l:['แนะนำ Hit 10-20% ของสปอตทั้งหมด','Recommended: Hits 10-20% of spots'],
+  v:()=>`<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%">${[50,100,150,200].map(n=>`<div style="background:#2a2a2e;border-radius:14px;padding:10px 16px;text-align:center"><div style="font:600 26px Inter;color:var(--lime)">${n}</div><small style="color:#aaa">Spot</small></div>`).join('')}</div>${grid(24,[1,2,5,7,8,11,13,16,19,22],[3,14,21])}`,
   b:()=>pts([{t:T('จำนวน Hit ต้องตรงกับที่ประกาศ','Hits must match what you declare'),s:T('ลูกค้าเห็น % Hit ระหว่างไลฟ์','Buyers see the Hit % on live')}])},
  {h:['จำนวนบอร์ด','How many boards'],l:['',''],
   v:()=>`<div style="text-align:center"><div style="display:flex;gap:8px;justify-content:center">${'<div class="board-box" style="width:70px;height:50px"></div>'.repeat(4)}</div><p style="margin:10px 0 18px;color:#bbb">Send Board · ${T('ส่งมารอได้ไม่จำกัด','no limit')}</p><div style="display:flex;gap:10px;justify-content:center">${env('r')}${env('g')}${env('k')}</div><p style="margin:10px 0 0;color:#bbb">Seller Live · ${T('ไลฟ์พร้อมกันสูงสุด 3 บอร์ด','up to 3 boards at once')}</p></div>`},
