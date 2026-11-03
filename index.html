@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SASOM Oripa Seller Guide</title>
+<meta name="description" content="คู่มือ Seller ไลฟ์ Oripa บน SASOM · Oripa seller guide">
+<link rel="icon" href="assets/sasom-logo.png">
+<link rel="apple-touch-icon" href="assets/sasom-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#" aria-label="Home"><img src="assets/sasom-logo.png" alt=""><span><b>Oripa</b> Seller Guide</span></a>
+  <div class="tools">
+    <div class="seg" id="langSeg" role="group" aria-label="Language">
+      <button data-lang="th">TH</button><button data-lang="en">EN</button>
+    </div>
+    <button class="icon-btn" id="themeBtn" aria-label="Theme"><span id="themeIco"></span></button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<!-- Lesson player -->
+<div class="player" id="player" aria-hidden="true">
+  <div class="p-head">
+    <button class="icon-btn" id="pClose" aria-label="Close">✕</button>
+    <div class="p-title"><small id="pKicker"></small><b id="pTitle"></b></div>
+    <div class="p-count" id="pCount"></div>
+  </div>
+  <div class="p-bar"><i id="pBar"></i></div>
+  <div class="p-stage" id="pStage"></div>
+  <div class="p-foot">
+    <button class="btn ghost" id="pPrev"></button>
+    <div class="dots" id="pDots"></div>
+    <button class="btn" id="pNext"></button>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lb" aria-hidden="true"><button class="icon-btn lb-x" aria-label="Close">✕</button><div class="lb-in" id="lbIn"></div></div>
+
+<script src="app.js"></script>
+</body>
+</html>
