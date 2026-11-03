@@ -231,7 +231,7 @@ function buildPlayer(){slides=slidesOf(cur);$('#pKicker').textContent=`${T('บ�
  $('#pStage').innerHTML=slides.map((s,i)=>`<section class="slide" data-i="${i}">${slideHTML(s,i)}</section>`).join('');
  $('#pDots').innerHTML=slides.map(()=>'<i></i>').join('');show(idx,true)}
 function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));document.querySelectorAll('.slide').forEach(el=>{const k=+el.dataset.i;el.classList.toggle('on',k===idx);el.classList.toggle('left',k<idx);if(k===idx)el.scrollTop=0});
- document.querySelectorAll('#pDots i').forEach((d,k)=>d.classList.toggle('on',k===idx));$('#pBar').style.width=((idx+1)/slides.length*100)+'%';$('#pCount').textContent=`${idx+1}/${slides.length}`;
+ document.querySelectorAll('#pDots i').forEach((d,k)=>d.classList.toggle('on',k===idx));const hn=$('#pHint');if(hn){hn.textContent=T('แตะขวา = ถัดไป · แตะซ้าย = ย้อนกลับ','Tap right = next · tap left = back');hn.style.opacity=idx===0?1:0}$('#pBar').style.width=((idx+1)/slides.length*100)+'%';$('#pCount').textContent=`${idx+1}/${slides.length}`;
  $('#pPrev').textContent=T('ย้อนกลับ','Back');$('#pPrev').disabled=idx===0;const last=idx===slides.length-1;$('#pNext').textContent=last?T('เสร็จ','Done'):T('ถัดไป','Next');
  if(last&&cur){done[cur.id]=true;store.set('done',done)}
  // restart animations
@@ -239,6 +239,10 @@ function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));document.qu
 $('#pNext').onclick=()=>{if(idx===slides.length-1)closeLesson();else show(idx+1)};
 $('#pPrev').onclick=()=>show(idx-1);$('#pClose').onclick=closeLesson;
 document.addEventListener('keydown',e=>{if(!cur)return;if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Escape'){if($('#lb').classList.contains('open'))closeLb();else closeLesson()}});
+/* tap left / right side of the slide to go back / next */
+$('#pStage').addEventListener('click',e=>{if(!cur)return;if(e.target.closest('button,a,input,details,summary,[data-zoom],.toggle,.quiz'))return;if(window.getSelection&&String(window.getSelection()).length)return;
+ const r=$('#pStage').getBoundingClientRect(),x=(e.clientX-r.left)/r.width;if(x>.65){if(idx===slides.length-1)return;show(idx+1)}else if(x<.35)show(idx-1)});
+$('#pStage').addEventListener('mousemove',e=>{const r=$('#pStage').getBoundingClientRect(),x=(e.clientX-r.left)/r.width;const t=e.target.closest('button,a,input,details,summary,[data-zoom]');$('#pStage').style.cursor=t?'':(x>.65&&idx<slides.length-1)||(x<.35&&idx>0)?'pointer':''});
 let sx=null,sy=null;$('#pStage').addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
 $('#pStage').addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){show(idx+(dx<0?1:-1))}sx=null},{passive:true});
 

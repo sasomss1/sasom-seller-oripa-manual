@@ -255,3 +255,6 @@ main{max-width:1080px;margin:0 auto;padding-block:20px 80px;padding-left:max(16p
 .typing{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom}
 .slide.on .typing{animation:type 2s steps(8) both}
 @keyframes type{from{width:0}to{width:8.2ch}}
+
+.dotwrap{display:grid;justify-items:center;gap:6px;min-width:0}
+#pHint{font-size:11px;color:var(--sub);transition:opacity .4s;white-space:nowrap}
