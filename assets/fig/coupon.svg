@@ -1,0 +1,17 @@
+<svg width="260" height="200" viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="260" height="200" rx="14" fill="#262629"/>
+<path d="M89.2 20.625H170.8C180.368 20.625 188.125 28.3817 188.125 37.95V162.05C188.125 171.618 180.368 179.375 170.8 179.375H89.2C79.6317 179.375 71.875 171.618 71.875 162.05V37.95C71.875 28.3817 79.6317 20.625 89.2 20.625Z" fill="#121212" stroke-width="3.75" stroke="#595959"/>
+<rect x="78.75" y="27.5" width="102.5" height="145" rx="14.4" fill="#303036"/>
+<rect x="87.5" y="38.75" width="50" height="22.5" rx="11.25" fill="#E63340"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12.5" font-weight="600" letter-spacing="0em"><tspan x="98.75" y="53.7955">LIVE</tspan></text>
+<rect x="48.75" y="84.5" width="162.5" height="55" rx="10" fill="#C9FF00"/>
+<circle cx="48.75" cy="112" r="12.5" fill="#262629"/>
+<circle cx="211.25" cy="112" r="12.5" fill="#262629"/>
+<rect x="93.75" y="92" width="1.875" height="5" fill="#1B1B1B" fill-opacity="0.4"/>
+<rect x="93.75" y="100.75" width="1.875" height="5" fill="#1B1B1B" fill-opacity="0.4"/>
+<rect x="93.75" y="109.5" width="1.875" height="5" fill="#1B1B1B" fill-opacity="0.4"/>
+<rect x="93.75" y="118.25" width="1.875" height="5" fill="#1B1B1B" fill-opacity="0.4"/>
+<rect x="93.75" y="127" width="1.875" height="5" fill="#1B1B1B" fill-opacity="0.4"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="20" font-weight="600" letter-spacing="0em"><tspan x="73.75" y="119.773">%</tspan></text>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="17.5" font-weight="600" letter-spacing="0em"><tspan x="131.25" y="118.614">CODE</tspan></text>
+</svg>

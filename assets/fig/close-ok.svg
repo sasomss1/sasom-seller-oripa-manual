@@ -1,0 +1,27 @@
+<svg width="403" height="210" viewBox="0 0 403 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="403" height="210" rx="14" fill="#262629"/>
+<g opacity="0.5">
+<path d="M86.5 66H146.5C148.709 66 150.5 67.7909 150.5 70V158C150.5 160.209 148.709 162 146.5 162H86.5C84.2909 162 82.5 160.209 82.5 158V70C82.5 67.7909 84.2909 66 86.5 66Z" fill="#383840" stroke-width="2" stroke="#737380"/>
+<circle cx="116.5" cy="114" r="15.4" fill="#595966"/>
+<text fill="#BFBFBF" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="20" font-weight="600" letter-spacing="0em"><tspan x="111" y="122.273">?</tspan></text>
+</g>
+<g opacity="0.5">
+<path d="M114.5 66H174.5C176.709 66 178.5 67.7909 178.5 70V158C178.5 160.209 176.709 162 174.5 162H114.5C112.291 162 110.5 160.209 110.5 158V70C110.5 67.7909 112.291 66 114.5 66Z" fill="#383840" stroke-width="2" stroke="#737380"/>
+<circle cx="144.5" cy="114" r="15.4" fill="#595966"/>
+<text fill="#BFBFBF" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="20" font-weight="600" letter-spacing="0em"><tspan x="139" y="122.273">?</tspan></text>
+</g>
+<g opacity="0.5">
+<path d="M142.5 66H202.5C204.709 66 206.5 67.7909 206.5 70V158C206.5 160.209 204.709 162 202.5 162H142.5C140.291 162 138.5 160.209 138.5 158V70C138.5 67.7909 140.291 66 142.5 66Z" fill="#383840" stroke-width="2" stroke="#737380"/>
+<circle cx="172.5" cy="114" r="15.4" fill="#595966"/>
+<text fill="#BFBFBF" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="20" font-weight="600" letter-spacing="0em"><tspan x="167" y="122.273">?</tspan></text>
+</g>
+<rect x="207.5" y="52" width="84" height="118" rx="5" fill="#F5C733"/>
+<rect x="214.22" y="59.0801" width="70.56" height="103.84" rx="4" fill="#D97326"/>
+<rect x="220.1" y="69.7002" width="58.8" height="49.56" rx="3" fill="white" fill-opacity="0.85"/>
+<rect x="220.1" y="126.34" width="46.2" height="5.9" fill="white" fill-opacity="0.7"/>
+<rect x="220.1" y="138.14" width="33.6" height="5.9" fill="white" fill-opacity="0.7"/>
+<rect x="205.5" y="40" width="88" height="24" rx="12" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="225.5" y="56.3636">HIT No.1</tspan></text>
+<circle cx="291.5" cy="152" r="18" fill="#2E9E4D"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="18" font-weight="600" letter-spacing="0em"><tspan x="283.5" y="157.045">&#x2713;</tspan></text>
+</svg>

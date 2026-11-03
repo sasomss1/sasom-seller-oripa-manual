@@ -1,0 +1,18 @@
+<svg width="266" height="150" viewBox="0 0 266 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="266" height="150" rx="14" fill="#262629"/>
+<rect x="20" y="25" width="80" height="112" rx="5" fill="#F5D140"/>
+<rect x="26.4004" y="31.7202" width="67.2" height="98.56" rx="4" fill="#8C4DBF"/>
+<rect x="32" y="41.7998" width="56" height="47.04" rx="3" fill="white" fill-opacity="0.85"/>
+<rect x="32" y="95.5601" width="44" height="5.6" fill="white" fill-opacity="0.7"/>
+<rect x="32" y="106.76" width="32" height="5.6" fill="white" fill-opacity="0.7"/>
+<rect x="40" y="55" width="36" height="3" transform="rotate(35 40 55)" fill="white"/>
+<rect x="58" y="71" width="24" height="3" transform="rotate(35 58 71)" fill="white"/>
+<rect x="34" y="99" width="30" height="3" transform="rotate(-25 34 99)" fill="white"/>
+<rect x="29" y="13" width="62" height="22" rx="11" fill="#D94040"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="40" y="27.1364">DEFECT</tspan></text>
+<rect x="123.5" y="31" width="115" height="27" rx="13.5" fill="white"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="134.5" y="47.4715">&#xe2b;&#xe32;&#xe2a;&#xe34;&#xe19;&#xe04;&#xe49;&#xe32;&#xe21;&#xe32;&#xe40;&#xe1b;&#xe25;&#xe35;&#xe48;&#xe22;&#xe19;</tspan></text>
+<text fill="#BFBFBF" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="170.5" y="78.666">&#xe2b;&#xe23;&#xe37;&#xe2d;</tspan></text>
+<rect x="135" y="89" width="92" height="27" rx="13.5" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="146" y="105.472">&#xe40;&#xe2a;&#xe19;&#xe2d;&#xe25;&#xe14;&#xe23;&#xe32;&#xe04;&#xe32;</tspan></text>
+</svg>

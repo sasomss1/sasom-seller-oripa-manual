@@ -1,0 +1,17 @@
+<svg width="305" height="210" viewBox="0 0 305 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="304.667" height="210" rx="18" fill="#262629"/>
+<path d="M98.333 13.5H206.333C213.237 13.5 218.833 19.0964 218.833 26V184C218.833 190.904 213.237 196.5 206.333 196.5H98.333C91.4294 196.5 85.833 190.904 85.833 184V26C85.833 19.0964 91.4294 13.5 98.333 13.5Z" fill="#4D4D52" stroke-width="3" stroke="#C9FF00"/>
+<rect x="78.333" y="6" width="28" height="28" rx="8" fill="#C9FF00"/>
+<rect x="192.333" y="6" width="28" height="28" rx="8" fill="#C9FF00"/>
+<rect x="78.333" y="170" width="28" height="28" rx="8" fill="#C9FF00"/>
+<rect x="192.333" y="170" width="28" height="28" rx="8" fill="#C9FF00"/>
+<path d="M108.333 27H196.333C199.094 27 201.333 29.2386 201.333 32V178C201.333 180.761 199.094 183 196.333 183H108.333C105.572 183 103.333 180.761 103.333 178V32C103.333 29.2386 105.572 27 108.333 27Z" fill="#E0E6ED" stroke-width="2" stroke="white"/>
+<rect x="108.333" y="32" width="88" height="28" rx="3" fill="white"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="9" font-weight="600" letter-spacing="0em"><tspan x="114.333" y="45.2727">GRADE</tspan></text>
+<text fill="#BF2626" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="16" font-weight="600" letter-spacing="0em"><tspan x="171.333" y="50.3182">10</tspan></text>
+<rect x="116.333" y="68" width="72" height="106" rx="4" fill="#F5D140"/>
+<rect x="122.093" y="74.3599" width="60.48" height="93.28" rx="3" fill="#3373CC"/>
+<rect x="126.413" y="84.96" width="51.84" height="42.4" rx="2" fill="white" fill-opacity="0.85"/>
+<rect x="126.413" y="133.72" width="43.2" height="5.3" fill="white" fill-opacity="0.7"/>
+<rect x="126.413" y="144.32" width="32.4" height="5.3" fill="white" fill-opacity="0.7"/>
+</svg>

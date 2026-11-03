@@ -1,0 +1,60 @@
+<svg width="444" height="250" viewBox="0 0 444 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#packbox_clip0_74_1153)">
+<rect width="444" height="250" rx="18" fill="#262629"/>
+<path d="M105.047 52.7739L154.675 46.6804C159.608 46.0746 164.099 49.583 164.704 54.5165L173.723 127.965C174.328 132.898 170.82 137.389 165.887 137.995L116.259 144.088C111.326 144.694 106.835 141.186 106.23 136.252L97.2112 62.8036C96.6055 57.8701 100.114 53.3796 105.047 52.7739Z" fill="#DBEBF7" fill-opacity="0.95" stroke-width="2" stroke="white"/>
+<rect x="96.4629" y="64.9106" width="70" height="5" transform="rotate(-7 96.4629 64.9106)" fill="#8CABC7"/>
+<rect x="97.5596" y="73.8433" width="70" height="2" transform="rotate(-7 97.5596 73.8433)" fill="#8CABC7" fill-opacity="0.6"/>
+<rect x="102.558" y="57.1099" width="14" height="9" rx="3" transform="rotate(-7 102.558 57.1099)" fill="#668099"/>
+<path d="M109.965 87.9065L158.402 81.9593C160.731 81.6733 162.852 83.33 163.138 85.6597L166.96 116.786C167.246 119.116 165.589 121.236 163.259 121.522L114.823 127.469C112.493 127.755 110.373 126.099 110.087 123.769L106.265 92.6428C105.979 90.3131 107.636 88.1926 109.965 87.9065Z" fill="white" stroke-width="1.5" stroke="#1B1B1B"/>
+<rect x="104.911" y="87.7715" width="58.8" height="10.7536" rx="5" transform="rotate(-7 104.911 87.7715)" fill="#1B1B1B"/>
+<rect x="105.818" y="95.1606" width="58.8" height="3.3088" transform="rotate(-7 105.818 95.1606)" fill="#1B1B1B"/>
+<text transform="translate(111.018 88.272) rotate(-7)" fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="7" font-weight="600" letter-spacing="0em"><tspan x="0" y="7.04545">SASOM</tspan></text>
+<text transform="translate(113.674 101.697) rotate(-7)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="8" font-weight="600" letter-spacing="0em"><tspan x="0" y="7.90909">Order ID</tspan></text>
+<rect x="115.186" y="114.013" width="32.34" height="2.8952" rx="1.4476" transform="rotate(-7 115.186 114.013)" fill="#1B1B1B" fill-opacity="0.25"/>
+<rect x="115.892" y="119.76" width="23.52" height="2.8952" rx="1.4476" transform="rotate(-7 115.892 119.76)" fill="#1B1B1B" fill-opacity="0.25"/>
+<text transform="translate(145.236 97.8218) rotate(-7)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11.5808" font-weight="600" letter-spacing="0em"><tspan x="0" y="11.7112">#1</tspan></text>
+<path d="M173 44H223C227.971 44 232 48.0294 232 53V127C232 131.971 227.971 136 223 136H173C168.029 136 164 131.971 164 127V53C164 48.0294 168.029 44 173 44Z" fill="#DBEBF7" fill-opacity="0.95" stroke-width="2" stroke="white"/>
+<rect x="163" y="55" width="70" height="5" fill="#8CABC7"/>
+<rect x="163" y="64" width="70" height="2" fill="#8CABC7" fill-opacity="0.6"/>
+<rect x="170" y="48" width="14" height="9" rx="3" fill="#668099"/>
+<path d="M173.6 79.4702H222.4C224.747 79.4702 226.65 81.373 226.65 83.7202V115.08C226.65 117.427 224.747 119.33 222.4 119.33H173.6C171.252 119.33 169.35 117.427 169.35 115.08V83.7202C169.35 81.373 171.252 79.4702 173.6 79.4702Z" fill="white" stroke-width="1.5" stroke="#1B1B1B"/>
+<rect x="168.6" y="78.7202" width="58.8" height="10.7536" rx="5" fill="#1B1B1B"/>
+<rect x="168.6" y="86.165" width="58.8" height="3.3088" fill="#1B1B1B"/>
+<text fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="7" font-weight="600" letter-spacing="0em"><tspan x="174.6" y="87.0064">SASOM</tspan></text>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="8" font-weight="600" letter-spacing="0em"><tspan x="175.6" y="101.519">Order ID</tspan></text>
+<rect x="175.6" y="106.018" width="32.34" height="2.8952" rx="1.4476" fill="#1B1B1B" fill-opacity="0.25"/>
+<rect x="175.6" y="111.808" width="23.52" height="2.8952" rx="1.4476" fill="#1B1B1B" fill-opacity="0.25"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11.5808" font-weight="600" letter-spacing="0em"><tspan x="206.399" y="105.321">#2</tspan></text>
+<path d="M240.804 55.2112L290.431 61.3047C295.364 61.9105 298.873 66.4009 298.267 71.3344L289.249 144.783C288.643 149.716 284.152 153.225 279.219 152.619L229.592 146.525C224.658 145.92 221.15 141.429 221.756 136.496L230.774 63.0473C231.38 58.1138 235.87 54.6055 240.804 55.2112Z" fill="#DBEBF7" fill-opacity="0.95" stroke-width="2" stroke="white"/>
+<rect x="229.537" y="64.9106" width="70" height="5" transform="rotate(7 229.537 64.9106)" fill="#8CABC7"/>
+<rect x="228.44" y="73.8433" width="70" height="2" transform="rotate(7 228.44 73.8433)" fill="#8CABC7" fill-opacity="0.6"/>
+<rect x="237.339" y="58.8159" width="14" height="9" rx="3" transform="rotate(7 237.339 58.8159)" fill="#668099"/>
+<path d="M237.076 90.49L285.513 96.4372C287.842 96.7233 289.499 98.8438 289.213 101.173L285.391 132.3C285.105 134.629 282.985 136.286 280.655 136L232.219 130.053C229.889 129.767 228.232 127.646 228.518 125.317L232.34 94.1904C232.626 91.8606 234.747 90.2039 237.076 90.49Z" fill="white" stroke-width="1.5" stroke="#1B1B1B"/>
+<rect x="232.205" y="89.1362" width="58.8" height="10.7536" rx="5" transform="rotate(7 232.205 89.1362)" fill="#1B1B1B"/>
+<rect x="231.298" y="96.5254" width="58.8" height="3.3088" transform="rotate(7 231.298 96.5254)" fill="#1B1B1B"/>
+<text transform="translate(238.009 91.0991) rotate(7)" fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="7" font-weight="600" letter-spacing="0em"><tspan x="0" y="7.04545">SASOM</tspan></text>
+<text transform="translate(237.338 104.768) rotate(7)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="8" font-weight="600" letter-spacing="0em"><tspan x="0" y="7.90909">Order ID</tspan></text>
+<rect x="235.826" y="117.083" width="32.34" height="2.8952" rx="1.4476" transform="rotate(7 235.826 117.083)" fill="#1B1B1B" fill-opacity="0.25"/>
+<rect x="235.12" y="122.831" width="23.52" height="2.8952" rx="1.4476" transform="rotate(7 235.12 122.831)" fill="#1B1B1B" fill-opacity="0.25"/>
+<text transform="translate(267.909 108.521) rotate(7)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11.5808" font-weight="600" letter-spacing="0em"><tspan x="0" y="11.7112">#3</tspan></text>
+<rect x="73" y="145" width="250" height="115" rx="6" fill="#C7945C"/>
+<rect x="187" y="145" width="22" height="115" fill="#DBBD8C"/>
+<path d="M96 173.75H186C188.347 173.75 190.25 175.653 190.25 178V224C190.25 226.347 188.347 228.25 186 228.25H96C93.6528 228.25 91.75 226.347 91.75 224V178C91.75 175.653 93.6528 173.75 96 173.75Z" fill="white" stroke-width="1.5" stroke="#1B1B1B"/>
+<rect x="91" y="173" width="100" height="14.56" rx="5" fill="#1B1B1B"/>
+<rect x="91" y="183.08" width="100" height="4.48" fill="#1B1B1B"/>
+<text fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="7.28" font-weight="600" letter-spacing="0em"><tspan x="97" y="181.827">SASOM</tspan></text>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="9.52" font-weight="600" letter-spacing="0em"><tspan x="98" y="202.622">Order ID</tspan></text>
+<rect x="98" y="209.96" width="55" height="3.92" rx="1.96" fill="#1B1B1B" fill-opacity="0.25"/>
+<rect x="98" y="217.8" width="40" height="3.92" rx="1.96" fill="#1B1B1B" fill-opacity="0.25"/>
+<rect x="364" y="30" width="58" height="36" rx="8" fill="#C9FF00"/>
+<rect x="382" y="24" width="22" height="10" rx="3" fill="#C9FF00"/>
+<circle cx="393" cy="48" r="12" fill="#1B1B1B"/>
+<circle cx="393" cy="48" r="6" fill="#C9FF00"/>
+<text fill="#CCCCCC" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="371" y="83.666">&#xe44;&#xe1b;&#xe23;&#xe29;&#xe13;&#xe35;&#xe22;&#xe4c;</tspan></text>
+</g>
+<defs>
+<clipPath id="packbox_clip0_74_1153">
+<rect width="444" height="250" rx="18" fill="white"/>
+</clipPath>
+</defs>
+</svg>

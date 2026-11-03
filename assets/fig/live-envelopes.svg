@@ -1,0 +1,22 @@
+<svg width="380" height="220" viewBox="0 0 380 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="380" height="220" rx="18" fill="#262629"/>
+<path d="M134 13.5H246C258.426 13.5 268.5 23.5736 268.5 36V184C268.5 196.426 258.426 206.5 246 206.5H134C121.574 206.5 111.5 196.426 111.5 184V36C111.5 23.5736 121.574 13.5 134 13.5Z" fill="#121212" stroke-width="3" stroke="#595959"/>
+<rect x="119" y="21" width="142" height="178" rx="16" fill="#303036"/>
+<rect x="130" y="32" width="46" height="20" rx="10" fill="#E63340"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="141" y="46">LIVE</tspan></text>
+<path d="M108.888 100.473L147.257 83.3902C149.78 82.267 152.735 83.4015 153.858 85.9242L177.449 138.91C178.572 141.433 177.438 144.388 174.915 145.511L136.546 162.594C134.023 163.717 131.068 162.583 129.945 160.06L106.354 107.075C105.231 104.552 106.365 101.596 108.888 100.473Z" fill="#218C4D" stroke-width="2" stroke="white"/>
+<circle cx="141.902" cy="122.992" r="12" transform="rotate(-24 141.902 122.992)" fill="white"/>
+<text transform="translate(133.979 119.951) rotate(-24)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="0" y="10.1364">01</tspan></text>
+<path d="M139.077 93.7307L180.159 84.9984C182.86 84.4243 185.515 86.1485 186.089 88.8496L198.148 145.582C198.722 148.283 196.998 150.938 194.297 151.512L153.215 160.245C150.514 160.819 147.859 159.095 147.284 156.394L135.226 99.661C134.651 96.9599 136.376 94.3048 139.077 93.7307Z" fill="#1B1B1B" stroke-width="2" stroke="white"/>
+<circle cx="166.687" cy="122.622" r="12" transform="rotate(-12 166.687 122.622)" fill="white"/>
+<text transform="translate(159.081 118.104) rotate(-12)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="0" y="10.1364">02</tspan></text>
+<path d="M169 87H211C213.761 87 216 89.2386 216 92V150C216 152.761 213.761 155 211 155H169C166.239 155 164 152.761 164 150V92C164 89.2386 166.239 87 169 87Z" fill="#BF382B" stroke-width="2" stroke="white"/>
+<circle cx="190" cy="121" r="12" fill="white"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="183" y="125.136">03</tspan></text>
+<path d="M198.661 96.2256L239.743 104.958C242.444 105.532 244.168 108.187 243.594 110.888L231.535 167.621C230.961 170.322 228.306 172.046 225.605 171.472L184.523 162.74C181.822 162.166 180.098 159.51 180.672 156.809L192.731 100.077C193.305 97.3757 195.96 95.6515 198.661 96.2256Z" fill="#218C4D" stroke-width="2" stroke="white"/>
+<circle cx="212.133" cy="133.849" r="12" transform="rotate(12 212.133 133.849)" fill="white"/>
+<text transform="translate(206.533 126.524) rotate(12)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="0" y="10.1364">04</tspan></text>
+<path d="M228.075 105.354L266.443 122.437C268.966 123.56 270.101 126.516 268.977 129.038L245.387 182.024C244.264 184.547 241.308 185.681 238.785 184.558L200.416 167.475C197.894 166.352 196.759 163.396 197.882 160.874L221.473 107.888C222.596 105.365 225.552 104.231 228.075 105.354Z" fill="#1B1B1B" stroke-width="2" stroke="white"/>
+<circle cx="233.43" cy="144.956" r="12" transform="rotate(24 233.43 144.956)" fill="white"/>
+<text transform="translate(229.933 136.831) rotate(24)" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="0" y="10.1364">05</tspan></text>
+</svg>

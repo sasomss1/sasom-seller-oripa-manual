@@ -1,0 +1,21 @@
+<svg width="445" height="240" viewBox="0 0 445 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="445" height="240" rx="18" fill="#262629"/>
+<path d="M94.5 37H202.5C207.471 37 211.5 41.0294 211.5 46V194C211.5 198.971 207.471 203 202.5 203H94.5C89.5294 203 85.5 198.971 85.5 194V46C85.5 41.0294 89.5294 37 94.5 37Z" fill="#DBEBF7" fill-opacity="0.95" stroke-width="2" stroke="white"/>
+<rect x="84.5" y="48" width="128" height="5" fill="#8CABC7"/>
+<rect x="84.5" y="57" width="128" height="2" fill="#8CABC7" fill-opacity="0.6"/>
+<rect x="97.2998" y="41" width="25.6" height="9" rx="3" fill="#668099"/>
+<path d="M99.7402 100.59H197.26C199.607 100.59 201.51 102.493 201.51 104.84V168.76C201.51 171.107 199.607 173.01 197.26 173.01H99.7402C97.393 173.01 95.4902 171.107 95.4902 168.76V104.84C95.4902 102.493 97.393 100.59 99.7402 100.59Z" fill="white" stroke-width="1.5" stroke="#1B1B1B"/>
+<rect x="94.7402" y="99.8401" width="107.52" height="19.2192" rx="5" fill="#1B1B1B"/>
+<rect x="94.7402" y="113.146" width="107.52" height="5.9136" fill="#1B1B1B"/>
+<text fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="9.6096" font-weight="600" letter-spacing="0em"><tspan x="100.74" y="111.552">SASOM</tspan></text>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12.5664" font-weight="600" letter-spacing="0em"><tspan x="101.74" y="139.021">Order ID</tspan></text>
+<rect x="101.74" y="148.627" width="59.136" height="5.1744" rx="2" fill="#1B1B1B" fill-opacity="0.25"/>
+<rect x="101.74" y="158.976" width="43.008" height="5.1744" rx="2" fill="#1B1B1B" fill-opacity="0.25"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="20.6976" font-weight="600" letter-spacing="0em"><tspan x="172.26" y="147.478">#1</tspan></text>
+<text fill="#596678" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="134" y="77.666">&#xe16;&#xe38;&#xe07;&#xe0b;&#xe34;&#xe1b;</tspan></text>
+<rect x="237.5" y="36" width="2" height="168" fill="#C9FF00"/>
+<rect x="230.5" y="36" width="16" height="2" fill="#C9FF00"/>
+<rect x="230.5" y="202" width="16" height="2" fill="#C9FF00"/>
+<rect x="258.5" y="99.9998" width="72" height="40" rx="20" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="22" font-weight="600" letter-spacing="0em"><tspan x="279.5" y="129.5">A5</tspan></text>
+</svg>

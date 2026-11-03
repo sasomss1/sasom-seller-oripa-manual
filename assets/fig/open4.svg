@@ -1,0 +1,46 @@
+<svg width="442" height="209" viewBox="0 0 442 209" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="441.538" height="208.954" rx="16.3529" fill="#262629"/>
+<rect x="194.418" y="32.7061" width="109.019" height="150.81" rx="9.08495" fill="white"/>
+<g clip-path="url(#open4_clip0_57_586)">
+<path d="M283.449 72.6792H214.404V141.725H283.449V72.6792Z" fill="white"/>
+<path d="M222.076 72.6792H214.404V80.3509H222.076V72.6792Z" fill="#1B1B1B"/>
+<path d="M237.419 72.6792H229.748V80.3509H237.419V72.6792Z" fill="#1B1B1B"/>
+<path d="M245.09 72.6792H237.418V80.3509H245.09V72.6792Z" fill="#1B1B1B"/>
+<path d="M268.107 72.6792H260.435V80.3509H268.107V72.6792Z" fill="#1B1B1B"/>
+<path d="M283.45 72.6792H275.778V80.3509H283.45V72.6792Z" fill="#1B1B1B"/>
+<path d="M229.748 80.3516H222.076V88.0233H229.748V80.3516Z" fill="#1B1B1B"/>
+<path d="M252.763 80.3516H245.091V88.0233H252.763V80.3516Z" fill="#1B1B1B"/>
+<path d="M275.778 80.3516H268.106V88.0233H275.778V80.3516Z" fill="#1B1B1B"/>
+<path d="M222.076 88.0234H214.404V95.6952H222.076V88.0234Z" fill="#1B1B1B"/>
+<path d="M237.419 88.0234H229.748V95.6952H237.419V88.0234Z" fill="#1B1B1B"/>
+<path d="M268.107 88.0234H260.435V95.6952H268.107V88.0234Z" fill="#1B1B1B"/>
+<path d="M283.45 88.0234H275.778V95.6952H283.45V88.0234Z" fill="#1B1B1B"/>
+<path d="M222.076 95.6953H214.404V103.367H222.076V95.6953Z" fill="#1B1B1B"/>
+<path d="M245.09 95.6953H237.418V103.367H245.09V95.6953Z" fill="#1B1B1B"/>
+<path d="M268.107 95.6953H260.435V103.367H268.107V95.6953Z" fill="#1B1B1B"/>
+<path d="M229.748 103.366H222.076V111.038H229.748V103.366Z" fill="#1B1B1B"/>
+<path d="M252.763 103.366H245.091V111.038H252.763V103.366Z" fill="#1B1B1B"/>
+<path d="M275.778 103.366H268.106V111.038H275.778V103.366Z" fill="#1B1B1B"/>
+<path d="M222.076 118.71H214.404V126.382H222.076V118.71Z" fill="#1B1B1B"/>
+<path d="M237.419 118.71H229.748V126.382H237.419V118.71Z" fill="#1B1B1B"/>
+<path d="M245.09 118.71H237.418V126.382H245.09V118.71Z" fill="#1B1B1B"/>
+<path d="M268.107 118.71H260.435V126.382H268.107V118.71Z" fill="#1B1B1B"/>
+<path d="M229.748 126.382H222.076V134.054H229.748V126.382Z" fill="#1B1B1B"/>
+<path d="M252.763 126.382H245.091V134.054H252.763V126.382Z" fill="#1B1B1B"/>
+<path d="M275.778 126.382H268.106V134.054H275.778V126.382Z" fill="#1B1B1B"/>
+<path d="M222.076 134.053H214.404V141.725H222.076V134.053Z" fill="#1B1B1B"/>
+<path d="M237.419 134.053H229.748V141.725H237.419V134.053Z" fill="#1B1B1B"/>
+</g>
+<path d="M130.823 28.6166H221.672C225.937 28.6166 229.394 32.074 229.394 36.3389V168.979C229.394 173.244 225.937 176.701 221.672 176.701H130.823C126.558 176.701 123.101 173.244 123.101 168.979V36.3389C123.101 32.074 126.558 28.6166 130.823 28.6166Z" fill="url(#open4_paint0_linear_57_586)" stroke-width="2.72549" stroke="white"/>
+<text fill="#CCCCCC" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12.7189" font-weight="500" letter-spacing="0em"><tspan x="136.274" y="200.536">&#xe2b;&#xe19;&#xe49;&#xe32;: &#xe01;&#xe32;&#xe23;&#xe4c;&#xe14;&#xe23;&#xe32;&#xe07;&#xe27;&#xe31;&#xe25;</tspan></text>
+<text fill="#CCCCCC" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12.7189" font-weight="500" letter-spacing="0em"><tspan x="238.025" y="200.536">&#xe2b;&#xe25;&#xe31;&#xe07;: QR</tspan></text>
+<defs>
+<linearGradient id="open4_paint0_linear_57_586" x1="176.248" y1="27.2539" x2="176.248" y2="178.064" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1F4099"/>
+<stop offset="1" stop-color="#0D1A4D"/>
+</linearGradient>
+<clipPath id="open4_clip0_57_586">
+<rect width="69.0456" height="69.0456" fill="white" transform="translate(214.404 72.6792)"/>
+</clipPath>
+</defs>
+</svg>

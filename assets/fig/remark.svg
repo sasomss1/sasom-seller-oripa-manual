@@ -1,0 +1,28 @@
+<svg width="445" height="240" viewBox="0 0 445 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="445" height="240" rx="18" fill="#262629"/>
+<path d="M72.5 46H164.5C169.471 46 173.5 50.0294 173.5 55V185C173.5 189.971 169.471 194 164.5 194H72.5C67.5294 194 63.5 189.971 63.5 185V55C63.5 50.0294 67.5294 46 72.5 46Z" fill="#DBEBF7" fill-opacity="0.95" stroke-width="2" stroke="white"/>
+<rect x="62.5" y="57" width="112" height="5" fill="#8CABC7"/>
+<rect x="62.5" y="66" width="112" height="2" fill="#8CABC7" fill-opacity="0.6"/>
+<rect x="73.7002" y="50" width="22.4" height="9" rx="3" fill="#668099"/>
+<path d="M76.46 102.75H160.54C162.887 102.75 164.79 104.653 164.79 107V163C164.79 165.347 162.887 167.25 160.54 167.25H76.46C74.1128 167.25 72.21 165.347 72.21 163V107C72.21 104.653 74.1128 102.75 76.46 102.75Z" fill="white" stroke-width="1.5" stroke="#1B1B1B"/>
+<rect x="71.46" y="102" width="94.08" height="17.16" rx="5" fill="#1B1B1B"/>
+<rect x="71.46" y="113.88" width="94.08" height="5.28" fill="#1B1B1B"/>
+<text fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="8.58" font-weight="600" letter-spacing="0em"><tspan x="77.46" y="112.6">SASOM</tspan></text>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11.22" font-weight="600" letter-spacing="0em"><tspan x="78.46" y="137.34">Order ID</tspan></text>
+<rect x="78.46" y="145.56" width="51.744" height="4.62" rx="2" fill="#1B1B1B" fill-opacity="0.25"/>
+<rect x="78.46" y="154.8" width="37.632" height="4.62" rx="2" fill="#1B1B1B" fill-opacity="0.25"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="18.48" font-weight="600" letter-spacing="0em"><tspan x="135.54" y="144.48">#2</tspan></text>
+<rect x="192.5" y="45" width="178" height="150" rx="4" transform="rotate(4 192.5 45)" fill="#FFE680"/>
+<rect x="192.5" y="45" width="178" height="22" rx="4" transform="rotate(4 192.5 45)" fill="#F5D44A"/>
+<text transform="translate(204.262 48.8298) rotate(4)" fill="#6B5900" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="0" y="13.2273">Remark</tspan></text>
+<circle cx="204.464" cy="88.9415" r="3" transform="rotate(4 204.464 88.9415)" fill="#6B5900"/>
+<text transform="translate(214.279 77.5989) rotate(4)" fill="#6B5900" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="0" y="12.4715">Hit &#xe04;&#xe37;&#xe2d;&#xe43;&#xe1a; ....</tspan></text>
+<rect x="212.954" y="96.5525" width="140" height="1" transform="rotate(4 212.954 96.5525)" fill="#6B5900" fill-opacity="0.25"/>
+<circle cx="202.092" cy="122.859" r="3" transform="rotate(4 202.092 122.859)" fill="#6B5900"/>
+<text transform="translate(211.907 111.516) rotate(4)" fill="#6B5900" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="0" y="12.4715">&#xe23;&#xe31;&#xe1a;&#xe17;&#xe23;&#xe32;&#xe1a; defect &#xe41;&#xe25;&#xe49;&#xe27;</tspan></text>
+<rect x="210.582" y="130.469" width="140" height="1" transform="rotate(4 210.582 130.469)" fill="#6B5900" fill-opacity="0.25"/>
+<circle cx="199.721" cy="156.776" r="3" transform="rotate(4 199.721 156.776)" fill="#6B5900"/>
+<text transform="translate(209.536 145.433) rotate(4)" fill="#6B5900" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="500" letter-spacing="0em"><tspan x="0" y="12.4715">&#xe23;&#xe31;&#xe1a;&#xe17;&#xe23;&#xe32;&#xe1a;&#xe20;&#xe32;&#xe29;&#xe32;&#xe44;&#xe21;&#xe48;&#xe15;&#xe23;&#xe07;</tspan></text>
+<rect x="208.21" y="164.386" width="140" height="1" transform="rotate(4 208.21 164.386)" fill="#6B5900" fill-opacity="0.25"/>
+<rect x="184.5" y="39" width="12" height="40" rx="4" fill="#C7C7C7"/>
+</svg>

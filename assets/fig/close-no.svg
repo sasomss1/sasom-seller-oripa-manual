@@ -1,0 +1,13 @@
+<svg width="403" height="210" viewBox="0 0 403 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="403" height="210" rx="14" fill="#262629"/>
+<rect x="35" y="141" width="333" height="14" rx="7" fill="#4D4D54"/>
+<rect x="35" y="141" width="149.85" height="14" rx="7" fill="#D94040"/>
+<rect x="100.6" y="134" width="2" height="28" fill="white"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="88.5996" y="127.364">20%</tspan></text>
+<path d="M146.5 40H202.5C204.709 40 206.5 41.7909 206.5 44V126C206.5 128.209 204.709 130 202.5 130H146.5C144.291 130 142.5 128.209 142.5 126V44C142.5 41.7909 144.291 40 146.5 40Z" fill="#383840" stroke-width="2" stroke="#737380"/>
+<circle cx="174.5" cy="85" r="14.52" fill="#595966"/>
+<text fill="#BFBFBF" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="20" font-weight="600" letter-spacing="0em"><tspan x="169" y="93.2727">?</tspan></text>
+<rect x="221.5" y="55" width="60" height="24" rx="12" fill="#E63340"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="238" y="71.3636">LIVE</tspan></text>
+<text fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="232.5" y="99.4715">&#xe44;&#xe25;&#xe1f;&#xe4c;&#xe15;&#xe48;&#xe2d;</tspan></text>
+</svg>

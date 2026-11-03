@@ -1,0 +1,11 @@
+<svg width="445" height="145" viewBox="0 0 445 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="445" height="145" rx="18" fill="#262629"/>
+<circle cx="132.5" cy="47.3" r="18" fill="#C9FF00"/>
+<path d="M98.9004 103.7C98.9004 99.2877 99.7695 94.9185 101.458 90.8419C103.147 86.7654 105.622 83.0614 108.742 79.9413C111.862 76.8213 115.566 74.3463 119.642 72.6577C123.719 70.9692 128.088 70.1001 132.5 70.1001C136.913 70.1001 141.282 70.9692 145.359 72.6577C149.435 74.3463 153.139 76.8213 156.259 79.9413C159.379 83.0614 161.854 86.7654 163.543 90.8419C165.231 94.9185 166.1 99.2877 166.1 103.7L132.5 103.7L98.9004 103.7Z" fill="#C9FF00"/>
+<path d="M256.26 13.5H314.74C321.511 13.5 327 18.989 327 25.76V119.24C327 126.011 321.511 131.5 314.74 131.5H256.26C249.489 131.5 244 126.011 244 119.24V25.76C244 18.989 249.489 13.5 256.26 13.5Z" fill="#121212" stroke-width="3" stroke="#595959"/>
+<rect x="249.5" y="19" width="72" height="107" rx="10.32" fill="#303036"/>
+<rect x="256.5" y="28" width="40" height="18" rx="9" fill="#E63340"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="265.5" y="40.1364">LIVE</tspan></text>
+<rect x="245.5" y="60.5" width="80" height="24" rx="12" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="266.5" y="76.166">&#xe23;&#xe49;&#xe32;&#xe19;&#xe04;&#xe38;&#xe13;</tspan></text>
+</svg>

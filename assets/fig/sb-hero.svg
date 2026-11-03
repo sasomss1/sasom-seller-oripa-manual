@@ -1,0 +1,13 @@
+<svg width="445" height="145" viewBox="0 0 445 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="445" height="145" rx="18" fill="#333338"/>
+<rect x="40" y="47.5" width="96" height="70" rx="6" fill="#C7945C"/>
+<rect x="78" y="47.5" width="20" height="70" fill="#DBBD8C"/>
+<text fill="#C9FF00" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="65" y="26.7273">BOARD</tspan></text>
+<path d="M154 71.25H157.063M301 71.25H297.938M163.188 71.25H169.312M175.437 71.25H181.562M187.688 71.25H193.813M199.938 71.25H206.062M212.188 71.25H218.312M224.437 71.25H230.562M236.688 71.25H242.813M248.937 71.25H255.062M261.188 71.25H267.312M273.438 71.25H279.563M285.687 71.25H291.812" stroke-width="2.5" stroke="#C9FF00"/>
+<path d="M332.76 13.5H391.24C398.011 13.5 403.5 18.989 403.5 25.76V119.24C403.5 126.011 398.011 131.5 391.24 131.5H332.76C325.989 131.5 320.5 126.011 320.5 119.24V25.76C320.5 18.989 325.989 13.5 332.76 13.5Z" fill="#121212" stroke-width="3" stroke="#595959"/>
+<rect x="326" y="19" width="72" height="107" rx="10.32" fill="#303036"/>
+<rect x="333" y="28" width="40" height="18" rx="9" fill="#E63340"/>
+<text fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="600" letter-spacing="0em"><tspan x="342" y="40.1364">LIVE</tspan></text>
+<rect x="322" y="60.5" width="80" height="24" rx="12" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="339.5" y="76.8636">SASOM</tspan></text>
+</svg>

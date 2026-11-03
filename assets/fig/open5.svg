@@ -1,0 +1,28 @@
+<svg width="442" height="209" viewBox="0 0 442 209" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#open5_clip0_57_628)">
+<rect width="441.538" height="208.954" rx="16.3529" fill="#262629"/>
+<path d="M162.62 37.7026H253.47C257.735 37.7026 261.192 41.1599 261.192 45.4248V178.065C261.192 182.33 257.735 185.787 253.47 185.787H162.62C158.355 185.787 154.898 182.33 154.898 178.065V45.4248C154.898 41.1599 158.355 37.7026 162.62 37.7026Z" fill="url(#open5_paint0_linear_57_628)" stroke-width="2.72549" stroke="white"/>
+<rect x="163.529" y="27.2549" width="90.8495" height="9.08495" rx="3.63398" fill="url(#open5_paint1_linear_57_628)"/>
+<rect x="56.3264" y="98.1177" width="61.7777" height="27.2549" rx="13.6274" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13.6274" font-weight="600" letter-spacing="0em"><tspan x="75.8591" y="115.962">&#xe0b;&#xe49;&#xe32;&#xe22;</tspan></text>
+<rect x="296.169" y="98.1177" width="61.7777" height="27.2549" rx="13.6274" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13.6274" font-weight="600" letter-spacing="0em"><tspan x="316.611" y="115.962">&#xe02;&#xe27;&#xe32;</tspan></text>
+<rect x="185.333" y="3.63379" width="50.8757" height="27.2549" rx="13.6274" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13.6274" font-weight="600" letter-spacing="0em"><tspan x="202.14" y="21.4771">&#xe1a;&#xe19;</tspan></text>
+<rect x="183.516" y="187.15" width="61.7777" height="27.2549" rx="13.6274" fill="#C9FF00"/>
+<text fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13.6274" font-weight="600" letter-spacing="0em"><tspan x="203.503" y="204.993">&#xe25;&#xe48;&#xe32;&#xe07;</tspan></text>
+</g>
+<defs>
+<linearGradient id="open5_paint0_linear_57_628" x1="208.045" y1="36.3398" x2="208.045" y2="187.15" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1F4099"/>
+<stop offset="1" stop-color="#0D1A4D"/>
+</linearGradient>
+<linearGradient id="open5_paint1_linear_57_628" x1="163.529" y1="31.7974" x2="254.378" y2="31.7974" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFD94D"/>
+<stop offset="1" stop-color="#FF734D"/>
+</linearGradient>
+<clipPath id="open5_clip0_57_628">
+<rect width="441.538" height="208.954" rx="16.3529" fill="white"/>
+</clipPath>
+</defs>
+</svg>
