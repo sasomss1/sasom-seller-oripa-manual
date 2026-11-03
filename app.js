@@ -37,9 +37,47 @@ const FTIP={'sb-hero':['ส่งบอร์ดให้ SASOM ไลฟ์ใ�
 'lastone-phone':['ขายครบ 50% ปุ่ม Last One เปิด','Last One unlocks at 50% sold']};
 const tipOf=n=>FTIP[n]?T(FTIP[n][0],FTIP[n][1]):'';
 const FIG={};let FDICT=null;
+function figPost(el){const svg=el.querySelector('svg');if(!svg||svg.dataset.post)return;svg.dataset.post=1;const W=+svg.getAttribute('width');
+ const bg=[...svg.querySelectorAll('rect')].find(r=>Math.abs((+r.getAttribute('width'))-W)<1&&['#262629','#333338'].includes((r.getAttribute('fill')||'').toUpperCase())&&!r.closest('clipPath,mask,defs'));if(bg)bg.remove();
+ try{const b=svg.getBBox();if(b.width>10){const p=6;svg.setAttribute('viewBox',`${b.x-p} ${b.y-p} ${b.width+p*2} ${b.height+p*2}`);svg.setAttribute('width',Math.round((b.width+p*2)*1.3));svg.removeAttribute('height')}}catch(_){}
+ svg.querySelectorAll('text').forEach(t=>{const f=(t.getAttribute('fill')||'').toUpperCase();const cls=f==='#C9FF00'?'lime':['WHITE','#FFFFFF','#F2F2F2'].includes(f)?'ink':['#CCCCCC','#AAAAAA','#BDBDBD','#999999'].includes(f)?'sub':'';if(!cls)return;const r=t.getBoundingClientRect();if(!r.width)return;const under=document.elementsFromPoint(r.left+r.width/2,r.top+r.height/2).filter(n=>n!==t&&n!==svg&&svg.contains(n)&&n.tagName!=='text'&&n.tagName!=='tspan'&&n.tagName!=='g');if(!under.length)t.classList.add('onbg',cls)})}
 async function hydrateFigs(root){const els=[...(root||document).querySelectorAll('.fig[data-fig]')].filter(e=>e.dataset.ok!==lang);if(!els.length)return;
  if(!FDICT){try{FDICT=await (await fetch('assets/fig/dict.json')).json()}catch(e){FDICT={}}}
- await Promise.all(els.map(async el=>{const n=el.dataset.fig;if(tipOf(n))el.dataset.tip=tipOf(n);try{if(!FIG[n])FIG[n]=fetch('assets/fig/'+n+'.svg').then(r=>{if(!r.ok)throw 0;return r.text()});el.innerHTML=await FIG[n];if(lang==='en')el.querySelectorAll('tspan,text').forEach(t=>{if(t.children.length)return;const k=t.textContent.trim();if(FDICT[k])t.textContent=FDICT[k]});el.dataset.ok=lang}catch(e){delete FIG[n]}}))}
+ await Promise.all(els.map(async el=>{const n=el.dataset.fig;if(tipOf(n))el.dataset.tip=tipOf(n);try{if(!FIG[n])FIG[n]=fetch('assets/fig/'+n+'.svg').then(r=>{if(!r.ok)throw 0;return r.text()});el.innerHTML=await FIG[n];if(lang==='en')el.querySelectorAll('tspan,text').forEach(t=>{if(t.children.length)return;const k=t.textContent.trim();if(FDICT[k])t.textContent=FDICT[k]});el.dataset.ok=lang;figPost(el)}catch(e){delete FIG[n]}}))}
+
+/* ---------- try-it simulations (game-like) ---------- */
+const qrSvg=(seed=7)=>{let r='';const f=(x,y)=>{const inF=(a,b)=>x>=a&&x<a+7&&y>=b&&y<b+7;for(const [a,b] of [[0,0],[14,0],[0,14]])if(inF(a,b)){const i=x-a,j=y-b;return i==0||i==6||j==0||j==6||(i>=2&&i<=4&&j>=2&&j<=4)}if((x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12))return false;return ((x*31+y*17+seed*x*y)%7)<3};for(let y=0;y<21;y++)for(let x=0;x<21;x++)if(f(x,y))r+=`<rect x="${x}" y="${y}" width="1.02" height="1.02"/>`;return `<svg class="qrsvg" viewBox="-1 -1 23 23"><rect x="-1" y="-1" width="23" height="23" fill="#fff"/><g fill="#1B1B1B">${r}</g></svg>`};
+const envEl=(n,c='g',seal=true)=>`<div class="senv ${c}"><i class="flap"></i><span class="num">${n}</span>${seal?'<i class="seal"></i>':''}</div>`;
+const cardFront=()=>`<div class="scard front"><i class="art"></i><i class="ln"></i><i class="ln s"></i></div>`;
+const cardBack=()=>`<div class="scard back"><i class="logo"></i></div>`;
+function simDone(el,auto=true){if(el.classList.contains('done'))return;el.classList.add('done');el.insertAdjacentHTML('beforeend',`<div class="sim-ok">${CHK}</div>`);const at=idx;if(auto)setTimeout(()=>{if(cur&&idx===at&&idx<slides.length-1)show(idx+1)},1300)}
+function drag(node,{move,end,start}){let x0,y0,t0,on=false;node.style.touchAction='none';
+ node.addEventListener('pointerdown',e=>{on=true;x0=e.clientX;y0=e.clientY;t0=performance.now();try{node.setPointerCapture(e.pointerId)}catch(_){}start&&start();e.preventDefault()});
+ node.addEventListener('pointermove',e=>{if(on)move(e.clientX-x0,e.clientY-y0)});
+ const up=e=>{if(!on)return;on=false;end(e.clientX-x0,e.clientY-y0,performance.now()-t0)};node.addEventListener('pointerup',up);node.addEventListener('pointercancel',up)}
+const SIM={
+ pin:()=>`<div class="sim s-pin"><div class="sq">${[['017',1],['018',0],['019',0]].map((r,i)=>`<div class="qrow ${i?'':'top'}"><b>#${r[0]}</b><span class="paid">${T('จ่ายแล้ว','Paid')}</span>${i?'':`<button class="pinbtn" data-act>Pin</button>`}</div>`).join('')}</div><div class="pinstage">${envEl('017','g',true)}</div></div>`,
+ swipe:()=>`<div class="sim s-swipe">${envEl('017','g',true)}<div class="track"><i class="fillp"></i><span>Swipe to Unseal</span><b class="knob"></b></div></div>`,
+ seal:()=>`<div class="sim s-seal"><div class="sealwrap">${envEl('017','g',true)}</div></div>`,
+ stack:()=>`<div class="sim s-stack"><div class="slot">${'<div class="qrcard">'+qrSvg(3)+'</div>'}</div><div class="mover">${cardBack()}</div></div>`,
+ peek:()=>`<div class="sim s-peek"><span class="dir up">${T('บน','Up')}</span><span class="dir left">${T('ซ้าย','Left')}</span><span class="dir right">${T('ขวา','Right')}</span><span class="dir down">${T('ล่าง','Down')}</span><div class="pk">${cardFront()}<div class="top">${cardBack()}</div></div></div>`,
+ pull:()=>`<div class="sim s-pull"><div class="pk">${cardFront()}<div class="top">${cardBack()}</div></div><i class="spark"></i></div>`,
+ capture:()=>`<div class="sim s-cap"><div class="vf"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><div class="row">${envEl('017','g',false)}${cardFront()}<div class="qrcard sm">${qrSvg(5)}</div></div><i class="flash"></i></div><button class="shutter" data-act aria-label="Capture"></button></div>`,
+ scan:()=>`<div class="sim s-scan"><div class="cam"><div class="aim"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><i class="line"></i></div><div class="sheet"><small>QR detected</small><b>#017 · Hit No.3</b><button class="btn" data-act>Confirm</button></div></div><div class="qrcard drag">${qrSvg(9)}</div></div>`,
+ keypad:()=>`<div class="sim s-key"><div class="qrcard code">${qrSvg(11)}<b>482917</b></div><div class="pad"><div class="boxes">${'<i></i>'.repeat(6)}</div><div class="keys">${[1,2,3,4,5,6,7,8,9,'',0,'del'].map(k=>k===''?'<span></span>':`<button data-k="${k}">${k==='del'?'<svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-6-6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10l4 4m0-4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>':k}</button>`).join('')}</div><div class="match"><i class="art"></i><span>${T('ชื่อการ์ดที่ระบบจับคู่','Matched card')}<b>#017 · Hit No.3</b></span></div><button class="btn conf" data-act disabled>Confirm</button></div></div>`};
+function initSim(el){const k=el.dataset.sim;const S=el.querySelector('.sim')||el;
+ if(k==='pin'){S.querySelector('[data-act]').onclick=()=>{S.classList.add('pinned');simDone(S)}}
+ if(k==='swipe'){const tr=S.querySelector('.track'),kn=S.querySelector('.knob');let max=0;drag(kn,{start(){max=tr.clientWidth-kn.offsetWidth-10;kn.style.transition='none'},move(dx){const d=Math.max(0,Math.min(max,dx));kn.style.transform=`translateX(${d}px)`;tr.style.setProperty('--p',d/max)},end(dx){kn.style.transition='';if(dx>max*.8){kn.style.transform=`translateX(${max}px)`;tr.style.setProperty('--p',1);S.classList.add('open');simDone(S)}else{kn.style.transform='';tr.style.setProperty('--p',0)}}})}
+ if(k==='seal'){const se=S.querySelector('.seal');let moved=false;drag(se,{move(dx,dy){moved=Math.hypot(dx,dy)>8;se.style.transform=`translate(${dx}px,${dy}px) rotate(${dx/6}deg)`},end(dx,dy){if(Math.hypot(dx,dy)>50||!moved){se.style.transform='';S.classList.add('peeled');simDone(S)}else se.style.transform=''}})}
+ if(k==='stack'){const m=S.querySelector('.mover');drag(m,{start(){m.style.transition='none'},move(dx,dy){m.style.transform=`translate(${dx}px,${dy}px)`},end(dx,dy){m.style.transition='';const a=m.getBoundingClientRect(),b=S.querySelector('.slot').getBoundingClientRect();const ov=Math.abs((a.left+a.width/2)-(b.left+b.width/2))<b.width*.6&&Math.abs((a.top+a.height/2)-(b.top+b.height/2))<b.height*.6;m.style.transform='';if(ov||Math.hypot(dx,dy)<6){S.classList.add('stacked');simDone(S)}}})}
+ if(k==='peek'){const t=S.querySelector('.top');const got=new Set();drag(t,{start(){t.style.transition='none'},move(dx,dy){const c=v=>Math.max(-48,Math.min(48,v));t.style.transform=`translate(${c(dx)}px,${c(dy)}px)`;if(dx>32)got.add('right');if(dx<-32)got.add('left');if(dy<-32)got.add('up');if(dy>32)got.add('down');got.forEach(d=>S.querySelector('.dir.'+d).classList.add('on'));if(got.size===4)S.classList.add('all')},end(){t.style.transition='';t.style.transform='';if(got.size===4)simDone(S)}})}
+ if(k==='pull'){const t=S.querySelector('.top');drag(t,{start(){t.style.transition='none'},move(dx,dy){t.style.transform=`translate(${Math.max(0,dx)}px,${dy*.2}px) rotate(${Math.max(0,dx)/14}deg)`},end(dx,dy,dt){t.style.transition='';if(dx>110||(dx>50&&dx/dt>.6)){S.classList.add('out');simDone(S)}else t.style.transform=''}})}
+ if(k==='capture'){S.querySelector('[data-act]').onclick=()=>{S.classList.add('shot');simDone(S)}}
+ if(k==='scan'){const q=S.querySelector('.qrcard.drag'),aim=S.querySelector('.aim');let ok=false;drag(q,{start(){q.style.transition='none'},move(dx,dy){q.style.transform=`translate(${dx}px,${dy}px)`;const a=q.getBoundingClientRect(),b=aim.getBoundingClientRect();const inn=Math.abs((a.left+a.width/2)-(b.left+b.width/2))<b.width*.3&&Math.abs((a.top+a.height/2)-(b.top+b.height/2))<b.height*.3;aim.classList.toggle('hot',inn);ok=inn},end(){q.style.transition='';if(ok){S.classList.add('scanning');setTimeout(()=>S.classList.add('found'),900)}else q.style.transform=''}});S.querySelector('[data-act]').onclick=()=>simDone(S)}
+ if(k==='keypad'){let v='';const bx=[...S.querySelectorAll('.boxes i')],cf=S.querySelector('.conf');const draw=()=>bx.forEach((b,i)=>{b.textContent=v[i]||'';b.classList.toggle('f',i===v.length)});draw();
+  S.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{if(S.classList.contains('matched'))return;const kk=b.dataset.k;if(kk==='del')v=v.slice(0,-1);else if(v.length<6)v+=kk;draw();if(v.length===6){if(v==='482917'){S.classList.add('matched');cf.disabled=false}else{S.classList.add('bad');setTimeout(()=>{S.classList.remove('bad');v='';draw()},500)}}});cf.onclick=()=>simDone(S)}}
+const sim=k=>`<div class="simwrap" data-sim="${k}">${SIM[k]()}</div>`;
+function initSims(root){root.querySelectorAll('.simwrap[data-sim]').forEach(initSim)}
 
 /* ---------- lessons ---------- */
 const LESSONS=[
@@ -126,10 +164,10 @@ const LESSONS=[
 {id:'open',stage:3,ico:'✨',t:['วิธีเปิด Oripa','How to open Oripa'],d:['เปิดหน้ากล้องให้ลุ้น','Open on camera, build suspense'],slides:'OPEN'},
 {id:'qr',stage:3,ico:'🔳',t:['สแกน QR','Scan the QR'],d:['มือถือ vs OBS','Phone vs OBS'],slides:[
  {h:['ไลฟ์ผ่านมือถือ · สแกนด้วยกล้อง','Phone live · scan with camera'],l:['หัน QR เข้ากล้อง ระบบจับคู่การ์ดให้','Point the QR at the camera'],
-  v:()=>fig('qr-phone'),
+  v:()=>sim('scan'),
   b:()=>pts([{t:T('ห่าง 15–20 ซม. QR อยู่กลางกรอบ','15–20 cm, centred')},{t:T('ถือนิ่ง 1–2 วินาที','Hold still 1–2 s')},{t:T('แสงพอ ไม่สะท้อน','Good light, no glare')},{t:T('ชื่อการ์ดต้องตรงกับใบที่เปิด','Name must match the card')}])},
  {h:['ไลฟ์ผ่าน OBS · กรอกเลขเอง','OBS live · type it in'],l:['OBS ใช้กล้องคนละตัว สแกนไม่ได้','OBS uses another camera, so no scan'],
-  v:()=>fig('obs-manual'),
+  v:()=>sim('keypad'),
   b:()=>pts([{t:T('อ่านเลขบนการ์ด QR ทีละหลัก','Read the code digit by digit')},{t:T('เลือก Manual แล้วพิมพ์ให้ครบ','Choose Manual, type it all')},{t:T('ไม่ตรง ห้าม Confirm','No match? Don’t Confirm')}])+`<div class="note lime">${T('ให้อีกคนอ่านทวนเลขก่อน Confirm','Have someone read it back first')}</div>`},
  {h:['ทำไมห้ามข้าม','Why you can’t skip it'],l:['',''],
   b:()=>pts([{k:'!',t:T('ไม่ Confirm = SASOM รับของเข้าระบบไม่ได้','No Confirm = SASOM can’t receive it')},{k:'!',t:T('Order ลูกค้าไม่อัปเดต ส่งของไม่ได้','Buyer’s order can’t ship')},{k:'!',t:T('Order ที่ค้างไปโผล่ไลฟ์หน้า','Pending orders move to the next live')}])}
@@ -193,14 +231,14 @@ const SETUP=()=>[
 const OPEN=()=>[
  {h:['ระหว่างไลฟ์ · ทีละออเดอร์','During the live · one order at a time'],l:['ออเดอร์ที่จ่ายแล้วเข้าคิว Unseal · เปิดตามลำดับนี้','Paid orders join the Unseal queue · open in this order'],
   b:()=>pts([[T('Pin แล้วโชว์เลขซอง','Pin, show the number')],[T('ปัด Unseal ในแอป','Swipe to Unseal')],[T('แกะซีล Holo หน้ากล้อง','Break the Holo seal')],[T('QR ซ้อนไว้ข้างหลัง','QR card behind')],[T('ค่อยๆ เลื่อนลุ้น','Slowly peek')],[T('ลากออกเร็วๆ','Pull it out fast')],[T('Capture เก็บหลักฐาน','Capture evidence')],[T('<b>สแกน QR แล้ว Confirm</b>','<b>Scan, then Confirm</b>')]].map((x,k)=>({t:x[0],go:k+1})))+`<div class="note">${T('เปิดให้หมดคิวก่อนจบไลฟ์','Clear the queue before ending')}</div>`},
- {h:['1 · Pin แล้วโชว์เลขซอง','1 · Pin, show the number'],l:['ชูเลขซองให้กล้องเห็นชัด','Hold the number up to camera'],v:()=>fig('open1')},
- {h:['2 · Swipe to Unseal','2 · Swipe to Unseal'],l:['ปัดในแอปเท่านั้น หยิบผิดกด Undo','App only. Wrong one? Undo'],v:()=>fig('open2')},
- {h:['3 · แกะซีล Holo หน้ากล้อง','3 · Break the Holo seal on camera'],l:['ซีลเสียก่อนไลฟ์ = การสุ่มเป็นโมฆะ','Broken before the live = void'],v:()=>fig('open3')},
- {h:['4 · QR ซ้อนไว้ข้างหลัง','4 · QR card behind'],l:['การ์ดรางวัลคว่ำไว้หน้า QR อยู่หลังสุด','Prize face down in front, QR at the back'],v:()=>fig('open4')},
- {h:['5 · ค่อย ๆ เลื่อนลุ้น','5 · Slowly peek'],l:['ซ้าย · ขวา · บน · ล่าง','Left · right · up · down'],v:()=>fig('open5')},
- {h:['6 · ลากออกเร็ว ๆ','6 · Pull it out fast'],l:['ให้เห็นการ์ดเต็มใบ','Show the card in full'],v:()=>fig('open6')},
- {h:['7 · Capture เก็บหลักฐาน','7 · Capture evidence'],l:['การ์ด + QR + เลขซอง ในเฟรมเดียว','Card + QR + number in one frame'],v:()=>fig('open7')},
- {h:['8 · สแกน QR แล้ว Confirm','8 · Scan, then Confirm'],l:['เช็คชื่อการ์ดให้ตรง','Check the card name'],v:()=>fig('open8')},
+ {h:['1 · Pin แล้วโชว์เลขซอง','1 · Pin, show the number'],l:['ชูเลขซองให้กล้องเห็นชัด','Hold the number up to camera'],v:()=>sim('pin')},
+ {h:['2 · Swipe to Unseal','2 · Swipe to Unseal'],l:['ปัดในแอปเท่านั้น หยิบผิดกด Undo','App only. Wrong one? Undo'],v:()=>sim('swipe')},
+ {h:['3 · แกะซีล Holo หน้ากล้อง','3 · Break the Holo seal on camera'],l:['ซีลเสียก่อนไลฟ์ = การสุ่มเป็นโมฆะ','Broken before the live = void'],v:()=>sim('seal')},
+ {h:['4 · QR ซ้อนไว้ข้างหลัง','4 · QR card behind'],l:['การ์ดรางวัลคว่ำไว้หน้า QR อยู่หลังสุด','Prize face down in front, QR at the back'],v:()=>sim('stack')},
+ {h:['5 · ค่อย ๆ เลื่อนลุ้น','5 · Slowly peek'],l:['ซ้าย · ขวา · บน · ล่าง','Left · right · up · down'],v:()=>sim('peek')},
+ {h:['6 · ลากออกเร็ว ๆ','6 · Pull it out fast'],l:['ให้เห็นการ์ดเต็มใบ','Show the card in full'],v:()=>sim('pull')},
+ {h:['7 · Capture เก็บหลักฐาน','7 · Capture evidence'],l:['การ์ด + QR + เลขซอง ในเฟรมเดียว','Card + QR + number in one frame'],v:()=>sim('capture')},
+ {h:['8 · สแกน QR แล้ว Confirm','8 · Scan, then Confirm'],l:['เช็คชื่อการ์ดให้ตรง','Check the card name'],v:()=>sim('scan')},
  {h:['ห้ามทำเด็ดขาด','Never do this'],l:['',''],b:()=>`<div class="rules">${[[T('ยก · โยนนอก','Off-app deal'),T('ชวนจ่ายเงินนอก App','Buyers paying outside the App')],[T('รีซีล','Reseal'),T('แกะแล้วปิดใหม่ให้ดูเหมือนใหม่','Resealing an opened pack')],[T('ยัดแพ็ค · ชั่งซอง · บีบซอง','Pack searching'),T('ชั่งหรือบีบซองหา Hit ก่อนขาย','Weighing or squeezing for hits')],[T('ของก๊อป · ของปลอม','Fakes'),T('SASOM การันตีของแท้ ปลอมคืน 2 เท่า','SASOM guarantees authenticity, 2x refund')]].map(r=>`<div class="rr"><span class="ri">✕</span><div><b>${r[0]}</b><small>${r[1]}</small></div><span class="t">${T('ห้ามทำ','Never')}</span></div>`).join('')}</div>`},
  {h:['หลังจบไลฟ์','After the live'],l:['',''],b:()=>pts([{t:T('กด End Live ทุกครั้ง','Always tap End Live')},{t:T('แพ็กซอง + การ์ด + รางวัลทีละออเดอร์','Pack envelope + card + prize per order')},{t:T('ส่งกลับ SASOM ไลฟ์ละ 1 ฉลาก','Ship to SASOM, 1 label per live')},{t:T('ห้ามส่งตรงถึงลูกค้า','Never ship to buyers directly')}])}
 ];
@@ -299,7 +337,7 @@ function buildPlayer(){slides=slidesOf(cur);$('#pKicker').textContent=`${T('บ�
  $('#pLeft').innerHTML=`<div class="steps">${slides.map((s,i)=>`<div class="step ${s.finish||s.quiz?'solo':''}" data-step="${i}"><span class="sn ${s.finish?'fin':''}">${s.finish?CHK:s.quiz?'?':String(i+1).padStart(2,'0')}</span><div class="st"><b>${titleOf(s)}</b></div></div>`).join('')}</div>`;
  $('#pDots').innerHTML=slides.map(()=>'<i></i>').join('');hydrateFigs($('#pLeft'));show(idx,true)}
 function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));const s=slides[idx];
- const R=$('#pRight');R.innerHTML=`<div class="rv ${s.tap?'is-tap':''}">${visOf(s)}${capOf(s)}</div>`;hydrateFigs(R);
+ const R=$('#pRight');R.innerHTML=`<div class="rv ${s.tap?'is-tap':''}">${visOf(s)}${capOf(s)}</div>`;hydrateFigs(R);initSims(R);
  document.querySelectorAll('.step').forEach(el=>{const k=+el.dataset.step;el.classList.toggle('on',k===idx);el.classList.toggle('past',k<idx)});
  const on=document.querySelector('.step.on');if(on&&window.innerWidth>=900){const P=$('#pLeft');const top=on.offsetTop-P.clientHeight/3;P.scrollTo({top,behavior:instant?'auto':'smooth'})}
  $('#pStage').scrollTop=0;
@@ -311,11 +349,11 @@ $('#pNext').onclick=()=>{if(idx===slides.length-1)closeLesson();else show(idx+1)
 $('#pPrev').onclick=()=>show(idx-1);$('#pClose').onclick=closeLesson;
 document.addEventListener('keydown',e=>{if(!cur)return;if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Escape'){if($('#lb').classList.contains('open'))closeLb();else closeLesson()}});
 /* tap left / right side of the visual to go back / next */
-const SKIP='[data-go],button,a,input,details,summary,[data-zoom],[data-tap],[data-step],.toggle,.quiz,.acc';
+const SKIP='.sim,[data-go],button,a,input,details,summary,[data-zoom],[data-tap],[data-step],.toggle,.quiz,.acc';
 $('#pRight').addEventListener('click',e=>{if(!cur)return;if(e.target.closest(SKIP))return;if(window.getSelection&&String(window.getSelection()).length)return;
  const r=$('#pRight').getBoundingClientRect(),x=(e.clientX-r.left)/r.width;if(x>.6){if(idx===slides.length-1)return;show(idx+1)}else if(x<.4)show(idx-1)});
 $('#pRight').addEventListener('mousemove',e=>{const r=$('#pRight').getBoundingClientRect(),x=(e.clientX-r.left)/r.width;const t=e.target.closest(SKIP);$('#pRight').style.cursor=t?'':(x>.6&&idx<slides.length-1)||(x<.4&&idx>0)?'pointer':''});
-let sx=null,sy=null;$('#pStage').addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+let sx=null,sy=null;$('#pStage').addEventListener('touchstart',e=>{if(e.target.closest('.sim,[data-tap]')){sx=null;return}sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
 $('#pStage').addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){show(idx+(dx<0?1:-1))}sx=null},{passive:true});
 
 /* tooltips: hover (mouse) or long-press (touch) */
