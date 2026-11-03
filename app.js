@@ -25,7 +25,7 @@ const FTIP={'sb-hero':['ส่งบอร์ดให้ SASOM ไลฟ์ใ�
 'close-no':['ขายเกิน 20% แต่ Hit No.1 ยังไม่ออก ไลฟ์ต่อ','Over 20% sold, no Hit No.1: keep going'],'pay-closed':['1 · ปิดบอร์ด','1 · Board closes'],
 'pay-summary':['2 · สรุปยอด หักค่าธรรมเนียม','2 · Summary minus fees'],'pay-bank':['3 · โอนก้อนเดียว 3-5 วันทำการ','3 · One transfer, 3-5 business days'],
 'payout-account':['บัญชีในระบบต้องตรงกับที่แจ้ง KAM','Must match what you gave KAM'],'coupon':['SASOM มีโค้ดส่วนลดให้ลูกค้า','SASOM gives buyers discount codes'],
-'inspect-order':['ตรวจเฉพาะซองที่มีออเดอร์','Only ordered envelopes are checked'],'inspect-conflict':['ขัดเงื่อนไข App · SASOM พิจารณาแก้ไข','Breaks App rules · SASOM decides the fix'],
+'inspect-order':['ตรวจเฉพาะของที่มีคำสั่งซื้อ หรือรางวัลที่ออก','Only ordered items or prizes won'],'inspect-conflict':['ขัดเงื่อนไข App · SASOM พิจารณาแก้ไข','Breaks App rules · SASOM decides the fix'],
 'inspect-defect':['มีตำหนิ · หาของเปลี่ยน หรือลดราคา','Defect · replace or discount'],'label':['Order ID ต้องตรงกับของในถุง','Order ID must match the bag'],
 'pack-same-buyer':['ลูกค้าเดียวกัน แยกถุงตาม Order ID','Same buyer: one bag per Order ID'],'pack-box':['รวมกล่องได้ · ส่งไปรษณีย์ถ่ายรูปเก็บ','One box is fine · photo it if posting'],
 'remark':['แนบโน้ต Hit / defect / ภาษา','Note the Hit / defect / language'],'sleeve':['ใส่ Sleeve ทุกใบ','Sleeve every card'],'toploader':['แนบ Toploader มาด้วย','Include a toploader'],
@@ -93,7 +93,7 @@ const LESSONS=[
   b:()=>pts([{t:T('จูงใจลูกค้าให้จุ่มเร็วขึ้น','Gets buyers pulling sooner')},{t:T('ถามรายละเอียดที่ KAM','Ask KAM for details')}])}
 ]},
 {id:'check',stage:1,ico:'🔍',t:['ตรวจสินค้า & รับทราบ','Inspection & sign-off'],d:['สิ่งที่ Seller ต้องรู้ก่อนเริ่ม','What you agree to'],slides:[
- {h:['ตรวจเฉพาะออเดอร์ที่ขายได้','Only ordered items are inspected'],l:['ตรวจตำหนิ / แท้ปลอม · ไม่รับตรวจทั้งบอร์ด','Condition & authenticity · not the whole board'],
+ {h:['ตรวจเฉพาะสินค้าที่มีคำสั่งซื้อ\nหรือรางวัลที่ออก','Only ordered items\nor prizes won are inspected'],l:['ตรวจตำหนิ / แท้ปลอม · ไม่ตรวจทั้งบอร์ด','Condition & authenticity · not the whole board'],
   v:()=>fig('inspect-order')},
  {h:['ถ้ามีปัญหา','If something is wrong'],l:['',''],v:()=>fig('inspect-conflict','inspect-defect'),
   b:()=>pts([{k:'!',t:T('ขัดเงื่อนไข App หรือผิดปกติ','Breaks App rules or looks unusual'),s:T('SASOM พิจารณาวิธีแก้ไข','SASOM decides the fix')},{k:'!',t:T('มีตำหนิ / ไม่ผ่านตรวจ','Defect / fails inspection'),s:T('หาของมาเปลี่ยน หรือลดราคาให้ลูกค้า','Replace it or offer a discount')}])+`<div class="note">${T('SASOM ช่วยประสาน แต่ไม่ออกค่าใช้จ่ายให้','SASOM coordinates but doesn’t cover costs')}</div>`},

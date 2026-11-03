@@ -459,3 +459,4 @@ main{max-width:1180px}
 .p-tools .icon-btn{width:32px;height:32px}
 .same b{white-space:pre-line;line-height:1.3}.same small{line-height:1.35;margin-top:2px}.same div{padding:16px 10px;align-content:start}
 .same small{white-space:pre-line}@media (max-width:640px){.same{grid-template-columns:repeat(2,1fr)}.vis:has(.same){padding:14px}}
+.rcap h2{white-space:pre-line}
