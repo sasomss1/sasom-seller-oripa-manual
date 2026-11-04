@@ -1107,3 +1107,24 @@ main{max-width:1180px}
 .s-scan .aim{transition:opacity .4s}
 .s-scan.lockd .qrcard.drag{animation:none;opacity:.5;cursor:default}
 .qrcard.kp{font-size:8.6px;width:110px}
+
+/* troubleshooting fix stories */
+.fx{display:grid;justify-items:center;gap:12px;padding:6px 4px 14px}
+.fx-chips{display:flex;gap:8px}
+.fx-chips i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:600 12px Inter;font-style:normal;border:1.5px solid var(--line);color:var(--muted,#8A8A90)}
+.fx-chips i.on{border-color:var(--fg);color:var(--fg)}
+.fx-chips i.done{background:var(--lime);border-color:var(--lime);color:#1B1B1B}
+.fx-phone{position:relative;width:170px;height:240px;border-radius:24px;background:#151517;border:5px solid #0E0E10;display:grid;place-items:center;overflow:hidden}
+.fx-live{position:absolute;left:12px;top:12px;font:700 10px Inter;font-style:normal;background:#E5484D;color:#fff;padding:3px 7px;border-radius:6px;opacity:.4}
+.fx-prob .fxi{width:64px;height:64px;opacity:.9}
+.fx-ok{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:6px;background:linear-gradient(170deg,#4A4A52,#1B1B1E);opacity:0;transition:opacity .4s}
+.fx-ok .chk{width:46px;height:46px;background:var(--lime);color:#1B1B1B;border-radius:14px;padding:8px}
+.fx-ok b{color:#fff;font:600 14px "Noto Sans Thai",Inter}
+.fx.fixed .fx-ok{opacity:1}.fx.fixed .fx-live{opacity:1;z-index:2}
+.fx-btn{position:absolute;left:14px;right:14px;bottom:14px;border:0;border-radius:99px;padding:11px 8px;background:var(--lime);color:#1B1B1B;font:700 13px "Noto Sans Thai",Inter;cursor:pointer;animation:glow 1.4s infinite}
+.fx.fixed .fx-btn{display:none}
+.fx.tick .fx-phone{animation:fxpop .35s}
+@keyframes fxpop{50%{transform:scale(.96)}}
+.fx-cap{display:flex;gap:10px;align-items:flex-start;max-width:360px;margin:0;font-size:14px;line-height:1.5}
+.fx-cap b{flex:none;width:22px;height:22px;border-radius:50%;background:var(--lime);color:#1B1B1B;display:grid;place-items:center;font:700 12px Inter}
+.fx-cap .chk{flex:none;width:22px;height:22px;background:var(--lime);color:#1B1B1B;border-radius:7px;padding:3px}
