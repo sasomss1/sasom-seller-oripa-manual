@@ -964,3 +964,14 @@ main{max-width:1180px}
 .scn-ship-board.go [data-l="pkg"],.scn-ship-prize.go [data-l="pkg"]{transform:none}
 .scn-obs.dropped [data-l="lv"]{animation:popc2 .4s .1s cubic-bezier(.2,1.6,.4,1) both}
 .scn .mascot image{image-rendering:auto}
+
+/* v7: mascot, spot caption, drag follow */
+.scn [data-l].dragging,.scn .dragme.dragging,.scn-ship-board [data-l="pkg"].dragging,.scn-ship-prize [data-l="pkg"].dragging{animation:none!important;transition:none!important}
+.scn .dragme{transform-box:fill-box}
+.mascot image{pointer-events:none}
+.spotcap{display:flex;gap:10px;align-items:flex-start;min-height:44px;margin:10px auto 0;max-width:520px;padding:10px 14px;border-radius:12px;background:var(--card,rgba(127,127,127,.08));font-size:14px;line-height:1.45;opacity:0}
+.spotcap:empty{display:none}
+.spotcap.pop{opacity:1;animation:capin .25s ease}
+.spotcap b{flex:none;width:22px;height:22px;border-radius:50%;background:var(--lime);color:#1B1B1B;display:grid;place-items:center;font-size:12px}
+@keyframes capin{from{opacity:0;transform:translateY(4px)}}
+.spot.cur .ring{stroke-width:3}

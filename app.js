@@ -37,7 +37,7 @@ const FTIP={'sb-hero':['ส่งบอร์ดให้ SASOM ไลฟ์ใ�
 'lastone-phone':['ขายครบ 50% ปุ่ม Last One เปิด','Last One unlocks at 50% sold']};
 const tipOf=n=>FTIP[n]?T(FTIP[n][0],FTIP[n][1]):'';
 const FIG={};let FDICT=null;
-function figPost(el){const svg=el.querySelector('svg');if(!svg||svg.dataset.post)return;svg.dataset.post=1;const W=+svg.getAttribute('width');
+function figPost(el){const svg=el.querySelector('svg');if(!svg||svg.dataset.post)return;svg.dataset.post=1;mascotFig(svg);const W=+svg.getAttribute('width');
  const bg=[...svg.querySelectorAll('rect')].find(r=>Math.abs((+r.getAttribute('width'))-W)<1&&['#262629','#333338'].includes((r.getAttribute('fill')||'').toUpperCase())&&!r.closest('clipPath,mask,defs'));if(bg)bg.remove();
  try{const b=svg.getBBox();if(b.width>10){const p=6;svg.setAttribute('viewBox',`${b.x-p} ${b.y-p} ${b.width+p*2} ${b.height+p*2}`);svg.setAttribute('width',Math.round((b.width+p*2)*1.3));svg.removeAttribute('height')}}catch(_){}
  svg.querySelectorAll('text').forEach(t=>{const f=(t.getAttribute('fill')||'').toUpperCase();const cls=f==='#C9FF00'?'lime':['WHITE','#FFFFFF','#F2F2F2'].includes(f)?'ink':['#CCCCCC','#AAAAAA','#BDBDBD','#999999'].includes(f)?'sub':'';if(!cls)return;const r=t.getBoundingClientRect();if(!r.width)return;const under=document.elementsFromPoint(r.left+r.width/2,r.top+r.height/2).filter(n=>n!==t&&n!==svg&&svg.contains(n)&&n.tagName!=='text'&&n.tagName!=='tspan'&&n.tagName!=='g');if(!under.length)t.classList.add('onbg',cls)})}
@@ -90,13 +90,15 @@ const PERSONS=['seller','sasom','kam','buyer','buyerA','buyerB'];
 function mascotize(svg){const NS='http://www.w3.org/2000/svg';
  [...svg.querySelectorAll('[data-l]')].filter(g=>PERSONS.includes(g.getAttribute('data-l'))&&g.tagName==='g').forEach((g,ix)=>{const who=g.getAttribute('data-l');const parts=[...g.children].filter(c=>c.tagName!=='text');let x1=1e9,y1=1e9,x2=-1e9,y2=-1e9;
   parts.forEach(p=>{try{const b=p.getBBox();x1=Math.min(x1,b.x);y1=Math.min(y1,b.y);x2=Math.max(x2,b.x+b.width);y2=Math.max(y2,b.y+b.height)}catch(_){}});if(x1>1e8)return;
-  parts.forEach(p=>p.remove());const cx=(x1+x2)/2,cy=(y1+y2)/2,r=Math.max(x2-x1,y2-y1)/2+2;const id='mcl'+Math.random().toString(36).slice(2,8);
-  const ring=who==='kam'?'#8FA8F0':who==='sasom'?'#FFFFFF':who==='buyerA'?'#F5C733':who==='seller'?'#C9FF00':'#AAAAAA';
-  const grp=document.createElementNS(NS,'g');grp.setAttribute('class','mascot');
-  grp.innerHTML=`<defs><clipPath id="${id}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs><circle cx="${cx}" cy="${cy}" r="${r+3}" fill="${ring}"/><image href="assets/mascot.webp" x="${cx-r}" y="${cy-r}" width="${r*2}" height="${r*2}" clip-path="url(#${id})" preserveAspectRatio="xMidYMid slice"/>`+
-   (who==='sasom'?`<rect x="${cx+r*0.38}" y="${cy-r*1.05}" width="${r*0.8}" height="${r*0.8}" rx="${r*0.2}" fill="#1B1B1B" stroke="#FFFFFF" stroke-width="2"/><image href="assets/sasom-logo.png" x="${cx+r*0.38}" y="${cy-r*1.05}" width="${r*0.8}" height="${r*0.8}"/>`:'')+
-   (who==='kam'?`<rect x="${cx+r*0.25}" y="${cy-r*1.0}" width="${r*1.0}" height="${r*0.5}" rx="${r*0.25}" fill="#8FA8F0"/><text x="${cx+r*0.75}" y="${cy-r*0.64}" text-anchor="middle" font-size="${r*0.3}" font-weight="700" fill="#1B1B1B" font-family="Inter">KAM</text>`:'');
+  parts.forEach(p=>p.remove());const grp=mascotG((x1+x2)/2,y2,Math.max(x2-x1,y2-y1),who);
   g.insertBefore(grp,g.firstChild)})}
+const MAR=308/290;
+function mascotG(cx,bot,sz,who){const NS='http://www.w3.org/2000/svg';const h=sz*1.12,w=h/MAR,x=cx-w/2,y=bot-h;const grp=document.createElementNS(NS,'g');grp.setAttribute('class','mascot');
+ const bw=h*.36;grp.innerHTML=`<image href="assets/mascot.png" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="xMidYMax meet"/>`+
+  (who==='sasom'?`<rect x="${cx-bw/2}" y="${y-bw*.55}" width="${bw}" height="${bw}" rx="${bw*.26}" fill="#1B1B1B" stroke="#FFFFFF" stroke-width="1.5"/><image href="assets/sasom-logo.png" x="${cx-bw/2+bw*.08}" y="${y-bw*.55+bw*.08}" width="${bw*.84}" height="${bw*.84}"/>`:'')+
+  '';return grp}
+function mascotFig(svg){[...svg.querySelectorAll('circle')].forEach(c=>{const r=+c.getAttribute('r'),cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');const n=c.nextElementSibling;if(!(r>8&&r<40)||!n||n.tagName!=='path')return;const m=/^M([\d.]+) ([\d.]+)C/.exec(n.getAttribute('d')||'');if(!m)return;const px=+m[1],py=+m[2];if(py-cy<r*2||Math.abs(cx-px)>r*3)return;
+ const grp=mascotG(cx,py,py-(cy-r),'seller');c.replaceWith(grp);n.remove()})}
 const DRAGS={'ship-board':['pkg','warehouse'],'ship-prize':['pkg','warehouse'],obs:['url','laptop']};
 function setupDrag(box,name,onDone){const svg=box.querySelector('svg');const d=DRAGS[name];if(!svg||!d)return false;const q=k=>[...svg.querySelectorAll('[data-l]')].find(e=>e.getAttribute('data-l')===k);const el=q(d[0]),tg=q(d[1]);if(!el||!tg)return false;
  el.classList.add('dragme');el.style.cursor='grab';el.style.touchAction='none';let sx,sy,on=false,sc=1;const NS='http://www.w3.org/2000/svg';
@@ -230,16 +232,16 @@ coupon:[[130,112,'SASOM มีโค้ดส่วนลดให้ลูก�
 'inspect-conflict':[[72,75,'ขัดเงื่อนไข App','Breaks App rules'],[182,75,'SASOM พิจารณาแก้ไข','SASOM decides the fix']],
 'inspect-defect':[[60,80,'มีตำหนิ','Defect found'],[185,42,'หาของมาเปลี่ยน','Replace the item'],[184,101,'หรือเสนอลดราคา','Or offer a discount']],
 'lastone-phone':[[165,252,'ขายครบ 50% ปุ่มเปิด','Unlocks at 50% sold'],[247,314,'รางวัลพิเศษช่องสุดท้าย','Bonus for the final spot'],[165,429,'ซื้อช่องที่เหลือทั้งหมดในคลิกเดียว','Buy every spot left in one tap'],[136,488,'ช่องที่ถูกจอง รอผลการจ่าย','Reserved: waiting for payment']],
-'sb-hero':[[88,83,'ส่งบอร์ดให้ SASOM','Send your board to SASOM'],[362,72,'SASOM ไลฟ์ให้','SASOM goes live']],
-'sl-hero':[[133,70,'คุณไลฟ์เอง','You host'],[287,73,'ในชื่อร้านคุณ','Under your shop name']]};
+'sb-hero':[[88,83,'ส่งบอร์ดให้ SASOM','Send your board to SASOM'],[362,106,'SASOM ไลฟ์ให้','SASOM goes live']],
+'sl-hero':[[133,97,'คุณไลฟ์เอง','You host'],[287,108,'ในชื่อร้านคุณ','Under your shop name']]};
 const SOLVED=new Set();
 function addSpots(el){const n=el.dataset.fig,L=SPOTS[n],svg=el.querySelector('svg');if(!L||!svg||svg.querySelector('.spot'))return;const vb=svg.viewBox.baseVal,sc=svg.getBoundingClientRect().width/(vb.width||1)||1,r=17/sc;
  L.forEach((p,i)=>{const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('class','spot');g.setAttribute('transform',`translate(${p[0]} ${p[1]})`);g.dataset.t=T(p[2],p[3]);const R0=r*1.5,b=r*.62,bx=R0*.78,by=-R0*.78;g.innerHTML=`<circle class="ring" r="${R0}"/><circle class="hit" r="${R0}"/><g class="badge" transform="translate(${bx} ${by})"><circle class="dot" r="${b}"/><text text-anchor="middle" dy="${b*.38}" font-size="${b*1.1}">${i+1}</text></g>`;svg.appendChild(g)})}
 function spotsInit(R){const all=[...R.querySelectorAll('.spot')];if(!all.length)return;const key=cur.id+':'+idx,cap=R.querySelector('.rcap');
- const dots=document.createElement('div');dots.className='spotdots';dots.innerHTML=all.map(()=>'<i></i>').join('');(cap||R).insertAdjacentElement('beforebegin',dots);
+ const dots=document.createElement('div');dots.className='spotdots';dots.innerHTML=all.map(()=>'<i></i>').join('');(cap||R).insertAdjacentElement('beforebegin',dots);const sc=document.createElement('div');sc.className='spotcap';dots.insertAdjacentElement('afterend',sc);
  const upd=()=>{const f=all.filter(s=>s.classList.contains('found')).length;dots.querySelectorAll('i').forEach((d,k)=>d.classList.toggle('on',k<f));if(f===all.length&&cap&&cap.classList.contains('locked')){cap.classList.remove('locked');cap.classList.add('unlock');SOLVED.add(key)}};
  if(SOLVED.has(key))all.forEach(s=>s.classList.add('found'));else if(cap&&(cap.querySelector('.sl')||cap.querySelector('.sx')))cap.classList.add('locked');upd();
- all.forEach(s=>s.addEventListener('click',e=>{e.stopPropagation();s.classList.add('found');showSpot(s);upd()}))}
+ all.forEach(s=>s.addEventListener('click',e=>{e.stopPropagation();s.classList.add('found');all.forEach(o=>o.classList.toggle('cur',o===s));sc.innerHTML=`<b>${all.indexOf(s)+1}</b><span>${s.dataset.t}</span>`;sc.classList.remove('pop');void sc.offsetWidth;sc.classList.add('pop');upd()}))}
 function showSpot(s){tipEl.textContent=s.dataset.t;tipEl.classList.add('on','spotb');const r=s.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;let x=r.left+r.width/2-w/2;x=Math.max(8,Math.min(innerWidth-w-8,x));let y=r.top-h-10;if(y<8)y=r.bottom+10;tipEl.style.left=x+'px';tipEl.style.top=y+'px';clearTimeout(tipHide)}
 
 /* ---------- lessons ---------- */
