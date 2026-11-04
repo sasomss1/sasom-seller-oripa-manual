@@ -881,3 +881,86 @@ main{max-width:1180px}
 @keyframes coin2{from{opacity:1;transform:translateY(-150px)}to{opacity:1;transform:none}}
 .scn-pay.go [data-l="paid"]{animation:popc2 .45s 1s cubic-bezier(.2,1.6,.4,1) both}
 .scn-pay [data-l="paid"]>rect{fill:var(--ink)}.scn-pay [data-l="paid"] text{fill:var(--bg)}
+
+/* ===== tap-in-picture rings ===== */
+.scn .tapring{fill:rgba(201,255,0,.10);stroke:#C9FF00;stroke-width:2.5;pointer-events:none;animation:tapr 1.4s infinite}
+.scn .taphit{fill:transparent;stroke:none;cursor:pointer}
+@keyframes tapr{50%{stroke-width:6;stroke-opacity:.45}}
+.tapscene{flex-direction:column}
+.tapscene .st-stage{width:100%}
+.scn :is([data-l^="box"],[data-l^="tab"],[data-l^="b1"],[data-l^="b2"],[data-l^="b3"],[data-l="fill"],[data-l="lo-on"],[data-l="lo-off"],[data-l="prize"],[data-l="res"],[data-l="clock"],[data-l^="row"],[data-l="knob"],[data-l^="knob_"],[data-l="url"],[data-l="lv"],[data-l^="i1"],[data-l^="i2"],[data-l^="i3"],[data-l="end"],[data-l="sig"],[data-l^="f1"],[data-l^="f2"],[data-l^="f3"],[data-l="ok"],[data-l^="grp-"]){transform-box:fill-box;transform-origin:center}
+/* pack: tap each envelope */
+.scn [data-l^="env"].on [data-l^="num"]{animation:popn .35s cubic-bezier(.2,1.6,.4,1) both}
+/* boards */
+.scn-boards [data-l^="box"]{opacity:0;transform:translateY(-40px)}
+.scn-boards.hit-warehouse [data-l^="box"]{animation:drop .45s cubic-bezier(.2,1.3,.4,1) both}
+.scn-boards.hit-warehouse [data-l="box2"]{animation-delay:.15s}.scn-boards.hit-warehouse [data-l="box3"]{animation-delay:.3s}.scn-boards.hit-warehouse [data-l="box4"]{animation-delay:.45s}
+@keyframes drop{to{opacity:1;transform:none}}
+.scn-boards.hit-phone [data-l^="tab"] rect{fill:#C9FF00;transition:fill .3s}.scn-boards.hit-phone [data-l^="tab"] text{fill:#1B1B1B}
+.scn-boards.hit-phone [data-l="tab2"] rect{transition-delay:.25s}.scn-boards.hit-phone [data-l="tab3"] rect{transition-delay:.5s}
+/* fee toggle */
+.scn-fee [data-l="grp-sl"]{opacity:0;transition:opacity .35s}.scn-fee [data-l="grp-sb"]{transition:opacity .35s}
+.scn-fee.sl [data-l="grp-sl"]{opacity:1}.scn-fee.sl [data-l="grp-sb"]{opacity:0}
+.scn-fee.sl [data-l="tab-sl"] rect{fill:#C9FF00}.scn-fee.sl [data-l="tab-sl"] text{fill:#1B1B1B}
+.scn-fee.sl [data-l="tab-sb"] rect{fill:#2E2E33}.scn-fee.sl [data-l="tab-sb"] text{fill:#AAAAAA}
+.scn-fee [data-l="ticket"]>rect{fill:#F2F2F0}.scn-fee [data-l^="n1"],.scn-fee [data-l^="n2"]{fill:var(--bg)}
+/* sign */
+.scn-sign [data-l^="f1"],.scn-sign [data-l^="f2"],.scn-sign [data-l^="f3"]{transform:scaleX(0);transform-origin:left center}
+.scn-sign [data-l="sig"]{stroke-dasharray:140;stroke-dashoffset:140}
+.scn-sign [data-l="ok"]{opacity:0;transform:scale(.3)}
+.scn-sign.go [data-l^="f1"],.scn-sign.go [data-l^="f2"],.scn-sign.go [data-l^="f3"]{animation:grow .4s both}
+.scn-sign.go [data-l^="f2"]{animation-delay:.3s}.scn-sign.go [data-l^="f3"]{animation-delay:.6s}
+.scn-sign.go [data-l="sig"]{animation:sigd 1s .9s both}.scn-sign.go [data-l="ok"]{animation:popc2 .4s 1.9s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes grow{to{transform:none}}@keyframes sigd{to{stroke-dashoffset:0}}
+/* ack: tap each badge */
+.scn-ack [data-l^="shield"]{opacity:.25}
+.scn-ack [data-l^="b"].on [data-l^="shield"]{opacity:1;animation:popc3 .45s cubic-bezier(.2,1.6,.4,1)}
+@keyframes popc3{from{transform:scale(.4)}to{transform:none}}
+/* unlock */
+.scn-unlock [data-l="fill"]{transform:scaleX(.05);transform-origin:left center}
+.scn-unlock [data-l="lo-on"]{opacity:0}
+.scn-unlock.go [data-l="fill"]{animation:grow 1.4s cubic-bezier(.4,0,.2,1) both}
+.scn-unlock.go [data-l="lo-on"]{animation:popc2 .45s 1.2s cubic-bezier(.2,1.4,.4,1) both;transform:scale(.8);opacity:0}
+/* win */
+.scn-win.go :is([data-l="c3"],[data-l="c7"],[data-l="c10"]){fill:#C9FF00;transition:fill .25s}
+.scn-win.go [data-l="prize"]{animation:prz 1s .5s cubic-bezier(.4,0,.2,1) both}
+@keyframes prz{to{transform:translate(70px,110px) scale(.45);opacity:.9}}
+/* reserved */
+.scn-reserved [data-l="clock"]{animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scn-reserved.go [data-l="res"]{fill:#55555A;transition:fill .4s .8s}
+.scn-reserved.go [data-l="clock"]{animation:none;opacity:0;transition:opacity .3s .8s}
+/* prep: tap rows */
+.scn-prep [data-l^="row"].on [data-l^="track"]{fill:#2E9E4D}
+.scn-prep [data-l^="knob"]{transition:transform .25s;transform-box:fill-box}
+.scn-prep [data-l^="row"].on [data-l^="knob"]{transform:translateX(20px)}
+/* obs */
+.scn-obs [data-l="lv"]{opacity:0}
+.scn-obs.go [data-l="url"]{animation:urlfly .8s cubic-bezier(.4,0,.2,1) both}
+@keyframes urlfly{to{transform:translate(220px,30px) scale(.6);opacity:0}}
+.scn-obs.go [data-l="lv"]{animation:popc2 .4s .8s cubic-bezier(.2,1.6,.4,1) both;transform:scale(.4)}
+/* after */
+.scn-after [data-l="live"]{transition:opacity .3s}.scn-after.go [data-l="live"]{opacity:.2}
+.scn-after.go [data-l^="i1"],.scn-after.go [data-l^="i2"],.scn-after.go [data-l^="i3"]{animation:inbag .6s cubic-bezier(.5,0,.6,1) both}
+.scn-after.go [data-l^="i2"]{animation-delay:.2s}.scn-after.go [data-l^="i3"]{animation-delay:.4s}
+@keyframes inbag{to{transform:translateY(80px) scale(.6);opacity:0}}
+.scn-after [data-l="bag"]{transition:transform .3s}.scn-after.go [data-l="bag"]{animation:pulse2 .4s 1s}
+/* light theme readability for scenes */
+.scn [data-l^="sasom"] [data-l^="head"],.scn [data-l^="sasom"] [data-l^="body"]{fill:var(--ink)}
+.scn [data-l="buyer"]>[data-l^="head"],.scn [data-l="buyer"]>[data-l^="body"],.scn [data-l="buyerB"]>[data-l^="head"],.scn [data-l="buyerB"]>[data-l^="body"]{fill:var(--ink)}
+.scn-ack [data-l^="b"]>rect[data-l^="bg"],.scn-unlock [data-l="card"]>rect[data-l="bg"]{fill:#2A2A2E}
+
+/* v6 fixes */
+.st-chips{padding:4px 0}
+.st-chips button.on{transform:none;box-shadow:0 0 0 2px var(--ink) inset}
+.scn-chat:not(.go) [data-l="send"],.scn-confirm:not(.go) [data-l="card"],.scn-setup:not(.go) [data-l="save"]{animation:none}
+.scn .tapme{transform-box:fill-box;transform-origin:center;animation:tapb 1.1s ease-in-out infinite}
+.scn [data-l="send"].tapme{animation:tapbs 1s ease-in-out infinite}
+@keyframes tapb{50%{transform:translateY(-3px)}}
+@keyframes tapbs{50%{transform:scale(1.12)}}
+.scn .dragme{animation:nudge3 1.6s ease-in-out infinite}
+.scn .dragme.dragging{animation:none;cursor:grabbing}
+.scn .dropring{fill:rgba(201,255,0,.06);stroke:#C9FF00;stroke-width:2;stroke-dasharray:6 5;animation:tapr 1.4s infinite}
+.scn-ship-board.go [data-l="pkg"],.scn-ship-prize.go [data-l="pkg"]{transform:none}
+.scn-obs.dropped [data-l="lv"]{animation:popc2 .4s .1s cubic-bezier(.2,1.6,.4,1) both}
+.scn .mascot image{image-rendering:auto}

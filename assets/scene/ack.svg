@@ -1,0 +1,33 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g data-l="scene-ack">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="b1">
+<rect data-l="bg" x="24" y="60" width="132" height="170" rx="18" fill="#2A2A2E"/>
+<g data-l="shield">
+<path data-l="s" d="M90 78L115 87V106C115 122 103 132 90 136C77 132 65 122 65 106V87L90 78Z" fill="#C9FF00"/>
+<path data-l="c" d="M80 107L87 114L100 100" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text data-l="t" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="52.1997" y="163.972">&#xe02;&#xe2d;&#xe07;&#xe41;&#xe17;&#xe49; 100%</tspan></text>
+<text data-l="sub" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="10.5" letter-spacing="0em"><tspan x="53.4551" y="187.208">&#xe1b;&#xe25;&#xe2d;&#xe21; = &#xe1b;&#xe34;&#xe14;&#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe14;</tspan></text>
+</g>
+<g data-l="b2">
+<rect data-l="bg_2" x="174" y="60" width="132" height="170" rx="18" fill="#2A2A2E"/>
+<g data-l="shield_2">
+<path data-l="s_2" d="M240 78L265 87V106C265 122 253 132 240 136C227 132 215 122 215 106V87L240 78Z" fill="#C9FF00"/>
+<path data-l="c_2" d="M230 107L237 114L250 100" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<text data-l="t_2" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="193.078" y="163.972">Hit &#xe15;&#xe23;&#xe07;&#xe17;&#xe35;&#xe48;&#xe1b;&#xe23;&#xe30;&#xe01;&#xe32;&#xe28;</tspan></text>
+<text data-l="sub_2" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="10.5" letter-spacing="0em"><tspan x="214.837" y="187.208">&#xe09;&#xe49;&#xe2d;&#xe42;&#xe01;&#xe07;&#xe21;&#xe35;&#xe42;&#xe17;&#xe29;</tspan></text>
+</g>
+<g data-l="b3">
+<rect data-l="bg_3" x="324" y="60" width="132" height="170" rx="18" fill="#2A2A2E"/>
+<g data-l="shield_3">
+<path data-l="s_3" d="M390 78L415 87V106C415 122 403 132 390 136C377 132 365 122 365 106V87L390 78Z" fill="#F5C733"/>
+<rect data-l="e1" x="387.5" y="92" width="5" height="20" rx="2" fill="#1B1B1B"/>
+<circle data-l="e2" cx="390" cy="118.5" r="2.5" fill="#1B1B1B"/>
+</g>
+<text data-l="t_3" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="364.641" y="163.972">&#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe14;&#xe2d;&#xe32;&#xe08;&#10;</tspan><tspan x="361.105" y="183.972">&#xe02;&#xe32;&#xe22;&#xe44;&#xe21;&#xe48;&#xe2b;&#xe21;&#xe14;</tspan></text>
+<text data-l="sub_3" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="10.5" letter-spacing="0em"><tspan x="351.773" y="205.208">&#xe04;&#xe27;&#xe32;&#xe21;&#xe40;&#xe2a;&#xe35;&#xe48;&#xe22;&#xe07;&#xe02;&#xe2d;&#xe07;&#xe23;&#xe49;&#xe32;&#xe19;</tspan></text>
+</g>
+</g>
+</svg>

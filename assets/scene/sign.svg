@@ -1,0 +1,35 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g data-l="scene-sign">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="seller">
+<circle data-l="head" cx="65" cy="128" r="18" fill="#C9FF00"/>
+<path data-l="body" d="M30 186C30 167 45 152 65 152C85 152 100 167 100 186H30Z" fill="#C9FF00"/>
+<text data-l="label" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="55.6426" y="204.666">&#xe04;&#xe38;&#xe13;</tspan></text>
+</g>
+<g data-l="kam">
+<circle data-l="head_2" cx="415" cy="128" r="18" fill="#8FA8F0"/>
+<path data-l="body_2" d="M380 186C380 167 395 152 415 152C435 152 450 167 450 186H380Z" fill="#8FA8F0"/>
+<text data-l="label_2" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="401.16" y="203.864">KAM</tspan></text>
+</g>
+<g data-l="paper">
+<rect data-l="bg" x="130" y="18" width="220" height="264" rx="14" fill="white"/>
+<text data-l="title" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="14" font-weight="600" letter-spacing="0em"><tspan x="148" y="48.777">&#xe43;&#xe1a;&#xe23;&#xe31;&#xe1a;&#xe17;&#xe23;&#xe32;&#xe1a;</tspan></text>
+<text data-l="lab0" fill="#777777" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" letter-spacing="0em"><tspan x="148" y="81.6364">Seller Email</tspan></text>
+<rect data-l="line0" x="148" y="102" width="184" height="1.5" fill="#CCCCCC"/>
+<rect data-l="f1" x="148" y="90" width="120" height="8" rx="4" fill="#1B1B1B" fill-opacity="0.75"/>
+<text data-l="lab1" fill="#777777" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="10" letter-spacing="0em"><tspan x="148" y="126.555">&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe23;&#xe49;&#xe32;&#xe19;</tspan></text>
+<rect data-l="line1" x="148" y="146" width="184" height="1.5" fill="#CCCCCC"/>
+<rect data-l="f2" x="148" y="134" width="90" height="8" rx="4" fill="#1B1B1B" fill-opacity="0.75"/>
+<text data-l="lab2" fill="#777777" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="10" letter-spacing="0em"><tspan x="148" y="170.555">&#xe40;&#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe42;&#xe17;&#xe23;</tspan></text>
+<rect data-l="line2" x="148" y="190" width="184" height="1.5" fill="#CCCCCC"/>
+<rect data-l="f3" x="148" y="178" width="100" height="8" rx="4" fill="#1B1B1B" fill-opacity="0.75"/>
+<text data-l="lab3" fill="#777777" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="10" letter-spacing="0em"><tspan x="148" y="214.555">&#xe25;&#xe32;&#xe22;&#xe40;&#xe0b;&#xe47;&#xe19;</tspan></text>
+<rect data-l="line3" x="148" y="234" width="184" height="1.5" fill="#CCCCCC"/>
+<path data-l="sig" d="M152 238.047C162 220.047 172 220.047 174 234.047C176 246.047 186 222.047 196 230.047C204 236.047 210 242.047 222 228.047C228 222.047 236 234.047 248 232.047" stroke="#1B1B1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<g data-l="ok">
+<circle data-l="bg_2" cx="322" cy="44" r="16" fill="#C9FF00"/>
+<path data-l="c" d="M314 44L320 50L330 38" stroke="#1B1B1B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</svg>

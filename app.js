@@ -67,6 +67,7 @@ const SIM={
  keypad:()=>`<div class="sim s-key"><div class="qrcard code">${qrSvg(11)}<b>482917</b></div><div class="pad"><div class="boxes">${'<i></i>'.repeat(6)}</div><div class="keys">${[1,2,3,4,5,6,7,8,9,'',0,'del'].map(k=>k===''?'<span></span>':`<button data-k="${k}">${k==='del'?'<svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-6-6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10l4 4m0-4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>':k}</button>`).join('')}</div><div class="match"><i class="art"></i><span>${T('ชื่อการ์ดที่ระบบจับคู่','Matched card')}<b>#017 · Hit No.3</b></span></div><button class="btn conf" data-act disabled>Confirm</button></div></div>`};
 function initSim(el){const k=el.dataset.sim;const S=el.querySelector('.sim')||el;
  if(k==='storySB'||k==='storySL'){storyInit(S);return}
+ if(k.startsWith('sc_')){const n=k.slice(3),box=S.querySelector('.scn');sceneInto(box,n).then(()=>setupTaps(box,n,()=>simDone(S,false)));return}
  if(k==='pin'){S.querySelector('[data-act]').onclick=()=>{S.classList.add('pinned');simDone(S)}}
  if(k==='swipe'){const tr=S.querySelector('.track'),kn=S.querySelector('.knob');let max=0;drag(kn,{start(){max=tr.clientWidth-kn.offsetWidth-10;kn.style.transition='none'},move(dx){const d=Math.max(0,Math.min(max,dx));kn.style.transform=`translateX(${d}px)`;tr.style.setProperty('--p',d/max)},end(dx){kn.style.transition='';if(dx>max*.8){kn.style.transform=`translateX(${max}px)`;tr.style.setProperty('--p',1);S.classList.add('open');simDone(S)}else{kn.style.transform='';tr.style.setProperty('--p',0)}}})}
  if(k==='seal'){const se=S.querySelector('.seal');let moved=false;drag(se,{move(dx,dy){moved=Math.hypot(dx,dy)>8;se.style.transform=`translate(${dx}px,${dy}px) rotate(${dx/6}deg)`},end(dx,dy){if(Math.hypot(dx,dy)>50||!moved){se.style.transform='';S.classList.add('peeled');simDone(S)}else se.style.transform=''}})}
@@ -78,12 +79,34 @@ function initSim(el){const k=el.dataset.sim;const S=el.querySelector('.sim')||el
  if(k==='keypad'){let v='';const bx=[...S.querySelectorAll('.boxes i')],cf=S.querySelector('.conf');const draw=()=>bx.forEach((b,i)=>{b.textContent=v[i]||'';b.classList.toggle('f',i===v.length)});draw();
   S.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{if(S.classList.contains('matched'))return;const kk=b.dataset.k;if(kk==='del')v=v.slice(0,-1);else if(v.length<6)v+=kk;draw();if(v.length===6){if(v==='482917'){S.classList.add('matched');cf.disabled=false}else{S.classList.add('bad');setTimeout(()=>{S.classList.remove('bad');v='';draw()},500)}}});cf.onclick=()=>simDone(S)}}
 /* ---------- animated how-it-works stories ---------- */
-const SCN_EN={'คุณ':'You','บอร์ด Pokemon · 100 สปอต':'Pokemon board · 100 spots','Hit 12 ใบ · 150฿/จุ่ม':'12 Hits · ฿150/spot','รับทราบครับ เดี๋ยวเช็คให้':'Got it, checking now','พิมพ์ข้อความ…':'Type a message…','รายละเอียดบอร์ด':'Board details','ยืนยันแล้ว':'Confirmed','ก่อนไลฟ์ 3-5 วัน':'3-5 days before','หลังไลฟ์ 1-2 วัน':'1-2 days after','ทีมแยก เพื่อความโปร่งใส':'Separate team, for transparency','SASOM แพ็คซอง · คุณติดเลข':'SASOM packs · you number','ไลฟ์ 12 พ.ย. · 20:00':'LIVE 12 Nov · 20:00','พ.ย.':'Nov','ตั้งบอร์ด + ไลฟ์':'Board + LIVE','เวลาไลฟ์':'LIVE time','บันทึกแล้ว':'Saved','ร้านคุณ':'Your shop','บอร์ด 1':'Board 1','บอร์ด 2':'Board 2','บอร์ด 3':'Board 3','โอนก้อนเดียว':'One transfer','3-5 วันทำการ หลังปิดบอร์ด':'3-5 days after close'};
+const SCN_EN={'คุณ':'You','บอร์ด Pokemon · 100 สปอต':'Pokemon board · 100 spots','Hit 12 ใบ · 150฿/จุ่ม':'12 Hits · ฿150/spot','รับทราบครับ เดี๋ยวเช็คให้':'Got it, checking now','พิมพ์ข้อความ…':'Type a message…','รายละเอียดบอร์ด':'Board details','ยืนยันแล้ว':'Confirmed','ก่อนไลฟ์ 3-5 วัน':'3-5 days before','หลังไลฟ์ 1-2 วัน':'1-2 days after','ทีมแยก เพื่อความโปร่งใส':'Separate team, for transparency','SASOM แพ็คซอง · คุณติดเลข':'SASOM packs · you number','ไลฟ์ 12 พ.ย. · 20:00':'LIVE 12 Nov · 20:00','พ.ย.':'Nov','ตั้งบอร์ด + ไลฟ์':'Board + LIVE','เวลาไลฟ์':'LIVE time','บันทึกแล้ว':'Saved','ร้านคุณ':'Your shop','บอร์ด 1':'Board 1','บอร์ด 2':'Board 2','บอร์ด 3':'Board 3','โอนก้อนเดียว':'One transfer','3-5 วันทำการ หลังปิดบอร์ด':'3-5 days after close','Send Board · ส่งมารอได้ไม่จำกัด':'Send Board · no limit','Seller Live · สูงสุด 3 บอร์ด':'Seller Live · max 3 boards','1 สปอต':'1 spot','คุณได้':'You get','ค่าธรรมเนียม':'Fee','หักเฉพาะออเดอร์ที่สำเร็จ':'Successful orders only','ใบรับทราบ':'Acknowledgement','ชื่อร้าน':'Shop name','เบอร์โทร':'Phone','ลายเซ็น':'Signature','ของแท้ 100%':'100% authentic','ปลอม = ปิดบอร์ด':'Fake = board closed','Hit ตรงที่ประกาศ':'Hits as declared','ฉ้อโกงมีโทษ':'Fraud is punished','บอร์ดอาจ':'Board may','ขายไม่หมด':'not sell out','ความเสี่ยงของร้าน':'Your shop’s risk','ขายแล้ว 112 / 200 สปอต':'112 / 200 spots sold','Last One · ยังล็อกอยู่':'Last One · locked','Last One · ปลดล็อกแล้ว':'Last One · unlocked','ลูกค้า':'Buyer','กำลังจ่าย':'Paying','ลูกค้าอื่น':'Other buyer','ระบบล็อก 5 นาที':'Locked 5 min','ก่อนกด Start Live':'Before Start Live','เน็ตไม่แชร์กับไลฟ์อื่น':'Own Wi-Fi for this live','ชาร์จแบตเต็ม':'Battery full','เปิดห้ามรบกวน':'Do Not Disturb on','เตรียมเครื่องสำรอง':'Backup device ready','เปิดเครื่องคนดูไว้เช็ค':'Viewer device open','ใช้ได้ 6 ชม.':'Valid 6 hrs','ส่งกลับ SASOM ไลฟ์ละ 1 ฉลาก':'Back to SASOM, 1 label per live'};
 const SCNC={};
 async function sceneInto(el,name){if(!SCNC[name])SCNC[name]=fetch('assets/scene/'+name+'.svg').then(r=>{if(!r.ok)throw 0;return r.text()});let t;try{t=await SCNC[name]}catch(e){delete SCNC[name];return}
  el.innerHTML=t;const svg=el.querySelector('svg');if(!svg)return;svg.removeAttribute('width');svg.removeAttribute('height');const bg=svg.querySelector('g > rect[width="480"][height="300"]');if(bg)bg.remove();
  if(lang==='en')svg.querySelectorAll('text').forEach(tx=>{const k=tx.textContent.trim();if(!SCN_EN[k])return;const r0=tx.getBBox?null:null;const g=tx.parentNode,bgr=[...g.children].find(c=>c.tagName==='rect'&&(c.getAttribute('data-l')||'').startsWith('bg'));let cx=null;if(bgr){try{const bb=tx.getBBox(),rb=bgr.getBBox();if(Math.abs((bb.x+bb.width/2)-(rb.x+rb.width/2))<6)cx=rb.x+rb.width/2}catch(_){}}
-  const ts=tx.querySelector('tspan');(ts||tx).textContent=SCN_EN[k];if(cx!=null&&ts){ts.setAttribute('x',cx);ts.setAttribute('text-anchor','middle');tx.setAttribute('text-anchor','middle')}})}
+  const ts=tx.querySelector('tspan');(ts||tx).textContent=SCN_EN[k];if(cx!=null&&ts){ts.setAttribute('x',cx);ts.setAttribute('text-anchor','middle');tx.setAttribute('text-anchor','middle')}});mascotize(svg)}
+
+const PERSONS=['seller','sasom','kam','buyer','buyerA','buyerB'];
+function mascotize(svg){const NS='http://www.w3.org/2000/svg';
+ [...svg.querySelectorAll('[data-l]')].filter(g=>PERSONS.includes(g.getAttribute('data-l'))&&g.tagName==='g').forEach((g,ix)=>{const who=g.getAttribute('data-l');const parts=[...g.children].filter(c=>c.tagName!=='text');let x1=1e9,y1=1e9,x2=-1e9,y2=-1e9;
+  parts.forEach(p=>{try{const b=p.getBBox();x1=Math.min(x1,b.x);y1=Math.min(y1,b.y);x2=Math.max(x2,b.x+b.width);y2=Math.max(y2,b.y+b.height)}catch(_){}});if(x1>1e8)return;
+  parts.forEach(p=>p.remove());const cx=(x1+x2)/2,cy=(y1+y2)/2,r=Math.max(x2-x1,y2-y1)/2+2;const id='mcl'+Math.random().toString(36).slice(2,8);
+  const ring=who==='kam'?'#8FA8F0':who==='sasom'?'#FFFFFF':who==='buyerA'?'#F5C733':who==='seller'?'#C9FF00':'#AAAAAA';
+  const grp=document.createElementNS(NS,'g');grp.setAttribute('class','mascot');
+  grp.innerHTML=`<defs><clipPath id="${id}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs><circle cx="${cx}" cy="${cy}" r="${r+3}" fill="${ring}"/><image href="assets/mascot.webp" x="${cx-r}" y="${cy-r}" width="${r*2}" height="${r*2}" clip-path="url(#${id})" preserveAspectRatio="xMidYMid slice"/>`+
+   (who==='sasom'?`<rect x="${cx+r*0.38}" y="${cy-r*1.05}" width="${r*0.8}" height="${r*0.8}" rx="${r*0.2}" fill="#1B1B1B" stroke="#FFFFFF" stroke-width="2"/><image href="assets/sasom-logo.png" x="${cx+r*0.38}" y="${cy-r*1.05}" width="${r*0.8}" height="${r*0.8}"/>`:'')+
+   (who==='kam'?`<rect x="${cx+r*0.25}" y="${cy-r*1.0}" width="${r*1.0}" height="${r*0.5}" rx="${r*0.25}" fill="#8FA8F0"/><text x="${cx+r*0.75}" y="${cy-r*0.64}" text-anchor="middle" font-size="${r*0.3}" font-weight="700" fill="#1B1B1B" font-family="Inter">KAM</text>`:'');
+  g.insertBefore(grp,g.firstChild)})}
+const DRAGS={'ship-board':['pkg','warehouse'],'ship-prize':['pkg','warehouse'],obs:['url','laptop']};
+function setupDrag(box,name,onDone){const svg=box.querySelector('svg');const d=DRAGS[name];if(!svg||!d)return false;const q=k=>[...svg.querySelectorAll('[data-l]')].find(e=>e.getAttribute('data-l')===k);const el=q(d[0]),tg=q(d[1]);if(!el||!tg)return false;
+ el.classList.add('dragme');el.style.cursor='grab';el.style.touchAction='none';let sx,sy,on=false,sc=1;const NS='http://www.w3.org/2000/svg';
+ let tb;try{tb=tg.getBBox()}catch(e){return false}const ring=document.createElementNS(NS,'rect');ring.setAttribute('x',tb.x-6);ring.setAttribute('y',tb.y-6);ring.setAttribute('width',tb.width+12);ring.setAttribute('height',tb.height+12);ring.setAttribute('rx',14);ring.setAttribute('class','dropring');svg.insertBefore(ring,svg.firstChild.nextSibling);
+ el.addEventListener('pointerdown',e=>{on=true;sx=e.clientX;sy=e.clientY;sc=svg.viewBox.baseVal.width/svg.getBoundingClientRect().width;el.classList.add('dragging');try{el.setPointerCapture(e.pointerId)}catch(_){}e.preventDefault();e.stopPropagation()});
+ el.addEventListener('pointermove',e=>{if(!on)return;el.style.transform=`translate(${(e.clientX-sx)*sc}px,${(e.clientY-sy)*sc}px)`});
+ const up=e=>{if(!on)return;on=false;el.classList.remove('dragging');const a=el.getBoundingClientRect(),b=tg.getBoundingClientRect();const hit=a.right>b.left&&a.left<b.right&&a.bottom>b.top&&a.top<b.bottom;
+  if(hit){el.style.transition='transform .3s, opacity .3s';el.style.opacity='0';ring.remove();el.classList.remove('dragme');box.classList.add('go','dropped');onDone&&onDone()}else{el.style.transition='transform .35s cubic-bezier(.2,1.3,.4,1)';el.style.transform='';setTimeout(()=>el.style.transition='',400)}};
+ el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);return true}
+
 const SCN=(k,sl)=>({chat:'chat',confirm:'confirm',ship:sl?'ship-prize':'ship-board',pack:sl?'pack-seller':'pack-sasom',date:'date',setup:'setup',live:sl?'live-seller':'live-sasom',pay:'pay'})[k];
 const STORY={
  sb:()=>[['chat','SELLER',T('แจ้งรายละเอียดบอร์ดกับ KAM','Share board details with KAM'),T('สินค้า · Hit · ราคาต่อจุ่ม · สปอต','Items · Hits · price · spots'),T('ส่ง','Send')],
@@ -100,11 +123,24 @@ const STORY={
   ['live','SELLER',T('ไลฟ์ที่ช่องร้านคุณ','Go live on your shop'),T('สูงสุด 3 บอร์ดพร้อมกัน','Up to 3 boards at once'),T('เริ่มไลฟ์','Go live')],
   ['ship','SELLER',T('ส่งรางวัลเข้า SASOM','Send prizes to SASOM'),T('ภายใน 1-2 วันหลังไลฟ์','Within 1-2 days after'),T('ส่งรางวัล','Ship prizes')],
   ['pay','SASOM',T('ปิดบอร์ด สรุปยอด โอนเงิน','Close, summarize, pay out'),T('โอนก้อนเดียว 3-5 วันทำการ','One transfer, 3-5 business days'),T('โอนเงิน','Pay out')]]};
+
+/* tap-in-picture engine for Figma scenes */
+const TAPS={chat:['send'],confirm:['card'],'ship-board':['pkg'],'ship-prize':['pkg'],'pack-sasom':['env1','env2','env3','env4','env5'],'pack-seller':['env1','env2','env3','env4','env5'],date:['calendar'],setup:['save'],'live-sasom':['screen'],'live-seller':['screen'],pay:['bank card'],
+ boards:['warehouse','phone'],fee:['tab-sl','tab-sb'],sign:['paper'],ack:['b1','b2','b3'],unlock:['card'],win:['buy'],reserved:['res'],prep:['row1','row2','row3','row4','row5'],obs:['copy'],after:['end']};
+function setupTaps(box,name,onDone,already){const svg=box.querySelector('svg');if(!svg)return;if(!already&&DRAGS[name]&&setupDrag(box,name,onDone))return;const ks=TAPS[name]||[];const hit=new Set();const NS='http://www.w3.org/2000/svg';
+ const finish=()=>{box.classList.add('go');onDone&&onDone()};
+ if(already){ks.forEach(k=>box.classList.add('hit-'+k.replace(/\s/g,'')));box.classList.add('go');svg.querySelectorAll('[data-l]').forEach(e=>{if(ks.includes(e.getAttribute('data-l')))e.classList.add('on')});return}
+ ks.forEach(k=>{const el=[...svg.querySelectorAll('[data-l]')].find(e=>e.getAttribute('data-l')===k);if(!el)return;let b;try{b=el.getBBox()}catch(e){return}
+  const ring=document.createElementNS(NS,'rect');const p=5;ring.setAttribute('x',b.x-p);ring.setAttribute('y',b.y-p);ring.setAttribute('width',b.width+p*2);ring.setAttribute('height',b.height+p*2);ring.setAttribute('rx',Math.min(16,(b.height+p*2)/2));ring.setAttribute('class','tapring');
+  const hitr=ring.cloneNode();hitr.setAttribute('class','taphit');svg.appendChild(ring);svg.appendChild(hitr);el.classList.add('tapme');
+  hitr.addEventListener('click',e=>{e.stopPropagation();if(hit.has(k))return;hit.add(k);el.classList.remove('tapme');el.classList.add('on');box.classList.add('hit-'+k.replace(/\s/g,''));ring.remove();hitr.remove();if(name==='fee')box.classList.toggle('sl',k==='tab-sl');if(hit.size===ks.length)setTimeout(finish,name==='fee'?900:150)})})}
+const sceneSim=n=>`<div class="sim tapscene" data-scene="${n}"><div class="st-stage"><div class="scn scn-${n}"></div></div></div>`;
+['boards','fee','sign','ack','unlock','win','reserved','prep','obs','after'].forEach(n=>SIM['sc_'+n]=()=>sceneSim(n));
 SIM.storySB=()=>storyHTML('sb');SIM.storySL=()=>storyHTML('sl');
-function storyHTML(k){const L=STORY[k]();return `<div class="sim story" data-k="${k}"><div class="st-stage"></div><div class="st-cap"></div><button class="btn dark st-act" data-act></button><div class="st-chips">${L.map((_,i)=>`<button data-st="${i}">${i+1}</button>`).join('')}</div><div class="st-sum"></div></div>`}
-function storyInit(S){const k=S.dataset.k,L=STORY[k](),sl=k==='sl';let i=0,doneSet=new Set();const st=S.querySelector('.st-stage'),cap=S.querySelector('.st-cap'),act=S.querySelector('.st-act'),chips=[...S.querySelectorAll('[data-st]')];
- const render=()=>{const s=L[i],nm=SCN(s[0],sl);st.innerHTML=`<div class="scn scn-${nm}"></div>`;const box=st.firstElementChild;box.classList.toggle('go',doneSet.has(i));sceneInto(box,nm);cap.innerHTML=`<span class="who ${s[1]}">${s[1]}</span><b>${s[2]}</b>${s[3]?`<small>${s[3]}</small>`:''}`;cap.classList.toggle('show',doneSet.has(i));act.textContent=s[4];act.hidden=doneSet.has(i);chips.forEach((c,j)=>{c.classList.toggle('on',j===i);c.classList.toggle('done',doneSet.has(j))})};
- act.onclick=()=>{st.firstElementChild.classList.add('go');doneSet.add(i);act.hidden=true;setTimeout(()=>{cap.classList.add('show');chips[i].classList.add('done')},500);
+function storyHTML(k){const L=STORY[k]();return `<div class="sim story" data-k="${k}"><div class="st-stage"></div><div class="st-cap"></div><div class="st-chips">${L.map((_,i)=>`<button data-st="${i}">${i+1}</button>`).join('')}</div><div class="st-sum"></div></div>`}
+function storyInit(S){const k=S.dataset.k,L=STORY[k](),sl=k==='sl';let i=0,doneSet=new Set();const st=S.querySelector('.st-stage'),cap=S.querySelector('.st-cap'),chips=[...S.querySelectorAll('[data-st]')];
+ const render=()=>{const s=L[i],nm=SCN(s[0],sl);st.innerHTML=`<div class="scn scn-${nm}"></div>`;const box=st.firstElementChild;const was=doneSet.has(i),at=i;sceneInto(box,nm).then(()=>setupTaps(box,nm,()=>onHit(at),was));cap.innerHTML=`<span class="who ${s[1]}">${s[1]}</span><b>${s[2]}</b>${s[3]?`<small>${s[3]}</small>`:''}`;cap.classList.toggle('show',doneSet.has(i));chips.forEach((c,j)=>{c.classList.toggle('on',j===i);c.classList.toggle('done',doneSet.has(j))})};
+ const onHit=at=>{if(at!==i||doneSet.has(i))return;doneSet.add(i);setTimeout(()=>{cap.classList.add('show');chips[i].classList.add('done')},500);
   if(doneSet.size===L.length){setTimeout(()=>{S.querySelector('.st-sum').innerHTML=flow(L.map(s=>[s[1],s[2],s[3],SICO[s[0]]]));S.classList.add('fin');simDone(S,false)},1400)}
   else setTimeout(()=>{if(!S.isConnected)return;const nx=L.findIndex((_,j)=>!doneSet.has(j));if(nx>-1){i=nx;render()}},2300)};
  chips.forEach(c=>c.onclick=()=>{i=+c.dataset.st;render()});render()}
@@ -234,7 +270,7 @@ const LESSONS=[
   v:()=>`<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;width:100%">${[50,100,150,200].map(n=>`<div style="background:#2a2a2e;border-radius:14px;padding:8px 14px;text-align:center"><div style="font:600 22px Inter;color:var(--lime)">${n}</div><small style="color:#aaa">Spot</small></div>`).join('')}</div>${fig('board-grid')}`,
   b:()=>pts([{t:T('จำนวน Hit ต้องตรงกับที่ประกาศ','Hits must match what you declare'),s:T('ลูกค้าเห็น % Hit ระหว่างไลฟ์','Buyers see the Hit % on live')}])},
  {h:['จำนวนบอร์ด','How many boards'],l:['',''],
-  v:()=>`<div style="text-align:center"><div style="display:flex;gap:8px;justify-content:center">${'<div class="board-box" style="width:70px;height:50px"></div>'.repeat(4)}</div><p style="margin:10px 0 18px;color:#bbb">Send Board · ${T('ส่งมารอได้ไม่จำกัด','no limit')}</p><div style="display:flex;gap:10px;justify-content:center">${env('r')}${env('g')}${env('k')}</div><p style="margin:10px 0 0;color:#bbb">Seller Live · ${T('ไลฟ์พร้อมกันสูงสุด 3 บอร์ด','up to 3 boards at once')}</p></div>`},
+  v:()=>sim('sc_boards')},
  {h:['ปิดบอร์ดได้เมื่อ','You can close when'],l:['',''],
   v:()=>fig('close-ok'),
   b:()=>pts([{k:CHK,t:T('Hit No.1 ออกแล้ว','Hit No.1 is out'),s:T('ยังมี Hit เหลือ ไลฟ์ต่อได้','Hits left? You may keep going')},{k:CHK,t:T('SASOM พิจารณาให้ปิด','SASOM decides to close'),s:T('ยอดต่ำผิดปกติ ร้องเรียน หรือปัญหาเทคนิค','Very low sales, complaints, tech issues')}])},
@@ -245,7 +281,7 @@ const LESSONS=[
 ]},
 {id:'money',stage:1,ico:'💸',t:['ค่าธรรมเนียม & การโอนเงิน','Fees & payout'],d:['เงินเข้ายังไง เมื่อไหร่','How and when you get paid'],slides:[
  {h:['ค่าธรรมเนียม','Fees'],l:['หักเฉพาะออเดอร์สำเร็จ จากราคาสปอตตั้งต้น','Only on successful orders, original spot price'],
-  v:()=>`<div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">${[['Send Board','5%','Seller Fee 2% + Payment Fee 3%'],['Seller Live','8%','Seller Fee 5% + Payment Fee 3%']].map(x=>`<div style="background:#2a2a2e;border-radius:18px;padding:18px 22px;text-align:center;min-width:200px"><small style="color:#aaa">${x[0]}</small><div class="big" style="color:var(--lime)">${x[1]}</div><small style="color:#aaa;font-family:Inter">${x[2]}</small></div>`).join('')}</div>`,
+  v:()=>sim('sc_fee'),
   b:()=>`<div class="note">${T('ค่าธรรมเนียมราคาแคมเปญ อาจเปลี่ยนแปลง','Campaign rates, may change')}</div>`},
  {h:['เงินเข้าใน 3 ขั้น','Paid in 3 steps'],l:['ใช้ทั้ง 2 แบบ','Both models'],
   v:()=>fig('pay-closed','pay-summary','pay-bank'),
@@ -262,10 +298,10 @@ const LESSONS=[
   v:()=>fig('inspect-order')},
  {h:['ถ้ามีปัญหา','If something is wrong'],l:['',''],v:()=>fig('inspect-conflict','inspect-defect'),
   b:()=>pts([{k:'!',t:T('ขัดเงื่อนไข App หรือผิดปกติ','Breaks App rules or looks unusual'),s:T('SASOM พิจารณาวิธีแก้ไข','SASOM decides the fix')},{k:'!',t:T('มีตำหนิ / ไม่ผ่านตรวจ','Defect / fails inspection'),s:T('หาของมาเปลี่ยน หรือลดราคาให้ลูกค้า','Replace it or offer a discount')}])+`<div class="note">${T('SASOM ช่วยประสาน แต่ไม่ออกค่าใช้จ่ายให้','SASOM coordinates but doesn’t cover costs')}</div>`},
- {h:['สิ่งที่ต้องรับทราบ','What you acknowledge'],l:['',''],
+ {h:['สิ่งที่ต้องรับทราบ','What you acknowledge'],l:['',''],v:()=>sim('sc_ack'),
   b:()=>pts([{t:T('ของแท้ 100%','100% authentic'),s:T('พบของปลอม SASOM ปิดบอร์ดและดำเนินการตามความรุนแรง','Fakes: SASOM closes the board and acts by severity')},{t:T('Hit ตรงตามที่ประกาศ','Hits as declared'),s:T('ฉ้อโกง seller รับผิดทั้งแพ่งและอาญา','Fraud: civil and criminal liability')},{t:T('ความเสี่ยงบอร์ดแตก','Board-break risk'),s:T('บอร์ดอาจขายไม่หมดตามแผน','Spots may not all sell')}])},
  {h:['เซ็นรับทราบกับ KAM','Sign with KAM'],l:['ก่อนส่งบอร์ดแรก กรอกให้ครบ 4 ช่อง','Before your first board, fill in all 4'],
-  v:()=>`<div style="background:#fff;color:#1B1B1B;border-radius:16px;padding:18px;width:min(340px,100%);display:grid;gap:12px">${['Seller Email',T('ชื่อร้าน','Shop name'),T('เบอร์โทร','Phone'),T('ลายเซ็น','Signature')].map((f,i)=>`<div style="display:flex;gap:10px;align-items:flex-end"><b style="width:100px;font-size:13px">${f}</b><i style="flex:1;border-bottom:1.5px solid #999;height:1px;animation:fill .5s ${.3+i*.2}s both;--to:100%"></i></div>`).join('')}<div style="display:flex;gap:8px;align-items:center"><span style="width:22px;height:22px;border-radius:999px;background:var(--lime);display:grid;place-items:center;font-size:12px;color:#1B1B1B">${CHK}</span><b style="font-size:13px">${T('ยินยอม','Accept')}</b></div></div>`}
+  v:()=>sim('sc_sign')}
 ]},
 {id:'rules',stage:1,ico:'🚦',t:['กฎการไลฟ์','LIVE rules'],d:['ห้ามทำ / ต้องทำ','Don’ts and musts'],slides:[
  {h:['ห้ามทำเด็ดขาด','Never do this'],l:['',''],b:()=>rules(false)},
@@ -277,11 +313,11 @@ const LESSONS=[
  {h:['Last One คืออะไร','What is Last One'],l:['ซื้อช่องสุดท้ายจนบอร์ดปิด รับรางวัลเพิ่ม 1 ชิ้น','Buy the final spot, win 1 extra prize'],
   v:()=>fig('lastone-phone')},
  {h:['ปุ่มเปิดเมื่อขายครบ 50%','Unlocks at 50% sold'],l:['เช่น บอร์ด 200 ช่อง ขายแล้ว 100','e.g. 200 spots: 100 sold'],
-  v:()=>`<div style="width:100%;display:grid;justify-items:center;gap:22px"><div class="progress" style="--to:56%"><i></i><span class="mark" style="left:50%"><b>50%</b></span></div><span class="pill lime" style="animation:pop .5s 1.6s both">${T('ปลดล็อกแล้ว','Unlocked')}</span></div>`},
- {h:['ใครได้รางวัล','Who wins'],l:['Order สุดท้ายที่ปิดบอร์ด ซื้อได้ 2 วิธี','The order that closes the board, 2 ways'],
+  v:()=>sim('sc_unlock')},
+ {h:['ใครได้รางวัล','Who wins'],l:['Order สุดท้ายที่ปิดบอร์ด ซื้อได้ 2 วิธี','The order that closes the board, 2 ways'],v:()=>sim('sc_win'),
   b:()=>pts([{t:'Buy Remaining',s:T('ซื้อช่องที่เหลือทั้งหมดในคลิกเดียว','All remaining spots in one tap')},{t:T('เลือกเลขที่เหลือเองจนครบ','Pick every number left')}])+`<div class="note lime">${T('จ่ายด้วย QR ระบบล็อกช่องให้ 5 นาที','QR payment locks the spots for 5 min')}</div>`},
  {h:['กรณีพิเศษ · ช่องถูกจองอยู่','Edge case · reserved spots'],l:['มีคนอื่นกำลังจ่ายช่องเดียวกัน ระบบให้รอผล','Someone else is paying, so the buyer waits'],
-  v:()=>`<div style="display:flex;gap:8px">${pill(T('ว่าง','Available'),'green')}${pill(T('ถูกจองอยู่','Reserved'),'amb')}${pill(T('ขายแล้ว','Sold'),'grey')}</div>`,
+  v:()=>sim('sc_reserved'),
   b:()=>pts([{k:'●',t:T('เขาจ่ายไม่สำเร็จ','Not paid'),s:T('ช่องกลับมาให้ซื้อ','Spot back in the cart')},{k:'●',t:T('เขาจ่ายสำเร็จ','Paid'),s:T('ช่องถูกตัด ราคาลดลง','Spot drops, total goes down')}])},
  {h:['Seller ต้องเตรียม','Seller prep'],l:['',''],
   b:()=>pts([{k:'note',t:T('ระบุรางวัล Last One ตอนขอบอร์ด','State the prize when requesting')},{k:'prize',t:T('วางรางวัลข้างบอร์ด โชว์กล้อง','Show the prize next to the board')},{k:'mega',t:T('ขายครบ 50% ประกาศว่าปุ่มเปิดแล้ว','At 50%, announce it’s unlocked')},{k:'box',t:T('ส่งรางวัลกลับ SASOM พร้อมออเดอร์','Ship the prize with the order')}])}
@@ -301,7 +337,7 @@ const LESSONS=[
 ]},
 {id:'trouble',stage:3,ico:'🛟',t:['Live มีปัญหา','Live trouble'],d:['จอดำ เสียงหาย ค้าง','Black screen, no sound, stuck'],slides:[
  {h:['เจอปัญหา กดดูวิธีแก้','Tap a problem to fix it'],l:['แก้ไม่ได้ใน 2–3 นาที แจ้ง KAM/SA','Can’t fix in 2–3 min? Tell KAM/SA'],b:()=>issues()},
- {h:['กันไว้ก่อน','Before you Start Live'],l:['',''],
+ {h:['กันไว้ก่อน','Before you Start Live'],l:['',''],v:()=>sim('sc_prep'),
   b:()=>pts([{k:'wifi',t:T('เน็ตไม่แชร์กับไลฟ์อื่น','Don’t share Wi-Fi with another live')},{k:'battery',t:T('ชาร์จแบต เปิดห้ามรบกวน','Charge up, Do Not Disturb on')},{k:'cover',t:T('ปกสำรอง + เครื่องสำรอง','Backup cover + backup device')},{k:'eye',t:T('เปิดเครื่องคนดูไว้เช็ค','Keep a viewer device open')},{k:'stop',t:T('ห้ามออกจากแอประหว่างไลฟ์','Never leave the app mid-live')}])+`<div class="note">${T('แจ้ง: ชื่อร้าน · Live ID · อาการ · ภาพหน้าจอ','Send: shop name · Live ID · issue · screenshot')}</div>`}
 ]},
 /* ===== STAGE 4 ===== */
@@ -351,7 +387,7 @@ const SETUP=()=>[
  ['selling','plan',T('กลับมาเข้าห้องทีหลัง','Coming back later'),T('Profile · LIVE Selling · LIVE Plan','Profile · LIVE Selling · LIVE Plan')]
 ].map((s,i,a)=>({tap:{screen:s[0],hot:s[1]},n:i+1,of:a.length,title:s[2],h:[s[2],s[2]],l:[s[3],s[3]],
   b:()=>i===9?`<div class="note lime">${T('ส่ง Live ID ให้ KAM/SA · เตรียมของก่อน 30–60 นาที · จบต้องกด End Live','Send Live ID to KAM/SA · prep 30–60 min early · always End Live')}</div>`:''})).concat([
- {h:['ไลฟ์ผ่าน OBS','Going live via OBS'],l:['',''],b:()=>pts([{t:T('Copy Stream URL ตอนจะเริ่มเท่านั้น','Copy the Stream URL right before')},{t:T('URL หมดอายุใน 6 ชม.','URLs expire in 6 hours')},{t:T('เริ่มใหม่ ใช้ URL ใหม่ทุกครั้ง','Restarted? Use a new URL')}])},
+ {h:['ไลฟ์ผ่าน OBS','Going live via OBS'],l:['',''],v:()=>sim('sc_obs'),b:()=>pts([{t:T('Copy Stream URL ตอนจะเริ่มเท่านั้น','Copy the Stream URL right before')},{t:T('URL หมดอายุใน 6 ชม.','URLs expire in 6 hours')},{t:T('เริ่มใหม่ ใช้ URL ใหม่ทุกครั้ง','Restarted? Use a new URL')}])},
  {h:['เลื่อนเวลาไลฟ์','Rescheduling'],l:['',''],b:()=>pts([{t:T('แก้วันเวลาใน LIVE Plan เดิม','Edit the time in the same LIVE Plan')},{t:T('แจ้ง KAM/SA ทุกครั้ง','Tell your KAM/SA every time')},{t:T('ไลฟ์ได้สูงสุด 4 ชม. ต่อรอบ','Max 4 hours per live')}])}]);
 
 /* how to open slides */
@@ -367,7 +403,7 @@ const OPEN=()=>[
  {h:['7 · Capture เก็บหลักฐาน','7 · Capture evidence'],l:['การ์ด + QR + เลขซอง ในเฟรมเดียว','Card + QR + number in one frame'],v:()=>sim('capture')},
  {h:['8 · สแกน QR แล้ว Confirm','8 · Scan, then Confirm'],l:['เช็คชื่อการ์ดให้ตรง','Check the card name'],v:()=>sim('scan')},
  {h:['ห้ามทำเด็ดขาด','Never do this'],l:['',''],b:()=>`<div class="rules">${[[T('ยก · โยนนอก','Off-app deal'),T('ชวนจ่ายเงินนอก App','Buyers paying outside the App')],[T('รีซีล','Reseal'),T('แกะแล้วปิดใหม่ให้ดูเหมือนใหม่','Resealing an opened pack')],[T('ยัดแพ็ค · ชั่งซอง · บีบซอง','Pack searching'),T('ชั่งหรือบีบซองหา Hit ก่อนขาย','Weighing or squeezing for hits')],[T('ของก๊อป · ของปลอม','Fakes'),T('SASOM การันตีของแท้ ปลอมคืน 2 เท่า','SASOM guarantees authenticity, 2x refund')]].map(r=>`<div class="rr"><span class="ri">✕</span><div><b>${r[0]}</b><small>${r[1]}</small></div><span class="t">${T('ห้ามทำ','Never')}</span></div>`).join('')}</div>`},
- {h:['หลังจบไลฟ์','After the live'],l:['',''],b:()=>pts([{t:T('กด End Live ทุกครั้ง','Always tap End Live')},{t:T('แพ็กซอง + การ์ด + รางวัลทีละออเดอร์','Pack envelope + card + prize per order')},{t:T('ส่งกลับ SASOM ไลฟ์ละ 1 ฉลาก','Ship to SASOM, 1 label per live')},{t:T('ห้ามส่งตรงถึงลูกค้า','Never ship to buyers directly')}])}
+ {h:['หลังจบไลฟ์','After the live'],l:['',''],v:()=>sim('sc_after'),b:()=>pts([{t:T('กด End Live ทุกครั้ง','Always tap End Live')},{t:T('แพ็กซอง + การ์ด + รางวัลทีละออเดอร์','Pack envelope + card + prize per order')},{t:T('ส่งกลับ SASOM ไลฟ์ละ 1 ฉลาก','Ship to SASOM, 1 label per live')},{t:T('ห้ามส่งตรงถึงลูกค้า','Never ship to buyers directly')}])}
 ];
 
 /* glossary */

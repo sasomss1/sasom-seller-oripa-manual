@@ -1,0 +1,57 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g data-l="scene-prep">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="seller">
+<circle data-l="head" cx="75" cy="128" r="18" fill="#C9FF00"/>
+<path data-l="body" d="M40 186C40 167 55 152 75 152C95 152 110 167 110 186H40Z" fill="#C9FF00"/>
+<text data-l="label" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="65.6426" y="204.666">&#xe04;&#xe38;&#xe13;</tspan></text>
+</g>
+<g data-l="phone">
+<rect data-l="frame" x="170" y="14" width="250" height="272" rx="24" fill="#121212"/>
+<g data-l="screen">
+<rect x="176" y="20" width="238" height="260" rx="19" fill="white"/>
+<text data-l="title" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="192" y="47.9715">&#xe01;&#xe48;&#xe2d;&#xe19;&#xe01;&#xe14; Start Live</tspan></text>
+<g data-l="row1">
+<rect data-l="bg" x="186" y="66" width="218" height="36" rx="10" fill="#F6F6F6"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="198" y="85.8605">&#xe40;&#xe19;&#xe47;&#xe15;&#xe44;&#xe21;&#xe48;&#xe41;&#xe0a;&#xe23;&#xe4c;&#xe01;&#xe31;&#xe1a;&#xe44;&#xe25;&#xe1f;&#xe4c;&#xe2d;&#xe37;&#xe48;&#xe19;</tspan></text>
+<g data-l="tg1">
+<rect data-l="track" x="352" y="74" width="40" height="20" rx="10" fill="#DDDDDD"/>
+<circle data-l="knob" cx="362" cy="84" r="8" fill="white"/>
+</g>
+</g>
+<g data-l="row2">
+<rect data-l="bg_2" x="186" y="108" width="218" height="36" rx="10" fill="#F6F6F6"/>
+<text data-l="t_2" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="198" y="127.861">&#xe0a;&#xe32;&#xe23;&#xe4c;&#xe08;&#xe41;&#xe1a;&#xe15;&#xe40;&#xe15;&#xe47;&#xe21;</tspan></text>
+<g data-l="tg2">
+<rect data-l="track_2" x="352" y="116" width="40" height="20" rx="10" fill="#DDDDDD"/>
+<circle data-l="knob_2" cx="362" cy="126" r="8" fill="white"/>
+</g>
+</g>
+<g data-l="row3">
+<rect data-l="bg_3" x="186" y="150" width="218" height="36" rx="10" fill="#F6F6F6"/>
+<text data-l="t_3" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="198" y="169.861">&#xe40;&#xe1b;&#xe34;&#xe14;&#xe2b;&#xe49;&#xe32;&#xe21;&#xe23;&#xe1a;&#xe01;&#xe27;&#xe19;</tspan></text>
+<g data-l="tg3">
+<rect data-l="track_3" x="352" y="158" width="40" height="20" rx="10" fill="#DDDDDD"/>
+<circle data-l="knob_3" cx="362" cy="168" r="8" fill="white"/>
+</g>
+</g>
+<g data-l="row4">
+<rect data-l="bg_4" x="186" y="192" width="218" height="36" rx="10" fill="#F6F6F6"/>
+<text data-l="t_4" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="198" y="211.861">&#xe40;&#xe15;&#xe23;&#xe35;&#xe22;&#xe21;&#xe40;&#xe04;&#xe23;&#xe37;&#xe48;&#xe2d;&#xe07;&#xe2a;&#xe33;&#xe23;&#xe2d;&#xe07;</tspan></text>
+<g data-l="tg4">
+<rect data-l="track_4" x="352" y="200" width="40" height="20" rx="10" fill="#DDDDDD"/>
+<circle data-l="knob_4" cx="362" cy="210" r="8" fill="white"/>
+</g>
+</g>
+<g data-l="row5">
+<rect data-l="bg_5" x="186" y="234" width="218" height="36" rx="10" fill="#F6F6F6"/>
+<text data-l="t_5" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="198" y="253.861">&#xe40;&#xe1b;&#xe34;&#xe14;&#xe40;&#xe04;&#xe23;&#xe37;&#xe48;&#xe2d;&#xe07;&#xe04;&#xe19;&#xe14;&#xe39;&#xe44;&#xe27;&#xe49;&#xe40;&#xe0a;&#xe47;&#xe04;</tspan></text>
+<g data-l="tg5">
+<rect data-l="track_5" x="352" y="242" width="40" height="20" rx="10" fill="#DDDDDD"/>
+<circle data-l="knob_5" cx="362" cy="252" r="8" fill="white"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

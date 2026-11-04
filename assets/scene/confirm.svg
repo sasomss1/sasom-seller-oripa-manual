@@ -9,8 +9,8 @@
 <circle data-l="kam avatar" cx="138" cy="48" r="10" fill="#8FA8F0"/>
 <text data-l="kam name" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="154" y="51.8636">KAM</tspan></text>
 <g data-l="bub-me">
-<rect data-l="bg" x="166" y="78" width="116" height="26" rx="12" fill="#C9FF00"/>
-<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="9" font-weight="500" letter-spacing="0em"><tspan x="174" y="92.7495">&#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe14; Pokemon &#xb7; 100 &#xe2a;&#xe1b;&#xe2d;&#xe15;</tspan></text>
+<rect data-l="bg" x="148" y="78" width="134" height="26" rx="12" fill="#C9FF00"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="9" font-weight="500" letter-spacing="0em"><tspan x="157" y="92.7495">&#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe14; Pokemon &#xb7; 100 &#xe2a;&#xe1b;&#xe2d;&#xe15;</tspan></text>
 </g>
 <g data-l="card">
 <rect data-l="bg_2" x="128" y="116" width="154" height="104" rx="12" fill="#F6F6F6"/>

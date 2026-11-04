@@ -1,0 +1,72 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g data-l="scene-boards">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="warehouse">
+<path data-l="roof" d="M30 72L82 40L134 72H30Z" fill="#F2F2F0"/>
+<rect data-l="body" x="38" y="72" width="88" height="78" rx="4" fill="#F2F2F0"/>
+<g data-l="sasom logo">
+<rect x="64" y="92" width="36" height="36" rx="9.6" fill="url(#boards_pattern0_99_2)"/>
+</g>
+</g>
+<g data-l="box1">
+<rect data-l="b" x="150" y="56" width="52" height="40" rx="5" fill="#C7945C"/>
+<rect data-l="tape" x="170" y="56" width="12" height="40" fill="#E6C799"/>
+</g>
+<g data-l="box2">
+<rect data-l="b_2" x="208" y="56" width="52" height="40" rx="5" fill="#C7945C"/>
+<rect data-l="tape_2" x="228" y="56" width="12" height="40" fill="#E6C799"/>
+</g>
+<g data-l="box3">
+<rect data-l="b_3" x="150" y="102" width="52" height="40" rx="5" fill="#C7945C"/>
+<rect data-l="tape_3" x="170" y="102" width="12" height="40" fill="#E6C799"/>
+</g>
+<g data-l="box4">
+<rect data-l="b_4" x="208" y="102" width="52" height="40" rx="5" fill="#C7945C"/>
+<rect data-l="tape_4" x="228" y="102" width="12" height="40" fill="#E6C799"/>
+</g>
+<g data-l="inf">
+<rect data-l="bg" x="40" y="214" width="200" height="30" rx="15" fill="#2E2E33"/>
+<text data-l="t" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12.5" font-weight="600" letter-spacing="0em"><tspan x="53.7756" y="233.319">Send Board &#xb7; &#xe2a;&#xe48;&#xe07;&#xe21;&#xe32;&#xe23;&#xe2d;&#xe44;&#xe14;&#xe49;&#xe44;&#xe21;&#xe48;&#xe08;&#xe33;&#xe01;&#xe31;&#xe14;</tspan></text>
+</g>
+<g data-l="phone">
+<rect data-l="frame" x="300" y="22" width="150" height="180" rx="24" fill="#121212"/>
+<g data-l="screen">
+<rect x="306" y="28" width="138" height="168" rx="19" fill="#1B1B1E"/>
+<g data-l="tab1">
+<rect data-l="bg_2" x="316" y="42" width="40" height="22" rx="6" fill="#2A2A2E"/>
+<text data-l="t_2" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="333.117" y="55.8636">1</tspan></text>
+</g>
+<g data-l="tab2">
+<rect data-l="bg_3" x="360" y="42" width="40" height="22" rx="6" fill="#2A2A2E"/>
+<text data-l="t_3" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="376.273" y="55.8636">2</tspan></text>
+</g>
+<g data-l="tab3">
+<rect data-l="bg_4" x="404" y="42" width="40" height="22" rx="6" fill="#2A2A2E"/>
+<text data-l="t_4" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="420.092" y="55.8636">3</tspan></text>
+</g>
+<rect data-l="cell" x="318" y="76" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_2" x="349" y="76" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_3" x="380" y="76" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_4" x="411" y="76" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_5" x="318" y="107" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_6" x="349" y="107" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_7" x="380" y="107" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_8" x="411" y="107" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_9" x="318" y="138" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_10" x="349" y="138" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_11" x="380" y="138" width="27" height="27" rx="5" fill="#3A3A40"/>
+<rect data-l="cell_12" x="411" y="138" width="27" height="27" rx="5" fill="#3A3A40"/>
+</g>
+</g>
+<g data-l="max3">
+<rect data-l="bg_5" x="290" y="214" width="170" height="30" rx="15" fill="#C9FF00"/>
+<text data-l="t_5" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12.5" font-weight="600" letter-spacing="0em"><tspan x="302.82" y="233.319">Seller Live &#xb7; &#xe2a;&#xe39;&#xe07;&#xe2a;&#xe38;&#xe14; 3 &#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe14;</tspan></text>
+</g>
+</g>
+<defs>
+<pattern id="boards_pattern0_99_2" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#boards_image0_99_2" transform="scale(0.00625)"/>
+</pattern>
+<image id="boards_image0_99_2" width="160" height="160" preserveAspectRatio="none" xlink:href="assets/sasom-logo.png"/>
+</defs>
+</svg>

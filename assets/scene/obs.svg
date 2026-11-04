@@ -1,0 +1,36 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g data-l="scene-obs">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="phone">
+<rect data-l="frame" x="30" y="30" width="130" height="240" rx="24" fill="#121212"/>
+<g data-l="screen">
+<rect x="36" y="36" width="118" height="228" rx="19" fill="white"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="48" y="64.5">Stream URL</tspan></text>
+<g data-l="url">
+<rect data-l="bg" x="46" y="82" width="98" height="30" rx="8" fill="#F2F2F2"/>
+<text data-l="t_2" fill="#555555" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" letter-spacing="0em"><tspan x="54" y="98.6364">rtmp://&#x2026;</tspan></text>
+</g>
+<g data-l="copy">
+<rect data-l="bg_2" x="46" y="122" width="98" height="30" rx="8" fill="#1B1B1B"/>
+<text data-l="t_3" fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="81.062" y="139.5">Copy</tspan></text>
+</g>
+<text data-l="h" fill="#777777" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="10" letter-spacing="0em"><tspan x="48" y="174.555">&#xe43;&#xe0a;&#xe49;&#xe44;&#xe14;&#xe49; 6 &#xe0a;&#xe21;.</tspan></text>
+</g>
+</g>
+<g data-l="laptop">
+<rect data-l="lid" x="214" y="60" width="222" height="140" rx="12" fill="#121212"/>
+<g data-l="screen_2">
+<rect x="222" y="68" width="206" height="124" rx="6" fill="#2A2A2E"/>
+<rect data-l="bar1" x="232" y="78" width="120" height="8" rx="4" fill="#3A3A40"/>
+<rect data-l="bar2" x="232" y="94" width="80" height="8" rx="4" fill="#3A3A40"/>
+<rect data-l="pv" x="232" y="112" width="186" height="70" rx="6" fill="#1B1B1E"/>
+<g data-l="lv">
+<rect data-l="bg_3" x="362" y="76" width="56" height="22" rx="6" fill="#E5484D"/>
+<text data-l="t_4" fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="bold" letter-spacing="0em"><tspan x="377.856" y="89.5">LIVE</tspan></text>
+</g>
+</g>
+<rect data-l="base" x="200" y="200" width="250" height="14" rx="6" fill="#3A3A40"/>
+</g>
+<text data-l="obs" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="312.514" y="251.864">OBS</tspan></text>
+</g>
+</svg>

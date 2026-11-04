@@ -23,7 +23,7 @@
 </g>
 <g data-l="calendar">
 <rect data-l="bg_2" x="231.25" y="109.25" width="107.5" height="107.5" rx="14.75" fill="white" stroke="#1B1B1B" stroke-width="2.5"/>
-<rect data-l="top" x="231.5" y="109.5" width="107" height="26" fill="#C9FF00"/>
+<path data-l="top" d="M232.5 124C232.5 116.544 238.544 110.5 246 110.5H324C331.456 110.5 337.5 116.544 337.5 124V135.5H232.5Z" fill="#E5484D"/>
 <text data-l="d-new" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="44" font-weight="bold" letter-spacing="0em"><tspan x="260.379" y="184.5">12</tspan></text>
 <text data-l="month" fill="#555555" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="273.885" y="206.666">&#xe1e;.&#xe22;.</tspan></text>
 </g>

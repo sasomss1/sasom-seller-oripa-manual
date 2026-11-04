@@ -1,0 +1,45 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g data-l="scene-fee">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="tab-sb">
+<rect data-l="bg" x="110" y="22" width="120" height="30" rx="15" fill="#C9FF00"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="126.213" y="39.8636">Send Board 5%</tspan></text>
+</g>
+<g data-l="tab-sl">
+<rect data-l="bg_2" x="240" y="22" width="120" height="30" rx="15" fill="#2E2E33"/>
+<text data-l="t_2" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="259.705" y="39.8636">Seller Live 8%</tspan></text>
+</g>
+<g data-l="ticket">
+<rect data-l="bg_3" x="36" y="96" width="120" height="110" rx="14" fill="#F2F2F0"/>
+<text data-l="k" fill="#777777" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="76.5117" y="124.666">1 &#xe2a;&#xe1b;&#xe2d;&#xe15;</tspan></text>
+<text data-l="v" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="30" font-weight="bold" letter-spacing="0em"><tspan x="61.5322" y="167.665">&#xe3f;100</tspan></text>
+<circle data-l="n1" cx="36" cy="151" r="9" fill="#1E1E21"/>
+<circle data-l="n2" cx="156" cy="151" r="9" fill="#1E1E21"/>
+</g>
+<g data-l="grp-sb">
+<g data-l="you">
+<rect data-l="bg_4" x="186" y="92" width="236" height="56" rx="14" fill="#C9FF00"/>
+<text data-l="k_2" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="200" y="111.861">&#xe04;&#xe38;&#xe13;&#xe44;&#xe14;&#xe49;</tspan></text>
+<text data-l="v_2" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="22" font-weight="bold" letter-spacing="0em"><tspan x="200" y="137.221">&#xe3f;95</tspan></text>
+</g>
+<g data-l="fee">
+<rect data-l="bg_5" x="186" y="162" width="54" height="56" rx="14" fill="#3A3A40"/>
+<text data-l="v_3" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="203.773" y="194.888">&#xe3f;5</tspan></text>
+</g>
+<text data-l="fk" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" letter-spacing="0em"><tspan x="250" y="192.666">&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;</tspan></text>
+</g>
+<g data-l="grp-sl">
+<g data-l="you_2">
+<rect data-l="bg_6" x="186" y="92" width="226" height="56" rx="14" fill="#C9FF00"/>
+<text data-l="k_3" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="11" font-weight="500" letter-spacing="0em"><tspan x="200" y="111.861">&#xe04;&#xe38;&#xe13;&#xe44;&#xe14;&#xe49;</tspan></text>
+<text data-l="v_4" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="22" font-weight="bold" letter-spacing="0em"><tspan x="200" y="137.221">&#xe3f;92</tspan></text>
+</g>
+<g id="fee_2">
+<rect data-l="bg_7" x="186" y="162" width="64" height="56" rx="14" fill="#3A3A40"/>
+<text data-l="v_5" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="16" font-weight="bold" letter-spacing="0em"><tspan x="208.773" y="194.888">&#xe3f;8</tspan></text>
+</g>
+<text data-l="fk_2" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" letter-spacing="0em"><tspan x="260" y="192.666">&#xe04;&#xe48;&#xe32;&#xe18;&#xe23;&#xe23;&#xe21;&#xe40;&#xe19;&#xe35;&#xe22;&#xe21;</tspan></text>
+</g>
+<text data-l="note" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" letter-spacing="0em"><tspan x="182.883" y="264.666">&#xe2b;&#xe31;&#xe01;&#xe40;&#xe09;&#xe1e;&#xe32;&#xe30;&#xe2d;&#xe2d;&#xe40;&#xe14;&#xe2d;&#xe23;&#xe4c;&#xe17;&#xe35;&#xe48;&#xe2a;&#xe33;&#xe40;&#xe23;&#xe47;&#xe08;</tspan></text>
+</g>
+</svg>
