@@ -229,7 +229,7 @@ a5:[[149,120,'แพ็คทีละออเดอร์','One order per bag'
 'board-grid':[[164,20,'แนะนำ Hit 10-20% ของบอร์ด','Hits 10-20% of the board'],[144,65,'เขียว = Hit','Lime = Hit'],[265,65,'เทา = ขายแล้ว','Grey = sold'],[64,145,'ขาว = ยังว่าง','White = still open']],
 'close-ok':[[249,110,'Hit No.1 ออกแล้ว ปิดบอร์ดได้','Hit No.1 is out: you can close'],[144,115,'Hit อื่นยังเหลือ ไลฟ์ต่อได้','Hits left? You may keep going']],
 'close-no':[[102,135,'ขายเกิน 20% แล้ว','Over 20% sold'],[174,86,'Hit No.1 ยังไม่ออก','Hit No.1 still in'],[251,80,'ต้องไลฟ์ต่อ ห้ามปิด','Keep going, can’t close']],
-'pay-closed':[[126,42,'1 · ปิดบอร์ด','1 · Board closes']],'pay-summary':[[127,90,'2 · สรุปยอด หักค่าธรรมเนียม','2 · Summary minus fees']],'pay-bank':[[166,90,'3 · โอนเงินก้อนเดียว 3-5 วันทำการ','3 · One transfer, 3-5 business days']],
+'pay-closed':[[126,42,'1 · ปิดบอร์ด','1 · Board closes']],'pay-summary':[[127,91,'2 · สรุปยอด หักค่าธรรมเนียม','2 · Summary minus fees',143,135]],'pay-bank':[[124.5,90,'3 · โอนเงินก้อนเดียว 3-5 วันทำการ','3 · One transfer, 3-5 business days',171,99]],
 'payout-account':[[234,62,'บัญชีรับเงินในระบบ','Payout account in the system'],[266,170,'ต้องตรงกับที่แจ้ง KAM','Must match what you gave KAM']],
 coupon:[[130,112,'SASOM มีโค้ดส่วนลดให้ลูกค้า','SASOM gives buyers discount codes']],
 'inspect-order':[[109,60,'ตรวจเฉพาะซองที่มีออเดอร์','Only ordered envelopes are checked'],[205,124,'ซองที่ไม่ถูกขาย หลังปิดบอร์ดต้องทิ้งทั้งหมดทุกกรณี','Unsold envelopes: discard them all after the board closes']],
