@@ -1151,3 +1151,17 @@ main{max-width:1180px}
 .s-stack2.fan .ev{transform:translate(-78px,0)}
 @media (max-width:640px){.s-stack2.fan .qr{transform:translate(70px,0) scale(.85)}.s-stack2.fan .ev{transform:translate(-70px,0) scale(.85)}}
 .pk .top{background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:0!important;border:0!important;box-shadow:none!important;display:block!important}
+
+/* trouble step visuals */
+.fx-vis{position:absolute;inset:34px 10px 62px;display:grid;place-items:center;opacity:0}
+.fx.play .fx-vis{opacity:1}.fx.play .fx-prob{opacity:0}
+.fx.fixed .fx-vis{opacity:0}
+.fxs{width:118px;height:118px;overflow:visible}
+.fxs .a1{animation:fxa1 1.4s both}.fxs .a2{animation:fxa2 1.4s both}
+@keyframes fxa1{0%,35%{opacity:1}55%,100%{opacity:0}}
+@keyframes fxa2{0%,45%{opacity:0;transform:translateY(6px)}70%,100%{opacity:1;transform:none}}
+.fxs .slide{animation:fxsl 1.2s both}@keyframes fxsl{0%{opacity:0;transform:translateX(40px)}60%,100%{opacity:1;transform:none}}
+.fxs .grow{transform-box:fill-box;transform-origin:center;animation:fxgr 1.3s both}@keyframes fxgr{0%,40%{opacity:0;transform:scale(.4)}75%,100%{opacity:1;transform:none}}
+.fxs .shrink{transform-box:fill-box;transform-origin:center;animation:fxsh 1.3s both}@keyframes fxsh{0%{opacity:1}40%,100%{opacity:0;transform:scale(.3)}}
+.fxs .hand{transform-box:view-box;transform-origin:60px 56px;animation:fxhd 1.3s linear both}@keyframes fxhd{to{transform:rotate(360deg)}}
+.fx.last .fx-btn{display:none}
