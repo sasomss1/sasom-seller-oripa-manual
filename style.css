@@ -1060,3 +1060,21 @@ main{max-width:1180px}
 .qrcard.sm{width:66px;height:auto;padding:6px;gap:4px}.qrcard.sm::before{font-size:13px}
 .qrcard.drag{width:84px;height:auto;padding:7px}.qrcard.drag::before{font-size:15px}
 .qrcard.code{width:120px}.qrcard.code::before{content:none}.qrcard.code b{color:#fff}
+
+/* QR card v2 (real design) */
+.qrcard{font-size:10px;width:120px;background:#1E1E21;border:1px solid #3A3A40;border-radius:.8em;padding:1.2em 1em;gap:.7em;color:#fff;justify-content:flex-start}
+.qrcard::before{content:none}
+.qrcard .qh{font:500 .9em/1.15 Inter,"Noto Sans JP",sans-serif;text-align:center;letter-spacing:.04em}.qrcard .qh b{display:block;font-weight:800}
+.qrcard .qn{font:700 3.6em/0.95 Inter;letter-spacing:-.02em;color:#fff}
+.qrcard .qc{font:500 .85em/1 Inter;background:#fff;color:#1B1B1B;padding:.35em .8em;border-radius:.5em}
+.qrcard .qbox{width:78%;border:1.5px solid #fff;border-radius:.9em;padding:.5em}
+.qrcard .qbox .qrsvg{width:100%;display:block;filter:invert(1);background:transparent;padding:0;border-radius:0}
+.qrcard .qlogo{width:2.4em;height:2.4em;border-radius:.6em;border:1.5px solid #fff;background:url(assets/sasom-logo.png) center/cover}
+.qrcard.sm{font-size:5.4px;width:66px;padding:.9em .7em}
+.qrcard.drag{font-size:7px;width:86px;padding:1em .8em}
+.qrcard.code{font-size:8.6px;width:104px}
+.qrcard.code .qn{display:none}
+.scard.back{background:linear-gradient(160deg,#2A9B5A,#1C7A43)!important;position:relative;overflow:hidden}
+.scard.back .flap{position:absolute;left:0;right:0;top:0;height:45%;background:rgba(255,255,255,.2);clip-path:polygon(0 0,100% 0,50% 100%)}
+.scard.back .logo{display:none}
+.qrcard.code .qh b{font:inherit;font-weight:800;letter-spacing:.04em;color:#fff}.qrcard.code .qc{font-size:1.25em;letter-spacing:.12em}
