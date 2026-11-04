@@ -561,7 +561,7 @@ function show(i,instant){if(cur&&!instant&&i>idx){if(!pendingTask())bumpReach();
  clearInterval(gateT);gateTick();gateT=setInterval(()=>{if($('#player').getAttribute('aria-hidden')==='true'){clearInterval(gateT);return}gateTick()},300)}
 function pendingTask(){const R=$('#pRight');if(!R)return false;if([...R.querySelectorAll('.fig[data-fig]')].some(f=>f.dataset.ok!==lang&&SPOTS[f.dataset.fig]))return true;if(R.querySelector('.spot:not(.found)'))return true;if(R.querySelector('[data-hot]:not(.hit)'))return true;
  if([...R.querySelectorAll('.simwrap[data-sim]')].some(w=>!(w.querySelector('.sim')||w).classList.contains('done')))return true;
- const q=R.querySelector('.quiz');if(q&&!q.querySelector('button.ok'))return true;return false}
+ const q=R.querySelector('.quiz');if(q&&!q.querySelector('button.ok'))return true;if(R.querySelector('.fx:not(.last)'))return true;return false}
 function bumpReach(){if(idx+1>reach){reach=idx+1;try{const m=store.get('reach',{})||{};m[cur.id]=Math.max(m[cur.id]||0,reach);store.set('reach',m)}catch(e){}}}
 function lockMarks(){document.querySelectorAll('#pLeft .step').forEach(el=>el.classList.toggle('lock',+el.dataset.step>reach));document.querySelectorAll('#pDots i').forEach((d,k)=>d.classList.toggle('lock',k>reach))}
 let gateT;function gateTick(){const b=$('#pNext');const p=pendingTask(),last=idx===slides.length-1;if(!p)bumpReach();lockMarks();b.classList.remove('skip');b.classList.toggle('locked',p);b.textContent=last?T('เสร็จ','Done'):T('ถัดไป','Next');
@@ -574,6 +574,7 @@ function fingerTarget(){const R=$('#pRight');if(!R)return null;const c=e=>{const
  if((e=R.querySelector('.taphit')))return c(e);
  if((e=R.querySelector('[data-hot]:not(.hit)')))return c(e);
  const w=[...R.querySelectorAll('.simwrap[data-sim]')].find(w=>!(w.querySelector('.sim')||w).classList.contains('done'));if(w){for(const [q,dx,dy] of [['.s-pin:not(.qopen) [data-q]',0,0],['[data-act]',0,0],['.s-scan.lockd .knob',110,0],['.s-swipe .knob',150,0],['.seal',0,-70],['.qrcard.drag',90,0],['.mover',90,0],['.top',0,-80],['[data-k="0"]',0,0],['[data-st].on',0,0]]){const el=w.querySelector(q);if(el){const a=c(el);if(a)return dx||dy?{...a,to:{x:a.x+dx,y:a.y+dy}}:a}}}
+ {const fx=R.querySelector('.fx:not(.last)');if(fx){const d=fx.closest('details');if(d&&!d.open)return c(d.querySelector('summary'));const bt=fx.querySelector('[data-fxb]');if(bt)return c(bt)}}
  if((e=R.querySelector('.quiz')))return c(e);return null}
 function fingerNow(){const t=fingerTarget();if(!t){return}lastAct=Date.now();fingerEl.style.left=t.x+'px';fingerEl.style.top=t.y+'px';fingerEl.classList.remove('on','drag');void fingerEl.offsetWidth;if(t.to){fingerEl.style.setProperty('--dx',(t.to.x-t.x)+'px');fingerEl.style.setProperty('--dy',(t.to.y-t.y)+'px');fingerEl.classList.add('drag')}fingerEl.classList.add('on');clearTimeout(fingerEl._t);fingerEl._t=setTimeout(hideFinger,3200)}
 ['pointerdown','keydown','wheel'].forEach(ev=>document.addEventListener(ev,()=>{lastAct=Date.now();hideFinger()},true));
