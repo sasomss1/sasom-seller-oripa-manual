@@ -1165,3 +1165,19 @@ main{max-width:1180px}
 .fxs .shrink{transform-box:fill-box;transform-origin:center;animation:fxsh 1.3s both}@keyframes fxsh{0%{opacity:1}40%,100%{opacity:0;transform:scale(.3)}}
 .fxs .hand{transform-box:view-box;transform-origin:60px 56px;animation:fxhd 1.3s linear both}@keyframes fxhd{to{transform:rotate(360deg)}}
 .fx.last .fx-btn{display:none}
+
+/* packing story */
+.scn [data-l="mv"],.scn [data-l="wrap"]{transition:transform .9s cubic-bezier(.4,0,.2,1),opacity .5s}
+.scn-pk-sleeve.go [data-l="mv"]{transform:translate(150px,0)}
+.scn-pk-top.go [data-l="mv"]{transform:translate(150px,0)}
+.scn-pk-case.go [data-l="mv"]{transform:translate(150px,0)}
+.scn-pk-bag.go [data-l="mv"]{transform:translate(250px,0) scale(.55);opacity:.85}
+.scn-pk-bag [data-l="mv"]{transform-box:fill-box;transform-origin:left center}
+.scn-pk-label.go [data-l="mv"]{transform:translate(0,90px)}
+.scn-pk-bubble [data-l="wrap"]{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(1.3)}
+.scn-pk-bubble.go [data-l="wrap"]{opacity:1;transform:none}
+.scn-pk-photo [data-l="flash"],.scn-pk-photo [data-l="toast"]{opacity:0}
+.scn-pk-photo.go [data-l="flash"]{animation:flash .5s both}
+.scn-pk-photo.go [data-l="toast"]{animation:sin .45s .6s both}
+.scn-pk-box [data-l="pkg"]{transition:transform 1.4s cubic-bezier(.5,0,.3,1)}
+.scn-pk-box.go [data-l="pkg"]{transform:translateX(260px) scale(.6);opacity:0;transition:transform .9s,opacity .6s .5s}
