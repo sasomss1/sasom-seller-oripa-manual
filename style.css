@@ -982,3 +982,14 @@ main{max-width:1180px}
 
 #pNext.skip{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--line)}
 .spot circle.hit.big{fill:transparent}
+
+/* v8 new scenes */
+.scn-request [data-l="toast"]{opacity:0}
+.scn-request.go [data-l="toast"]{animation:sin .45s .1s both}
+.scn-request.go [data-l="reqbtn"]{opacity:0;transition:opacity .2s}
+.scn-request [data-l="reqbtn"]{transform-box:fill-box;transform-origin:center}
+.scn-approve [data-l="stamp"]{opacity:0}
+.scn-approve.go [data-l="stamp"]{animation:stamp2 .45s .1s cubic-bezier(.2,1.5,.4,1) both}
+.scn-approve [data-l="card"]{transform-box:fill-box;transform-origin:center}
+.scn-ship-env [data-l="pkg"]{transform-box:fill-box;transition:transform 1.4s cubic-bezier(.5,0,.3,1)}
+.scn-ship-env [data-l="pkg"].dragging{animation:none!important;transition:none!important}
