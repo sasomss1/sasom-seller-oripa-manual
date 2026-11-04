@@ -1008,3 +1008,14 @@ main{max-width:1180px}
 @keyframes fgTap{0%{opacity:0;transform:translate(18px,26px)}25%{opacity:1;transform:translate(0,0)}45%{transform:translate(0,0) scale(.86)}60%{transform:translate(0,0) scale(1)}90%{opacity:1}100%{opacity:0;transform:translate(0,0)}}
 @keyframes fgRip{0%,40%{opacity:0;transform:scale(.4)}50%{opacity:1}100%{opacity:0;transform:scale(1.8)}}
 @keyframes fgDrag{0%{opacity:0;transform:translate(0,0)}15%{opacity:1;transform:translate(0,0) scale(.88)}75%{opacity:1;transform:translate(var(--dx),var(--dy)) scale(.88)}90%{opacity:0;transform:translate(var(--dx),var(--dy))}100%{opacity:0}}
+
+.why{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--lime);color:#1B1B1B;font-size:14px;line-height:1.5;text-align:left;animation:capin .3s ease}
+.why .chk{flex:none;width:20px;height:20px;margin-top:1px}
+
+.scn-resched [data-l="t-new"],.scn-resched [data-l="noti"],.scn-resched [data-l="strike"]{opacity:0}
+.scn-resched.go [data-l="strike"]{animation:sin .3s both}
+.scn-resched.go [data-l="t-old"]{animation:fadeo .4s .5s both}
+.scn-resched.go [data-l="t-new"]{animation:sin .45s .8s both}
+.scn-resched.go [data-l="noti"]{animation:sin .45s 1.4s both}
+.scn-resched [data-l="t-new"],.scn-resched [data-l="noti"]{transform-box:fill-box;transform-origin:center}
+@keyframes fadeo{to{opacity:0}}
