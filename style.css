@@ -813,3 +813,8 @@ main{max-width:1180px}
 .sc-pay.go .paid{animation:popc .4s 1.1s cubic-bezier(.2,1.6,.4,1) both}
 .vis:has(.story){max-width:600px}
 @media (max-width:640px){.st-stage{height:270px}.sc{gap:12px}.sc .ph{width:160px;height:220px}.av{width:52px}.av .bd{width:46px}.envs{gap:5px}.me{width:36px;height:48px}.bankc{width:170px}}
+
+/* hotspot v2: hollow ring so text stays readable, number badge on the rim */
+.spot .hit{fill:rgba(201,255,0,.10);stroke:#C9FF00;stroke-width:2.5;vector-effect:non-scaling-stroke}
+.spot .ring{fill:none;stroke:#C9FF00;stroke-width:2;vector-effect:non-scaling-stroke}
+.spot.found .hit{fill:none;stroke:rgba(201,255,0,.55);stroke-dasharray:3 3}
