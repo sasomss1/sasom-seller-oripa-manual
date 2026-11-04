@@ -975,3 +975,7 @@ main{max-width:1180px}
 .spotcap b{flex:none;width:22px;height:22px;border-radius:50%;background:var(--lime);color:#1B1B1B;display:grid;place-items:center;font-size:12px}
 @keyframes capin{from{opacity:0;transform:translateY(4px)}}
 .spot.cur .ring{stroke-width:3}
+
+.spot .ring.box{fill:none;stroke:#C9FF00;stroke-width:2.5;animation:spotb 1.6s infinite}
+.spot rect.hit{fill:transparent}
+@keyframes spotb{50%{opacity:.35}}
