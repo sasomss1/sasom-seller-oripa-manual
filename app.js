@@ -507,7 +507,12 @@ function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));const s=sli
  document.querySelectorAll('#pDots i').forEach((d,k)=>d.classList.toggle('on',k===idx));
  $('#pBar').style.width=((idx+1)/slides.length*100)+'%';$('#pCount').textContent=`${idx+1}/${slides.length}`;
  $('#pPrev').textContent=T('ย้อนกลับ','Back');$('#pPrev').disabled=idx===0;const last=idx===slides.length-1;$('#pNext').textContent=last?T('เสร็จ','Done'):T('ถัดไป','Next');
- if(last&&cur){done[cur.id]=true;store.set('done',done)}}
+ if(last&&cur){done[cur.id]=true;store.set('done',done)}
+ clearInterval(gateT);gateTick();gateT=setInterval(()=>{if($('#player').getAttribute('aria-hidden')==='true'){clearInterval(gateT);return}gateTick()},300)}
+function pendingTask(){const R=$('#pRight');if(!R)return false;if(R.querySelector('.spot:not(.found)'))return true;if(R.querySelector('[data-hot]:not(.hit)'))return true;
+ if([...R.querySelectorAll('.simwrap[data-sim]')].some(w=>!(w.querySelector('.sim')||w).classList.contains('done')))return true;
+ const q=R.querySelector('.quiz');if(q&&!q.querySelector('button.ok'))return true;return false}
+let gateT;function gateTick(){const b=$('#pNext');const p=pendingTask(),last=idx===slides.length-1;b.classList.toggle('skip',p);b.textContent=p?T('ข้าม','Skip'):last?T('เสร็จ','Done'):T('ถัดไป','Next')}
 $('#pNext').onclick=()=>{if(idx===slides.length-1)closeLesson();else show(idx+1)};
 $('#pPrev').onclick=()=>show(idx-1);$('#pClose').onclick=closeLesson;
 document.addEventListener('keydown',e=>{if(!cur)return;if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Escape'){if($('#lb').classList.contains('open'))closeLb();else closeLesson()}});

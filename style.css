@@ -979,3 +979,5 @@ main{max-width:1180px}
 .spot .ring.box{fill:none;stroke:#C9FF00;stroke-width:2.5;animation:spotb 1.6s infinite}
 .spot rect.hit{fill:transparent}
 @keyframes spotb{50%{opacity:.35}}
+
+#pNext.skip{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--line)}
