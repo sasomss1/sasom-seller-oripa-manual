@@ -1252,3 +1252,7 @@ main{max-width:1180px}
 @keyframes nobblink{50%{fill:rgba(201,255,0,.28)}}
 @keyframes spbounce{0%,100%{translate:0 0;filter:none}30%{translate:0 -5%;filter:drop-shadow(0 0 6px rgba(201,255,0,.9))}55%{translate:0 0}}
 @keyframes spdone{40%{scale:1.04}}
+.spb{transform-box:view-box!important;transform-origin:0 0!important;animation:spbounce2 1.3s ease-in-out infinite!important}
+@keyframes spbounce2{0%,100%{translate:0 0;filter:none}30%{translate:0 -4px;filter:drop-shadow(0 0 5px rgba(201,255,0,.9))}55%{translate:0 0}}
+.spf{transform-box:view-box!important;transform-origin:0 0!important;animation:none!important}
+.spot.found{pointer-events:none}
