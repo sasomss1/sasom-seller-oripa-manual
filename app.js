@@ -79,6 +79,69 @@ function initSim(el){const k=el.dataset.sim;const S=el.querySelector('.sim')||el
 const sim=k=>`<div class="simwrap" data-sim="${k}">${SIM[k]()}</div>`;
 function initSims(root){root.querySelectorAll('.simwrap[data-sim]').forEach(initSim)}
 
+/* ---------- app screen mockups (sharp, scalable) ---------- */
+const MI={
+ back:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5m6-6-6 6 6 6"/></svg>',
+ chev:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
+ home:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 10.5 12 4l8 6.5V20h-5v-5h-6v5H4Z"/></svg>',
+ live:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m10 10 4 2.5-4 2.5Z" fill="currentColor"/></svg>',
+ search:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>',
+ heart:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>',
+ user:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>',
+ cam:'<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M8 6 9.5 4h5L16 6"/><path d="M12 10v6M9 13h6" stroke-linecap="round"/></svg>',
+ cart:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 4h2l2 11h11l2-8H6.5"/><circle cx="9" cy="19.5" r="1.3"/><circle cx="17" cy="19.5" r="1.3"/></svg>',
+ bell:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15Z"/><path d="M10 20.5h4" stroke-linecap="round"/></svg>',
+ cal:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4" stroke-linecap="round"/></svg>',
+ clock:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>',
+ video:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="m16 11 5-3v8l-5-3Z"/></svg>',
+ radio:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M8.5 8.5a5 5 0 0 0 0 7m7-7a5 5 0 0 1 0 7M6 6a8.5 8.5 0 0 0 0 12m12-12a8.5 8.5 0 0 1 0 12"/></svg>',
+ tag:'<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 12V4h8l10 10-8 7Z" opacity=".55"/><circle cx="7.5" cy="8" r="1.6" fill="#fff"/></svg>',
+ spark:'<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" opacity=".6"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/></svg>',
+ img:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 16 5-5 4 4 3-3 6 6" stroke-linejoin="round"/><circle cx="16" cy="9" r="1.5"/></svg>',
+ clover:'<svg viewBox="0 0 24 24" width="40" height="40" fill="#E2E2E2"><circle cx="9" cy="9" r="4"/><circle cx="15" cy="9" r="4"/><circle cx="9" cy="15" r="4"/><circle cx="15" cy="15" r="4"/></svg>',
+ plus:'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
+ eyeoff:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/><path d="M4 4l16 16"/></svg>'};
+const mkSB=(dark)=>`<div class="m-sb ${dark?'d':''}"><b>10:04</b><span class="sig"><i></i><i></i><i></i><i></i></span><span class="g5">5G</span><span class="bat"><i>39</i></span></div>`;
+const mkNav=t=>`<div class="m-nav"><span>${MI.back}</span><b>${t}</b><span></span></div>`;
+const mkTab=(dark,act,hot)=>`<div class="m-tab ${dark?'d':''}">${[['home','Home'],['live','LIVE & Feed'],['search','Search'],['heart','Saved'],['user','Profile']].map(([i,l],k)=>`<div class="ti ${k===act?'on':''}" ${k===1?'data-h="tab"':''}>${k===1?'<em>LIVE</em>':''}${MI[i]}<small>${l}</small></div>`).join('')}</div>`;
+const thumb=(c,live)=>`<div class="m-th" style="background:${c}">${live?'<em>● LIVE</em>':''}</div>`;
+const G=['linear-gradient(150deg,#3A4A6B,#1D2333)','linear-gradient(150deg,#F2B8D8,#8DC5F0)','linear-gradient(150deg,#555,#1d1d1d)','linear-gradient(150deg,#8C7A66,#2B2620)','linear-gradient(150deg,#2A2A2A,#000)'];
+function feedDark(){return `${mkSB(1)}<div class="m-ftop"><span>${MI.user}</span><div class="m-ftabs"><b>LIVE</b><span>Explore</span><span>Feed</span></div><span>${MI.search}</span><span class="camp" data-h="cam">${MI.cam}</span></div>
+ <div class="m-sec d">LIVE Now</div><div class="m-row">${thumb(G[0],1)}${thumb(G[1],1)}</div><div class="m-cap d"><i></i>shop · TCG<i></i>Yxma</div>
+ <div class="m-sec d">Upcoming Shows <small>Show more</small></div><div class="m-row s">${thumb(G[2])}${thumb(G[3])}${thumb(G[4])}</div>
+ <div class="m-sec d">Follow Top Sellers <small>Show more</small></div><div class="m-grow"></div>${mkTab(1,1)}`}
+const field=(ph,ic='')=>`<div class="m-in"><span>${ph}</span>${ic}</div>`;
+function createPlan(on){return `${mkSB()}${mkNav('Create LIVE Plan')}<div class="m-body">
+ <div data-h="info"><div class="m-lab">LIVE name <em class="draft">Draft</em></div><div class="m-namer"><div class="cover">${MI.img}<small>Add cover</small></div><div class="col">${field('e.g. Sneakers Deals')}<span class="hash"># Hashtag</span></div></div>
+ <div class="m-dt"><div><div class="m-lab">LIVE date</div>${field('Select date',MI.cal)}</div><div><div class="m-lab">LIVE time</div>${field('hh:mm',MI.clock)}</div></div></div>
+ <div class="m-hr"></div><div class="m-link" data-h="prod"><div><b>LIVE Products (0/150)</b><small>Select products from your listings to sell on LIVE.</small></div>${MI.chev}</div>
+ <div class="m-empty">${MI.radio}<small>No products added.<br>Select a product to feature in this LIVE.</small></div>
+ <div class="m-hr"></div><div class="m-link" data-h="excl"><div><b>LIVE Exclusive</b><small>Sell items only during LIVE to create exclusive deals</small></div><i class="tg ${on?'on':''}"></i></div>
+ <div class="m-how"><b>How it appears</b><div class="m-how2"><div><small>LIVE</small><i></i><em>฿ 2,500</em><b>฿ 1,800</b></div><div><small>MARKETPLACE</small><i></i>${MI.eyeoff}<b>฿ 2,500</b></div></div><p>${on?'Marketplace hidden during LIVE':'LIVE price won’t affect Marketplace'}</p></div>
+ </div><div class="m-cta" data-h="save">Save LIVE Plan</div>`}
+const MOCK={
+ home:()=>`${mkSB()}<div class="m-srch">${MI.search}<span>evo si</span><b>${MI.cart}</b><b>${MI.bell}</b></div>
+ <div class="m-ctabs"><b>For You</b><span>All Deals</span><span>Trading Cards</span><span>Streetwear</span></div>
+ <div class="m-cats">${[['CHECK IN','#E8F7D0','#1B1B1B','SASOM+'],['ALL DEALS','#B32025','#fff','All Deals'],['600K','#1B1B1B','#F5C733','SASOM Promo'],['2K','#E5484D','#fff','Below 2000'],['NEW DROP','#fff','#1B1B1B','New drop']].map(c=>`<div><i style="background:${c[1]};color:${c[2]}">${c[0]}</i><small>${c[3]}</small></div>`).join('')}</div>
+ <div class="m-sec">LIVE Now &amp; Upcoming shows</div><div class="m-row xs">${G.map(g=>thumb(g)).join('')}</div>
+ <div class="m-ban"><span>EVERYTHING JUST</span><b>฿10</b><small>No Code Needed, All Categories</small></div>
+ <div class="m-prods">${[['Celine','Small Wallet Triomphe','฿ 23,900','#3A3530'],['Pokemon','Mega Evolution Booster Pack','฿ 98','#4C7A3A']].map(p=>`<div><i style="background:${p[3]}"></i><small>${p[0]}</small><p>${p[1]}</p><b>${p[2]}</b></div>`).join('')}</div><div class="m-grow"></div>${mkTab(0,0)}`,
+ feed:()=>feedDark(),
+ sheet:()=>`<div class="m-dim">${feedDark()}</div><div class="m-sheet"><i class="grab"></i><b>Add Video</b><div class="opt">${MI.tag}<span>Upload Video to Sell</span></div><div class="opt">${MI.spark}<span>Share Your Style Video</span></div><div class="opt" data-h="ls">${MI.radio}<span>LIVE Selling</span></div></div>`,
+ selling:()=>`${mkSB()}${mkNav('LIVE Selling')}<div class="m-perf"><div class="m-lab">LIVE Performance <small>See more</small></div><small class="upd">Last Updated: 22/10/26 22:04</small><div class="kpis">${[['GMV','฿ 0'],['Orders','0'],['LIVE Ses','3']].map(k=>`<div><small>${k[0]}</small><b>${k[1]}</b></div>`).join('')}</div></div>
+ <div class="m-body"><div class="m-lab">LIVE Now <em class="draft">0/1 LIVE</em></div><div class="m-two" data-h="start"><div>${MI.video}<b>Start LIVE now</b><small>Go LIVE instantly</small></div><div>${MI.cal}<b>Schedule LIVE</b><small>Plan ahead</small></div></div>
+ <div class="m-lab"><span class="clv"></span>Oripa Overview <small>View all</small></div><div class="m-ov"><div class="g"><b>0</b><small>Ready</small></div><div class="y"><b>0</b><small>Pending</small></div><div><b>● 0</b><small>Live</small></div></div><div class="m-req">${MI.plus} Request new board</div>
+ <div data-h="plan"><div class="m-lab">LIVE Plan <small>See more</small></div><div class="m-pills"><b>Upcoming</b><span>Completed</span></div><div class="m-calempty">${MI.cal}</div></div></div><div class="m-cta">${MI.plus} Create LIVE Plan</div>`,
+ plan:()=>createPlan(false),
+ plan2:()=>createPlan(true),
+ products:()=>`${mkSB()}${mkNav('LIVE Products')}<div class="m-body"><small class="m-note">Choose how to add products from your listings to pin during LIVE.</small>
+ ${[['Add Auction item','Pick items to set up for auction','#F7F2C8',''],['Add by SKU','Feature all available sizes and variants for a product.','#F2F2F2','sku'],['Add by Item','Feature specific item listings for promotion.','#F2F2F2',''],['Add Oripa board','Feature numbered spots that buyers can purchase','#F2F2F2','oripa'],['Reuse a previous LIVE','Copy the products from a LIVE you already ran.','#F2F2F2','']].map(o=>`<div class="m-opt" ${o[3]?`data-h="${o[3]}"`:''}><i style="background:${o[2]}"></i><div><b>${o[0]}</b><small>${o[1]}</small></div>${MI.chev}</div>`).join('')}
+ <small class="m-note">* All options can be combined in the same plan.</small></div>`,
+ board:()=>`${mkSB()}${mkNav('Select board')}<div class="m-body m-center"><div class="m-noboard" data-h="none">${MI.clover}<b>No boards are ready</b><small>Only boards you've marked as ready can be added to a live. Prepare one in Oripa Overview, then come back to add it.</small><span class="m-go">Go to Oripa Overview</span></div></div>`};
+function mockHTML(screen,hot){const d=document.createElement('div');d.innerHTML=MOCK[screen]();const h=d.querySelector(`[data-h="${hot}"]`);if(h){h.classList.add('m-hot');h.setAttribute('data-hot','');h.setAttribute('role','button')}return `<div class="mkwrap"><div class="mk" data-tap><div class="mk-scr ${['feed','sheet'].includes(screen)?'dark':''}">${d.innerHTML}</div></div></div>`}
+function fitMocks(root){root.querySelectorAll('.mk').forEach(m=>{const avail=Math.max(380,Math.min(window.innerWidth<900?window.innerHeight-300:window.innerHeight-230,780));const s=avail/812;m.style.setProperty('--s',s)})}
+window.addEventListener('resize',()=>fitMocks(document))
+
 /* ---------- lessons ---------- */
 const LESSONS=[
 /* ===== STAGE 1 ===== */
@@ -212,17 +275,17 @@ function issues(){const I=[['blackscreen',T('จอดำ','Black screen'),T('�
 
 /* set-up LIVE slides from app screenshots */
 const SETUP=()=>[
- ['s1',[.2,.912,.42,.978],T('เข้า LIVE & Feed','Open LIVE & Feed'),T('แท็บล่างของแอป','Bottom tab')],
- ['s2',[.86,.065,.975,.11],T('กดไอคอนกล้อง +','Tap the camera +'),T('มุมขวาบน','Top right')],
- ['s3',[.04,.85,.62,.895],T('เลือก LIVE Selling','Choose LIVE Selling'),T('จากเมนู Add Video','From Add Video')],
- ['s4',[.02,.355,.98,.465],T('Schedule หรือ Start now','Schedule or Start now'),T('ไลฟ์เลย กด Start LIVE now','Live now? Start LIVE now')],
- ['s5',[.02,.135,.98,.345],T('ชื่อ + ปก + วันเวลา','Name + cover + time'),T('ปก 1667 × 2500 px','Cover 1667 × 2500 px')],
- ['s6',[.03,.275,.97,.365],'LIVE Products',T('ใส่สินค้าอย่างน้อย 1 SKU','Add at least 1 SKU')],
- ['s7',[.12,.535,.88,.61],'Add Oripa board',T('“No boards are ready” = ยังไม่มีบอร์ดพร้อม','“No boards are ready” = none ready')],
- ['s8',[.02,.59,.97,.64],'LIVE Exclusive',T('Oripa ไม่ต้องเปิด','Not needed for Oripa')],
- ['s8',[.02,.905,.98,.97],T('Save แล้วเข้าห้อง LIVE','Save, enter the room'),T('เข้าห้องแล้ว ต้องกด Start LIVE','Then tap Start LIVE')],
- ['s4',[.02,.68,.98,.76],T('กลับมาเข้าห้องทีหลัง','Coming back later'),T('Profile · LIVE Selling · LIVE Plan','Profile · LIVE Selling · LIVE Plan')]
-].map((s,i,a)=>({tap:{img:s[0],box:s[1]},n:i+1,of:a.length,title:s[2],h:[s[2],s[2]],l:[s[3],s[3]],
+ ['home','tab',T('เข้า LIVE & Feed','Open LIVE & Feed'),T('แท็บล่างของแอป','Bottom tab')],
+ ['feed','cam',T('กดไอคอนกล้อง +','Tap the camera +'),T('มุมขวาบน','Top right')],
+ ['sheet','ls',T('เลือก LIVE Selling','Choose LIVE Selling'),T('จากเมนู Add Video','From Add Video')],
+ ['selling','start',T('Schedule หรือ Start now','Schedule or Start now'),T('ไลฟ์เลย กด Start LIVE now','Live now? Start LIVE now')],
+ ['plan','info',T('ชื่อ + ปก + วันเวลา','Name + cover + time'),T('ปก 1667 × 2500 px','Cover 1667 × 2500 px')],
+ ['products','sku','LIVE Products',T('ใส่สินค้าอย่างน้อย 1 SKU','Add at least 1 SKU')],
+ ['board','none','Add Oripa board',T('“No boards are ready” = ยังไม่มีบอร์ดพร้อม','“No boards are ready” = none ready')],
+ ['plan2','excl','LIVE Exclusive',T('Oripa ไม่ต้องเปิด','Not needed for Oripa')],
+ ['plan2','save',T('Save แล้วเข้าห้อง LIVE','Save, enter the room'),T('เข้าห้องแล้ว ต้องกด Start LIVE','Then tap Start LIVE')],
+ ['selling','plan',T('กลับมาเข้าห้องทีหลัง','Coming back later'),T('Profile · LIVE Selling · LIVE Plan','Profile · LIVE Selling · LIVE Plan')]
+].map((s,i,a)=>({tap:{screen:s[0],hot:s[1]},n:i+1,of:a.length,title:s[2],h:[s[2],s[2]],l:[s[3],s[3]],
   b:()=>i===9?`<div class="note lime">${T('ส่ง Live ID ให้ KAM/SA · เตรียมของก่อน 30–60 นาที · จบต้องกด End Live','Send Live ID to KAM/SA · prep 30–60 min early · always End Live')}</div>`:''})).concat([
  {h:['ไลฟ์ผ่าน OBS','Going live via OBS'],l:['',''],b:()=>pts([{t:T('Copy Stream URL ตอนจะเริ่มเท่านั้น','Copy the Stream URL right before')},{t:T('URL หมดอายุใน 6 ชม.','URLs expire in 6 hours')},{t:T('เริ่มใหม่ ใช้ URL ใหม่ทุกครั้ง','Restarted? Use a new URL')}])},
  {h:['เลื่อนเวลาไลฟ์','Rescheduling'],l:['',''],b:()=>pts([{t:T('แก้วันเวลาใน LIVE Plan เดิม','Edit the time in the same LIVE Plan')},{t:T('แจ้ง KAM/SA ทุกครั้ง','Tell your KAM/SA every time')},{t:T('ไลฟ์ได้สูงสุด 4 ชม. ต่อรอบ','Max 4 hours per live')}])}]);
@@ -327,7 +390,7 @@ function hasVis(s){return !!(s.v||s.tap||s.cmp)}
 function visOf(s){
  if(s.finish){const ni=LESSONS.indexOf(cur)+1,nx=LESSONS[ni];return `<div class="vfin"><div class="medal">${CHK}</div><h2>${T('จบบทนี้แล้ว!','Lesson complete!')}</h2><p>${L2(cur.t)}</p><div class="fin-btns">${nx?`<button class="btn dark" data-open="${nx.id}">${T('บทถัดไป','Next')} · ${L2(nx.t)}</button>`:''}<button class="btn ghost" data-home>${T('หน้าแรก','Home')}</button></div></div>`}
  if(s.quiz)return `<div class="vquiz"><span class="pill lime">QUIZ</span><h2>${L2(s.quiz.q)}</h2><div class="quiz" data-ans="${s.quiz.a}">${s.quiz.o.map((o,k)=>`<button data-k="${k}">${L2(o)}</button>`).join('')}</div><div class="qres"></div></div>`;
- if(s.tap){const b=s.tap.box;return `<div class="tapwrap"><div class="ts-ph" data-tap><img src="assets/${s.tap.img}@2x.jpg" alt="" draggable="false"><button class="ts-hot" data-hot aria-label="${T('ถัดไป','Next')}" style="left:${b[0]*100}%;top:${b[1]*100}%;width:${(b[2]-b[0])*100}%;height:${(b[3]-b[1])*100}%"></button></div></div>`}
+ if(s.tap)return mockHTML(s.tap.screen,s.tap.hot);
  if(s.cmp)return `<div class="vcmp" id="cmpBox">${cmpHTML()}</div>`;
  if(s.v)return `<div class="vis">${s.v()}</div>`;
  return ''}
@@ -337,7 +400,7 @@ function buildPlayer(){slides=slidesOf(cur);$('#pKicker').textContent=`${T('บ�
  $('#pLeft').innerHTML=`<div class="steps">${slides.map((s,i)=>`<div class="step ${s.finish||s.quiz?'solo':''}" data-step="${i}"><span class="sn ${s.finish?'fin':''}">${s.finish?CHK:s.quiz?'?':String(i+1).padStart(2,'0')}</span><div class="st"><b>${titleOf(s)}</b></div></div>`).join('')}</div>`;
  $('#pDots').innerHTML=slides.map(()=>'<i></i>').join('');hydrateFigs($('#pLeft'));show(idx,true)}
 function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));const s=slides[idx];
- const R=$('#pRight');R.innerHTML=`<div class="rv ${s.tap?'is-tap':''}">${visOf(s)}${capOf(s)}</div>`;hydrateFigs(R);initSims(R);
+ const R=$('#pRight');R.innerHTML=`<div class="rv ${s.tap?'is-tap':''}">${visOf(s)}${capOf(s)}</div>`;hydrateFigs(R);initSims(R);fitMocks(R);
  document.querySelectorAll('.step').forEach(el=>{const k=+el.dataset.step;el.classList.toggle('on',k===idx);el.classList.toggle('past',k<idx)});
  const on=document.querySelector('.step.on');if(on&&window.innerWidth>=900){const P=$('#pLeft');const top=on.offsetTop-P.clientHeight/3;P.scrollTo({top,behavior:instant?'auto':'smooth'})}
  $('#pStage').scrollTop=0;
@@ -378,7 +441,7 @@ document.addEventListener('click',e=>{
  
  const g=e.target.closest('[data-go]');if(g&&cur){show(+g.dataset.go);return}
  const hot=e.target.closest('[data-hot]');if(hot){hot.classList.add('hit');setTimeout(()=>show(idx+1),260);return}
- const ph=e.target.closest('[data-tap]');if(ph){const hs=ph.querySelector('.ts-hot');hs.classList.remove('miss');void hs.offsetWidth;hs.classList.add('miss');const tp=document.querySelector('.step.on .tip');if(tp){tp.classList.remove('flash');void tp.offsetWidth;tp.classList.add('flash')}return}
+ const ph=e.target.closest('[data-tap]');if(ph){const hs=ph.querySelector('[data-hot]');if(!hs)return;hs.classList.remove('miss');void hs.offsetWidth;hs.classList.add('miss');const tp=document.querySelector('.step.on .tip');if(tp){tp.classList.remove('flash');void tp.offsetWidth;tp.classList.add('flash')}return}
  const z=e.target.closest('[data-zoom]');if(z){$('#lbIn').innerHTML=`<img src="${z.dataset.zoom}" alt="">`;$('#lb').classList.add('open');return}
  if(e.target.closest('#lb')){closeLb();return}
  const q=e.target.closest('.quiz button');if(q){const box=q.parentElement,ans=+box.dataset.ans,k=+q.dataset.k;box.querySelectorAll('button').forEach(b=>b.classList.remove('ok','no'));q.classList.add(k===ans?'ok':'no');box.nextElementSibling.textContent=k===ans?T('ถูกต้อง! ไปต่อได้เลย','Correct! Keep going'):T('ยังไม่ใช่ ลองอีกครั้ง','Not quite, try again');box.nextElementSibling.style.color=k===ans?'var(--green)':'var(--red)';return}
