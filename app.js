@@ -43,7 +43,7 @@ function figPost(el){const svg=el.querySelector('svg');if(!svg||svg.dataset.post
  svg.querySelectorAll('text').forEach(t=>{const f=(t.getAttribute('fill')||'').toUpperCase();const cls=f==='#C9FF00'?'lime':['WHITE','#FFFFFF','#F2F2F2'].includes(f)?'ink':['#CCCCCC','#AAAAAA','#BDBDBD','#999999'].includes(f)?'sub':'';if(!cls)return;const r=t.getBoundingClientRect();if(!r.width)return;const under=document.elementsFromPoint(r.left+r.width/2,r.top+r.height/2).filter(n=>n!==t&&n!==svg&&svg.contains(n)&&n.tagName!=='text'&&n.tagName!=='tspan'&&n.tagName!=='g');if(!under.length)t.classList.add('onbg',cls)})}
 async function hydrateFigs(root){const els=[...(root||document).querySelectorAll('.fig[data-fig]')].filter(e=>e.dataset.ok!==lang);if(!els.length)return;
  if(!FDICT){try{FDICT=await (await fetch('assets/fig/dict.json')).json()}catch(e){FDICT={}}}
- await Promise.all(els.map(async el=>{const n=el.dataset.fig;if(tipOf(n))el.dataset.tip=tipOf(n);try{if(!FIG[n])FIG[n]=fetch('assets/fig/'+n+'.svg').then(r=>{if(!r.ok)throw 0;return r.text()});el.innerHTML=await FIG[n];if(lang==='en')el.querySelectorAll('tspan,text').forEach(t=>{if(t.children.length)return;const k=t.textContent.trim();if(FDICT[k])t.textContent=FDICT[k]});el.dataset.ok=lang;figPost(el)}catch(e){delete FIG[n]}}))}
+ await Promise.all(els.map(async el=>{const n=el.dataset.fig;if(tipOf(n)&&!SPOTS[n])el.dataset.tip=tipOf(n);try{if(!FIG[n])FIG[n]=fetch('assets/fig/'+n+'.svg').then(r=>{if(!r.ok)throw 0;return r.text()});el.innerHTML=await FIG[n];if(lang==='en')el.querySelectorAll('tspan,text').forEach(t=>{if(t.children.length)return;const k=t.textContent.trim();if(FDICT[k])t.textContent=FDICT[k]});el.dataset.ok=lang;figPost(el);addSpots(el)}catch(e){delete FIG[n]}}))}
 
 /* ---------- try-it simulations (game-like) ---------- */
 const qrSvg=(seed=7)=>{let r='';const f=(x,y)=>{const inF=(a,b)=>x>=a&&x<a+7&&y>=b&&y<b+7;for(const [a,b] of [[0,0],[14,0],[0,14]])if(inF(a,b)){const i=x-a,j=y-b;return i==0||i==6||j==0||j==6||(i>=2&&i<=4&&j>=2&&j<=4)}if((x<8&&y<8)||(x>12&&y<8)||(x<8&&y>12))return false;return ((x*31+y*17+seed*x*y)%7)<3};for(let y=0;y<21;y++)for(let x=0;x<21;x++)if(f(x,y))r+=`<rect x="${x}" y="${y}" width="1.02" height="1.02"/>`;return `<svg class="qrsvg" viewBox="-1 -1 23 23"><rect x="-1" y="-1" width="23" height="23" fill="#fff"/><g fill="#1B1B1B">${r}</g></svg>`};
@@ -66,6 +66,7 @@ const SIM={
  scan:()=>`<div class="sim s-scan"><div class="cam"><div class="aim"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><i class="line"></i></div><div class="sheet"><small>QR detected</small><b>#017 · Hit No.3</b><button class="btn" data-act>Confirm</button></div></div><div class="qrcard drag">${qrSvg(9)}</div></div>`,
  keypad:()=>`<div class="sim s-key"><div class="qrcard code">${qrSvg(11)}<b>482917</b></div><div class="pad"><div class="boxes">${'<i></i>'.repeat(6)}</div><div class="keys">${[1,2,3,4,5,6,7,8,9,'',0,'del'].map(k=>k===''?'<span></span>':`<button data-k="${k}">${k==='del'?'<svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6h10a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-6-6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 10l4 4m0-4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>':k}</button>`).join('')}</div><div class="match"><i class="art"></i><span>${T('ชื่อการ์ดที่ระบบจับคู่','Matched card')}<b>#017 · Hit No.3</b></span></div><button class="btn conf" data-act disabled>Confirm</button></div></div>`};
 function initSim(el){const k=el.dataset.sim;const S=el.querySelector('.sim')||el;
+ if(k==='storySB'||k==='storySL'){storyInit(S);return}
  if(k==='pin'){S.querySelector('[data-act]').onclick=()=>{S.classList.add('pinned');simDone(S)}}
  if(k==='swipe'){const tr=S.querySelector('.track'),kn=S.querySelector('.knob');let max=0;drag(kn,{start(){max=tr.clientWidth-kn.offsetWidth-10;kn.style.transition='none'},move(dx){const d=Math.max(0,Math.min(max,dx));kn.style.transform=`translateX(${d}px)`;tr.style.setProperty('--p',d/max)},end(dx){kn.style.transition='';if(dx>max*.8){kn.style.transform=`translateX(${max}px)`;tr.style.setProperty('--p',1);S.classList.add('open');simDone(S)}else{kn.style.transform='';tr.style.setProperty('--p',0)}}})}
  if(k==='seal'){const se=S.querySelector('.seal');let moved=false;drag(se,{move(dx,dy){moved=Math.hypot(dx,dy)>8;se.style.transform=`translate(${dx}px,${dy}px) rotate(${dx/6}deg)`},end(dx,dy){if(Math.hypot(dx,dy)>50||!moved){se.style.transform='';S.classList.add('peeled');simDone(S)}else se.style.transform=''}})}
@@ -76,6 +77,43 @@ function initSim(el){const k=el.dataset.sim;const S=el.querySelector('.sim')||el
  if(k==='scan'){const q=S.querySelector('.qrcard.drag'),aim=S.querySelector('.aim');let ok=false;drag(q,{start(){q.style.transition='none'},move(dx,dy){q.style.transform=`translate(${dx}px,${dy}px)`;const a=q.getBoundingClientRect(),b=aim.getBoundingClientRect();const inn=Math.abs((a.left+a.width/2)-(b.left+b.width/2))<b.width*.3&&Math.abs((a.top+a.height/2)-(b.top+b.height/2))<b.height*.3;aim.classList.toggle('hot',inn);ok=inn},end(){q.style.transition='';if(ok){S.classList.add('scanning');setTimeout(()=>S.classList.add('found'),900)}else q.style.transform=''}});S.querySelector('[data-act]').onclick=()=>simDone(S)}
  if(k==='keypad'){let v='';const bx=[...S.querySelectorAll('.boxes i')],cf=S.querySelector('.conf');const draw=()=>bx.forEach((b,i)=>{b.textContent=v[i]||'';b.classList.toggle('f',i===v.length)});draw();
   S.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{if(S.classList.contains('matched'))return;const kk=b.dataset.k;if(kk==='del')v=v.slice(0,-1);else if(v.length<6)v+=kk;draw();if(v.length===6){if(v==='482917'){S.classList.add('matched');cf.disabled=false}else{S.classList.add('bad');setTimeout(()=>{S.classList.remove('bad');v='';draw()},500)}}});cf.onclick=()=>simDone(S)}}
+/* ---------- animated how-it-works stories ---------- */
+const AV=(w)=>`<div class="av ${w}"><i class="hd"></i><i class="bd"></i>${w==='SASOM'?'<span class="ico-logo"></span>':''}<em>${w==='SELLER'?T('คุณ','You'):w}</em></div>`;
+const miniEnv=(n,c)=>`<div class="me ${c}"><i></i><b>${n}</b></div>`;
+const SC={
+ chat:(sl)=>`<div class="sc sc-chat"><div class="ph"><div class="ph-h"><span class="kamav"></span><b>KAM</b></div><div class="ph-b"><div class="bub me">${T('บอร์ด Pokemon · 100 สปอต<br>Hit 12 ใบ · 150฿/จุ่ม','Pokemon board · 100 spots<br>12 Hits · ฿150/spot')}</div><div class="typing"><i></i><i></i><i></i></div><div class="bub kam">${T('รับทราบครับ เดี๋ยวเช็คให้','Got it, checking now')}</div></div><div class="ph-in"><span>${T('บอร์ด Pokemon · 100 สปอต…','Pokemon board · 100 spots…')}</span><b class="send"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 12 20 4l-6 16-3-7Z" fill="currentColor"/></svg></b></div></div>${AV('SELLER')}</div>`,
+ confirm:()=>`<div class="sc sc-confirm">${AV('KAM')}<div class="ph"><div class="ph-h"><span class="kamav"></span><b>KAM</b></div><div class="ph-b"><div class="bub me sm">${T('บอร์ด Pokemon · 100 สปอต','Pokemon board · 100 spots')}</div><div class="card"><b>${T('รายละเอียดบอร์ด','Board details')}</b><i></i><i></i><i class="s"></i><span class="stamp">${T('ยืนยันแล้ว','CONFIRMED')}</span></div></div></div></div>`,
+ ship:(sl)=>`<div class="sc sc-ship">${AV('SELLER')}<div class="road"><i class="dash"></i><div class="pkg">${sl?'<span class="prize"></span>':'<span class="box"></span>'}</div></div><div class="wh"><i class="roof"></i><span class="ico-logo"></span><em>SASOM</em></div><span class="tagx">${sl?T('หลังไลฟ์ 1-2 วัน','1-2 days after'):T('ก่อนไลฟ์ 3-5 วัน','3-5 days before')}</span></div>`,
+ pack:(sl)=>`<div class="sc sc-pack">${sl?AV('SELLER'):AV('SASOM')}<div class="envs">${['r','g','k','r','g'].map((c,i)=>miniEnv(String(i+1).padStart(2,'0'),c)).join('')}</div>${sl?'<span class="pen"></span>':''}<span class="tagx">${T('ทีมแยก เพื่อความโปร่งใส','Separate team, for transparency')}</span></div>`,
+ date:()=>`<div class="sc sc-date">${AV('SASOM')}<div class="ph"><div class="noti"><span class="ico-logo"></span><div><b>SASOM</b><small>${T('บอร์ดคุณไลฟ์ 12 พ.ย. · 20:00','Your board goes live 12 Nov · 20:00')}</small></div></div><div class="cal"><i class="top"></i><b class="d1">?</b><b class="d2">12</b><small>${T('พ.ย.','Nov')}</small></div></div></div>`,
+ setup:()=>`<div class="sc sc-setup">${AV('SELLER')}<div class="ph"><div class="ph-h"><b>${T('ตั้งบอร์ด + ไลฟ์','Board + LIVE')}</b></div><div class="g">${'<i></i>'.repeat(20)}</div><div class="row"><span>${T('เวลาไลฟ์','LIVE time')}</span><b>20:00</b></div><div class="savebtn">Save</div><div class="toast">${T('บันทึกแล้ว','Saved')}</div></div></div>`,
+ live:(sl)=>`<div class="sc sc-live">${sl?AV('SELLER'):AV('SASOM')}<div class="ph dark"><div class="lv"><em>● LIVE</em><span>${sl?T('ร้านคุณ','Your shop'):'SASOM'}</span></div>${sl?`<div class="tabs3"><b>1</b><b>2</b><b>3</b></div>`:''}<div class="g">${Array.from({length:20},(_,i)=>`<i style="--d:${(i*7%20)*.06}s"></i>`).join('')}</div><span class="closed">CLOSED</span><div class="hearts">${'<i></i>'.repeat(6)}</div></div></div>`,
+ pay:()=>`<div class="sc sc-pay">${AV('SASOM')}<div class="bankc"><i class="chipx"></i><i class="ln"></i><i class="ln s"></i><div class="coins">${'<i></i>'.repeat(4)}</div><span class="paid">${T('โอนก้อนเดียว','One transfer')}</span></div><span class="tagx">${T('3-5 วันทำการ','3-5 business days')}</span></div>`};
+const STORY={
+ sb:()=>[['chat','SELLER',T('แจ้งรายละเอียดบอร์ดกับ KAM','Share board details with KAM'),T('สินค้า · Hit · ราคาต่อจุ่ม · สปอต','Items · Hits · price · spots'),T('ส่ง','Send')],
+  ['confirm','KAM',T('KAM ยืนยันบอร์ด','KAM confirms the board'),'',T('ยืนยัน','Confirm')],
+  ['ship','SELLER',T('ส่งของเข้า SASOM','Send items to SASOM'),T('ก่อนไลฟ์ 3-5 วัน · ส่งมารอได้ไม่จำกัด','3-5 days before · no limit'),T('ส่งของ','Ship')],
+  ['pack','SASOM',T('SASOM แพ็คซอง ติดเลข','SASOM packs and numbers'),T('ทีมแยก เพื่อความโปร่งใส','A separate team, for transparency'),T('แพ็ค','Pack')],
+  ['date','SASOM',T('SASOM แจ้งวันไลฟ์','SASOM sets the live date'),T('อาจต่อคิว SASOM วาง slot ให้','May queue, SASOM sets slots'),T('แจ้งวัน','Set date')],
+  ['live','SASOM',T('ไลฟ์ขายจนปิดบอร์ด','Live until the board closes'),T('ในนาม SASOM','Under the SASOM name'),T('เริ่มไลฟ์','Go live')],
+  ['pay','SASOM',T('ปิดบอร์ด สรุปยอด โอนเงิน','Close, summarize, pay out'),T('โอนก้อนเดียว 3-5 วันทำการ · คืนของที่เหลือ','One transfer, 3-5 days · leftovers returned'),T('โอนเงิน','Pay out')]],
+ sl:()=>[['chat','SELLER',T('แจ้งรายละเอียดบอร์ดกับ KAM','Share board details with KAM'),'',T('ส่ง','Send')],
+  ['confirm','KAM',T('KAM ยืนยันบอร์ด','KAM confirms the board'),'',T('ยืนยัน','Confirm')],
+  ['setup','SELLER',T('ตั้งบอร์ด + ตั้งเวลาไลฟ์','Set up board + schedule'),T('ไลฟ์ได้ตามสะดวก จัด slot เอง','Any time, your own slots'),'Save'],
+  ['pack','SELLER',T('SASOM แพ็คซอง · คุณติดเลข','SASOM packs · you number'),T('เพื่อความโปร่งใส','For transparency'),T('ติดเลข','Number')],
+  ['live','SELLER',T('ไลฟ์ที่ช่องร้านคุณ','Go live on your shop'),T('สูงสุด 3 บอร์ดพร้อมกัน','Up to 3 boards at once'),T('เริ่มไลฟ์','Go live')],
+  ['ship','SELLER',T('ส่งรางวัลเข้า SASOM','Send prizes to SASOM'),T('ภายใน 1-2 วันหลังไลฟ์','Within 1-2 days after'),T('ส่งรางวัล','Ship prizes')],
+  ['pay','SASOM',T('ปิดบอร์ด สรุปยอด โอนเงิน','Close, summarize, pay out'),T('โอนก้อนเดียว 3-5 วันทำการ','One transfer, 3-5 business days'),T('โอนเงิน','Pay out')]]};
+SIM.storySB=()=>storyHTML('sb');SIM.storySL=()=>storyHTML('sl');
+function storyHTML(k){const L=STORY[k]();return `<div class="sim story" data-k="${k}"><div class="st-stage"></div><div class="st-cap"></div><button class="btn dark st-act" data-act></button><div class="st-chips">${L.map((_,i)=>`<button data-st="${i}">${i+1}</button>`).join('')}</div><div class="st-sum"></div></div>`}
+function storyInit(S){const k=S.dataset.k,L=STORY[k](),sl=k==='sl';let i=0,doneSet=new Set();const st=S.querySelector('.st-stage'),cap=S.querySelector('.st-cap'),act=S.querySelector('.st-act'),chips=[...S.querySelectorAll('[data-st]')];
+ const render=()=>{const s=L[i];st.innerHTML=SC[s[0]](sl);st.firstElementChild.classList.toggle('go',doneSet.has(i));cap.innerHTML=`<span class="who ${s[1]}">${s[1]}</span><b>${s[2]}</b>${s[3]?`<small>${s[3]}</small>`:''}`;cap.classList.toggle('show',doneSet.has(i));act.textContent=s[4];act.hidden=doneSet.has(i);chips.forEach((c,j)=>{c.classList.toggle('on',j===i);c.classList.toggle('done',doneSet.has(j))})};
+ act.onclick=()=>{st.firstElementChild.classList.add('go');doneSet.add(i);act.hidden=true;setTimeout(()=>{cap.classList.add('show');chips[i].classList.add('done')},500);
+  if(doneSet.size===L.length){setTimeout(()=>{S.querySelector('.st-sum').innerHTML=flow(L.map(s=>[s[1],s[2],s[3],SICO[s[0]]]));S.classList.add('fin');simDone(S,false)},1400)}
+  else setTimeout(()=>{if(!S.isConnected)return;const nx=L.findIndex((_,j)=>!doneSet.has(j));if(nx>-1){i=nx;render()}},2300)};
+ chips.forEach(c=>c.onclick=()=>{i=+c.dataset.st;render()});render()}
+const SICO={chat:'brief',confirm:'check',ship:'box',pack:'envnum',date:'calendar',setup:'board',live:'live',pay:'payout'};
+
 const sim=k=>`<div class="simwrap" data-sim="${k}">${SIM[k]()}</div>`;
 function initSims(root){root.querySelectorAll('.simwrap[data-sim]').forEach(initSim)}
 
@@ -142,6 +180,36 @@ function mockHTML(screen,hot){const d=document.createElement('div');d.innerHTML=
 function fitMocks(root){root.querySelectorAll('.mk').forEach(m=>{const avail=Math.max(380,Math.min(window.innerWidth<900?window.innerHeight-300:window.innerHeight-230,780));const s=avail/812;m.style.setProperty('--s',s)})}
 window.addEventListener('resize',()=>fitMocks(document))
 
+const SPOTS={
+label:[[168,303,'Order ID ต้องตรงกับของในถุง','Order ID must match the bag'],[266,388,'ห้ามปิดทับ QR','Don’t cover the QR'],[97,393,'ห้ามปิดทับ Tracking No.','Don’t cover the tracking no.'],[265,137,'ไม่เก็บเงินปลายทาง','No cash on delivery']],
+'pack-same-buyer':[[69,110,'ลูกค้าคนเดียวกัน','Same buyer'],[298,112,'แยกถุงทีละออเดอร์','One bag per order'],[296,188,'ยึด Order ID ชื่อลูกค้าอาจซ้ำ','Go by Order ID, names can repeat']],
+'pack-box':[[198,95,'ติด Label ทุกถุง','Label every bag'],[198,220,'รวมส่งกล่องเดียวได้','Ship them in one box'],[394,55,'ส่งไปรษณีย์ ถ่ายรูปเก็บ แจ้ง KAM/SA','By post: photo it, tell KAM/SA']],
+remark:[[119,120,'ถุงออเดอร์ของลูกค้า','The order bag'],[282,120,'แนบโน้ต Hit / defect / ภาษาไม่ตรง','Note the Hit / defect / language']],
+sleeve:[[150,105,'ใส่ Sleeve ทุกใบ','Sleeve every card']],toploader:[[152,105,'แนบ Toploader มาด้วย','Include a toploader']],slab:[[152,110,'Slab ราคาสูง ใส่กรอบเพิ่ม','High-value slab: add a case']],
+a5:[[149,120,'แพ็คทีละออเดอร์','One order per bag'],[295,120,'ถุงซิปขนาด A5','A5 zip bag']],
+'live-envelopes':[[190,110,'โชว์ซองจริงหน้าไลฟ์ ลูกค้ามั่นใจ','Show the real envelopes, buyers trust it']],
+'board-grid':[[164,20,'แนะนำ Hit 10-20% ของบอร์ด','Hits 10-20% of the board'],[144,65,'เขียว = Hit','Lime = Hit'],[265,65,'เทา = ขายแล้ว','Grey = sold'],[64,145,'ขาว = ยังว่าง','White = still open']],
+'close-ok':[[249,110,'Hit No.1 ออกแล้ว ปิดบอร์ดได้','Hit No.1 is out: you can close'],[144,115,'Hit อื่นยังเหลือ ไลฟ์ต่อได้','Hits left? You may keep going']],
+'close-no':[[102,135,'ขายเกิน 20% แล้ว','Over 20% sold'],[174,86,'Hit No.1 ยังไม่ออก','Hit No.1 still in'],[251,80,'ต้องไลฟ์ต่อ ห้ามปิด','Keep going, can’t close']],
+'pay-closed':[[126,42,'1 · ปิดบอร์ด','1 · Board closes']],'pay-summary':[[127,90,'2 · สรุปยอด หักค่าธรรมเนียม','2 · Summary minus fees']],'pay-bank':[[166,90,'3 · โอนเงินก้อนเดียว 3-5 วันทำการ','3 · One transfer, 3-5 business days']],
+'payout-account':[[234,62,'บัญชีรับเงินในระบบ','Payout account in the system'],[266,170,'ต้องตรงกับที่แจ้ง KAM','Must match what you gave KAM']],
+coupon:[[130,112,'SASOM มีโค้ดส่วนลดให้ลูกค้า','SASOM gives buyers discount codes']],
+'inspect-order':[[109,60,'ตรวจเฉพาะซองที่มีออเดอร์','Only ordered envelopes are checked'],[205,124,'ซองอื่นไม่ตรวจ','Others aren’t checked']],
+'inspect-conflict':[[72,75,'ขัดเงื่อนไข App','Breaks App rules'],[182,75,'SASOM พิจารณาแก้ไข','SASOM decides the fix']],
+'inspect-defect':[[60,80,'มีตำหนิ','Defect found'],[185,42,'หาของมาเปลี่ยน','Replace the item'],[184,101,'หรือเสนอลดราคา','Or offer a discount']],
+'lastone-phone':[[165,252,'ขายครบ 50% ปุ่มเปิด','Unlocks at 50% sold'],[247,314,'รางวัลพิเศษช่องสุดท้าย','Bonus for the final spot'],[165,429,'ซื้อช่องที่เหลือทั้งหมดในคลิกเดียว','Buy every spot left in one tap'],[136,488,'ช่องที่ถูกจอง รอผลการจ่าย','Reserved: waiting for payment']],
+'sb-hero':[[88,83,'ส่งบอร์ดให้ SASOM','Send your board to SASOM'],[362,72,'SASOM ไลฟ์ให้','SASOM goes live']],
+'sl-hero':[[133,70,'คุณไลฟ์เอง','You host'],[287,73,'ในชื่อร้านคุณ','Under your shop name']]};
+const SOLVED=new Set();
+function addSpots(el){const n=el.dataset.fig,L=SPOTS[n],svg=el.querySelector('svg');if(!L||!svg||svg.querySelector('.spot'))return;const vb=svg.viewBox.baseVal,sc=svg.getBoundingClientRect().width/(vb.width||1)||1,r=17/sc;
+ L.forEach((p,i)=>{const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('class','spot');g.setAttribute('transform',`translate(${p[0]} ${p[1]})`);g.dataset.t=T(p[2],p[3]);g.innerHTML=`<circle class="ring" r="${r*1.6}"/><circle class="dot" r="${r}"/><text text-anchor="middle" dy="${r*.36}" font-size="${r*1.05}">${i+1}</text>`;svg.appendChild(g)})}
+function spotsInit(R){const all=[...R.querySelectorAll('.spot')];if(!all.length)return;const key=cur.id+':'+idx,cap=R.querySelector('.rcap');
+ const dots=document.createElement('div');dots.className='spotdots';dots.innerHTML=all.map(()=>'<i></i>').join('');(cap||R).insertAdjacentElement('beforebegin',dots);
+ const upd=()=>{const f=all.filter(s=>s.classList.contains('found')).length;dots.querySelectorAll('i').forEach((d,k)=>d.classList.toggle('on',k<f));if(f===all.length&&cap&&cap.classList.contains('locked')){cap.classList.remove('locked');cap.classList.add('unlock');SOLVED.add(key)}};
+ if(SOLVED.has(key))all.forEach(s=>s.classList.add('found'));else if(cap&&(cap.querySelector('.sl')||cap.querySelector('.sx')))cap.classList.add('locked');upd();
+ all.forEach(s=>s.addEventListener('click',e=>{e.stopPropagation();s.classList.add('found');showSpot(s);upd()}))}
+function showSpot(s){tipEl.textContent=s.dataset.t;tipEl.classList.add('on','spotb');const r=s.getBoundingClientRect(),w=tipEl.offsetWidth,h=tipEl.offsetHeight;let x=r.left+r.width/2-w/2;x=Math.max(8,Math.min(innerWidth-w-8,x));let y=r.top-h-10;if(y<8)y=r.bottom+10;tipEl.style.left=x+'px';tipEl.style.top=y+'px';clearTimeout(tipHide)}
+
 /* ---------- lessons ---------- */
 const LESSONS=[
 /* ===== STAGE 1 ===== */
@@ -151,9 +219,9 @@ const LESSONS=[
   b:()=>pts([{t:T('<b>Send Board</b> · ไม่มีเวลา / ไม่มีทีมไลฟ์','<b>Send Board</b> · no time or live team')},{t:T('<b>Seller Live</b> · มีทีมไลฟ์ อยากคุมเอง','<b>Seller Live</b> · you have a team and want control')}])},
  {h:['เทียบให้เห็นชัด','Side by side'],l:['',''],cmp:true},
  {h:['Send Board · ทำงานยังไง','Send Board · how it works'],l:['SASOM ไลฟ์ให้ บน App SASOM','SASOM hosts it on the SASOM App'],
-  b:()=>flow([['SELLER',T('แจ้งรายละเอียดบอร์ดกับ KAM','Share board details with KAM'),T('สินค้า · Hit / Non-Hit · ราคาต่อจุ่ม · จำนวนสปอต','Items · Hits / Non-Hits · price · spots'),'brief'],['KAM',T('ยืนยันรายละเอียดบอร์ด','Confirm the board'),'','check'],['SELLER',T('ส่งของเข้า SASOM','Send items to SASOM'),T('ก่อนไลฟ์ 3-5 วัน · ส่งมารอได้ไม่จำกัด','3-5 days before · no limit'),'box'],['SASOM',T('แพ็คซอง ติดเลข','Pack and number'),T('ทีมแยก เพื่อความโปร่งใส','A separate team, for transparency'),'envnum'],['SASOM',T('แจ้งวันไลฟ์','Set the live date'),T('อาจต้องต่อคิว SASOM วาง slot ให้','May queue, SASOM sets slots'),'calendar'],['SASOM',T('ไลฟ์ขายจนปิดบอร์ด','Live until the board closes'),T('ในนาม SASOM','Under the SASOM name'),'live'],['SASOM',T('ปิดบอร์ด สรุปยอด โอนเงิน','Close, summarize, pay out'),T('โอนภายใน 3-5 วันทำการ · ส่งคืนของที่เหลือ','Paid in 3-5 business days · leftovers returned'),'payout']])+`<div class="note">${T('เร็วๆ นี้: ส่งคำขอบอร์ดในระบบได้เอง','Coming soon: request boards in the system')}</div>`},
+  v:()=>sim('storySB'),b:()=>`<div class="note">${T('เร็วๆ นี้: ส่งคำขอบอร์ดในระบบได้เอง','Coming soon: request boards in the system')}</div>`},
  {h:['Seller Live · ทำงานยังไง','Seller Live · how it works'],l:['ไลฟ์เองบน App SASOM โชว์โลโก้ร้านได้','You host on the SASOM App with your logo'],
-  b:()=>flow([['SELLER',T('แจ้งรายละเอียดบอร์ดกับ KAM','Share board details with KAM'),'','brief'],['KAM',T('ยืนยันรายละเอียดบอร์ด','Confirm the board'),'','check'],['SELLER',T('ตั้งบอร์ด + ตั้งเวลาไลฟ์','Set up board + schedule'),T('ไลฟ์ได้ตามสะดวก จัด slot เอง','Any time, your own slots'),'board'],['SASOM',T('SASOM แพ็คซอง · Seller ติดเลข','SASOM packs · you number'),T('เพื่อความโปร่งใส','For transparency'),'envnum'],['SELLER',T('ไลฟ์ที่ช่องตัวเอง','Go live on your account'),T('สูงสุด 3 บอร์ดพร้อมกัน','Up to 3 boards at once'),'live'],['SELLER',T('ส่งรางวัลเข้า SASOM','Send prizes to SASOM'),T('ภายใน 1-2 วันหลังไลฟ์','Within 1-2 days'),'prize'],['SASOM',T('ปิดบอร์ด สรุปยอด โอนเงิน','Close, summarize, pay out'),T('ภายใน 3-5 วันทำการ','Within 3-5 business days'),'payout']])},
+  v:()=>sim('storySL')},
  {h:['เหมือนกันทั้ง 2 แบบ','Same for both'],l:['',''],
   v:()=>`<div class="same">${[
 ['flag',T('กติกาปิดบอร์ด\nเหมือนกัน','Same closing\nrules'),T('ปิดได้เมื่อ\nHit No.1 ออก','Close once\nHit No.1 is out'),T('ขายเกิน 20% แต่ Hit No.1 ยังไม่ออก ต้องไลฟ์ต่อ','Over 20% sold, no Hit No.1: keep going')],
@@ -397,10 +465,10 @@ function visOf(s){
 function capOf(s){if(s.finish||s.quiz)return '';const lead=L2(s.l);return `<div class="rcap ${hasVis(s)?'':'novis'}"><h2>${L2(s.h)}</h2>${lead?`<p class="sl">${lead}</p>`:''}${s.b?`<div class="sx">${s.b()}</div>`:''}</div>`}
 function stepBody(s){if(s.finish||s.quiz)return '';const lead=L2(s.l);return `${lead?`<p class="sl">${lead}</p>`:''}${hasVis(s)&&s.b?`<div class="sx">${s.b()}</div>`:''}`}
 function buildPlayer(){slides=slidesOf(cur);$('#pKicker').textContent=`${T('บทที่','LESSON')} ${LESSONS.indexOf(cur)+1}`;$('#pTitle').textContent=L2(cur.t);
- $('#pLeft').innerHTML=`<div class="steps">${slides.map((s,i)=>`<div class="step ${s.finish||s.quiz?'solo':''}" data-step="${i}"><span class="sn ${s.finish?'fin':''}">${s.finish?CHK:s.quiz?'?':String(i+1).padStart(2,'0')}</span><div class="st"><b>${titleOf(s)}</b></div></div>`).join('')}</div>`;
+ $('#pLeft').innerHTML=`<div class="steps">${slides.map((s,i)=>`<div class="step ${s.finish||s.quiz?'solo':''}" data-step="${i}" data-tip="${titleOf(s).replace(/<[^>]+>/g,'').replace(/"/g,'&quot;')}"><span class="sn ${s.finish?'fin':''}">${s.finish?CHK:s.quiz?'?':String(i+1).padStart(2,'0')}</span><div class="st"><b>${titleOf(s)}</b></div></div>`).join('')}</div>`;
  $('#pDots').innerHTML=slides.map(()=>'<i></i>').join('');hydrateFigs($('#pLeft'));show(idx,true)}
 function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));const s=slides[idx];
- const R=$('#pRight');R.innerHTML=`<div class="rv ${s.tap?'is-tap':''}">${visOf(s)}${capOf(s)}</div>`;hydrateFigs(R);initSims(R);fitMocks(R);
+ const R=$('#pRight');R.innerHTML=`<div class="rv ${s.tap?'is-tap':''}">${visOf(s)}${capOf(s)}</div>`;hydrateFigs(R).then(()=>{if($('#pRight')===R)spotsInit(R)});initSims(R);fitMocks(R);
  document.querySelectorAll('.step').forEach(el=>{const k=+el.dataset.step;el.classList.toggle('on',k===idx);el.classList.toggle('past',k<idx)});
  const on=document.querySelector('.step.on');if(on&&window.innerWidth>=900){const P=$('#pLeft');const top=on.offsetTop-P.clientHeight/3;P.scrollTo({top,behavior:instant?'auto':'smooth'})}
  $('#pStage').scrollTop=0;
@@ -412,7 +480,7 @@ $('#pNext').onclick=()=>{if(idx===slides.length-1)closeLesson();else show(idx+1)
 $('#pPrev').onclick=()=>show(idx-1);$('#pClose').onclick=closeLesson;
 document.addEventListener('keydown',e=>{if(!cur)return;if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Escape'){if($('#lb').classList.contains('open'))closeLb();else closeLesson()}});
 /* tap left / right side of the visual to go back / next */
-const SKIP='.sim,[data-go],button,a,input,details,summary,[data-zoom],[data-tap],[data-step],.toggle,.quiz,.acc';
+const SKIP='.spot,.sim,[data-go],button,a,input,details,summary,[data-zoom],[data-tap],[data-step],.toggle,.quiz,.acc';
 $('#pRight').addEventListener('click',e=>{if(!cur)return;if(e.target.closest(SKIP))return;if(window.getSelection&&String(window.getSelection()).length)return;
  const r=$('#pRight').getBoundingClientRect(),x=(e.clientX-r.left)/r.width;if(x>.6){if(idx===slides.length-1)return;show(idx+1)}else if(x<.4)show(idx-1)});
 $('#pRight').addEventListener('mousemove',e=>{const r=$('#pRight').getBoundingClientRect(),x=(e.clientX-r.left)/r.width;const t=e.target.closest(SKIP);$('#pRight').style.cursor=t?'':(x>.6&&idx<slides.length-1)||(x<.4&&idx>0)?'pointer':''});
@@ -431,6 +499,7 @@ document.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')return;co
 document.addEventListener('click',e=>{if(swallow){swallow=false;e.preventDefault();e.stopPropagation()}},true);
 document.addEventListener('contextmenu',e=>{if(e.target.closest('[data-tip]'))e.preventDefault()});
 window.addEventListener('scroll',hideTip,true);
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('.spot')&&tipEl.classList.contains('spotb')){tipEl.classList.remove('spotb');hideTip()}},true);
 
 /* clicks */
 document.addEventListener('click',e=>{
