@@ -27,7 +27,7 @@ const FTIP={'sb-hero':['ส่งบอร์ดให้ SASOM ไลฟ์ใ�
 'payout-account':['บัญชีในระบบต้องตรงกับที่แจ้ง KAM','Must match what you gave KAM'],'coupon':['SASOM มีโค้ดส่วนลดให้ลูกค้า','SASOM gives buyers discount codes'],
 'inspect-order':['ตรวจเฉพาะของที่มีคำสั่งซื้อ หรือรางวัลที่ออก','Only ordered items or prizes won'],'inspect-conflict':['ขัดเงื่อนไข App · SASOM พิจารณาแก้ไข','Breaks App rules · SASOM decides the fix'],
 'inspect-defect':['มีตำหนิ · หาของเปลี่ยน หรือลดราคา','Defect · replace or discount'],'label':['Order ID ต้องตรงกับของในถุง','Order ID must match the bag'],
-'pack-same-buyer':['ลูกค้าเดียวกัน แยกถุงตาม Order ID','Same buyer: one bag per Order ID'],'pack-box':['รวมกล่องได้ · ส่งไปรษณีย์ถ่ายรูปเก็บ','One box is fine · photo it if posting'],
+'pack-same-buyer':['ลูกค้าเดียวกัน แยกถุงตาม Order ID','Same buyer: one bag per Order ID'],'pack-box':['รวมกล่องได้ · ใบปะหน้าหลักใบเดียว · ถ่ายรูป Order ID ทุกครั้ง','One box · one main label · photo the Order IDs'],
 'remark':['แนบโน้ต Hit / defect / ภาษา','Note the Hit / defect / language'],'sleeve':['ใส่ Sleeve ทุกใบ','Sleeve every card'],'toploader':['แนบ Toploader มาด้วย','Include a toploader'],
 'slab':['Slab ราคาสูง ใส่กรอบเพิ่ม','High-value slab: add a case'],'a5':['ถุงซิป A5 ทีละออเดอร์','A5 zip bag per order'],'live-envelopes':['โชว์ซองจริงหน้าไลฟ์','Show the real envelopes on live'],
 'open1':['Pin แล้วชูเลขซองให้กล้องเห็น','Pin it, hold the number up'],'open2':['ปัด Unseal ในแอปเท่านั้น','Swipe to Unseal in the app'],'open3':['แกะซีล Holo หน้ากล้อง','Break the Holo seal on camera'],
@@ -352,11 +352,11 @@ const LESSONS=[
  {h:['ใบ Label ที่ต้องติด','The label to stick'],l:['ปริ้นท์จากระบบ ติดทุกชิ้น','Print from the system, one per item'],
   v:()=>fig('label'),
   b:()=>pts([{t:T('Order ID ต้องตรงกับของในถุง','Order ID must match the bag')},{t:T('ห้ามปิดทับ Order ID / Tracking / QR','Don’t cover Order ID, Tracking, QR')}])},
- {h:['ลูกค้าเดียวกัน หลายออเดอร์','Same buyer, many orders'],l:['แพ็คแยกทีละออเดอร์ ยึด Order ID (ชื่อลูกค้าอาจซ้ำ)','Pack each order apart by Order ID'],
+ {h:['ลูกค้าเดียวกัน หลายออเดอร์','Same buyer, many orders'],l:['แยกแพ็คทีละ Order ID ไม่ต้องสนใจ buyer แม้เป็นคนเดียวกัน','Pack per Order ID, even when it’s the same buyer'],
   v:()=>fig('pack-same-buyer')},
- {h:['ติด Label แล้วรวมกล่องเดียว','Label each, ship in one box'],l:['',''],
+ {h:['ส่งมาพร้อมกันในกล่องเดียว','Ship together in one box'],l:['ปริ้นใบปะหน้าหลักใบเดียว','Print one main shipping label'],
   v:()=>fig('pack-box'),
-  b:()=>`<div class="note">${T('ส่งผ่านไปรษณีย์: ถ่ายรูปเก็บทุกครั้ง และแจ้ง KAM/SA ว่า order หลักและ order ที่พ่วงมาคืออะไร','By post: always photograph it, and tell KAM/SA the main and bundled orders')}</div>`},
+  b:()=>pts([{t:T('แจ้ง KAM/SA ว่าใช้ Order ID ไหนเป็นหลักในการส่ง','Tell KAM/SA which Order ID is the main one')},{t:T('แจ้งว่าในกล่องมี Order ID ไหนแนบมาบ้าง','List every Order ID inside the box')},{t:T('ถ่ายรูปเป็นหลักฐาน เห็น Order ID ชัดทุกครั้ง','Photograph it every time, Order IDs clearly visible')}])},
  {h:['แนบ Remark (ถ้ามี)','Attach a remark (if any)'],l:['',''],
   v:()=>fig('remark')},
  {h:['ป้องกันการ์ด','Protect the cards'],l:['',''],
@@ -410,7 +410,7 @@ const OPEN=()=>[
  {h:['7 · Capture ในระบบ','7 · Capture in the App'],l:['แตะ Capture ในแอป ระบบถ่ายเก็บเป็นหลักฐานกับออร์เดอร์ · การ์ด + QR + เลขซอง ในเฟรมเดียว','Tap Capture in the App to save evidence to the order · card + QR + number in one frame'],v:()=>sim('capture')},
  {h:['8 · สแกน QR แล้ว Confirm','8 · Scan, then Confirm'],l:['เช็คชื่อการ์ดให้ตรง','Check the card name'],v:()=>sim('scan')},
  {h:['ห้ามทำเด็ดขาด','Never do this'],l:['',''],b:()=>`<div class="rules">${[[T('ยก · โยนนอก','Off-app deal'),T('ชวนจ่ายเงินนอก App','Buyers paying outside the App')],[T('รีซีล','Reseal'),T('แกะแล้วปิดใหม่ให้ดูเหมือนใหม่','Resealing an opened pack')],[T('ยัดแพ็ค · ชั่งซอง · บีบซอง','Pack searching'),T('ชั่งหรือบีบซองหา Hit ก่อนขาย','Weighing or squeezing for hits')],[T('ของก๊อป · ของปลอม','Fakes'),T('SASOM การันตีของแท้ ปลอมคืน 2 เท่า','SASOM guarantees authenticity, 2x refund')]].map(r=>`<div class="rr"><span class="ri">✕</span><div><b>${r[0]}</b><small>${r[1]}</small></div><span class="t">${T('ห้ามทำ','Never')}</span></div>`).join('')}</div>`},
- {h:['หลังจบไลฟ์','After the live'],l:['',''],v:()=>sim('sc_after'),b:()=>pts([{t:T('กด End Live ทุกครั้ง','Always tap End Live')},{t:T('แพ็กซอง + การ์ด + รางวัลทีละออเดอร์','Pack envelope + card + prize per order')},{t:T('ส่งกลับ SASOM ไลฟ์ละ 1 ฉลาก','Ship to SASOM, 1 label per live')},{t:T('ห้ามส่งตรงถึงลูกค้า','Never ship to buyers directly')}])}
+ {h:['หลังจบไลฟ์','After the live'],l:['',''],v:()=>sim('sc_after'),b:()=>pts([{t:T('กด End Live ทุกครั้ง','Always tap End Live')},{t:T('แพ็กซอง + การ์ด + รางวัลทีละออเดอร์','Pack envelope + card + prize per order')},{t:T('ส่งกลับ SASOM แยกแพ็คทีละ Order ID','Ship to SASOM, packed per Order ID')},{t:T('ห้ามส่งตรงถึงลูกค้า','Never ship to buyers directly')}])}
 ];
 
 /* glossary */
