@@ -1027,3 +1027,22 @@ main{max-width:1180px}
 .qrow .qnum{margin-left:auto;flex:none;background:var(--lime);color:#1B1B1B;font:700 13px Inter;padding:4px 9px;border-radius:8px}
 .qrow .pinbtn{margin-left:0}
 .s-pin .sq{width:min(300px,100%)}.s-pin .qrow{min-width:0;padding:9px 10px;gap:8px}.s-pin .qinfo{flex:1 1 auto}.s-pin .qrow .qnum{margin-left:0}
+
+/* pin: unseal queue */
+.s-pin{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
+.pphone{position:relative;width:250px;height:330px;border-radius:26px;background:linear-gradient(170deg,#4A4A52,#1B1B1E);border:5px solid #121212;overflow:hidden;flex:none}
+.plive{position:absolute;left:12px;top:12px}.plive i{font:700 10px Inter;font-style:normal;background:#E5484D;color:#fff;padding:3px 7px;border-radius:6px}
+.pside{position:absolute;right:10px;bottom:24px;display:flex;flex-direction:column;align-items:center;gap:16px;color:#fff}
+.pside span svg{width:24px;height:24px}
+.qicon{position:relative;border:0;background:transparent;color:#fff;padding:4px;border-radius:12px;cursor:pointer;animation:glow 1.4s infinite}
+.qicon svg{width:28px;height:28px;display:block}
+.qicon em{position:absolute;top:-2px;right:-4px;min-width:16px;height:16px;border-radius:8px;background:#E5484D;color:#fff;font:700 10px/16px Inter;font-style:normal}
+.s-pin.qopen .qicon{animation:none;opacity:.5}
+.psheet{position:absolute;left:0;right:0;bottom:0;padding:12px 10px 14px;border-radius:18px 18px 0 0;background:var(--card);display:grid;gap:7px;transform:translateY(105%);transition:transform .45s cubic-bezier(.2,1.1,.4,1)}
+.s-pin.qopen .psheet{transform:none}
+.psheet .ph{font:600 13px "Noto Sans Thai",Inter;padding:0 2px 2px}
+.s-pin .psheet .qrow{padding:7px 8px;gap:7px;border-radius:10px}
+.s-pin .psheet .qav{width:24px;height:24px}
+.s-pin .psheet .qinfo b{font-size:12px}.s-pin .psheet .qinfo small{font-size:9.5px}
+.s-pin .psheet .qnum{font-size:11px;padding:3px 6px}
+.s-pin .psheet .pinbtn{padding:5px 9px;font-size:11px}
