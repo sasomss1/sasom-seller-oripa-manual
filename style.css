@@ -1217,3 +1217,4 @@ main{max-width:1180px}
 .scn-unlock .taphit{pointer-events:none}
 .scn-unlock.armed .taphit{pointer-events:auto}
 .stk .qrcard{font-size:7.2px;gap:.4em;padding:.8em .7em;justify-content:space-evenly}.stk .qrcard .qbox{width:56%}.stk .qrcard .qlogo{width:2.6em;height:2.6em}
+.pk>.qrcard{position:absolute;inset:0;width:120px;height:168px;font-size:7.2px;gap:.4em;padding:.8em .7em;justify-content:space-evenly}.pk>.qrcard .qbox{width:56%}
