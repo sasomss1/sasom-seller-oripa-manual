@@ -516,16 +516,25 @@ function cmpHTML(){
 
 /* ---------- render home ---------- */
 const STAGES=[[1,T('รู้จักก่อนเริ่ม','Know before you start')],[2,T('เตรียมบอร์ด & ตั้งไลฟ์','Prep & set up')],[3,T('ระหว่างไลฟ์','During the live')],[4,T('หลังไลฟ์','After the live')]];
+function flowSummary(){const strip=x=>String(x||'').replace(/<[^>]+>/g,'').replace(/\n/g,' ');
+ const WHO={SELLER:T('คุณ','You'),SASOM:'SASOM',KAM:'KAM'};
+ const lane=(k,name,sub)=>{const L=STORY[k]();return `<div class="fl-lane"><div class="fl-head"><b>${name}</b><small>${sub}</small></div><ol class="fl-steps">${L.map(x=>`<li class="w-${x[1].toLowerCase()}"><i class="fl-dot">${SICO[x[0]]?ico(SICO[x[0]],'fl-i'):''}</i><div><span class="fl-who">${WHO[x[1]]||x[1]}</span><b>${strip(x[2])}</b>${x[3]?`<small>${strip(x[3])}</small>`:''}</div></li>`).join('')}</ol></div>`};
+ const lessons=STAGES.map(st=>`<div class="fs-stage"><div class="fs-st"><span>STAGE ${st[0]}</span>${st[1]}</div>${LESSONS.filter(l=>l.stage===st[0]).map(l=>{const sl=slidesOf(l).filter(x=>!x.finish&&!x.quiz&&x.h);return `<details class="fs-l"><summary><b>${l.t[lang==='th'?0:1]}</b><small>${l.d[lang==='th'?0:1]}</small></summary><ul>${sl.map(x=>{const h=strip(L2(x.h)),d=strip(L2(x.l||['','']));return `<li><b>${h}</b>${d?`<span>${d}</span>`:''}</li>`}).join('')}</ul></details>`}).join('')}</div>`).join('');
+ return `<div class="sec"><span>OVERVIEW</span>${T('ภาพรวมทั้งหมด','The whole flow')}</div>
+ <div class="fl-legend"><span class="w-seller">${T('คุณ','You')}</span><span class="w-kam">KAM</span><span class="w-sasom">SASOM</span></div>
+ <div class="fl-map">${lane('sb','Send Board',T('SASOM ไลฟ์ให้','SASOM hosts the live'))}${lane('sl','Seller Live',T('คุณไลฟ์เอง','You host the live'))}</div>
+ <div class="sec"><span>SUMMARY</span>${T('สรุปทุกบท','Every lesson in brief')}</div><div class="fs">${lessons}</div>`}
 function home(){
  const n=LESSONS.length,c=LESSONS.filter(l=>done[l.id]).length;const next=LESSONS.find(l=>!done[l.id])||LESSONS[0];const all=c===n;
- const cta=all?`<button class="btn dark" data-reset>${T('เริ่มเรียนใหม่','Start over')}</button>`:`<button class="btn dark" data-open="${next.id}">${c?T('เรียนต่อ','Continue'):T('เริ่มเลย','Start')} ›</button>`;
+ const cta=all?`<button class="btn dark" data-reset>${T('เริ่มเรียนใหม่','Start over')}</button>`:`<button class="btn dark" data-open="${next.id}">${c?T('เรียนต่อ','Continue'):T('เริ่มเลย','Start')}</button>`;
  const prog=`<div class="hp"><span class="bar"><i style="width:${c/n*100}%"></i></span><small>${all?T('เรียนครบแล้ว','All done'):`${c}/${n} ${T('บท','lessons')}`}</small></div>`;
  $('#app').innerHTML=`<div class="home"><div class="h-left">
  <div class="eyebrow"><i></i>SELLER GUIDE · ORIPA</div>
  <h1>${T('เริ่มขาย Oripa บน SASOM','Sell Oripa on SASOM')}</h1>
  <p class="sub">${T('บทสั้นๆ แตะไปทีละขั้น เหมือนใช้แอปจริง','Short lessons. Tap through each step like the real app.')}</p>
  <div class="m-prog">${prog}${cta}${c&&!all?`<button class="linkbtn" data-reset>${T('ล้าง','Reset')}</button>`:''}</div>
- ${STAGES.map(s=>`<div class="sec"><span>STAGE ${s[0]}</span>${s[1]}</div><div class="lcards">${LESSONS.filter(l=>l.stage===s[0]).map(l=>{const k=LESSONS.indexOf(l)+1,st=slidesOf(l).length-1;return `<div class="lcard ${done[l.id]?'is-done':''}" data-open="${l.id}" role="button" tabindex="0"><span class="ln">${done[l.id]?CHK:String(k).padStart(2,'0')}</span><div class="lb"><b>${l.t[lang==='th'?0:1]}</b><p>${l.d[lang==='th'?0:1]}</p><small>${st} ${T('ขั้น','steps')}</small></div><span class="try">${done[l.id]?T('ทวน','Review'):T('เริ่ม','Start')} ›</span></div>`}).join('')}</div>`).join('')}
+ ${STAGES.map(s=>`<div class="sec"><span>STAGE ${s[0]}</span>${s[1]}</div><div class="lcards">${LESSONS.filter(l=>l.stage===s[0]).map(l=>{const k=LESSONS.indexOf(l)+1,st=slidesOf(l).length-1;return `<div class="lcard ${done[l.id]?'is-done':''}" data-open="${l.id}" role="button" tabindex="0"><span class="ln">${done[l.id]?CHK:String(k).padStart(2,'0')}</span><div class="lb"><b>${l.t[lang==='th'?0:1]}</b><p>${l.d[lang==='th'?0:1]}</p><small>${st} ${T('ขั้น','steps')}</small></div><span class="try">${done[l.id]?T('ทวน','Review'):T('เริ่ม','Start')}</span></div>`}).join('')}</div>`).join('')}
+ ${flowSummary()}
  <div class="sec"><span>BONUS</span>${T('คำศัพท์ในวงการ','Collector slang')}</div>
  <input class="gl-search" id="glq" placeholder="${T('ค้นหาคำ…','Search…')}"><div class="gl" id="gl"></div>
  <p class="foot">SASOM Seller Guide · Oripa</p></div>
