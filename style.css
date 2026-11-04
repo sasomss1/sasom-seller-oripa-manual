@@ -1248,3 +1248,7 @@ main{max-width:1180px}
 .fs-l ul{margin:0;padding:0 16px 14px 34px;display:grid;gap:6px}
 .fs-l li{font-size:14px;line-height:1.5}.fs-l li span{display:block;color:var(--sub);font-size:13px}
 :root{--fg:var(--ink);--muted:var(--sub)}
+.spot.nob:not(.found) .hit{fill:rgba(201,255,0,.0)!important;animation:nobblink 1.2s ease-in-out infinite}
+@keyframes nobblink{50%{fill:rgba(201,255,0,.28)}}
+@keyframes spbounce{0%,100%{translate:0 0;filter:none}30%{translate:0 -5%;filter:drop-shadow(0 0 6px rgba(201,255,0,.9))}55%{translate:0 0}}
+@keyframes spdone{40%{scale:1.04}}
