@@ -984,9 +984,9 @@ main{max-width:1180px}
 .spot circle.hit.big{fill:transparent}
 
 /* v8 new scenes */
-.scn-request [data-l="toast"]{opacity:0}
-.scn-request.go [data-l="toast"]{animation:sin .45s .1s both}
-.scn-request.go [data-l="reqbtn"]{opacity:0;transition:opacity .2s}
+.scn-request [data-l="toast"],.scn-request-sasom [data-l="toast"]{opacity:0}
+.scn-request.go [data-l="toast"],.scn-request-sasom.go [data-l="toast"]{animation:sin .45s .1s both}
+.scn-request.go [data-l="reqbtn"],.scn-request-sasom.go [data-l="reqbtn"]{opacity:0;transition:opacity .2s}
 .scn-request [data-l="reqbtn"]{transform-box:fill-box;transform-origin:center}
 .scn-approve [data-l="stamp"]{opacity:0}
 .scn-approve.go [data-l="stamp"]{animation:stamp2 .45s .1s cubic-bezier(.2,1.5,.4,1) both}
