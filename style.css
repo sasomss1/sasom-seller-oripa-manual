@@ -1046,3 +1046,17 @@ main{max-width:1180px}
 .s-pin .psheet .qinfo b{font-size:12px}.s-pin .psheet .qinfo small{font-size:9.5px}
 .s-pin .psheet .qnum{font-size:11px;padding:3px 6px}
 .s-pin .psheet .pinbtn{padding:5px 9px;font-size:11px}
+
+.capbar{display:flex;align-items:center;justify-content:center;min-height:52px}
+.capbtn{border:0;border-radius:99px;padding:12px 26px;background:var(--lime);color:#1B1B1B;font:700 15px Inter;cursor:pointer;animation:glow 1.4s infinite}
+.evid{display:none;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);text-align:left}
+.evid .chk{width:22px;height:22px;flex:none;color:#1B1B1B;background:var(--lime);border-radius:7px;padding:3px}
+.evid b{display:block;font:700 13px Inter}.evid small{font:500 12px "Noto Sans Thai",Inter;color:var(--muted,#8A8A90)}
+.s-cap.shot .capbtn{display:none}.s-cap.shot .evid{display:flex;animation:capin .35s .3s both}
+/* QR printed on a black card */
+.qrcard{background:#141416;border:1.5px solid #3A3A40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:10px;aspect-ratio:63/88;height:auto}
+.qrcard::before{content:"017";color:#fff;font:800 22px/1 Inter;letter-spacing:.02em}
+.qrcard .qrsvg{width:74%;background:#fff;border-radius:6px;padding:3px}
+.qrcard.sm{width:66px;height:auto;padding:6px;gap:4px}.qrcard.sm::before{font-size:13px}
+.qrcard.drag{width:84px;height:auto;padding:7px}.qrcard.drag::before{font-size:15px}
+.qrcard.code{width:120px}.qrcard.code::before{content:none}.qrcard.code b{color:#fff}
