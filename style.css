@@ -993,3 +993,18 @@ main{max-width:1180px}
 .scn-approve [data-l="card"]{transform-box:fill-box;transform-origin:center}
 .scn-ship-env [data-l="pkg"]{transform-box:fill-box;transition:transform 1.4s cubic-bezier(.5,0,.3,1)}
 .scn-ship-env [data-l="pkg"].dragging{animation:none!important;transition:none!important}
+
+/* v9 mission lock + finger hint */
+#pNext.locked{opacity:.35;filter:grayscale(1)}
+#pLeft .step.lock{opacity:.4}
+#pDots i.lock{opacity:.35}
+.finger{position:fixed;z-index:200;width:44px;height:52px;margin:-6px 0 0 -14px;pointer-events:none;opacity:0;transform:translate(0,0)}
+.finger svg{width:100%;height:100%;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
+.finger .ripple{position:absolute;left:4px;top:-2px;width:28px;height:28px;border-radius:50%;border:3px solid #C9FF00;opacity:0}
+.finger.on{animation:fgTap 1.1s ease-in-out 3}
+.finger.on .ripple{animation:fgRip 1.1s ease-out 3}
+.finger.on.drag{animation:fgDrag 1.6s ease-in-out 2}
+.finger.on.drag .ripple{animation:none}
+@keyframes fgTap{0%{opacity:0;transform:translate(18px,26px)}25%{opacity:1;transform:translate(0,0)}45%{transform:translate(0,0) scale(.86)}60%{transform:translate(0,0) scale(1)}90%{opacity:1}100%{opacity:0;transform:translate(0,0)}}
+@keyframes fgRip{0%,40%{opacity:0;transform:scale(.4)}50%{opacity:1}100%{opacity:0;transform:scale(1.8)}}
+@keyframes fgDrag{0%{opacity:0;transform:translate(0,0)}15%{opacity:1;transform:translate(0,0) scale(.88)}75%{opacity:1;transform:translate(var(--dx),var(--dy)) scale(.88)}90%{opacity:0;transform:translate(var(--dx),var(--dy))}100%{opacity:0}}

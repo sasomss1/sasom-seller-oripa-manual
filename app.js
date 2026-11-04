@@ -489,10 +489,10 @@ function home(){
 function renderGloss(q){q=q.toLowerCase();$('#gl').innerHTML=GLOSS().filter(g=>g.join(' ').toLowerCase().includes(q)).map(g=>`<div class="g"><b>${g[0]}</b><small>${g[1]}</small><p>${g[2]}</p>${g[3]==='say'?`<span class="tag">${T('ห้ามพูดออกไลฟ์','Never say on air')}</span>`:g[3]==='do'?`<span class="tag">${T('ห้ามทำ','Never do')}</span>`:''}</div>`).join('')}
 
 /* ---------- player ---------- */
-let cur=null,idx=0,slides=[];
+let cur=null,idx=0,slides=[],reach=0,lastAct=Date.now(),shownAt=0;
 function setupOverview(){const st=SETUP().filter(x=>x.tap);return [{h:['ตั้งไลฟ์ใน 10 ขั้น','Set up a LIVE in 10 steps'],l:['',''],b:()=>pts(st.map((x,k)=>({t:x.title,go:k+1})))}].concat(SETUP())}
 function slidesOf(l){let s=l.slides==='SETUP'?setupOverview():l.slides==='OPEN'?OPEN():l.slides;return s.concat([{finish:true}])}
-function openLesson(id){cur=LESSONS.find(l=>l.id===id);if(!cur)return;idx=0;cmpSide=0;buildPlayer();$('#player').classList.add('open');$('#player').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(location.hash!=='#'+id)history.pushState(null,'','#'+id)}
+function openLesson(id){cur=LESSONS.find(l=>l.id===id);if(!cur)return;idx=0;reach=done[id]?999:((store.get('reach',{})||{})[id]||0);cmpSide=0;buildPlayer();$('#player').classList.add('open');$('#player').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(location.hash!=='#'+id)history.pushState(null,'','#'+id)}
 function closeLesson(){$('#player').classList.remove('open');$('#player').setAttribute('aria-hidden','true');document.body.style.overflow='';cur=null;if(location.hash)history.pushState(null,'',location.pathname+location.search);home()}
 const L2=a=>a?a[lang==='th'?0:1]:'';
 function titleOf(s){return s.finish?T('จบบทนี้','Done'):s.quiz?L2(s.quiz.q):L2(s.h)}
@@ -509,7 +509,7 @@ function stepBody(s){if(s.finish||s.quiz)return '';const lead=L2(s.l);return `${
 function buildPlayer(){slides=slidesOf(cur);$('#pKicker').textContent=`${T('บทที่','LESSON')} ${LESSONS.indexOf(cur)+1}`;$('#pTitle').textContent=L2(cur.t);
  $('#pLeft').innerHTML=`<div class="steps">${slides.map((s,i)=>`<div class="step ${s.finish||s.quiz?'solo':''}" data-step="${i}" data-tip="${titleOf(s).replace(/<[^>]+>/g,'').replace(/"/g,'&quot;')}"><span class="sn ${s.finish?'fin':''}">${s.finish?CHK:s.quiz?'?':String(i+1).padStart(2,'0')}</span><div class="st"><b>${titleOf(s)}</b></div></div>`).join('')}</div>`;
  $('#pDots').innerHTML=slides.map(()=>'<i></i>').join('');hydrateFigs($('#pLeft'));show(idx,true)}
-function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));const s=slides[idx];
+function show(i,instant){if(cur&&!instant&&i>idx){if(!pendingTask())bumpReach();if(i>reach){fingerNow();return}}hideFinger();lastAct=shownAt=Date.now();idx=Math.max(0,Math.min(slides.length-1,i));const s=slides[idx];
  const R=$('#pRight');R.innerHTML=`<div class="rv ${s.tap?'is-tap':''}">${visOf(s)}${capOf(s)}</div>`;hydrateFigs(R).then(()=>{if($('#pRight')===R)spotsInit(R)});initSims(R);fitMocks(R);
  document.querySelectorAll('.step').forEach(el=>{const k=+el.dataset.step;el.classList.toggle('on',k===idx);el.classList.toggle('past',k<idx)});
  const on=document.querySelector('.step.on');if(on&&window.innerWidth>=900){const P=$('#pLeft');const top=on.offsetTop-P.clientHeight/3;P.scrollTo({top,behavior:instant?'auto':'smooth'})}
@@ -519,10 +519,24 @@ function show(i,instant){idx=Math.max(0,Math.min(slides.length-1,i));const s=sli
  $('#pPrev').textContent=T('ย้อนกลับ','Back');$('#pPrev').disabled=idx===0;const last=idx===slides.length-1;$('#pNext').textContent=last?T('เสร็จ','Done'):T('ถัดไป','Next');
  if(last&&cur){done[cur.id]=true;store.set('done',done)}
  clearInterval(gateT);gateTick();gateT=setInterval(()=>{if($('#player').getAttribute('aria-hidden')==='true'){clearInterval(gateT);return}gateTick()},300)}
-function pendingTask(){const R=$('#pRight');if(!R)return false;if(R.querySelector('.spot:not(.found)'))return true;if(R.querySelector('[data-hot]:not(.hit)'))return true;
+function pendingTask(){const R=$('#pRight');if(!R)return false;if([...R.querySelectorAll('.fig[data-fig]')].some(f=>f.dataset.ok!==lang&&SPOTS[f.dataset.fig]))return true;if(R.querySelector('.spot:not(.found)'))return true;if(R.querySelector('[data-hot]:not(.hit)'))return true;
  if([...R.querySelectorAll('.simwrap[data-sim]')].some(w=>!(w.querySelector('.sim')||w).classList.contains('done')))return true;
  const q=R.querySelector('.quiz');if(q&&!q.querySelector('button.ok'))return true;return false}
-let gateT;function gateTick(){const b=$('#pNext');const p=pendingTask(),last=idx===slides.length-1;b.classList.toggle('skip',p);b.textContent=p?T('ข้าม','Skip'):last?T('เสร็จ','Done'):T('ถัดไป','Next')}
+function bumpReach(){if(idx+1>reach){reach=idx+1;try{const m=store.get('reach',{})||{};m[cur.id]=Math.max(m[cur.id]||0,reach);store.set('reach',m)}catch(e){}}}
+function lockMarks(){document.querySelectorAll('#pLeft .step').forEach(el=>el.classList.toggle('lock',+el.dataset.step>reach));document.querySelectorAll('#pDots i').forEach((d,k)=>d.classList.toggle('lock',k>reach))}
+let gateT;function gateTick(){const b=$('#pNext');const p=pendingTask(),last=idx===slides.length-1;if(!p)bumpReach();lockMarks();b.classList.remove('skip');b.classList.toggle('locked',p);b.textContent=last?T('เสร็จ','Done'):T('ถัดไป','Next');
+ if(!p){hideFinger();return}if(Date.now()-lastAct>3500&&!fingerEl.classList.contains('on'))fingerNow()}
+const fingerEl=document.createElement('div');fingerEl.className='finger';fingerEl.innerHTML='<svg viewBox="0 0 48 56"><path d="M18 4c2.8 0 5 2.2 5 5v15.5l1.2-.3c2.1-.5 4.2.6 5 2.6l.3.7 1.1-.2c2.2-.4 4.3.9 5 3l.2.6.8-.1c2.6-.2 4.9 1.8 4.9 4.4V44c0 5.5-4.5 10-10 10H22c-3.2 0-6.2-1.5-8.1-4.1L5.6 38.6c-1.5-2-1.1-4.9.9-6.4 1.8-1.4 4.4-1.2 6 .4l.5.5V9c0-2.8 2.2-5 5-5Z" fill="#fff" stroke="#1B1B1B" stroke-width="2.6" stroke-linejoin="round"/></svg><i class="ripple"></i>';document.body.appendChild(fingerEl);
+function hideFinger(){fingerEl.classList.remove('on','drag')}
+function fingerTarget(){const R=$('#pRight');if(!R)return null;const c=e=>{const b=e.getBoundingClientRect();return b.width?{x:b.left+b.width/2,y:b.top+b.height/2}:null};let e;
+ if((e=R.querySelector('.spot:not(.found) .hit')))return c(e);
+ if((e=R.querySelector('.dragme'))){const a=c(e),dr=R.querySelector('.dropring');const t=dr?c(dr):null;return a&&{...a,to:t}}
+ if((e=R.querySelector('.taphit')))return c(e);
+ if((e=R.querySelector('[data-hot]:not(.hit)')))return c(e);
+ const w=[...R.querySelectorAll('.simwrap[data-sim]')].find(w=>!(w.querySelector('.sim')||w).classList.contains('done'));if(w){for(const [q,dx,dy] of [['[data-act]',0,0],['.knob',150,0],['.seal',0,-70],['.qrcard.drag',90,0],['.mover',90,0],['.top',0,-80],['[data-k="4"]',0,0],['[data-st].on',0,0]]){const el=w.querySelector(q);if(el){const a=c(el);if(a)return dx||dy?{...a,to:{x:a.x+dx,y:a.y+dy}}:a}}}
+ if((e=R.querySelector('.quiz')))return c(e);return null}
+function fingerNow(){const t=fingerTarget();if(!t){return}lastAct=Date.now();fingerEl.style.left=t.x+'px';fingerEl.style.top=t.y+'px';fingerEl.classList.remove('on','drag');void fingerEl.offsetWidth;if(t.to){fingerEl.style.setProperty('--dx',(t.to.x-t.x)+'px');fingerEl.style.setProperty('--dy',(t.to.y-t.y)+'px');fingerEl.classList.add('drag')}fingerEl.classList.add('on');clearTimeout(fingerEl._t);fingerEl._t=setTimeout(hideFinger,3200)}
+['pointerdown','keydown','wheel'].forEach(ev=>document.addEventListener(ev,()=>{lastAct=Date.now();hideFinger()},true));
 $('#pNext').onclick=()=>{if(idx===slides.length-1)closeLesson();else show(idx+1)};
 $('#pPrev').onclick=()=>show(idx-1);$('#pClose').onclick=closeLesson;
 document.addEventListener('keydown',e=>{if(!cur)return;if(e.key==='ArrowRight')show(idx+1);if(e.key==='ArrowLeft')show(idx-1);if(e.key==='Escape'){if($('#lb').classList.contains('open'))closeLb();else closeLesson()}});
