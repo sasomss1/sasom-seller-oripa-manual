@@ -919,8 +919,8 @@ main{max-width:1180px}
 /* unlock */
 .scn-unlock [data-l="fill"]{transform:scaleX(.05);transform-origin:left center}
 .scn-unlock [data-l="lo-on"]{opacity:0}
-.scn-unlock.go [data-l="fill"]{animation:grow 1.4s cubic-bezier(.4,0,.2,1) both}
-.scn-unlock.go [data-l="lo-on"]{animation:popc2 .45s 1.2s cubic-bezier(.2,1.4,.4,1) both;transform:scale(.8);opacity:0}
+.scn-unlock [data-l="fill"]{animation:grow 2.2s .4s cubic-bezier(.4,0,.2,1) both}
+.scn-unlock [data-l="lo-on"]{animation:popc2 .45s 2.6s cubic-bezier(.2,1.4,.4,1) both;transform:scale(.8);opacity:0}
 /* win */
 .scn-win.go :is([data-l="c3"],[data-l="c7"],[data-l="c10"]){fill:#C9FF00;transition:fill .25s}
 .scn-win.go [data-l="prize"]{animation:prz 1s .5s cubic-bezier(.4,0,.2,1) both}
@@ -1181,3 +1181,38 @@ main{max-width:1180px}
 .scn-pk-photo.go [data-l="toast"]{animation:sin .45s .6s both}
 .scn-pk-box [data-l="pkg"]{transition:transform 1.4s cubic-bezier(.5,0,.3,1)}
 .scn-pk-box.go [data-l="pkg"]{transform:translateX(260px) scale(.6);opacity:0;transition:transform .9s,opacity .6s .5s}
+.s-scan .ubar .track span{font-size:11px;padding-left:44px;white-space:nowrap}
+
+.scn-boards .flybox{animation:flyb .85s cubic-bezier(.5,0,.3,1) both;pointer-events:none}
+@keyframes flyb{0%{transform:translate(0,var(--d,0))}100%{transform:translate(-110px,30px) scale(.4);opacity:0}}
+.scn-boards [data-l="cnt"]{opacity:0;transition:opacity .3s}
+.scn-boards.hit-boxes [data-l="cnt"]{opacity:1}
+.scn-boards [data-l^="box"]{opacity:1!important;transform:none!important;animation:none!important}.scn-boards:not(.hit-boxes) [data-l="boxes"]{animation:tapb 1.1s ease-in-out infinite!important}
+.scn-boards [data-l="boxes"],.scn-boards [data-l="boxes"] *{pointer-events:auto!important;cursor:pointer}
+
+/* v10: no frames or numbers — items bounce/blink */
+.spot .ring,.spot .badge{display:none!important}
+.spot .hit{fill:transparent!important;stroke:none!important}
+.spb{transform-box:fill-box;transform-origin:center bottom;animation:spbounce 1.3s ease-in-out infinite}
+@keyframes spbounce{0%,100%{transform:translateY(0);filter:none}30%{transform:translateY(-5%);filter:drop-shadow(0 0 6px rgba(201,255,0,.9))}55%{transform:translateY(0)}}
+.spf{animation:spdone .45s ease-out}
+@keyframes spdone{40%{transform:scale(1.06)}}
+.scn .tapring,.scn .dropring{display:none!important}
+.scn .droptg{transform-box:fill-box;transform-origin:center;animation:tgblink 1.2s ease-in-out infinite}
+@keyframes tgblink{50%{filter:drop-shadow(0 0 8px rgba(201,255,0,.95));opacity:.85}}
+.scn.go .droptg,.scn.dropped .droptg{animation:none}
+.scn .tapme{filter:drop-shadow(0 0 6px rgba(201,255,0,.85))}
+.m-hot{outline:none!important;box-shadow:none!important;animation:mhot2 1.2s ease-in-out infinite!important}
+@keyframes mhot2{0%,100%{transform:translateY(0);background:transparent}40%{transform:translateY(-3px);background:rgba(201,255,0,.35)}}
+.m-hot.hit{animation:none!important}
+.st-chips button{width:10px!important;height:10px!important;padding:0;border-radius:99px;font-size:0!important}
+.st-chips button.on{box-shadow:none!important;background:var(--ink);border-color:var(--ink)}
+.st-chips{gap:10px}
+.fx-chips i{width:10px;height:10px}
+.spotcap b{display:none}
+
+.scn-unlock [data-l="lo-buy"]{opacity:0}
+.scn-unlock.go [data-l="lo-buy"]{animation:popc2 .45s .1s cubic-bezier(.2,1.4,.4,1) both}
+.scn-unlock.go [data-l="lo-on"]{opacity:0!important;animation:none}
+.scn-unlock .taphit{pointer-events:none}
+.scn-unlock.armed .taphit{pointer-events:auto}

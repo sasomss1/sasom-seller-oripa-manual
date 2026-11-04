@@ -19,5 +19,6 @@
 <text data-l="t_2" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="14" font-weight="600" letter-spacing="0em"><tspan x="166.951" y="209.777">Last One &#xb7; &#xe1b;&#xe25;&#xe14;&#xe25;&#xe47;&#xe2d;&#xe01;&#xe41;&#xe25;&#xe49;&#xe27;</tspan></text>
 </g>
 </g>
+<g data-l="lo-buy"><rect x="64" y="180" width="352" height="52" rx="14" fill="#1B1B1B" stroke="#C9FF00" stroke-width="2"/><text fill="#C9FF00" font-family="Inter" font-size="15" font-weight="700" text-anchor="middle"><tspan x="240" y="211.5" text-anchor="middle">Buy Last One</tspan></text></g>
 </g>
 </svg>

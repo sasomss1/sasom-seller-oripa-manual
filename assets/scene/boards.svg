@@ -8,7 +8,7 @@
 <rect x="64" y="92" width="36" height="36" rx="9.6" fill="url(#boards_pattern0_99_2)"/>
 </g>
 </g>
-<g data-l="box1">
+<g data-l="boxes"><g data-l="box1">
 <rect data-l="b" x="150" y="56" width="52" height="40" rx="5" fill="#C7945C"/>
 <rect data-l="tape" x="170" y="56" width="12" height="40" fill="#E6C799"/>
 </g>
@@ -24,6 +24,8 @@
 <rect data-l="b_4" x="208" y="102" width="52" height="40" rx="5" fill="#C7945C"/>
 <rect data-l="tape_4" x="228" y="102" width="12" height="40" fill="#E6C799"/>
 </g>
+</g>
+<g data-l="cnt"><rect x="104" y="58" width="34" height="22" rx="11" fill="#C9FF00"/><text data-l="cntt" x="121" y="73.5" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#1B1B1B">+0</text></g>
 <g data-l="inf">
 <rect data-l="bg" x="40" y="214" width="200" height="30" rx="15" fill="#2E2E33"/>
 <text data-l="t" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12.5" font-weight="600" letter-spacing="0em"><tspan x="53.7756" y="233.319">Send Board &#xb7; &#xe2a;&#xe48;&#xe07;&#xe21;&#xe32;&#xe23;&#xe2d;&#xe44;&#xe14;&#xe49;&#xe44;&#xe21;&#xe48;&#xe08;&#xe33;&#xe01;&#xe31;&#xe14;</tspan></text>
