@@ -33,16 +33,16 @@
 <g data-l="screen">
 <rect x="306" y="28" width="138" height="168" rx="19" fill="#1B1B1E"/>
 <g data-l="tab1">
-<rect data-l="bg_2" x="316" y="42" width="40" height="22" rx="6" fill="#2A2A2E"/>
-<text data-l="t_2" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="333.117" y="55.8636">1</tspan></text>
+<rect data-l="bg_2" x="316.0" y="38.0" width="40" height="28" rx="5" fill="#BF2E2E"/><path d="M316.0 38.0H356.0L336.0 50.6Z" fill="white" fill-opacity="0.22"/>
+<text data-l="t_2" fill="#FFFFFF" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="333.117" y="55.8636">1</tspan></text>
 </g>
 <g data-l="tab2">
-<rect data-l="bg_3" x="360" y="42" width="40" height="22" rx="6" fill="#2A2A2E"/>
-<text data-l="t_3" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="376.273" y="55.8636">2</tspan></text>
+<rect data-l="bg_3" x="360.0" y="38.0" width="40" height="28" rx="5" fill="#218C4D"/><path d="M360.0 38.0H400.0L380.0 50.6Z" fill="white" fill-opacity="0.22"/>
+<text data-l="t_3" fill="#FFFFFF" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="376.273" y="55.8636">2</tspan></text>
 </g>
 <g data-l="tab3">
-<rect data-l="bg_4" x="404" y="42" width="40" height="22" rx="6" fill="#2A2A2E"/>
-<text data-l="t_4" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="420.092" y="55.8636">3</tspan></text>
+<rect data-l="bg_4" x="404.0" y="38.0" width="40" height="28" rx="5" fill="#1A1A1A" stroke="#55555A"/><path d="M404.0 38.0H444.0L424.0 50.6Z" fill="white" fill-opacity="0.22"/>
+<text data-l="t_4" fill="#FFFFFF" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="420.092" y="55.8636">3</tspan></text>
 </g>
 <rect data-l="cell" x="318" y="76" width="27" height="27" rx="5" fill="#3A3A40"/>
 <rect data-l="cell_2" x="349" y="76" width="27" height="27" rx="5" fill="#3A3A40"/>
