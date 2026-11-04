@@ -46,10 +46,7 @@
 <text data-l="t_5" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="405.851" y="141.5">05</tspan></text>
 </g>
 </g>
-<g data-l="pen">
-<rect data-l="body_2" x="300" y="40" width="14" height="56" rx="4" transform="rotate(25 300 40)" fill="#F2F2F0"/>
-<path data-l="Vector_6" d="M276.333 90.7534L289.022 96.6701L276.761 106.4L276.333 90.7534Z" fill="#C9FF00"/>
-</g>
+<g data-l="pen"><g transform="translate(281 101) rotate(205) scale(1.5) translate(-18 -4)"><path d="M18 4c2.8 0 5 2.2 5 5v15.5l1.2-.3c2.1-.5 4.2.6 5 2.6l.3.7 1.1-.2c2.2-.4 4.3.9 5 3l.2.6.8-.1c2.6-.2 4.9 1.8 4.9 4.4V44c0 5.5-4.5 10-10 10H22c-3.2 0-6.2-1.5-8.1-4.1L5.6 38.6c-1.5-2-1.1-4.9.9-6.4 1.8-1.4 4.4-1.2 6 .4l.5.5V9c0-2.8 2.2-5 5-5Z" fill="#F2F2F0" stroke="#1B1B1B" stroke-width="2.4" stroke-linejoin="round"/></g><circle cx="279" cy="106" r="11" fill="#FFFFFF" stroke="#C9FF00" stroke-width="3"/></g>
 <g data-l="pill">
 <rect data-l="bg_11" x="150" y="236" width="200" height="30" rx="15" fill="#2E2E33"/>
 <text data-l="t_6" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="175.908" y="253.666">SASOM &#xe41;&#xe1e;&#xe47;&#xe04;&#xe0b;&#xe2d;&#xe07; &#xb7; &#xe04;&#xe38;&#xe13;&#xe15;&#xe34;&#xe14;&#xe40;&#xe25;&#xe02;</tspan></text>
