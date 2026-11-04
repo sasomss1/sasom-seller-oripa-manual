@@ -1097,3 +1097,13 @@ main{max-width:1180px}
 .scard,.stk .ev .scard,.qrcard{box-shadow:none!important}.scard.back{border:0!important}
 .stk .qrcard{width:120px;height:168px;font-size:8.2px;padding:.9em .8em;gap:.55em;overflow:hidden}.stk .qrcard .qbox{width:66%}
 .qrcard .qlogo,.qrcard .qbox,.qrcard .qn,.qrcard .qc{flex:none}
+
+.s-scan .ubar{display:none;position:absolute;left:10px;right:10px;bottom:12px}
+.s-scan.lockd .ubar{display:block}
+.s-scan .ubar .track{width:100%;height:46px}
+.s-scan .ubar .knob{width:38px;height:38px;left:4px;top:4px;animation:nudge 1.8s 1s infinite}
+.s-scan .ubar .track span{font-size:12px;padding-left:30px}
+.s-scan.lockd .aim{opacity:0}
+.s-scan .aim{transition:opacity .4s}
+.s-scan.lockd .qrcard.drag{animation:none;opacity:.5;cursor:default}
+.qrcard.kp{font-size:8.6px;width:110px}
