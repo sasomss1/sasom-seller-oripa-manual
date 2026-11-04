@@ -1078,3 +1078,22 @@ main{max-width:1180px}
 .scard.back .flap{position:absolute;left:0;right:0;top:0;height:45%;background:rgba(255,255,255,.2);clip-path:polygon(0 0,100% 0,50% 100%)}
 .scard.back .logo{display:none}
 .qrcard.code .qh b{font:inherit;font-weight:800;letter-spacing:.04em;color:#fff}.qrcard.code .qc{font-size:1.25em;letter-spacing:.12em}
+
+/* stack: envelope already on top of prize + QR */
+.s-stack2{display:flex;align-items:center;justify-content:center;min-height:300px}
+.stk{position:relative;width:120px;height:168px;cursor:pointer}
+.stk .L{position:absolute;left:0;top:0;transition:transform .6s cubic-bezier(.2,1.1,.4,1)}
+.stk .L em{position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);white-space:nowrap;font:600 12px "Noto Sans Thai",Inter;font-style:normal;color:var(--fg);opacity:0;transition:opacity .3s}
+.stk .qr{transform:translate(16px,-12px) rotate(5deg)}
+.stk .pz{transform:translate(8px,-6px) rotate(2.5deg)}
+.stk .ev{transform:none}
+.stk .ev .scard{box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.s-stack2:not(.fan):not(.done) .stk{animation:tapb 1.4s ease-in-out infinite}
+.s-stack2.fan .qr{transform:translate(150px,0)}
+.s-stack2.fan .pz{transform:none}
+.s-stack2.fan .ev{transform:translate(-150px,0)}
+.s-stack2.fan .L em{opacity:1;transition-delay:.35s}
+@media (max-width:640px){.s-stack2.fan .qr{transform:translate(118px,0) scale(.82)}.s-stack2.fan .ev{transform:translate(-118px,0) scale(.82)}}
+.scard,.stk .ev .scard,.qrcard{box-shadow:none!important}.scard.back{border:0!important}
+.stk .qrcard{width:120px;height:168px;font-size:8.2px;padding:.9em .8em;gap:.55em;overflow:hidden}.stk .qrcard .qbox{width:66%}
+.qrcard .qlogo,.qrcard .qbox,.qrcard .qn,.qrcard .qc{flex:none}
