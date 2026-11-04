@@ -1128,3 +1128,8 @@ main{max-width:1180px}
 .fx-cap{display:flex;gap:10px;align-items:flex-start;max-width:360px;margin:0;font-size:14px;line-height:1.5}
 .fx-cap b{flex:none;width:22px;height:22px;border-radius:50%;background:var(--lime);color:#1B1B1B;display:grid;place-items:center;font:700 12px Inter}
 .fx-cap .chk{flex:none;width:22px;height:22px;background:var(--lime);color:#1B1B1B;border-radius:7px;padding:3px}
+
+.tg,.tg::after{transition:background .3s,left .3s cubic-bezier(.3,1.4,.5,1)}
+.m-hot.hit .tg{background:#1B1B1B}.m-hot.hit .tg::after{left:20px}
+[data-h="excl"].m-hot:not(.hit) .tg{animation:tgnudge 1.4s infinite}
+@keyframes tgnudge{50%{box-shadow:0 0 0 5px rgba(201,255,0,.55)}}
