@@ -1,0 +1,33 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g data-l="scene-ship-board">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="seller">
+<circle data-l="head" cx="75" cy="118" r="18" fill="#C9FF00"/>
+<path data-l="body" d="M40 176C40 157 55 142 75 142C95 142 110 157 110 176H40Z" fill="#C9FF00"/>
+<text data-l="label" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="65.6426" y="194.666">&#xe04;&#xe38;&#xe13;</tspan></text>
+</g>
+<line data-l="road" x1="125.5" y1="166.5" x2="322.5" y2="166.5" stroke="#6B6B73" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+<g data-l="pkg">
+<rect data-l="box" x="122" y="146" width="56" height="40" rx="5" fill="#C7945C"/>
+<rect data-l="tape" x="144" y="146" width="12" height="40" fill="#E6C799"/>
+</g>
+<g data-l="warehouse">
+<path data-l="Vector" d="M336 120L392 86L448 120H336Z" fill="#F2F2F0"/>
+<rect data-l="body_2" x="344" y="120" width="96" height="84" rx="4" fill="#F2F2F0"/>
+<g data-l="sasom logo">
+<rect x="374" y="142" width="36" height="36" rx="9.6" fill="url(#shipboard_pattern0_95_54)"/>
+</g>
+<rect data-l="door" x="376" y="182" width="32" height="22" rx="3" fill="#C9C9C4"/>
+</g>
+<g data-l="pill">
+<rect data-l="bg" x="170" y="236" width="140" height="30" rx="15" fill="#C9FF00"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="197.242" y="254.972">&#xe01;&#xe48;&#xe2d;&#xe19;&#xe44;&#xe25;&#xe1f;&#xe4c; 3-5 &#xe27;&#xe31;&#xe19;</tspan></text>
+</g>
+</g>
+<defs>
+<pattern id="shipboard_pattern0_95_54" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#shipboard_image0_95_54" transform="scale(0.00625)"/>
+</pattern>
+<image id="shipboard_image0_95_54" width="160" height="160" preserveAspectRatio="none" xlink:href="assets/sasom-logo.png"/>
+</defs>
+</svg>

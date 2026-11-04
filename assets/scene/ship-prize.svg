@@ -1,0 +1,34 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g data-l="scene-ship-prize">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="seller">
+<circle data-l="head" cx="75" cy="118" r="18" fill="#C9FF00"/>
+<path data-l="body" d="M40 176C40 157 55 142 75 142C95 142 110 157 110 176H40Z" fill="#C9FF00"/>
+<text data-l="label" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="65.6426" y="194.666">&#xe04;&#xe38;&#xe13;</tspan></text>
+</g>
+<line data-l="road" x1="125.5" y1="166.5" x2="322.5" y2="166.5" stroke="#6B6B73" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 8"/>
+<g data-l="pkg">
+<rect data-l="card" x="134" y="140" width="34" height="46" rx="5" fill="#F5C733"/>
+<rect data-l="art" x="138" y="144" width="26" height="22" rx="3" fill="white"/>
+<rect data-l="line" x="138" y="170" width="18" height="4" rx="2" fill="#D97326"/>
+</g>
+<g data-l="warehouse">
+<path data-l="Vector" d="M336 120L392 86L448 120H336Z" fill="#F2F2F0"/>
+<rect data-l="body_2" x="344" y="120" width="96" height="84" rx="4" fill="#F2F2F0"/>
+<g data-l="sasom logo">
+<rect x="374" y="142" width="36" height="36" rx="9.6" fill="url(#shipprize_pattern0_95_71)"/>
+</g>
+<rect data-l="door" x="376" y="182" width="32" height="22" rx="3" fill="#C9C9C4"/>
+</g>
+<g data-l="pill">
+<rect data-l="bg" x="170" y="236" width="140" height="30" rx="15" fill="#C9FF00"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="197.763" y="254.972">&#xe2b;&#xe25;&#xe31;&#xe07;&#xe44;&#xe25;&#xe1f;&#xe4c; 1-2 &#xe27;&#xe31;&#xe19;</tspan></text>
+</g>
+</g>
+<defs>
+<pattern id="shipprize_pattern0_95_71" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#shipprize_image0_95_71" transform="scale(0.00625)"/>
+</pattern>
+<image id="shipprize_image0_95_71" width="160" height="160" preserveAspectRatio="none" xlink:href="assets/sasom-logo.png"/>
+</defs>
+</svg>

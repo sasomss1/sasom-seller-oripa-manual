@@ -1,0 +1,63 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g data-l="scene-pack-sasom">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="sasom">
+<circle data-l="head" cx="71" cy="118" r="18" fill="white"/>
+<path data-l="body" d="M36 176C36 157 51 142 71 142C91 142 106 157 106 176H36Z" fill="white"/>
+<g data-l="sasom logo">
+<rect x="60" y="152" width="22" height="22" rx="5.86667" fill="url(#packsasom_pattern0_95_89)"/>
+</g>
+<text data-l="label" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="48.9219" y="193.864">SASOM</tspan></text>
+</g>
+<g data-l="env1">
+<rect data-l="bg" x="130" y="92" width="54" height="74" rx="7" fill="#BF2E2E"/>
+<path data-l="Vector" d="M130 92H184L157 116L130 92Z" fill="white" fill-opacity="0.18"/>
+<g data-l="num1">
+<circle data-l="bg_2" cx="157" cy="139" r="15" fill="white"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="150.689" y="141.5">01</tspan></text>
+</g>
+</g>
+<g data-l="env2">
+<rect data-l="bg_3" x="194" y="92" width="54" height="74" rx="7" fill="#218C4D"/>
+<path data-l="Vector_2" d="M194 92H248L221 116L194 92Z" fill="white" fill-opacity="0.18"/>
+<g data-l="num2">
+<circle data-l="bg_4" cx="221" cy="139" r="15" fill="white"/>
+<text data-l="t_2" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="213.916" y="141.5">02</tspan></text>
+</g>
+</g>
+<g data-l="env3">
+<rect data-l="bg_5" x="258.5" y="92.5" width="53" height="73" rx="6.5" fill="#1A1A1A" stroke="#55555A"/>
+<path data-l="Vector_3" d="M258 92H312L285 116L258 92Z" fill="white" fill-opacity="0.18"/>
+<g data-l="num3">
+<circle data-l="bg_6" cx="285" cy="139" r="15" fill="white"/>
+<text data-l="t_3" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="277.749" y="141.5">03</tspan></text>
+</g>
+</g>
+<g data-l="env4">
+<rect data-l="bg_7" x="322" y="92" width="54" height="74" rx="7" fill="#BF2E2E"/>
+<path data-l="Vector_4" d="M322 92H376L349 116L322 92Z" fill="white" fill-opacity="0.18"/>
+<g data-l="num4">
+<circle data-l="bg_8" cx="349" cy="139" r="15" fill="white"/>
+<text data-l="t_4" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="341.668" y="141.5">04</tspan></text>
+</g>
+</g>
+<g data-l="env5">
+<rect data-l="bg_9" x="386" y="92" width="54" height="74" rx="7" fill="#218C4D"/>
+<path data-l="Vector_5" d="M386 92H440L413 116L386 92Z" fill="white" fill-opacity="0.18"/>
+<g data-l="num5">
+<circle data-l="bg_10" cx="413" cy="139" r="15" fill="white"/>
+<text data-l="t_5" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="405.851" y="141.5">05</tspan></text>
+</g>
+</g>
+<g data-l="pill">
+<rect data-l="bg_11" x="150" y="236" width="200" height="30" rx="15" fill="#2E2E33"/>
+<text data-l="t_6" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="190.873" y="253.666">&#xe17;&#xe35;&#xe21;&#xe41;&#xe22;&#xe01; &#xe40;&#xe1e;&#xe37;&#xe48;&#xe2d;&#xe04;&#xe27;&#xe32;&#xe21;&#xe42;&#xe1b;&#xe23;&#xe48;&#xe07;&#xe43;&#xe2a;</tspan></text>
+</g>
+</g>
+<defs>
+<pattern id="packsasom_pattern0_95_89" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#packsasom_image0_95_89" transform="scale(0.00625)"/>
+</pattern>
+<image id="packsasom_image0_95_89" width="160" height="160" preserveAspectRatio="none" xlink:href="assets/sasom-logo.png"/>
+</defs>
+</svg>

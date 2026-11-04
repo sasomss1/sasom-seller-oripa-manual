@@ -1,0 +1,60 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g data-l="scene-live-sasom">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="sasom">
+<circle data-l="head" cx="91" cy="128" r="18" fill="white"/>
+<path data-l="body" d="M56 186C56 167 71 152 91 152C111 152 126 167 126 186H56Z" fill="white"/>
+<g data-l="sasom logo">
+<rect x="80" y="162" width="22" height="22" rx="5.86667" fill="url(#livesasom_pattern0_95_226)"/>
+</g>
+<text data-l="label" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="68.9219" y="203.864">SASOM</tspan></text>
+</g>
+<g data-l="phone">
+<rect data-l="frame" x="190" y="22" width="190" height="256" rx="24" fill="#121212"/>
+<g data-l="screen">
+<rect x="196" y="28" width="178" height="244" rx="19" fill="#1B1B1E"/>
+<g data-l="live badge">
+<rect data-l="bg" x="208" y="40" width="44" height="20" rx="6" fill="#E5484D"/>
+<text data-l="t" fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="10" font-weight="bold" letter-spacing="0em"><tspan x="216" y="52.6364">LIVE</tspan></text>
+</g>
+<text data-l="shop" fill="white" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="11" font-weight="600" letter-spacing="0em"><tspan x="260" y="51.5">SASOM</tspan></text>
+<rect data-l="cell-0" x="210" y="72" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-1" x="240" y="72" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-2" x="270" y="72" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-3" x="300" y="72" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-4" x="330" y="72" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-5" x="210" y="102" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-6" x="240" y="102" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-7" x="270" y="102" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-8" x="300" y="102" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-9" x="330" y="102" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-10" x="210" y="132" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-11" x="240" y="132" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-12" x="270" y="132" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-13" x="300" y="132" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-14" x="330" y="132" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-15" x="210" y="162" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-16" x="240" y="162" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-17" x="270" y="162" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-18" x="300" y="162" width="26" height="26" rx="5" fill="#3A3A40"/>
+<rect data-l="cell-19" x="330" y="162" width="26" height="26" rx="5" fill="#3A3A40"/>
+<g data-l="closed">
+<rect data-l="bg_2" x="235" y="112" width="100" height="34" rx="17" fill="#C9FF00"/>
+<text data-l="t_2" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="14" font-weight="bold" letter-spacing="0em"><tspan x="256.521" y="133.591">CLOSED</tspan></text>
+</g>
+<g data-l="hearts">
+<circle data-l="h0" cx="332" cy="264" r="6" fill="#C9FF00"/>
+<circle data-l="h1" cx="348" cy="252" r="6" fill="#FF6B9A"/>
+<circle data-l="h2" cx="332" cy="240" r="6" fill="#C9FF00"/>
+<circle data-l="h3" cx="348" cy="228" r="6" fill="#FF6B9A"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<pattern id="livesasom_pattern0_95_226" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#livesasom_image0_95_226" transform="scale(0.00625)"/>
+</pattern>
+<image id="livesasom_image0_95_226" width="160" height="160" preserveAspectRatio="none" xlink:href="assets/sasom-logo.png"/>
+</defs>
+</svg>

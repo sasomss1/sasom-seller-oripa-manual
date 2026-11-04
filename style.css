@@ -818,3 +818,66 @@ main{max-width:1180px}
 .spot .hit{fill:rgba(201,255,0,.10);stroke:#C9FF00;stroke-width:2.5;vector-effect:non-scaling-stroke}
 .spot .ring{fill:none;stroke:#C9FF00;stroke-width:2;vector-effect:non-scaling-stroke}
 .spot.found .hit{fill:none;stroke:rgba(201,255,0,.55);stroke-dasharray:3 3}
+
+/* ===== Figma story scenes ===== */
+.st-stage{background:none!important;border:0!important;height:auto!important;aspect-ratio:480/300;overflow:visible}
+.scn{position:absolute;inset:0}.scn svg{width:100%;height:100%;display:block;overflow:visible}
+.scn text{font-family:Inter,"Noto Sans Thai",sans-serif}
+.scn :is([data-l="bub-me"],[data-l="typing"],[data-l="bub-kam"],[data-l="send"],[data-l="stamp"],[data-l="card"],[data-l="pkg"],[data-l="warehouse"],[data-l^="num"],[data-l="pen"],[data-l="noti"],[data-l="d-new"],[data-l="toast"],[data-l="save"],[data-l="closed"],[data-l^="h"],[data-l^="coin"],[data-l="paid"]){transform-box:fill-box;transform-origin:center}
+.scn [data-l="sasom"]>[data-l="head"],.scn [data-l="sasom"]>[data-l="body"]{fill:var(--ink)}
+.scn [data-l="warehouse"]>path,.scn [data-l="warehouse"]>rect[data-l^="body"]{fill:var(--card);stroke:var(--sub);stroke-width:1.5}
+/* chat */
+.scn-chat [data-l="bub-me"],.scn-chat [data-l="typing"],.scn-chat [data-l="bub-kam"]{opacity:0}
+.scn-chat:not(.go) [data-l="send"]{animation:sendp 1.2s infinite}
+@keyframes sendp{50%{transform:scale(1.18)}}
+.scn-chat.go [data-l="bub-me"]{animation:sin .45s both}
+.scn-chat.go [data-l="typing"]{animation:typ2 1.1s .5s both}
+.scn-chat.go [data-l="bub-kam"]{animation:sin .45s 1.5s both}
+.scn-chat.go [data-l="input text"]{opacity:.3}
+@keyframes sin{from{opacity:0;transform:translateY(14px) scale(.85)}to{opacity:1;transform:none}}
+@keyframes typ2{0%{opacity:0}15%,80%{opacity:1}100%{opacity:0}}
+/* confirm */
+.scn-confirm [data-l="stamp"]{opacity:0}
+.scn-confirm.go [data-l="stamp"]{animation:stamp2 .45s .1s cubic-bezier(.2,1.5,.4,1) both}
+@keyframes stamp2{from{opacity:0;transform:scale(2.6)}to{opacity:1;transform:none}}
+.scn-confirm:not(.go) [data-l="card"]{animation:sendp 1.6s infinite}
+/* ship */
+.scn-ship-board [data-l="pkg"],.scn-ship-prize [data-l="pkg"]{transition:transform 1.4s cubic-bezier(.5,0,.3,1)}
+.scn-ship-board.go [data-l="pkg"],.scn-ship-prize.go [data-l="pkg"]{transform:translateX(218px) scale(.6)}
+.scn-ship-board:not(.go) [data-l="pkg"],.scn-ship-prize:not(.go) [data-l="pkg"]{animation:nudge3 1.6s infinite}
+@keyframes nudge3{50%{transform:translateX(14px)}}
+.scn.go [data-l="warehouse"]{animation:pulse2 .5s 1.35s}
+/* pack */
+.scn-pack-sasom [data-l^="num"],.scn-pack-seller [data-l^="num"]{transform:scale(0)}
+.scn-pack-sasom.go [data-l^="num"],.scn-pack-seller.go [data-l^="num"]{animation:popn .35s cubic-bezier(.2,1.6,.4,1) both}
+.scn.go [data-l="num2"]{animation-delay:.25s!important}.scn.go [data-l="num3"]{animation-delay:.5s!important}.scn.go [data-l="num4"]{animation-delay:.75s!important}.scn.go [data-l="num5"]{animation-delay:1s!important}
+.scn-pack-seller [data-l="pen"]{transform:translateX(-170px)}
+.scn-pack-seller.go [data-l="pen"]{animation:pen2 1.3s both}
+@keyframes pen2{from{transform:translateX(-170px)}to{transform:translateX(130px)}}
+/* date */
+.scn-date [data-l="noti"]{opacity:0;transform:translateY(-30px)}
+.scn-date [data-l="d-new"]{opacity:0;transform:scale(.4)}
+.scn-date.go [data-l="d-new"]{animation:popc2 .45s .15s cubic-bezier(.2,1.6,.4,1) both}
+.scn-date.go [data-l="noti"]{animation:notid .5s .6s cubic-bezier(.2,1.3,.4,1) both}
+@keyframes popc2{to{opacity:1;transform:none}}@keyframes notid{to{opacity:1;transform:none}}
+/* setup */
+.scn-setup [data-l="toast"]{opacity:0;transform:translateY(10px)}
+.scn-setup:not(.go) [data-l="save"]{animation:sendp 1.4s infinite}
+.scn-setup.go [data-l="toast"]{animation:notid .4s .2s both}
+/* live */
+.scn-live-sasom [data-l^="cell-"],.scn-live-seller [data-l^="cell-"]{transition:fill .2s}
+.scn.go [data-l^="cell-"]{fill:#6B6B75}
+.scn.go [data-l="cell-3"],.scn.go [data-l="cell-11"],.scn.go [data-l="cell-17"]{fill:#C9FF00}
+.scn-live-sasom [data-l="closed"],.scn-live-seller [data-l="closed"]{opacity:0;transform:scale(.4)}
+.scn-live-sasom.go [data-l="closed"],.scn-live-seller.go [data-l="closed"]{animation:popc2 .45s 1.2s cubic-bezier(.2,1.6,.4,1) both}
+.scn [data-l="hearts"]>*{opacity:0}
+.scn.go [data-l="hearts"]>*{animation:heart2 1.4s both}
+.scn.go [data-l="h1"]{animation-delay:.25s!important}.scn.go [data-l="h2"]{animation-delay:.5s!important}.scn.go [data-l="h3"]{animation-delay:.75s!important}
+@keyframes heart2{0%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-90px) scale(1.4)}}
+/* pay */
+.scn-pay [data-l^="coin"],.scn-pay [data-l="paid"]{opacity:0}
+.scn-pay.go [data-l^="coin"]{animation:coin2 .5s cubic-bezier(.5,0,.6,1.4) both}
+.scn-pay.go [data-l="coin2"]{animation-delay:.2s!important}.scn-pay.go [data-l="coin3"]{animation-delay:.4s!important}.scn-pay.go [data-l="coin4"]{animation-delay:.6s!important}
+@keyframes coin2{from{opacity:1;transform:translateY(-150px)}to{opacity:1;transform:none}}
+.scn-pay.go [data-l="paid"]{animation:popc2 .45s 1s cubic-bezier(.2,1.6,.4,1) both}
+.scn-pay [data-l="paid"]>rect{fill:var(--ink)}.scn-pay [data-l="paid"] text{fill:var(--bg)}

@@ -1,0 +1,48 @@
+<svg width="480" height="300" viewBox="0 0 480 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g data-l="scene-pay">
+<rect width="480" height="300" rx="24" fill="#1E1E21"/>
+<g data-l="sasom">
+<circle data-l="head" cx="91" cy="128" r="18" fill="white"/>
+<path data-l="body" d="M56 186C56 167 71 152 91 152C111 152 126 167 126 186H56Z" fill="white"/>
+<g data-l="sasom logo">
+<rect x="80" y="162" width="22" height="22" rx="5.86667" fill="url(#pay_pattern0_95_313)"/>
+</g>
+<text data-l="label" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Inter" font-size="12" font-weight="600" letter-spacing="0em"><tspan x="68.9219" y="203.864">SASOM</tspan></text>
+</g>
+<g data-l="bank card">
+<rect data-l="bg" x="190" y="96" width="220" height="136" rx="16" fill="#C9FF00"/>
+<rect data-l="chip" x="208" y="114" width="34" height="24" rx="5" fill="#D9B840"/>
+<rect data-l="l1" x="208" y="188" width="150" height="8" rx="4" fill="#1B1B1B" fill-opacity="0.7"/>
+<rect data-l="l2" x="208" y="204" width="90" height="8" rx="4" fill="#1B1B1B" fill-opacity="0.7"/>
+</g>
+<g data-l="coin1">
+<circle data-l="o" cx="378" cy="172" r="21" fill="#F5C733" stroke="#B88A12" stroke-width="2"/>
+<circle data-l="i" cx="378" cy="172" r="12.25" stroke="#B88A12" stroke-width="1.5"/>
+</g>
+<g data-l="coin2">
+<circle data-l="o_2" cx="378" cy="158" r="21" fill="#F5C733" stroke="#B88A12" stroke-width="2"/>
+<circle data-l="i_2" cx="378" cy="158" r="12.25" stroke="#B88A12" stroke-width="1.5"/>
+</g>
+<g data-l="coin3">
+<circle data-l="o_3" cx="378" cy="144" r="21" fill="#F5C733" stroke="#B88A12" stroke-width="2"/>
+<circle data-l="i_3" cx="378" cy="144" r="12.25" stroke="#B88A12" stroke-width="1.5"/>
+</g>
+<g data-l="coin4">
+<circle data-l="o_4" cx="378" cy="130" r="21" fill="#F5C733" stroke="#B88A12" stroke-width="2"/>
+<circle data-l="i_4" cx="378" cy="130" r="12.25" stroke="#B88A12" stroke-width="1.5"/>
+</g>
+<g data-l="paid">
+<rect data-l="bg_2" x="170" y="70" width="124" height="30" rx="15" fill="white"/>
+<text data-l="t" fill="#1B1B1B" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="13" font-weight="600" letter-spacing="0em"><tspan x="196.631" y="87.9715">&#xe42;&#xe2d;&#xe19;&#xe01;&#xe49;&#xe2d;&#xe19;&#xe40;&#xe14;&#xe35;&#xe22;&#xe27;</tspan></text>
+</g>
+<g data-l="pill">
+<text data-l="t_2" fill="#AAAAAA" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" letter-spacing="0em"><tspan x="235.195" y="263.666">3-5 &#xe27;&#xe31;&#xe19;&#xe17;&#xe33;&#xe01;&#xe32;&#xe23; &#xe2b;&#xe25;&#xe31;&#xe07;&#xe1b;&#xe34;&#xe14;&#xe1a;&#xe2d;&#xe23;&#xe4c;&#xe14;</tspan></text>
+</g>
+</g>
+<defs>
+<pattern id="pay_pattern0_95_313" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#pay_image0_95_313" transform="scale(0.00625)"/>
+</pattern>
+<image id="pay_image0_95_313" width="160" height="160" preserveAspectRatio="none" xlink:href="assets/sasom-logo.png"/>
+</defs>
+</svg>
