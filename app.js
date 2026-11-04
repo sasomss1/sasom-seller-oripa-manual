@@ -56,7 +56,7 @@ function drag(node,{move,end,start}){let x0,y0,t0,on=false;node.style.touchActio
  node.addEventListener('pointermove',e=>{if(on)move(e.clientX-x0,e.clientY-y0)});
  const up=e=>{if(!on)return;on=false;end(e.clientX-x0,e.clientY-y0,performance.now()-t0)};node.addEventListener('pointerup',up);node.addEventListener('pointercancel',up)}
 const SIM={
- pin:()=>`<div class="sim s-pin"><div class="sq">${[['017',1],['018',0],['019',0]].map((r,i)=>`<div class="qrow ${i?'':'top'}"><b>#${r[0]}</b><span class="paid">${T('จ่ายแล้ว','Paid')}</span>${i?'':`<button class="pinbtn" data-act>Pin</button>`}</div>`).join('')}</div><div class="pinstage">${envEl('017','g',true)}</div></div>`,
+ pin:()=>`<div class="sim s-pin"><div class="sq">${[['017','Pikachu','#F5C733','2611041017'],['018','Nami','#E5484D','2611041018'],['019','Eevee','#8FA8F0','2611041019']].map((r,i)=>`<div class="qrow ${i?'':'top'}"><i class="qav" style="background:${r[2]}"></i><div class="qinfo"><b>${r[1]}</b><small>Order ID ${r[3]}</small></div><span class="qnum">#${r[0]}</span>${i?'':`<button class="pinbtn" data-act>Pin</button>`}</div>`).join('')}</div><div class="pinstage">${envEl('017','g',true)}</div></div>`,
  swipe:()=>`<div class="sim s-swipe">${envEl('017','g',true)}<div class="track"><i class="fillp"></i><span>Swipe to Unseal</span><b class="knob"></b></div></div>`,
  seal:()=>`<div class="sim s-seal"><div class="sealwrap">${envEl('017','g',true)}</div></div>`,
  stack:()=>`<div class="sim s-stack"><div class="slot">${'<div class="qrcard">'+qrSvg(3)+'</div>'}</div><div class="mover">${cardBack()}</div></div>`,

@@ -1019,3 +1019,11 @@ main{max-width:1180px}
 .scn-resched.go [data-l="noti"]{animation:sin .45s 1.4s both}
 .scn-resched [data-l="t-new"],.scn-resched [data-l="noti"]{transform-box:fill-box;transform-origin:center}
 @keyframes fadeo{to{opacity:0}}
+
+.qrow .qav{flex:none;width:30px;height:30px;border-radius:50%}
+.qrow .qinfo{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.qrow .qinfo b{font:600 14px Inter,"Noto Sans Thai"}
+.qrow .qinfo small{font:500 11px Inter;color:var(--muted,#8A8A90);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qrow .qnum{margin-left:auto;flex:none;background:var(--lime);color:#1B1B1B;font:700 13px Inter;padding:4px 9px;border-radius:8px}
+.qrow .pinbtn{margin-left:0}
+.s-pin .sq{width:min(300px,100%)}.s-pin .qrow{min-width:0;padding:9px 10px;gap:8px}.s-pin .qinfo{flex:1 1 auto}.s-pin .qrow .qnum{margin-left:0}
