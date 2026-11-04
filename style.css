@@ -1133,3 +1133,21 @@ main{max-width:1180px}
 .m-hot.hit .tg{background:#1B1B1B}.m-hot.hit .tg::after{left:20px}
 [data-h="excl"].m-hot:not(.hit) .tg{animation:tgnudge 1.4s infinite}
 @keyframes tgnudge{50%{box-shadow:0 0 0 5px rgba(201,255,0,.55)}}
+
+.scn-resched-chat [data-l="bub-me"],.scn-resched-chat [data-l="typing"],.scn-resched-chat [data-l="bub-kam"]{opacity:0}
+.scn-resched-chat.go [data-l="bub-me"]{animation:sin .45s both}
+.scn-resched-chat.go [data-l="typing"]{animation:typ2 1.1s .5s both}
+.scn-resched-chat.go [data-l="bub-kam"]{animation:sin .45s 1.5s both}
+.scn-resched-chat.go [data-l="input text"]{opacity:.3}
+.scn-max4h [data-l="new"],.scn-max4h [data-l="create"]{opacity:0;pointer-events:none}
+.scn-max4h.hit-end [data-l="old"]{opacity:.25;transition:opacity .4s}
+.scn-max4h.hit-end [data-l="create"]{animation:mxc 1.6s .2s both}
+.scn-max4h.hit-end [data-l="new"]{animation:mxn .5s 1.5s both}
+@keyframes mxc{0%{opacity:0;transform:translateY(8px)}20%,70%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes mxn{from{opacity:0}to{opacity:1}}
+.scn-max4h:not(.hit-end) [data-l="clock"]{animation:tgnudge 1.4s infinite}
+
+.s-stack2.fan .qr{transform:translate(78px,0)}
+.s-stack2.fan .ev{transform:translate(-78px,0)}
+@media (max-width:640px){.s-stack2.fan .qr{transform:translate(70px,0) scale(.85)}.s-stack2.fan .ev{transform:translate(-70px,0) scale(.85)}}
+.pk .top{background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;padding:0!important;border:0!important;box-shadow:none!important;display:block!important}
