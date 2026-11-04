@@ -50,8 +50,8 @@
 </g>
 </g>
 <g data-l="pill">
-<rect data-l="bg_11" x="150" y="236" width="200" height="30" rx="15" fill="#2E2E33"/>
-<text data-l="t_6" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em"><tspan x="190.873" y="253.666">&#xe17;&#xe35;&#xe21;&#xe41;&#xe22;&#xe01; &#xe40;&#xe1e;&#xe37;&#xe48;&#xe2d;&#xe04;&#xe27;&#xe32;&#xe21;&#xe42;&#xe1b;&#xe23;&#xe48;&#xe07;&#xe43;&#xe2a;</tspan></text>
+<rect data-l="bg_11" x="80" y="236" width="320" height="30" rx="15" fill="#2E2E33"/>
+<text data-l="t_6" fill="white" style="white-space: pre" xml:space="preserve" font-family="Noto Sans Thai" font-size="12" font-weight="500" letter-spacing="0em" text-anchor="middle"><tspan x="240" y="253.666" text-anchor="middle">&#xe41;&#xe22;&#xe01;&#xe17;&#xe35;&#xe21;&#xe43;&#xe19;&#xe01;&#xe32;&#xe23; prepare &#xe41;&#xe15;&#xe48;&#xe25;&#xe30;&#xe02;&#xe31;&#xe49;&#xe19;&#xe15;&#xe2d;&#xe19; &#xe40;&#xe1e;&#xe37;&#xe48;&#xe2d;&#xe04;&#xe27;&#xe32;&#xe21;&#xe42;&#xe1b;&#xe23;&#xe48;&#xe07;&#xe43;&#xe2a;</tspan></text>
 </g>
 </g>
 <defs>
