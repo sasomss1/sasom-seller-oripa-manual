@@ -520,7 +520,7 @@ function flowSummary(){const strip=x=>String(x||'').replace(/<[^>]+>/g,'').repla
  const WHO={SELLER:T('คุณ','You'),SASOM:'SASOM',KAM:'KAM'};
  const lane=(k,name,sub)=>{const L=STORY[k]();return `<div class="fl-lane"><div class="fl-head"><b>${name}</b><small>${sub}</small></div><ol class="fl-steps">${L.map(x=>`<li class="w-${x[1].toLowerCase()}"><i class="fl-dot">${SICO[x[0]]?ico(SICO[x[0]],'fl-i'):''}</i><div><span class="fl-who">${WHO[x[1]]||x[1]}</span><b>${strip(x[2])}</b>${x[3]?`<small>${strip(x[3])}</small>`:''}</div></li>`).join('')}</ol></div>`};
  const lessons=STAGES.map(st=>`<div class="fs-stage"><div class="fs-st"><span>STAGE ${st[0]}</span>${st[1]}</div>${LESSONS.filter(l=>l.stage===st[0]).map(l=>{const sl=slidesOf(l).filter(x=>!x.finish&&!x.quiz&&x.h);return `<details class="fs-l"><summary><b>${l.t[lang==='th'?0:1]}</b><small>${l.d[lang==='th'?0:1]}</small></summary><ul>${sl.map(x=>{const h=strip(L2(x.h)),d=strip(L2(x.l||['','']));return `<li><b>${h}</b>${d?`<span>${d}</span>`:''}</li>`}).join('')}</ul></details>`}).join('')}</div>`).join('');
- return `<div class="sec"><span>OVERVIEW</span>${T('ภาพรวมทั้งหมด','The whole flow')}</div>
+ return `<div class="sec"><span>OVERVIEW</span></div>
  <div class="fl-legend"><span class="w-seller">${T('คุณ','You')}</span><span class="w-kam">KAM</span><span class="w-sasom">SASOM</span></div>
  <div class="fl-map">${lane('sb','Send Board',T('SASOM ไลฟ์ให้','SASOM hosts the live'))}${lane('sl','Seller Live',T('คุณไลฟ์เอง','You host the live'))}</div>
  <div class="sec"><span>SUMMARY</span>${T('สรุปทุกบท','Every lesson in brief')}</div><div class="fs">${lessons}</div>`}
