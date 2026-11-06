@@ -1304,3 +1304,12 @@ main{max-width:1180px}
 .ut-sum:empty{display:none}
 .ut-sum .spsum{margin:0}
 @media (max-width:720px){.uitour{gap:14px}.ut-side{max-width:100%;align-items:center;text-align:center}.ut-phone{width:min(220px,58vw,calc(50vh * .4618))}}
+/* real App screen step (same feel as setup taps, no frame) */
+.ui-ph{position:relative;width:min(270px,64vw,calc(58vh * .4618));aspect-ratio:375/812;border-radius:30px;border:6px solid #111;background:#fff;overflow:hidden;margin:0 auto}
+.ui-ph img{display:block;width:100%;height:100%;user-select:none;-webkit-user-drag:none}
+.ui-hot{position:absolute;translate:-50% -50%;border:0;padding:0;border-radius:10px;background:transparent;cursor:pointer;animation:uihot 1.2s ease-in-out infinite}
+@keyframes uihot{0%,100%{transform:translateY(0);background:transparent}40%{transform:translateY(-3px);background:rgba(201,255,0,.38)}}
+.ui-hot.miss{animation:uihot .3s 3}
+.ui-hot.hit{animation:none;background:rgba(201,255,0,.3)}
+@media (max-width:720px){.ui-ph{width:min(230px,60vw,calc(48vh * .4618))}}
+.vis:has(>.ui-ph){background:none;border:0;box-shadow:none;padding:0}

@@ -167,6 +167,34 @@ function storyInit(S){const k=S.dataset.k,L=STORY[k](),sl=k==='sl';let i=0,doneS
 const SICO={p1:'box',p2:'box',p3:'box',p4:'box',p5:'envnum',p6:'brief',p7:'box',p8:'brief',resched:'calendar',rchat:'brief',max4:'clock',request:'board',approve:'check',shipenv:'box',chat:'brief',confirm:'check',ship:'box',pack:'envnum',date:'calendar',setup:'board',live:'live',pay:'payout'};
 
 
+/* real App screen step (tap the real button) */
+const UI=(img,hot,h,l,why)=>({ui:img,hot,h,l,why,title:h});
+const UIS={
+ sreq:[
+  UI('s-live',[24,606,327,30],['ขอบอร์ด · กด Request new board','Request · tap Request new board'],['Profile · LIVE Selling · กล่อง Oripa Board Overview','Profile · LIVE Selling · Oripa Board Overview'],['ขอบอร์ดเองได้ในแอป ไม่ต้องส่งฟอร์มแยก','Request boards right in the App, no separate form']),
+  UI('s-boards',[201,126,162,32],['Board Overview · Request new board','Board Overview · Request new board'],['มีบอร์ดรออนุมัติ + Ready ได้สูงสุด 3 บอร์ด','Up to 3 pending + ready boards'],['หน้านี้ดูสถานะบอร์ดทั้งหมด Pending · Ready','See every board’s status here: Pending · Ready']),
+  UI('s-request',[16,725,343,56],['กรอกบอร์ด แล้วกด Submit','Fill in the board, then Submit'],['จำนวนสปอต · ราคาต่อสปอต · การ์ด Hit','Spots · price per spot · Hit cards'],['SASOM ตรวจแล้วอนุมัติ สถานะเปลี่ยนเป็น Ready','SASOM reviews and approves, status turns Ready'])],
+ sadd:[
+  UI('s-add',[16,458,343,88],['เลือก Add Oripa board','Choose Add Oripa board'],['ในหน้า LIVE Products','On LIVE Products'],['ใส่บอร์ดคู่กับสินค้าอื่นในไลฟ์เดียวกันได้','Mix boards with other products in one live']),
+  UI('s-select',[316,116,40,40],['ติ๊กบอร์ดที่ Ready','Tick a Ready board'],['เช็คสีซองให้ตรงกับซองที่ได้รับ','Envelope colour must match yours'],['เลือกได้เฉพาะบอร์ดที่ SASOM อนุมัติแล้ว · ไม่มีบอร์ด แจ้ง KAM','Only approved boards show · none? Tell your KAM']),
+  UI('s-products',[195,739,168,46],['เช็คบอร์ดในรายการ กด Save','Check the list, tap Save'],['บอร์ดอยู่รวมกับสินค้าอื่น','The board sits with your other products'],['บอร์ดขึ้นในไลฟ์ ลูกค้าเลือกเลขได้','The board shows on your live for buyers'])],
+ pin:[UI('s-queue',[275,471,76,24],['1 · Pin ออเดอร์ถัดไป','1 · Pin the next order'],['แตะไอคอนซองฉีก เปิดคิว Unseal · Pin แล้วชูเลขซองให้กล้องเห็น','Tap the torn-envelope icon, open the queue · Pin, then show the number'],['ลูกค้าเห็นว่ากำลังเปิดออเดอร์ของใคร เลขซองไหน','Buyers see whose order and which number is next'])],
+ swipe:[UI('s-pinned',[20,664,335,28],['2 · Swipe to Unseal','2 · Swipe to Unseal'],['ปัดในแอปก่อน แล้วค่อยแกะซีล','Swipe in the App first, then break the seal'],['ระบบล็อกว่าซองนี้ถูกเปิดแล้ว · หยิบผิดกด Undo','Locks this envelope as opened · wrong one? Undo'])],
+ capture:[UI('s-capture',[272,629,83,28],['7 · Capture ในแอป','7 · Capture in the App'],['การ์ด + QR + เลขซอง ในเฟรมเดียว','Card + QR + number in one frame'],['เก็บเป็นหลักฐานกับออเดอร์ ลูกค้าดูย้อนหลังได้','Saved as evidence the buyer can see later'])],
+ scan:[UI('s-qr',[240,503,79,23],['8 · สแกน QR แล้ว Confirm','8 · Scan the QR, then Confirm'],['ชื่อการ์ดต้องตรงกับใบที่ได้','The card name must match'],['ระบบบันทึกรางวัลเข้าออเดอร์ · ไม่ตรงกด Try again','Records the prize to the order · wrong? Try again']),
+  UI('s-manual',[16,737,343,48],['สแกนไม่ติด · เลือกเลขรางวัลเอง','QR won’t scan · pick the prize number'],['กด Add prize แล้วเลือกเลขให้ตรง QR Card','Tap Add prize, match the QR Card number'],['ใช้เมื่อสแกนไม่ได้จริง ๆ เท่านั้น','Only when the QR really won’t scan'])],
+ lo:[UI('b-focus',[238,619,117,32],['Last One คืออะไร','What is Last One'],['ซื้อช่องสุดท้ายจนบอร์ดปิด รับรางวัลเพิ่ม 1 ชิ้น','Buy the final spot, win 1 extra prize'],['ลูกค้ากด Buy Remaining ซื้อช่องที่เหลือทั้งหมดในคลิกเดียว','Buy Remaining buys every spot left in one tap'])],
+ reserved:[UI('b-grid',[224,356,62,62],['กรณีพิเศษ · ช่องถูกจองอยู่','Edge case · reserved spots'],['ช่องที่มีนาฬิกา = มีคนกำลังจ่าย','Clock = someone is paying'],['ระบบจองไว้ให้คนแรกชั่วคราว ถ้าไม่จ่ายช่องจะกลับมาว่าง','Held for the first buyer; unpaid spots free up again'])],
+ buy:[
+  UI('b-list',[307,421,52,32],['ในไลฟ์ กด Buy ที่ SASOM Oripa','In the live, tap Buy on SASOM Oripa'],['แถบบอกว่าขายไปกี่สปอตแล้ว','The bar shows spots sold'],['บอร์ด Oripa อยู่ในรายการสินค้าของไลฟ์','Oripa boards sit in the live’s product list']),
+  UI('b-grid',[224,424,61,60],['เลือกเลขที่ชอบ','Pick your lucky number'],['เลือกได้หลายเลข','Pick as many as you like'],['เลขที่ขายแล้วขึ้น Sold out · มีนาฬิกา = มีคนจองอยู่','Sold spots show Sold out · clock = reserved']),
+  UI('b-prizes',[50,190,66,28],['แท็บ Prizes · ดูรางวัล','Prizes tab · see the prizes'],['Hit rate และการ์ด Chase ในบอร์ด','Hit rate and chase cards'],['รู้ก่อนซื้อว่าบอร์ดมีอะไร','Know what’s inside before you buy']),
+  UI('b-focus',[265,739,98,48],['เลือกครบ กด Buy now','Done? Tap Buy now'],['หรือ Buy Remaining ซื้อที่เหลือทั้งหมด','Or Buy Remaining for every spot left'],['ไปหน้าจ่ายเงิน','Goes to checkout']),
+  UI('b-checkout',[12,708,369,50],['จ่ายผ่าน QR PromptPay','Pay with QR PromptPay'],['ใส่โค้ดส่วนลดได้','Discount codes work'],['จ่ายแล้วออเดอร์เข้าคิวเปิดซองในไลฟ์','Paid orders join the live’s unseal queue']),
+  UI('b-queue',[272,100,95,68],['รอคิว · ดูคิวตัวเองมุมขวาบน','Wait · your queue is top right'],['Current = คิวที่กำลังเปิด','Current = the one being opened'],['ถึงคิว Seller เปิดซองของคุณหน้ากล้อง','On your turn, the seller opens yours on camera']),
+  UI('b-order',[16,500,56,58],['ดูภาพตอนเปิดใน Order detail','See the reveal in Order detail'],['Unseal Evidence','Unseal Evidence'],['ทุกออเดอร์มีภาพตอนเปิดเก็บไว้','Every order keeps its reveal picture'])]
+};
+
 /* ---------- real app UI tours (from LIVE-Oripa design, seller & buyer facing only) ---------- */
 const TOURS={
  sreq:()=>[
@@ -317,6 +345,7 @@ const LESSONS=[
   v:()=>sim('storySB')},
  {h:['Seller Live · ทำงานยังไง','Seller Live · how it works'],l:['ไลฟ์เองบน App SASOM โชว์โลโก้ร้านได้','You host on the SASOM App with your logo'],
   v:()=>sim('storySL')},
+ ...UIS.sreq,
  {h:['เหมือนกันทั้ง 2 แบบ','Same for both'],l:['',''],
   v:()=>`<div class="same">${[
 ['flag',T('กติกาปิดบอร์ด\nเหมือนกัน','Same closing\nrules'),T('ปิดได้เมื่อ\nHit No.1 ออก','Close once\nHit No.1 is out'),T('ขายเกิน 20% แต่ Hit No.1 ยังไม่ออก ต้องไลฟ์ต่อ','Over 20% sold, no Hit No.1: keep going')],
@@ -373,8 +402,7 @@ const LESSONS=[
 ]},
 /* ===== STAGE 2 ===== */
 {id:'lastone',stage:2,ico:'🏆',t:['Last One','Last One'],d:['รางวัลช่องสุดท้าย','The final-spot bonus'],slides:[
- {h:['Last One คืออะไร','What is Last One'],l:['ซื้อช่องสุดท้ายจนบอร์ดปิด รับรางวัลเพิ่ม 1 ชิ้น','Buy the final spot, win 1 extra prize'],
-  v:()=>fig('lastone-phone')},
+ ...UIS.lo,
  {h:['ปุ่มเปิดเมื่อขายครบ 50%','Unlocks at 50% sold'],l:['เช่น บอร์ด 200 ช่อง ขายแล้ว 100','e.g. 200 spots: 100 sold'],
   v:()=>sim('sc_unlock')},
  {h:['ใครได้รางวัล','Who wins'],l:['Order สุดท้ายที่ปิดบอร์ด ซื้อได้ 2 วิธี','The order that closes the board, 2 ways'],v:()=>sim('sc_win'),
@@ -385,11 +413,7 @@ const LESSONS=[
  {h:['Seller ต้องเตรียม','Seller prep'],l:['',''],
   b:()=>pts([{k:'note',t:T('ระบุรางวัล Last One ตอนขอบอร์ด','State the prize when requesting')},{k:'prize',t:T('วางรางวัลข้างบอร์ด โชว์กล้อง','Show the prize next to the board')},{k:'mega',t:T('ขายครบ 50% ประกาศว่าปุ่มเปิดแล้ว','At 50%, announce it’s unlocked')},{k:'box',t:T('ส่งรางวัลกลับ SASOM พร้อมออเดอร์','Ship the prize with the order')}])}
 ]},
-{id:'request',stage:2,ico:'📝',t:['ขอบอร์ดในแอป','Request a board'],d:['Request · ใส่บอร์ดเข้าไลฟ์','Request · add it to your LIVE'],slides:[
- {h:['ขอบอร์ดในแอป','Request a board in the App'],l:['Seller Live เท่านั้น · Send Board ทีม SASOM ขอให้','Seller Live only · for Send Board, SASOM requests it'],v:()=>sim('ui_sreq')},
- {h:['ใส่บอร์ดเข้าไลฟ์','Add the board to your LIVE'],l:['บอร์ดต้อง Ready ก่อน','The board must be Ready first'],v:()=>sim('ui_sadd')}
-]},
-{id:'setup',stage:2,ico:'📱',t:['ตั้งไลฟ์ + Schedule','Set up a LIVE'],d:['11 ขั้นในแอป','10 steps in the app'],slides:'SETUP'},
+{id:'setup',stage:2,ico:'📱',t:['ตั้งไลฟ์ + Schedule','Set up a LIVE'],d:['13 ขั้นในแอป','13 steps in the app'],slides:'SETUP'},
 /* ===== STAGE 3 ===== */
 {id:'open',stage:3,ico:'✨',t:['วิธีเปิด Oripa','How to open Oripa'],d:['เปิดหน้ากล้องให้ลุ้น','Open on camera, build suspense'],slides:'OPEN'},
 {id:'qr',stage:3,ico:'🔳',t:['สแกน QR','Scan the QR'],d:['มือถือ vs OBS','Phone vs OBS'],slides:[
@@ -428,7 +452,7 @@ const LESSONS=[
 ]},
 /* ===== STAGE 5 · buyer ===== */
 {id:'buyer',stage:5,ico:'🛍️',t:['ลูกค้าซื้อยังไง','How buyers buy'],d:['เลือกเลข · จ่าย · ดูเปิดซอง','Pick · pay · watch the reveal'],slides:[
- {h:['ลูกค้าซื้อ Oripa ยังไง','How buyers buy Oripa'],l:['ในไลฟ์ บน App SASOM','Inside the live on the SASOM App'],v:()=>sim('ui_buy')},
+ ...UIS.buy,
  {h:['ทำไมถึงยุติธรรม','Why it’s fair'],l:['ปิดตา 2 ชั้น','Two blind layers'],b:()=>pts([{k:'1',t:T('SASOM ซีลรางวัลในซอง','SASOM seals each prize'),s:T('Seller ไม่รู้ว่าซองไหนมีอะไร','The seller can’t tell what’s inside')},{k:'2',t:T('Seller สลับเลขหน้าซองเอง','The seller numbers the envelopes'),s:T('SASOM ก็ไม่รู้ว่าเลขไหนคือซองไหน','SASOM can’t tell which is which')},{k:'3',t:T('เปิดหน้ากล้อง + เก็บภาพทุกออเดอร์','Opened on camera, captured per order'),s:T('ดูย้อนหลังได้ใน Order detail','Viewable later in Order detail')}])},
  {quiz:{q:['ลูกค้าดูภาพตอนเปิดซองย้อนหลังได้ที่ไหน?','Where can buyers see their reveal later?'],o:[['Order detail','Order detail'],['ถาม Seller ในแชท','Ask the seller in chat']],a:0}}
 ]}
@@ -488,7 +512,7 @@ const SETUP=()=>[
  ['plan2','save',T('Save แล้วเข้าห้อง LIVE','Save, enter the room'),T('เข้าห้องแล้ว ต้องกด Start LIVE','Then tap Start LIVE')],
  ['selling','plan',T('กลับมาเข้าห้องทีหลัง','Coming back later'),T('Profile · LIVE Selling · LIVE Plan','Profile · LIVE Selling · LIVE Plan')]
 ].map((s,i,a)=>({why:[T('ศูนย์รวมไลฟ์ทั้งหมด เริ่มสร้างไลฟ์จากตรงนี้','Every live is here. Start creating from this tab'),T('เปิดเมนูสร้างวิดีโอและไลฟ์','Opens the create menu for videos and lives'),T('ไลฟ์แบบขายของ ใส่สินค้าและบอร์ด Oripa ได้','A selling live, where you can add items and Oripa boards'),T('Schedule = นัดล่วงหน้า ลูกค้าเห็นและกดรอได้ · Start now = ไลฟ์ทันที','Schedule lets buyers see it and wait · Start now goes live right away'),T('ชื่อ ปก และเวลา ช่วยให้ลูกค้าเจอไลฟ์ และรู้ว่าจะขายอะไร','Name, cover and time help buyers find your live and know what’s on'),T('เข้าหน้าเลือกสินค้าและบอร์ด Oripa ที่จะขายในไลฟ์','Opens the page to pick items and Oripa boards for this live'),T('Add by SKU = ทุกไซซ์/รุ่นของสินค้านั้น · Add by Item = เลือกเฉพาะชิ้น · ต้องมีอย่างน้อย 1 SKU','Add by SKU = every size/variant · Add by Item = specific pieces · at least 1 SKU'),T('ผูกบอร์ด Oripa เข้ากับไลฟ์ ลูกค้าถึงจุ่มในไลฟ์ได้ · ถ้าไม่มีบอร์ดพร้อม แจ้ง KAM','Links your Oripa board so buyers can pull on live · No board ready? Tell your KAM'),T('ให้ order อยู่แค่ในไลฟ์เท่านั้น ป้องกัน stock ชนกับการขายปกติบน App Marketplace','Keeps orders inside the live only, so stock doesn’t clash with normal sales on the App Marketplace'),T('บันทึกไลฟ์ไว้ แล้วเข้าห้องไปเตรียมก่อนเริ่มจริง','Saves your live, then you enter the room to get ready before starting'),T('กลับมาเข้าห้องไลฟ์ที่นัดไว้ได้จาก LIVE Plan','Find your scheduled live again in LIVE Plan')][i],tap:{screen:s[0],hot:s[1]},n:i+1,of:a.length,title:s[2],h:[s[2],s[2]],l:[s[3],s[3]],
-  b:()=>i===a.length-1?`<div class="note lime">${T('ส่ง Live ID ให้ KAM/SA · เตรียมของก่อน 30–60 นาที · จบต้องกด End Live','Send Live ID to KAM/SA · prep 30–60 min early · always End Live')}</div>`:''})).concat([
+  b:()=>i===a.length-1?`<div class="note lime">${T('ส่ง Live ID ให้ KAM/SA · เตรียมของก่อน 30–60 นาที · จบต้องกด End Live','Send Live ID to KAM/SA · prep 30–60 min early · always End Live')}</div>`:''})).flatMap(x=>x.title==='Add Oripa board'?UIS.sadd:[x]).concat([
  {h:['ไลฟ์ผ่าน OBS','Going live via OBS'],l:['',''],v:()=>sim('sc_obs'),b:()=>pts([{t:T('Copy Stream URL ตอนจะเริ่มเท่านั้น','Copy the Stream URL right before')},{t:T('URL หมดอายุใน 6 ชม.','URLs expire in 6 hours')},{t:T('เริ่มใหม่ ใช้ URL ใหม่ทุกครั้ง','Restarted? Use a new URL')}])},
  {h:['เลื่อนเวลาไลฟ์','Rescheduling'],l:['',''],v:()=>sim('storyRS')}]);
 
@@ -496,15 +520,14 @@ const SETUP=()=>[
 const OPEN=()=>[
  {h:['ระหว่างไลฟ์ · ทีละออเดอร์','During the live · one order at a time'],l:['ออเดอร์ที่จ่ายแล้วเข้าคิว Unseal · เปิดตามลำดับนี้','Paid orders join the Unseal queue · open in this order'],
   b:()=>pts([[T('Pin แล้วโชว์เลขซอง','Pin, show the number')],[T('ปัด Unseal ในแอป','Swipe to Unseal')],[T('แกะซีล Holo หน้ากล้อง','Break the Holo seal')],[T('เอาซองปิดทับไว้','Cover with the envelope')],[T('ค่อย ๆ เลื่อนซองลุ้น','Slide the envelope slowly')],[T('ดึงซองออกเร็ว ๆ','Pull the envelope away')],[T('Capture ในระบบ','Capture in the App')],[T('<b>สแกน QR แล้ว Confirm</b>','<b>Scan, then Confirm</b>')]].map((x,k)=>({t:x[0],go:k+1})))+`<div class="note">${T('เปิดให้หมดคิวก่อนจบไลฟ์','Clear the queue before ending')}</div>`},
- {h:['หน้าจอจริงในแอป','The real App screens'],l:['ทำแบบนี้ทุกออเดอร์','Do this for every order'],v:()=>sim('ui_sopen')},
- {h:['1 · Pin แล้วโชว์เลขซอง','1 · Pin, show the number'],l:['มี order เข้า แตะไอคอนซองฉีกขวาจอ เปิดคิวรอเปิดสินค้า · Pin แล้วชูเลขซองให้กล้องเห็นชัด','New order? Tap the torn-envelope icon to open the Unseal queue · Pin it, then hold the number up to camera'],v:()=>sim('pin')},
- {h:['2 · Swipe to Unseal','2 · Swipe to Unseal'],l:['ปัดในแอปเท่านั้น หยิบผิดกด Undo','App only. Wrong one? Undo'],v:()=>sim('swipe')},
+ ...UIS.pin,
+ ...UIS.swipe,
  {h:['3 · แกะซีล Holo หน้ากล้อง','3 · Break the Holo seal on camera'],l:['ซีลเสียก่อนไลฟ์ = การสุ่มเป็นโมฆะ','Broken before the live = void'],v:()=>sim('seal')},
  {h:['4 · เอาซองปิดทับไว้','4 · Cover with the envelope'],l:['หยิบ QR Card ออกจากซอง พลิกแล้วเอาซองปิดทับไว้ด้านหน้า · ยังไม่เห็นรางวัล','Take the QR Card out, flip it, cover it with the envelope · prize still hidden'],v:()=>sim('stack')},
  {h:['5 · ค่อย ๆ เลื่อนซองลุ้น','5 · Slide the envelope slowly'],l:['ซ้าย · ขวา · บน · ล่าง','Left · right · up · down'],v:()=>sim('peek')},
  {h:['6 · ดึงซองออกเร็ว ๆ','6 · Pull the envelope away'],l:['ให้เห็นการ์ดเต็มใบ','Show the card in full'],v:()=>sim('pull')},
- {h:['7 · Capture ในระบบ','7 · Capture in the App'],l:['แตะ Capture ในแอป ระบบถ่ายเก็บเป็นหลักฐานกับออร์เดอร์ · การ์ด + QR + เลขซอง ในเฟรมเดียว','Tap Capture in the App to save evidence to the order · card + QR + number in one frame'],v:()=>sim('capture')},
- {h:['8 · สแกน QR แล้ว Confirm','8 · Scan, then Confirm'],l:['เช็คชื่อการ์ดให้ตรง','Check the card name'],v:()=>sim('scan')},
+ ...UIS.capture,
+ ...UIS.scan,
  {h:['ห้ามทำเด็ดขาด','Never do this'],l:['',''],b:()=>`<div class="rules">${[[T('ยก · โยนนอก','Off-app deal'),T('ชวนจ่ายเงินนอก App','Buyers paying outside the App')],[T('รีซีล','Reseal'),T('แกะแล้วปิดใหม่ให้ดูเหมือนใหม่','Resealing an opened pack')],[T('ยัดแพ็ค · ชั่งซอง · บีบซอง','Pack searching'),T('ชั่งหรือบีบซองหา Hit ก่อนขาย','Weighing or squeezing for hits')],[T('ของก๊อป · ของปลอม','Fakes'),T('SASOM การันตีของแท้ ปลอมคืน 2 เท่า','SASOM guarantees authenticity, 2x refund')]].map(r=>`<div class="rr"><span class="ri">✕</span><div><b>${r[0]}</b><small>${r[1]}</small></div><span class="t">${T('ห้ามทำ','Never')}</span></div>`).join('')}</div>`},
  {h:['หลังจบไลฟ์','After the live'],l:['',''],v:()=>sim('sc_after'),b:()=>pts([{t:T('กด End Live ทุกครั้ง','Always tap End Live')},{t:T('แพ็กซอง + การ์ด + รางวัลทีละออเดอร์','Pack envelope + card + prize per order')},{t:T('ส่งกลับ SASOM แยกแพ็คทีละ Order ID','Ship to SASOM, packed per Order ID')},{t:T('ห้ามส่งตรงถึงลูกค้า','Never ship to buyers directly')}])}
 ];
@@ -596,17 +619,18 @@ function renderGloss(q){q=q.toLowerCase();$('#gl').innerHTML=GLOSS().filter(g=>g
 
 /* ---------- player ---------- */
 let cur=null,idx=0,slides=[],reach=0,lastAct=Date.now(),shownAt=0;
-function setupOverview(){const st=SETUP().filter(x=>x.tap);return [{h:['ตั้งไลฟ์ใน 11 ขั้น','Set up a LIVE in 11 steps'],l:['',''],b:()=>pts(st.map((x,k)=>({t:x.title,go:k+1})))}].concat(SETUP())}
+function setupOverview(){const st=SETUP().filter(x=>x.tap||x.ui);return [{h:[`ตั้งไลฟ์ใน ${st.length} ขั้น`,`Set up a LIVE in ${st.length} steps`],l:['',''],b:()=>pts(st.map((x,k)=>({t:Array.isArray(x.title)?L2(x.title):x.title,go:k+1})))}].concat(SETUP())}
 function slidesOf(l){let s=l.slides==='SETUP'?setupOverview():l.slides==='OPEN'?OPEN():l.slides;return s.concat([{finish:true}])}
 function openLesson(id){cur=LESSONS.find(l=>l.id===id);if(!cur)return;idx=0;reach=done[id]?999:((store.get('reach',{})||{})[id]||0);cmpSide=0;buildPlayer();$('#player').classList.add('open');$('#player').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(location.hash!=='#'+id)history.pushState(null,'','#'+id)}
 function closeLesson(){$('#player').classList.remove('open');$('#player').setAttribute('aria-hidden','true');document.body.style.overflow='';cur=null;if(location.hash)history.pushState(null,'',location.pathname+location.search);home()}
 const L2=a=>a?a[lang==='th'?0:1]:'';
 function titleOf(s){return s.finish?T('จบบทนี้','Done'):s.quiz?L2(s.quiz.q):L2(s.h)}
-function hasVis(s){return !!(s.v||s.tap||s.cmp)}
+function hasVis(s){return !!(s.v||s.tap||s.cmp||s.ui)}
 function visOf(s){
  if(s.finish){const ni=LESSONS.indexOf(cur)+1,nx=LESSONS[ni];return `<div class="vfin"><div class="medal">${CHK}</div><h2>${T('จบบทนี้แล้ว!','Lesson complete!')}</h2><p>${L2(cur.t)}</p><div class="fin-btns">${nx?`<button class="btn dark" data-open="${nx.id}">${T('บทถัดไป','Next')} · ${L2(nx.t)}</button>`:''}<button class="btn ghost" data-home>${T('หน้าแรก','Home')}</button></div></div>`}
  if(s.quiz)return `<div class="vquiz"><span class="pill lime">QUIZ</span><h2>${L2(s.quiz.q)}</h2><div class="quiz" data-ans="${s.quiz.a}">${s.quiz.o.map((o,k)=>`<button data-k="${k}">${L2(o)}</button>`).join('')}</div><div class="qres"></div></div>`;
  if(s.tap)return mockHTML(s.tap.screen,s.tap.hot);
+ if(s.ui){const H=s.hot,W=s.ui==='b-checkout'?393:375,Hh=s.ui==='s-manual'?815:812;return `<div class="vis"><div class="ui-ph" data-tap><img src="assets/ui/${s.ui}.webp" alt="" draggable="false"><button class="ui-hot" data-hot aria-label="tap" style="left:${(H[0]+H[2]/2)/W*100}%;top:${(H[1]+H[3]/2)/Hh*100}%;width:max(${H[2]/W*100}%,30px);height:max(${H[3]/Hh*100}%,24px)"></button></div></div>`}
  if(s.cmp)return `<div class="vcmp" id="cmpBox">${cmpHTML()}</div>`;
  if(s.v)return `<div class="vis">${s.v()}</div>`;
  return ''}
@@ -677,7 +701,7 @@ document.addEventListener('click',e=>{
  if(e.target.closest('[data-reset]')){done={};store.set('done',done);home();window.scrollTo({top:0,behavior:'smooth'});return}
  
  const g=e.target.closest('[data-go]');if(g&&cur){show(+g.dataset.go);return}
- const fxb=e.target.closest('[data-fxb]');if(fxb){fxStep(fxb);return}const fxk=e.target.closest('[data-fxk]');if(fxk){fxReview(fxk);return}const hot=e.target.closest('[data-hot]');if(hot){if(hot.classList.contains('hit'))return;hot.classList.add('hit');const sl=slides[idx],R=$('#pRight');if(sl&&sl.why&&R){const cp=R.querySelector('.rcap')||R;cp.insertAdjacentHTML('beforeend',`<div class="why">${CHK}<span>${sl.why}</span></div>`);setTimeout(()=>{const w=R.querySelector('.why');w&&w.scrollIntoView({block:'nearest',behavior:'smooth'})},80);const at=idx;setTimeout(()=>{if(cur&&idx===at&&idx<slides.length-1)show(idx+1)},1600)}else setTimeout(()=>show(idx+1),260);return}
+ const fxb=e.target.closest('[data-fxb]');if(fxb){fxStep(fxb);return}const fxk=e.target.closest('[data-fxk]');if(fxk){fxReview(fxk);return}const hot=e.target.closest('[data-hot]');if(hot){if(hot.classList.contains('hit'))return;hot.classList.add('hit');const sl=slides[idx],R=$('#pRight');if(sl&&sl.why&&R){const cp=R.querySelector('.rcap')||R;cp.insertAdjacentHTML('beforeend',`<div class="why">${CHK}<span>${Array.isArray(sl.why)?L2(sl.why):sl.why}</span></div>`);setTimeout(()=>{const w=R.querySelector('.why');w&&w.scrollIntoView({block:'nearest',behavior:'smooth'})},80);const at=idx;setTimeout(()=>{if(cur&&idx===at&&idx<slides.length-1)show(idx+1)},1600)}else setTimeout(()=>show(idx+1),260);return}
  const ph=e.target.closest('[data-tap]');if(ph){const hs=ph.querySelector('[data-hot]');if(!hs)return;hs.classList.remove('miss');void hs.offsetWidth;hs.classList.add('miss');const tp=document.querySelector('.step.on .tip');if(tp){tp.classList.remove('flash');void tp.offsetWidth;tp.classList.add('flash')}return}
  const z=e.target.closest('[data-zoom]');if(z){$('#lbIn').innerHTML=`<img src="${z.dataset.zoom}" alt="">`;$('#lb').classList.add('open');return}
  if(e.target.closest('#lb')){closeLb();return}
@@ -698,5 +722,5 @@ function route(){const id=(location.hash||'').replace(/^#\/?/,'');if(id&&LESSONS
 window.addEventListener('popstate',route);window.addEventListener('hashchange',route);
 applyTheme();applyLang();route();
 ;(()=>{let raf=0;const fix=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{if(!fingerEl.classList.contains('on'))return;const t=fingerTarget();if(!t){hideFinger();return}fingerEl.style.left=t.x+'px';fingerEl.style.top=t.y+'px';if(t.to){fingerEl.style.setProperty('--dx',(t.to.x-t.x)+'px');fingerEl.style.setProperty('--dy',(t.to.y-t.y)+'px')}})};const vv=window.visualViewport;if(vv){vv.addEventListener('resize',fix);vv.addEventListener('scroll',fix)}addEventListener('scroll',fix,true);addEventListener('resize',fix)})();
-window.__fg={fingerNow,fingerTarget,sceneInto};
+window.__fg={fingerNow,fingerTarget,sceneInto,get reach(){return reach},get idx(){return idx},get n(){return slides.length},pend:()=>pendingTask()};
 })();
