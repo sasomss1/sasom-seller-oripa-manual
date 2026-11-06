@@ -135,7 +135,9 @@ const STORY={
   ['rchat','SELLER',T('แจ้ง KAM/SA ทุกครั้ง','Tell your KAM/SA every time'),T('พิมพ์ส่งในแชท','Send it in chat'),T('ส่ง','Send')],
   ['max4','SELLER',T('ไลฟ์ครบ 4 ชม.','Hit 4 hours'),T('End Live แล้วสร้างไลฟ์ใหม่ ขายต่อได้เลย','End Live, create a new one and carry on'),'End']],
  sl:()=>[['chat','SELLER',T('แจ้ง KAM ว่าจะเปิดบอร์ด','Tell KAM about your board'),'',T('ส่ง','Send')],
-  ['request','SELLER',T('Request บอร์ดใน Seller Portal','Request the board in Seller Portal'),T('กรอกรายละเอียดบอร์ดเอง','Fill in the board details'),'Request'],
+  ['ui:s-live','SELLER',T('LIVE Selling · กด Request new board','LIVE Selling · tap Request new board'),T('ขอบอร์ดเองได้ในแอป','Request boards in the App'),'',[24,606,327,30]],
+  ['ui:s-boards','SELLER',T('Board Overview · Request new board','Board Overview · Request new board'),T('รออนุมัติ + Ready ได้สูงสุด 3 บอร์ด','Up to 3 pending + ready boards'),'',[201,126,162,32]],
+  ['ui:s-request','SELLER',T('กรอกบอร์ด แล้วกด Submit','Fill in the board, then Submit'),T('สปอต · ราคาต่อสปอต · การ์ด Hit','Spots · price per spot · Hit cards'),'',[16,725,343,56]],
   ['approve','SASOM',T('ทีม SASOM อนุมัติบอร์ด','SASOM approves the board'),'',T('อนุมัติ','Approve')],
   ['shipenv','SASOM',T('SASOM ทำซอง ส่งถึงคุณ','SASOM ships the envelopes to you'),T('ปกติ Shippop · ด่วน Lalamove / Grab / Kerry (แจ้ง KAM)','Shippop · urgent: Lalamove / Grab / Kerry (tell KAM)'),T('ส่งซอง','Ship')],
   ['pack','SELLER',T('คุณติดเลขซอง','You number the envelopes'),T('เพื่อความโปร่งใส','For transparency'),T('ติดเลข','Number')],
@@ -159,13 +161,16 @@ const sceneSim=n=>`<div class="sim tapscene" data-scene="${n}"><div class="st-st
 SIM.storySB=()=>storyHTML('sb');SIM.storyRS=()=>storyHTML('rs');SIM.storyPK=()=>storyHTML('pk');SIM.storySL=()=>storyHTML('sl');
 function storyHTML(k){const L=STORY[k]();return `<div class="sim story" data-k="${k}"><div class="st-stage"></div><div class="st-cap"></div><div class="st-chips">${L.map((_,i)=>`<button data-st="${i}" aria-label="${i+1}"></button>`).join('')}</div><div class="st-sum"></div></div>`}
 function storyInit(S){const k=S.dataset.k,L=STORY[k](),sl=k==='sl';let i=0,doneSet=new Set();const st=S.querySelector('.st-stage'),cap=S.querySelector('.st-cap'),chips=[...S.querySelectorAll('[data-st]')];
- const render=()=>{const s=L[i],nm=SCN(s[0],sl);st.innerHTML=`<div class="scn scn-${nm}"></div>`;const box=st.firstElementChild;const was=doneSet.has(i),at=i;sceneInto(box,nm).then(()=>setupTaps(box,nm,()=>onHit(at),was));cap.innerHTML=`<span class="who ${s[1]}">${s[1]}</span><b>${s[2]}</b>${s[3]?`<small>${s[3]}</small>`:''}`;cap.classList.toggle('show',doneSet.has(i));chips.forEach((c,j)=>{c.classList.toggle('on',j===i);c.classList.toggle('done',doneSet.has(j))})};
+ const render=()=>{const s=L[i],was=doneSet.has(i),at=i;if(s[0].startsWith('ui:')){st.innerHTML=uiPhone(s[0].slice(3),s[5]);const hb=st.querySelector('.ui-hot');if(was){hb.classList.add('hit');hb.removeAttribute('data-hot')}hb.onclick=e=>{e.stopPropagation();if(hb.classList.contains('hit'))return;hb.classList.add('hit');hb.removeAttribute('data-hot');onHit(at)}}else{const nm=SCN(s[0],sl);st.innerHTML=`<div class="scn scn-${nm}"></div>`;const box=st.firstElementChild;sceneInto(box,nm).then(()=>setupTaps(box,nm,()=>onHit(at),was))}cap.innerHTML=`<span class="who ${s[1]}">${s[1]}</span><b>${s[2]}</b>${s[3]?`<small>${s[3]}</small>`:''}`;cap.classList.toggle('show',doneSet.has(i));chips.forEach((c,j)=>{c.classList.toggle('on',j===i);c.classList.toggle('done',doneSet.has(j))})};
  const onHit=at=>{if(at!==i||doneSet.has(i))return;doneSet.add(i);setTimeout(()=>{cap.classList.add('show');chips[i].classList.add('done')},500);
-  if(doneSet.size===L.length){setTimeout(()=>{S.querySelector('.st-sum').innerHTML=flow(L.map(s=>[s[1],s[2],s[3],SICO[s[0]]]));S.classList.add('fin');simDone(S,false)},1400)}
+  if(doneSet.size===L.length){setTimeout(()=>{S.querySelector('.st-sum').innerHTML=flow(L.map(s=>[s[1],s[2],s[3],SICO[s[0]]||SICO.request]));S.classList.add('fin');simDone(S,false)},1400)}
   else setTimeout(()=>{if(!S.isConnected)return;const nx=L.findIndex((_,j)=>!doneSet.has(j));if(nx>-1){i=nx;render()}},2300)};
  chips.forEach(c=>c.onclick=()=>{const j=+c.dataset.st,nx=L.findIndex((_,q)=>!doneSet.has(q));if(!doneSet.has(j)&&j!==nx){c.classList.remove('no');void c.offsetWidth;c.classList.add('no');return}i=j;render()});render()}
 const SICO={p1:'box',p2:'box',p3:'box',p4:'box',p5:'envnum',p6:'brief',p7:'box',p8:'brief',resched:'calendar',rchat:'brief',max4:'clock',request:'board',approve:'check',shipenv:'box',chat:'brief',confirm:'check',ship:'box',pack:'envnum',date:'calendar',setup:'board',live:'live',pay:'payout'};
 
+
+function uiHotHTML(img,H){const W=img==='b-checkout'?393:375,Hh=img==='s-manual'?815:812,w=H[2]/W,h=H[3]/Hh,l=H[0]/W,t=H[1]/Hh;return `<button class="ui-hot" data-hot aria-label="tap" style="left:${l*100}%;top:${t*100}%;width:${w*100}%;height:${h*100}%;background-image:url(assets/ui/${img}.webp);background-size:${100/w}% ${100/h}%;background-position:${l/(1-w)*100}% ${t/(1-h)*100}%"></button>`}
+function uiPhone(img,H){return `<div class="ui-ph" data-tap><img src="assets/ui/${img}.webp" alt="" draggable="false">${uiHotHTML(img,H)}</div>`}
 
 /* real App screen step (tap the real button) */
 const UI=(img,hot,h,l,why)=>({ui:img,hot,h,l,why,title:h});
@@ -345,7 +350,6 @@ const LESSONS=[
   v:()=>sim('storySB')},
  {h:['Seller Live · ทำงานยังไง','Seller Live · how it works'],l:['ไลฟ์เองบน App SASOM โชว์โลโก้ร้านได้','You host on the SASOM App with your logo'],
   v:()=>sim('storySL')},
- ...UIS.sreq,
  {h:['เหมือนกันทั้ง 2 แบบ','Same for both'],l:['',''],
   v:()=>`<div class="same">${[
 ['flag',T('กติกาปิดบอร์ด\nเหมือนกัน','Same closing\nrules'),T('ปิดได้เมื่อ\nHit No.1 ออก','Close once\nHit No.1 is out'),T('ขายเกิน 20% แต่ Hit No.1 ยังไม่ออก ต้องไลฟ์ต่อ','Over 20% sold, no Hit No.1: keep going')],
@@ -621,7 +625,7 @@ function renderGloss(q){q=q.toLowerCase();$('#gl').innerHTML=GLOSS().filter(g=>g
 let cur=null,idx=0,slides=[],reach=0,lastAct=Date.now(),shownAt=0;
 function setupOverview(){const st=SETUP().filter(x=>x.tap||x.ui);return [{h:[`ตั้งไลฟ์ใน ${st.length} ขั้น`,`Set up a LIVE in ${st.length} steps`],l:['',''],b:()=>pts(st.map((x,k)=>({t:Array.isArray(x.title)?L2(x.title):x.title,go:k+1})))}].concat(SETUP())}
 function slidesOf(l){let s=l.slides==='SETUP'?setupOverview():l.slides==='OPEN'?OPEN():l.slides;return s.concat([{finish:true}])}
-function openLesson(id){cur=LESSONS.find(l=>l.id===id);if(!cur)return;idx=0;reach=done[id]?999:((store.get('reach',{})||{})[id]||0);cmpSide=0;buildPlayer();$('#player').classList.add('open');$('#player').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(location.hash!=='#'+id)history.pushState(null,'','#'+id)}
+function openLesson(id){cur=LESSONS.find(l=>l.id===id);if(!cur)return;idx=0;reach=0;cmpSide=0;buildPlayer();$('#player').classList.add('open');$('#player').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(location.hash!=='#'+id)history.pushState(null,'','#'+id)}
 function closeLesson(){$('#player').classList.remove('open');$('#player').setAttribute('aria-hidden','true');document.body.style.overflow='';cur=null;if(location.hash)history.pushState(null,'',location.pathname+location.search);home()}
 const L2=a=>a?a[lang==='th'?0:1]:'';
 function titleOf(s){return s.finish?T('จบบทนี้','Done'):s.quiz?L2(s.quiz.q):L2(s.h)}
@@ -630,7 +634,7 @@ function visOf(s){
  if(s.finish){const ni=LESSONS.indexOf(cur)+1,nx=LESSONS[ni];return `<div class="vfin"><div class="medal">${CHK}</div><h2>${T('จบบทนี้แล้ว!','Lesson complete!')}</h2><p>${L2(cur.t)}</p><div class="fin-btns">${nx?`<button class="btn dark" data-open="${nx.id}">${T('บทถัดไป','Next')} · ${L2(nx.t)}</button>`:''}<button class="btn ghost" data-home>${T('หน้าแรก','Home')}</button></div></div>`}
  if(s.quiz)return `<div class="vquiz"><span class="pill lime">QUIZ</span><h2>${L2(s.quiz.q)}</h2><div class="quiz" data-ans="${s.quiz.a}">${s.quiz.o.map((o,k)=>`<button data-k="${k}">${L2(o)}</button>`).join('')}</div><div class="qres"></div></div>`;
  if(s.tap)return mockHTML(s.tap.screen,s.tap.hot);
- if(s.ui){const H=s.hot,W=s.ui==='b-checkout'?393:375,Hh=s.ui==='s-manual'?815:812;return `<div class="vis"><div class="ui-ph" data-tap><img src="assets/ui/${s.ui}.webp" alt="" draggable="false"><button class="ui-hot" data-hot aria-label="tap" style="left:${(H[0]+H[2]/2)/W*100}%;top:${(H[1]+H[3]/2)/Hh*100}%;width:max(${H[2]/W*100}%,30px);height:max(${H[3]/Hh*100}%,24px)"></button></div></div>`}
+ if(s.ui)return `<div class="vis">${uiPhone(s.ui,s.hot)}</div>`;
  if(s.cmp)return `<div class="vcmp" id="cmpBox">${cmpHTML()}</div>`;
  if(s.v)return `<div class="vis">${s.v()}</div>`;
  return ''}
@@ -722,5 +726,5 @@ function route(){const id=(location.hash||'').replace(/^#\/?/,'');if(id&&LESSONS
 window.addEventListener('popstate',route);window.addEventListener('hashchange',route);
 applyTheme();applyLang();route();
 ;(()=>{let raf=0;const fix=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{if(!fingerEl.classList.contains('on'))return;const t=fingerTarget();if(!t){hideFinger();return}fingerEl.style.left=t.x+'px';fingerEl.style.top=t.y+'px';if(t.to){fingerEl.style.setProperty('--dx',(t.to.x-t.x)+'px');fingerEl.style.setProperty('--dy',(t.to.y-t.y)+'px')}})};const vv=window.visualViewport;if(vv){vv.addEventListener('resize',fix);vv.addEventListener('scroll',fix)}addEventListener('scroll',fix,true);addEventListener('resize',fix)})();
-window.__fg={fingerNow,fingerTarget,sceneInto,get reach(){return reach},get idx(){return idx},get n(){return slides.length},pend:()=>pendingTask()};
+window.__fg={fingerNow,fingerTarget,sceneInto};
 })();

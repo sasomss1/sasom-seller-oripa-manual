@@ -1307,9 +1307,10 @@ main{max-width:1180px}
 /* real App screen step (same feel as setup taps, no frame) */
 .ui-ph{position:relative;width:min(270px,64vw,calc(58vh * .4618));aspect-ratio:375/812;border-radius:30px;border:6px solid #111;background:#fff;overflow:hidden;margin:0 auto}
 .ui-ph img{display:block;width:100%;height:100%;user-select:none;-webkit-user-drag:none}
-.ui-hot{position:absolute;translate:-50% -50%;border:0;padding:0;border-radius:10px;background:transparent;cursor:pointer;animation:uihot 1.2s ease-in-out infinite}
-@keyframes uihot{0%,100%{transform:translateY(0);background:transparent}40%{transform:translateY(-3px);background:rgba(201,255,0,.38)}}
-.ui-hot.miss{animation:uihot .3s 3}
-.ui-hot.hit{animation:none;background:rgba(201,255,0,.3)}
+.ui-hot{position:absolute;border:0;padding:0;border-radius:8px;background-color:transparent;background-repeat:no-repeat;cursor:pointer;transform-origin:center;animation:uipop 1.1s ease-in-out infinite;z-index:2}
+@keyframes uipop{0%,100%{transform:scale(1);box-shadow:0 0 0 rgba(0,0,0,0)}45%{transform:scale(1.1) translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.28)}}
+.ui-hot.miss{animation:uipop .35s 3}
+.ui-hot.hit{animation:uipress .25s ease-out both}
+@keyframes uipress{50%{transform:scale(.92)}100%{transform:scale(1)}}
 @media (max-width:720px){.ui-ph{width:min(230px,60vw,calc(48vh * .4618))}}
-.vis:has(>.ui-ph){background:none;border:0;box-shadow:none;padding:0}
+.vis:has(>.ui-ph){background:none!important;border:0!important;box-shadow:none!important}
