@@ -758,3 +758,5 @@ window.__fg={fingerNow,fingerTarget,sceneInto};
 })();
 /* repaint the scene after the stamp lands so no green trail is left behind */
 addEventListener('animationend',e=>{const t=e.target;if(!t.matches||!t.matches('[data-l="stamp"]'))return;const svg=t.ownerSVGElement;if(!svg)return;svg.style.opacity='.999';requestAnimationFrame(()=>requestAnimationFrame(()=>{svg.style.opacity=''}))},true);
+/* chapter 1 Seller Live: app mockups same size as chapter 6 */
+;(()=>{const fit=()=>document.querySelectorAll('.story .mk').forEach(m=>{const a=Math.max(380,Math.min(innerWidth<900?innerHeight-300:innerHeight-230,780)),s=String(a/812);if(m.style.getPropertyValue('--s')!==s)m.style.setProperty('--s',s)});new MutationObserver(fit).observe(document.body,{childList:true,subtree:true});addEventListener('resize',fit)})();
