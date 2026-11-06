@@ -1281,3 +1281,26 @@ main{max-width:1180px}
 .st-chips button:not(.done):not(.on){cursor:default}
 .st-chips button.no{animation:nope .35s}
 @keyframes nope{20%,60%{translate:-4px 0}40%,80%{translate:4px 0}}
+/* real app UI tour */
+.uitour{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;width:100%}
+.ut-phone{position:relative;width:min(260px,62vw,calc(58vh * .4618));aspect-ratio:375/812;border-radius:30px;border:6px solid #111;background:#fff;overflow:hidden;flex:none}
+.ut-phone img{display:block;width:100%;height:100%;object-fit:fill;user-select:none;-webkit-user-drag:none}
+.ut-hot{position:absolute;border:2.5px solid var(--lime);border-radius:10px;background:rgba(201,255,0,.18);cursor:pointer;padding:0;animation:uthot 1.3s ease-in-out infinite;box-sizing:border-box;translate:-50% -50%}
+.ut-hot.off{animation:none;opacity:0;pointer-events:none}
+@keyframes uthot{0%,100%{box-shadow:0 0 0 0 rgba(201,255,0,.75)}50%{box-shadow:0 0 0 8px rgba(201,255,0,0)}}
+.ut-ok{position:absolute;inset:auto 0 42% 0;margin:auto;width:52px;height:52px;opacity:0;transform:scale(.6);transition:.25s;pointer-events:none}
+.ut-ok svg{width:100%;height:100%}
+.uitour.stepok .ut-ok{opacity:1;transform:scale(1)}
+.ut-side{display:flex;flex-direction:column;gap:14px;max-width:320px;min-width:0}
+.ut-cap{display:flex;flex-direction:column;gap:4px}
+.ut-cap .n{font:600 12px Inter;color:var(--sub);letter-spacing:.04em}
+.ut-cap b{font:600 18px/1.35 "Noto Sans Thai",Inter;color:var(--ink);text-wrap:balance}
+.ut-cap small{font:500 13px/1.45 "Noto Sans Thai",Inter;color:var(--sub)}
+.ut-dots{display:flex;gap:8px}
+.ut-dots button{width:10px;height:10px;border-radius:99px;border:0;padding:0;background:var(--line);cursor:default}
+.ut-dots button.done{background:var(--lime);cursor:pointer}
+.ut-dots button.on{width:24px;background:var(--ink)}
+.ut-dots button.no{animation:nope .35s}
+.ut-sum:empty{display:none}
+.ut-sum .spsum{margin:0}
+@media (max-width:720px){.uitour{gap:14px}.ut-side{max-width:100%;align-items:center;text-align:center}.ut-phone{width:min(220px,58vw,calc(50vh * .4618))}}
