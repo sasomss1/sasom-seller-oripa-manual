@@ -1272,3 +1272,9 @@ main{max-width:1180px}
 .fx-cap:has(.fxsum){display:block;max-width:420px;width:100%}
 .fxsum{opacity:1;margin:0;max-width:none}
 .fxnote{margin:10px 0 0;font:600 13px "Noto Sans Thai",Inter;color:var(--sub)}
+/* light mode: pale objects need an outline */
+:root{--pale-st:#B9B9B4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pale-st:transparent}}
+:root[data-theme="dark"]{--pale-st:transparent}
+.scn :is(rect,path,circle)[fill="#F2F2F0"],.scn [data-l="warehouse"]>:is(rect,path):not([data-l="door"]){stroke:var(--pale-st);stroke-width:1.5}
+.scn-sign rect[data-l="bg"][fill="white"]{stroke:var(--pale-st);stroke-width:1.5}
