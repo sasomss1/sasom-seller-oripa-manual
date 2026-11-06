@@ -1344,3 +1344,11 @@ main{max-width:1180px}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ui-ph{border-color:#3A3A3E}}
 :root[data-theme="dark"] .ui-ph{border-color:#3A3A3E}
 .story .ui-ph{width:min(200px,50vw,calc(44vh * .4618))}
+/* bounce only — no green glow anywhere */
+@keyframes spbounce{0%,100%{translate:0 0}30%{translate:0 -5%}55%{translate:0 0}}
+@keyframes spbounce2{0%,100%{translate:0 0}30%{translate:0 -4px}55%{translate:0 0}}
+@keyframes tgblink{0%,100%{translate:0 0}40%{translate:0 -4px}}
+@keyframes lobounce{0%,100%{transform:none}40%{transform:translateY(-4px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.scn .tapme,.scn .droptg{filter:none!important}
+.sc-chat .send,.send{box-shadow:none!important}
