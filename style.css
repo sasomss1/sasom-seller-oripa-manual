@@ -1426,3 +1426,4 @@ main{max-width:1180px}
 .x-lv:has(.x-lv-pin) .x-lv-in,.x-lv:has(.x-lv-res) .x-lv-in{display:none}
 .x-lv:has(.x-lv-pin) .x-lv-chat{bottom:150px}
 .m-swipe{padding-left:62px}
+.st-stage:has(>.mk){aspect-ratio:auto;display:flex;justify-content:center}
