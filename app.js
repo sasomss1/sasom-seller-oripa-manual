@@ -649,4 +649,6 @@ document.querySelectorAll('.theme-btn').forEach(b=>b.onclick=()=>{theme={auto:'l
 function route(){const id=(location.hash||'').replace(/^#\/?/,'');if(id&&LESSONS.find(l=>l.id===id)){if(!cur||cur.id!==id)openLesson(id)}else if(cur)closeLesson()}
 window.addEventListener('popstate',route);window.addEventListener('hashchange',route);
 applyTheme();applyLang();route();
+;(()=>{let raf=0;const fix=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{if(!fingerEl.classList.contains('on'))return;const t=fingerTarget();if(!t){hideFinger();return}fingerEl.style.left=t.x+'px';fingerEl.style.top=t.y+'px';if(t.to){fingerEl.style.setProperty('--dx',(t.to.x-t.x)+'px');fingerEl.style.setProperty('--dy',(t.to.y-t.y)+'px')}})};const vv=window.visualViewport;if(vv){vv.addEventListener('resize',fix);vv.addEventListener('scroll',fix)}addEventListener('scroll',fix,true);addEventListener('resize',fix)})();
+window.__fg={fingerNow,fingerTarget};
 })();
