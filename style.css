@@ -1325,3 +1325,9 @@ main{max-width:1180px}
 .sc-chat .send,.scn-max4h [data-l="clock"],[data-h="excl"] .tg{transform-box:fill-box;transform-origin:center}
 .ts-hot{border:0!important;background:transparent!important;box-shadow:none!important}
 .env.hl{outline:none}
+.ui-drag{touch-action:none;cursor:grab;animation:swipehint 1.6s ease-in-out infinite!important}
+.ui-drag.dragging{animation:none!important;cursor:grabbing;transition:none}
+.ui-drag:not(.dragging){transition:translate .25s}
+.ui-drag.hit{animation:none!important}
+@keyframes swipehint{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
+.ui-trail{position:absolute;left:6.9%;top:82.1%;height:2.9%;width:0;background:#C9FF00;border-radius:6px;z-index:1;pointer-events:none}
