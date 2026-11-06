@@ -410,18 +410,6 @@ const LESSONS=[
  {quiz:{q:['ลูกค้าขอโอนเงินนอกแอป ควรทำยังไง?','A buyer asks to pay outside the app. What do you do?'],o:[['รับได้ ถ้าลูกค้าขอเอง','OK if they ask'],['ปฏิเสธ ซื้อขายใน App เท่านั้น','Decline, in-app only']],a:1}}
 ]},
 /* ===== STAGE 2 ===== */
-{id:'lastone',stage:2,ico:'🏆',t:['Last One','Last One'],d:['รางวัลช่องสุดท้าย','The final-spot bonus'],slides:[
- ...UIS.lo,
- {h:['ปุ่มเปิดเมื่อขายครบ 50%','Unlocks at 50% sold'],l:['เช่น บอร์ด 200 ช่อง ขายแล้ว 100','e.g. 200 spots: 100 sold'],
-  v:()=>sim('sc_unlock')},
- {h:['ใครได้รางวัล','Who wins'],l:['Order สุดท้ายที่ปิดบอร์ด ซื้อได้ 2 วิธี','The order that closes the board, 2 ways'],v:()=>sim('sc_win'),
-  b:()=>pts([{t:'Buy Remaining',s:T('ซื้อช่องที่เหลือทั้งหมดในคลิกเดียว','All remaining spots in one tap')},{t:T('เลือกเลขที่เหลือเองจนครบ','Pick every number left')}])+`<div class="note lime">${T('จ่ายด้วย QR ระบบล็อกช่องให้ 5 นาที','QR payment locks the spots for 5 min')}</div>`},
- {h:['กรณีพิเศษ · ช่องถูกจองอยู่','Edge case · reserved spots'],l:['มีคนอื่นกำลังจ่ายช่องเดียวกัน ระบบให้รอผล','Someone else is paying, so the buyer waits'],
-  v:()=>sim('sc_reserved'),
-  b:()=>pts([{k:'●',t:T('เขาจ่ายไม่สำเร็จ','Not paid'),s:T('ช่องกลับมาให้ซื้อ','Spot back in the cart')},{k:'●',t:T('เขาจ่ายสำเร็จ','Paid'),s:T('ช่องถูกตัด ราคาลดลง','Spot drops, total goes down')}])},
- {h:['Seller ต้องเตรียม','Seller prep'],l:['',''],
-  b:()=>pts([{k:'note',t:T('ระบุรางวัล Last One ตอนขอบอร์ด','State the prize when requesting')},{k:'prize',t:T('วางรางวัลข้างบอร์ด โชว์กล้อง','Show the prize next to the board')},{k:'mega',t:T('ขายครบ 50% ประกาศว่าปุ่มเปิดแล้ว','At 50%, announce it’s unlocked')},{k:'box',t:T('ส่งรางวัลกลับ SASOM พร้อมออเดอร์','Ship the prize with the order')}])}
-]},
 {id:'setup',stage:2,ico:'📱',t:['ตั้งไลฟ์ + Schedule','Set up a LIVE'],d:['13 ขั้นในแอป','13 steps in the app'],slides:'SETUP'},
 /* ===== STAGE 3 ===== */
 {id:'open',stage:3,ico:'✨',t:['วิธีเปิด Oripa','How to open Oripa'],d:['เปิดหน้ากล้องให้ลุ้น','Open on camera, build suspense'],slides:'OPEN'},
@@ -434,6 +422,18 @@ const LESSONS=[
   b:()=>pts([{t:T('กรอกแค่เลขการ์ดรางวัล 3 หลัก เช่น รางวัลที่ 17 = 017','Type just the 3-digit prize number, e.g. prize 17 = 017')},{t:T('เลือก Manual แล้วพิมพ์ให้ครบ','Choose Manual, type it all')},{t:T('ไม่ตรง ห้าม Confirm','No match? Don’t Confirm')}])+`<div class="note lime">${T('ให้อีกคนอ่านทวนเลขก่อน Confirm','Have someone read it back first')}</div>`},
  {h:['ทำไมห้ามข้าม','Why you can’t skip it'],l:['',''],
   b:()=>pts([{k:'!',t:T('ไม่ Confirm = SASOM รับของเข้าระบบไม่ได้','No Confirm = SASOM can’t receive it')},{k:'!',t:T('Order ลูกค้าไม่อัปเดต ส่งของไม่ได้','Buyer’s order can’t ship')},{k:'!',t:T('Order ที่ค้างไปโผล่ไลฟ์หน้า','Pending orders move to the next live')}])}
+]},
+{id:'lastone',stage:3,ico:'🏆',t:['Last One','Last One'],d:['รางวัลช่องสุดท้าย','The final-spot bonus'],slides:[
+ ...UIS.lo,
+ {h:['ปุ่มเปิดเมื่อขายครบ 50%','Unlocks at 50% sold'],l:['เช่น บอร์ด 200 ช่อง ขายแล้ว 100','e.g. 200 spots: 100 sold'],
+  v:()=>sim('sc_unlock')},
+ {h:['ใครได้รางวัล','Who wins'],l:['Order สุดท้ายที่ปิดบอร์ด ซื้อได้ 2 วิธี','The order that closes the board, 2 ways'],v:()=>sim('sc_win'),
+  b:()=>pts([{t:'Buy Remaining',s:T('ซื้อช่องที่เหลือทั้งหมดในคลิกเดียว','All remaining spots in one tap')},{t:T('เลือกเลขที่เหลือเองจนครบ','Pick every number left')}])+`<div class="note lime">${T('จ่ายด้วย QR ระบบล็อกช่องให้ 5 นาที','QR payment locks the spots for 5 min')}</div>`},
+ {h:['กรณีพิเศษ · ช่องถูกจองอยู่','Edge case · reserved spots'],l:['มีคนอื่นกำลังจ่ายช่องเดียวกัน ระบบให้รอผล','Someone else is paying, so the buyer waits'],
+  v:()=>sim('sc_reserved'),
+  b:()=>pts([{k:'●',t:T('เขาจ่ายไม่สำเร็จ','Not paid'),s:T('ช่องกลับมาให้ซื้อ','Spot back in the cart')},{k:'●',t:T('เขาจ่ายสำเร็จ','Paid'),s:T('ช่องถูกตัด ราคาลดลง','Spot drops, total goes down')}])},
+ {h:['Seller ต้องเตรียม','Seller prep'],l:['',''],
+  b:()=>pts([{k:'note',t:T('ระบุรางวัล Last One ตอนขอบอร์ด','State the prize when requesting')},{k:'prize',t:T('วางรางวัลข้างบอร์ด โชว์กล้อง','Show the prize next to the board')},{k:'mega',t:T('ขายครบ 50% ประกาศว่าปุ่มเปิดแล้ว','At 50%, announce it’s unlocked')},{k:'box',t:T('ส่งรางวัลกลับ SASOM พร้อมออเดอร์','Ship the prize with the order')}])}
 ]},
 {id:'trouble',stage:3,ico:'🛟',t:['Live มีปัญหา','Live trouble'],d:['จอดำ เสียงหาย ค้าง','Black screen, no sound, stuck'],slides:[
  {h:['เจอปัญหา กดดูวิธีแก้','Tap a problem to fix it'],l:['แก้ไม่ได้ใน 2–3 นาที แจ้ง KAM/SA','Can’t fix in 2–3 min? Tell KAM/SA'],b:()=>issues()},
