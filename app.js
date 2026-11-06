@@ -170,13 +170,14 @@ const SICO={p1:'box',p2:'box',p3:'box',p4:'box',p5:'envnum',p6:'brief',p7:'box',
 
 
 function uiHotHTML(img,H){const W=img==='b-checkout'?393:375,Hh=img==='s-manual'?815:812,w=H[2]/W,h=H[3]/Hh,l=H[0]/W,t=H[1]/Hh;return `<button class="ui-hot" data-hot aria-label="tap" style="left:${l*100}%;top:${t*100}%;width:${w*100}%;height:${h*100}%;background-image:url(assets/ui/${img}.webp);background-size:${100/w}% ${100/h}%;background-position:${l/(1-w)*100}% ${t/(1-h)*100}%"></button>`}
-function uiPhone(img,H,drag){let h=uiHotHTML(img,H);if(drag)h=h.replace('class="ui-hot"',`class="ui-hot ui-drag" data-dx="${drag/(img==='b-checkout'?393:375)}"`);return `<div class="ui-ph" data-tap><img src="assets/ui/${img}.webp" alt="" draggable="false">${drag?'<i class="ui-trail"></i>':''}${h}</div>`}
+function uiPhone(img,H,drag){let h;if(Array.isArray(H[0])){h=H.map((x,i)=>{const b=uiHotHTML(img,x);return i<H.length-1?b.replace('class="ui-hot" data-hot','class="ui-hot ui-pre" data-hot'):b.replace('class="ui-hot" data-hot','class="ui-hot ui-wait"')}).join('')}else h=uiHotHTML(img,H);if(drag)h=h.replace('class="ui-hot"',`class="ui-hot ui-drag" data-dx="${drag/(img==='b-checkout'?393:375)}"`);return `<div class="ui-ph" data-tap><img src="assets/ui/${img}.webp" alt="" draggable="false">${drag?'<i class="ui-trail"></i>':''}${h}</div>`}
+document.addEventListener('click',e=>{const k=e.target.closest('.ui-pre');if(!k||k.classList.contains('hit'))return;e.stopPropagation();e.preventDefault();k.classList.add('hit','ticked');k.removeAttribute('data-hot');const nx=k.parentElement.querySelector('.ui-wait');if(nx){nx.classList.remove('ui-wait');nx.setAttribute('data-hot','')}},true);
 /* swipe-to-unseal knob: drag along the bar, tap does nothing */
 document.addEventListener('click',e=>{const k=e.target.closest('.ui-drag');if(k&&!k._ok){e.stopPropagation();e.preventDefault();k.classList.remove('miss');void k.offsetWidth;k.classList.add('miss')}},true);
 document.addEventListener('pointerdown',e=>{const k=e.target.closest('.ui-drag');if(!k||k._ok||k.classList.contains('hit'))return;e.preventDefault();const ph=k.closest('.ui-ph'),W=ph.clientWidth,max=+k.dataset.dx*W,x0=e.clientX,tr=ph.querySelector('.ui-trail');k.classList.add('dragging');try{k.setPointerCapture(e.pointerId)}catch(_){}let dx=0;const mv=ev=>{dx=Math.max(0,Math.min(max,ev.clientX-x0));k.style.translate=dx+'px 0';if(tr)tr.style.width=dx+'px'};const up=()=>{k.removeEventListener('pointermove',mv);k.removeEventListener('pointerup',up);k.removeEventListener('pointercancel',up);k.classList.remove('dragging');if(dx>=max*.8){k.style.translate=max+'px 0';if(tr)tr.style.width=max+'px';k._ok=true;k.click()}else{k.style.translate='';if(tr)tr.style.width='0'}};k.addEventListener('pointermove',mv);k.addEventListener('pointerup',up);k.addEventListener('pointercancel',up)});
 
 /* real App screen step (tap the real button) */
-const UI=(img,hot,h,l,why,drag)=>({ui:img,hot,h,l,why,title:h,drag});
+const UI=(img,hot,h,l,why,drag,mock)=>({ui:img,hot,h,l,why,title:h,drag,mock});
 const UIS={
  sreq:[
   UI('s-live',[24,606,327,30],['ขอบอร์ด · กด Request new board','Request · tap Request new board'],['Profile · LIVE Selling · กล่อง Oripa Board Overview','Profile · LIVE Selling · Oripa Board Overview'],['ขอบอร์ดเองได้ในแอป ไม่ต้องส่งฟอร์มแยก','Request boards right in the App, no separate form']),
@@ -189,9 +190,9 @@ const UIS={
  pin:[UI('s-pinned',[334,528,30,30],['1 · เปิดคิว Unseal','1 · Open the Unseal queue'],['แตะไอคอนซองขวาจอ (มีจุดแดง = มีออเดอร์ใหม่)','Tap the envelope icon on the right (red dot = new order)'],['คิวรวมทุกออเดอร์ที่รอเปิดซอง','The queue lists every order waiting to be opened']),
   UI('s-queue',[275,471,76,24],['1 · Pin ออเดอร์ถัดไป','1 · Pin the next order'],['Pin แล้วชูเลขซองให้กล้องเห็น','Pin, then show the number to camera'],['ลูกค้าเห็นว่ากำลังเปิดออเดอร์ของใคร เลขซองไหน','Buyers see whose order and which number is next'])],
  swipe:[UI('s-pinned',[25,667,34,23],['2 · Swipe to Unseal','2 · Swipe to Unseal'],['ปัดในแอปก่อน แล้วค่อยแกะซีล','Swipe in the App first, then break the seal'],['ระบบล็อกว่าซองนี้ถูกเปิดแล้ว · หยิบผิดกด Undo','Locks this envelope as opened · wrong one? Undo'],290)],
- capture:[UI('s-capture',[272,629,83,28],['7 · Capture ในแอป','7 · Capture in the App'],['การ์ด + QR + เลขซอง ในเฟรมเดียว','Card + QR + number in one frame'],['เก็บเป็นหลักฐานกับออเดอร์ ลูกค้าดูย้อนหลังได้','Saved as evidence the buyer can see later'])],
- scan:[UI('s-qr',[240,503,79,23],['8 · สแกน QR แล้ว Confirm','8 · Scan the QR, then Confirm'],['ชื่อการ์ดต้องตรงกับใบที่ได้','The card name must match'],['ระบบบันทึกรางวัลเข้าออเดอร์ · ไม่ตรงกด Try again','Records the prize to the order · wrong? Try again']),
-  UI('s-manual',[16,737,343,48],['สแกนไม่ติด · เลือกเลขรางวัลเอง','QR won’t scan · pick the prize number'],['กด Add prize แล้วเลือกเลขให้ตรง QR Card','Tap Add prize, match the QR Card number'],['ใช้เมื่อสแกนไม่ได้จริง ๆ เท่านั้น','Only when the QR really won’t scan'])],
+ capture:[UI('s-capture',[272,629,83,28],['7 · Capture ในแอป','7 · Capture in the App'],['การ์ด + QR + เลขซอง ในเฟรมเดียว','Card + QR + number in one frame'],['เก็บเป็นหลักฐานกับออเดอร์ ลูกค้าดูย้อนหลังได้','Saved as evidence the buyer can see later'],0,'capture')],
+ scan:[UI('s-qr',[240,503,79,23],['8 · สแกน QR แล้ว Confirm','8 · Scan the QR, then Confirm'],['ชื่อการ์ดต้องตรงกับใบที่ได้','The card name must match'],['ระบบบันทึกรางวัลเข้าออเดอร์ · ไม่ตรงกด Try again','Records the prize to the order · wrong? Try again'],0,'scan'),
+  UI('s-manual',[[160,545,20,20],[16,737,343,48]],['สแกนไม่ติด · เลือกเลขรางวัลเอง','QR won’t scan · pick the prize number'],['ติ๊กการ์ดที่ตรงเลขบน QR Card แล้วกด Confirm','Tick the card matching the QR Card number, then Confirm'],['ใช้เมื่อสแกนไม่ได้จริง ๆ เท่านั้น','Only when the QR really won’t scan'])],
  lo:[UI('b-focus',[238,619,117,32],['Last One คืออะไร','What is Last One'],['ซื้อช่องสุดท้ายจนบอร์ดปิด รับรางวัลเพิ่ม 1 ชิ้น','Buy the final spot, win 1 extra prize'],['ลูกค้ากด Buy Remaining ซื้อช่องที่เหลือทั้งหมดในคลิกเดียว','Buy Remaining buys every spot left in one tap'])],
  reserved:[UI('b-grid',[224,356,62,62],['กรณีพิเศษ · ช่องถูกจองอยู่','Edge case · reserved spots'],['ช่องที่มีนาฬิกา = มีคนกำลังจ่าย','Clock = someone is paying'],['ระบบจองไว้ให้คนแรกชั่วคราว ถ้าไม่จ่ายช่องจะกลับมาว่าง','Held for the first buyer; unpaid spots free up again'])],
  buy:[
@@ -638,7 +639,7 @@ function visOf(s){
  if(s.finish){const ni=LESSONS.indexOf(cur)+1,nx=LESSONS[ni];return `<div class="vfin"><div class="medal">${CHK}</div><h2>${T('จบบทนี้แล้ว!','Lesson complete!')}</h2><p>${L2(cur.t)}</p><div class="fin-btns">${nx?`<button class="btn dark" data-open="${nx.id}">${T('บทถัดไป','Next')} · ${L2(nx.t)}</button>`:''}<button class="btn ghost" data-home>${T('หน้าแรก','Home')}</button></div></div>`}
  if(s.quiz)return `<div class="vquiz"><span class="pill lime">QUIZ</span><h2>${L2(s.quiz.q)}</h2><div class="quiz" data-ans="${s.quiz.a}">${s.quiz.o.map((o,k)=>`<button data-k="${k}">${L2(o)}</button>`).join('')}</div><div class="qres"></div></div>`;
  if(s.tap)return mockHTML(s.tap.screen,s.tap.hot);
- if(s.ui)return `<div class="vis">${uiPhone(s.ui,s.hot,s.drag)}</div>`;
+ if(s.ui)return s.mock?`<div class="vis ui-duo"><div class="ui-col"><span class="ui-tag">${T('หน้าจอจริง','Real App')}</span>${uiPhone(s.ui,s.hot,s.drag)}</div><div class="ui-col"><span class="ui-tag">${T('ลองทำ','Try it')}</span>${sim(s.mock)}</div></div>`:`<div class="vis">${uiPhone(s.ui,s.hot,s.drag)}</div>`;
  if(s.cmp)return `<div class="vcmp" id="cmpBox">${cmpHTML()}</div>`;
  if(s.v)return `<div class="vis">${s.v()}</div>`;
  return ''}

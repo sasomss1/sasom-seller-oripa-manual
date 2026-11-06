@@ -1331,3 +1331,12 @@ main{max-width:1180px}
 .ui-drag.hit{animation:none!important}
 @keyframes swipehint{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
 .ui-trail{position:absolute;left:6.9%;top:82.1%;height:2.9%;width:0;background:#C9FF00;border-radius:6px;z-index:1;pointer-events:none}
+.ui-duo{display:flex!important;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;background:none!important;border:0!important;box-shadow:none!important}
+.ui-col{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
+.ui-tag{font:600 12px "Noto Sans Thai",Inter;letter-spacing:.04em;color:var(--sub);background:var(--line);border-radius:99px;padding:3px 10px}
+.ui-duo .ui-ph{width:min(240px,42vw,calc(56vh * .4618))}
+.ui-duo .simwrap{max-width:min(420px,92vw)}
+@media (max-width:720px){.ui-duo{gap:16px}.ui-duo .ui-ph{width:min(200px,56vw)}}
+.ui-hot.ui-wait{animation:none!important;pointer-events:none}
+.ui-hot.ticked{background-image:none!important;background:#1B1B1B!important;border-radius:4px;animation:uipress .25s ease-out both!important}
+.ui-hot.ticked::after{content:"";position:absolute;left:30%;top:14%;width:28%;height:48%;border:solid #C9FF00;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
