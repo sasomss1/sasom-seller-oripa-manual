@@ -756,3 +756,5 @@ applyTheme();applyLang();route();
 ;(()=>{let raf=0;const fix=()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{if(!fingerEl.classList.contains('on'))return;const t=fingerTarget();if(!t){hideFinger();return}fingerEl.style.left=t.x+'px';fingerEl.style.top=t.y+'px';if(t.to){fingerEl.style.setProperty('--dx',(t.to.x-t.x)+'px');fingerEl.style.setProperty('--dy',(t.to.y-t.y)+'px')}})};const vv=window.visualViewport;if(vv){vv.addEventListener('resize',fix);vv.addEventListener('scroll',fix)}addEventListener('scroll',fix,true);addEventListener('resize',fix)})();
 window.__fg={fingerNow,fingerTarget,sceneInto};
 })();
+/* repaint the scene after the stamp lands so no green trail is left behind */
+addEventListener('animationend',e=>{const t=e.target;if(!t.matches||!t.matches('[data-l="stamp"]'))return;const svg=t.ownerSVGElement;if(!svg)return;svg.style.opacity='.999';requestAnimationFrame(()=>requestAnimationFrame(()=>{svg.style.opacity=''}))},true);
