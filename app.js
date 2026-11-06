@@ -760,3 +760,5 @@ window.__fg={fingerNow,fingerTarget,sceneInto};
 addEventListener('animationend',e=>{const t=e.target;if(!t.matches||!t.matches('[data-l="stamp"]'))return;const svg=t.ownerSVGElement;if(!svg)return;svg.style.opacity='.999';requestAnimationFrame(()=>requestAnimationFrame(()=>{svg.style.opacity=''}))},true);
 /* chapter 1 Seller Live: app mockups same size as chapter 6 */
 ;(()=>{const fit=()=>document.querySelectorAll('.story .mk').forEach(m=>{const a=Math.max(380,Math.min(innerWidth<900?innerHeight-300:innerHeight-230,780)),s=String(a/812);if(m.style.getPropertyValue('--s')!==s)m.style.setProperty('--s',s)});new MutationObserver(fit).observe(document.body,{childList:true,subtree:true});addEventListener('resize',fit)})();
+/* keep the hint finger on its target when the page shifts (images loading, layout changes, iOS scrolling) */
+;(()=>{setInterval(()=>{const f=document.querySelector('.finger');if(!f||!f.classList.contains('on')||!window.__fg)return;const t=window.__fg.fingerTarget();if(!t)return;f.style.left=t.x+'px';f.style.top=t.y+'px';if(t.to){f.style.setProperty('--dx',(t.to.x-t.x)+'px');f.style.setProperty('--dy',(t.to.y-t.y)+'px')}},200)})();
