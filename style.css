@@ -1278,3 +1278,6 @@ main{max-width:1180px}
 :root[data-theme="dark"]{--pale-st:transparent}
 .scn :is(rect,path,circle)[fill="#F2F2F0"],.scn [data-l="warehouse"]>:is(rect,path):not([data-l="door"]){stroke:var(--pale-st);stroke-width:1.5}
 .scn-sign rect[data-l="bg"][fill="white"]{stroke:var(--pale-st);stroke-width:1.5}
+.st-chips button:not(.done):not(.on){cursor:default}
+.st-chips button.no{animation:nope .35s}
+@keyframes nope{20%,60%{translate:-4px 0}40%,80%{translate:4px 0}}

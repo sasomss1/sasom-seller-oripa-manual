@@ -162,7 +162,7 @@ function storyInit(S){const k=S.dataset.k,L=STORY[k](),sl=k==='sl';let i=0,doneS
  const onHit=at=>{if(at!==i||doneSet.has(i))return;doneSet.add(i);setTimeout(()=>{cap.classList.add('show');chips[i].classList.add('done')},500);
   if(doneSet.size===L.length){setTimeout(()=>{S.querySelector('.st-sum').innerHTML=flow(L.map(s=>[s[1],s[2],s[3],SICO[s[0]]]));S.classList.add('fin');simDone(S,false)},1400)}
   else setTimeout(()=>{if(!S.isConnected)return;const nx=L.findIndex((_,j)=>!doneSet.has(j));if(nx>-1){i=nx;render()}},2300)};
- chips.forEach(c=>c.onclick=()=>{i=+c.dataset.st;render()});render()}
+ chips.forEach(c=>c.onclick=()=>{const j=+c.dataset.st,nx=L.findIndex((_,q)=>!doneSet.has(q));if(!doneSet.has(j)&&j!==nx){c.classList.remove('no');void c.offsetWidth;c.classList.add('no');return}i=j;render()});render()}
 const SICO={p1:'box',p2:'box',p3:'box',p4:'box',p5:'envnum',p6:'brief',p7:'box',p8:'brief',resched:'calendar',rchat:'brief',max4:'clock',request:'board',approve:'check',shipenv:'box',chat:'brief',confirm:'check',ship:'box',pack:'envnum',date:'calendar',setup:'board',live:'live',pay:'payout'};
 
 const sim=k=>`<div class="simwrap" data-sim="${k}">${SIM[k]()}</div>`;
