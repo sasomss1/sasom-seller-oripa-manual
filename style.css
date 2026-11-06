@@ -671,7 +671,7 @@ main{max-width:1180px}
 .m-hot{position:relative;border-radius:10px;cursor:pointer;outline:3px solid #C9FF00;outline-offset:2px;box-shadow:0 0 0 5px rgba(201,255,0,.25);animation:mhot 1.4s infinite;z-index:3}
 @keyframes mhot{50%{box-shadow:0 0 0 12px rgba(201,255,0,.18)}}
 .m-hot.miss{animation:mhot .3s 3}
-.m-hot.hit{background:rgba(201,255,0,.35)}
+
 .mk-scr.dark .m-hot{outline-color:#C9FF00}
 .m-body>[data-h],.m-body>.m-link[data-h]{padding:6px;margin:-6px}
 
@@ -1314,3 +1314,14 @@ main{max-width:1180px}
 @keyframes uipress{50%{transform:scale(.92)}100%{transform:scale(1)}}
 @media (max-width:720px){.ui-ph{width:min(230px,60vw,calc(48vh * .4618))}}
 .vis:has(>.ui-ph){background:none!important;border:0!important;box-shadow:none!important}
+/* no green frames anywhere — targets pop instead */
+.m-hot{outline:none!important;box-shadow:none!important;transform-origin:center;animation:popme 1.1s ease-in-out infinite!important}
+.m-hot.miss{animation:popme .3s 3!important}
+.m-hot.hit{animation:uipress .25s ease-out both!important}
+@keyframes popme{0%,100%{transform:scale(1)}45%{transform:scale(1.06) translateY(-2px)}}
+@keyframes glow{0%,100%{transform:scale(1)}45%{transform:scale(1.07)}}
+@keyframes tgnudge{0%,100%{transform:scale(1)}45%{transform:scale(1.12)}}
+@keyframes hot{0%,100%{transform:scale(1)}45%{transform:scale(1.06)}}
+.sc-chat .send,.scn-max4h [data-l="clock"],[data-h="excl"] .tg{transform-box:fill-box;transform-origin:center}
+.ts-hot{border:0!important;background:transparent!important;box-shadow:none!important}
+.env.hl{outline:none}
