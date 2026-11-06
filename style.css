@@ -1264,3 +1264,11 @@ main{max-width:1180px}
 .spsum .chk{flex:none;width:20px;height:20px;background:var(--lime);color:#1B1B1B;border-radius:6px;padding:3px;margin-top:1px}
 .rules .rr.ok .t{background:#C9FF00;color:#1B1B1B}.rules .rr.ok .ri{background:#1B1B1B;color:#C9FF00}.rules .rr .t{font-size:12px;padding:5px 11px}
 .scn-unlock.armed:not(.go) [data-l="lo-on"]{opacity:1!important;transform-box:fill-box;transform-origin:center;animation:lopop .45s cubic-bezier(.2,1.4,.4,1),lobounce 1.2s .5s ease-in-out infinite!important}@keyframes lopop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}@keyframes lobounce{0%,100%{transform:none;filter:none}40%{transform:translateY(-4px);filter:drop-shadow(0 0 8px rgba(201,255,0,.9))}}
+.fx-chips i.done{cursor:pointer}
+.fx-chips i.view{outline:2px solid var(--ink);outline-offset:2px}
+.fx.review .fx-ok{opacity:0!important}.fx.review .fx-vis{opacity:1!important}
+.fx-cap .fxn{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--lime);color:#1B1B1B;font:700 11px Inter;margin-right:8px;vertical-align:1px}
+.fx-chips{gap:12px}.fx-chips i{width:12px;height:12px}
+.fx-cap:has(.fxsum){display:block;max-width:420px;width:100%}
+.fxsum{opacity:1;margin:0;max-width:none}
+.fxnote{margin:10px 0 0;font:600 13px "Noto Sans Thai",Inter;color:var(--sub)}
