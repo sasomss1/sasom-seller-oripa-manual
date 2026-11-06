@@ -1262,3 +1262,4 @@ main{max-width:1180px}
 .spsum li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45;animation:capin .3s both}
 .spsum li:nth-child(2){animation-delay:.08s}.spsum li:nth-child(3){animation-delay:.16s}.spsum li:nth-child(4){animation-delay:.24s}.spsum li:nth-child(5){animation-delay:.32s}
 .spsum .chk{flex:none;width:20px;height:20px;background:var(--lime);color:#1B1B1B;border-radius:6px;padding:3px;margin-top:1px}
+.rules .rr.ok .t{background:#C9FF00;color:#1B1B1B}.rules .rr.ok .ri{background:#1B1B1B;color:#C9FF00}.rules .rr .t{font-size:12px;padding:5px 11px}
