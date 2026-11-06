@@ -1340,3 +1340,4 @@ main{max-width:1180px}
 .ui-hot.ui-wait{animation:none!important;pointer-events:none}
 .ui-hot.ticked{background-image:none!important;background:#1B1B1B!important;border-radius:4px;animation:uipress .25s ease-out both!important}
 .ui-hot.ticked::after{content:"";position:absolute;left:30%;top:14%;width:28%;height:48%;border:solid #C9FF00;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+.ui-pre.hit:not(.ticked){animation:uipress .25s ease-out both!important;background-image:none!important;background:rgba(27,27,27,.06)!important}
