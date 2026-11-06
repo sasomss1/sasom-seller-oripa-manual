@@ -839,7 +839,8 @@ main{max-width:1180px}
 /* confirm */
 .scn-confirm [data-l="stamp"]{opacity:0}
 .scn-confirm.go [data-l="stamp"]{animation:stamp2 .45s .1s cubic-bezier(.2,1.5,.4,1) both}
-@keyframes stamp2{from{opacity:0;transform:scale(2.6)}to{opacity:1;transform:none}}
+@keyframes stamp2{from{opacity:0;transform:scale(1.8)}to{opacity:1;transform:none}}
+.scn [data-l="stamp"]{will-change:transform,opacity}
 .scn-confirm:not(.go) [data-l="card"]{animation:sendp 1.6s infinite}
 /* ship */
 .scn-ship-board [data-l="pkg"],.scn-ship-prize [data-l="pkg"]{transition:transform 1.4s cubic-bezier(.5,0,.3,1)}
